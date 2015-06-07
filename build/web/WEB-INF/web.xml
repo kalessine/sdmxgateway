@@ -1,0 +1,17 @@
+<web-app version="3.0"
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<servlet>
+    <servlet-name>myrest</servlet-name>
+    <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>    
+    <init-param>
+      <param-name>jersey.config.server.provider.packages</param-name>
+      <param-value>sdmx.gateway</param-value>
+    </init-param>
+      <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>myrest</servlet-name>
+    <url-pattern>/rest/*</url-pattern>
+  </servlet-mapping>
+</web-app>
