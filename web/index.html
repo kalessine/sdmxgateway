@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="resources/js/jquery-2.1.4.min.js"></script>
+        <script>
+            function get() {
+
+                var url = $("#url").val();
+                var mime = $("#mime").val();
+                alert(mime);
+                $.ajax(url, {
+                    headers: {"Accept": mime},
+                    cache: false,
+                    async: false
+                }).done(function (data) {
+                    if (mime.indexOf("json") != -1) {
+                        $("#result").val(JSON.stringify(data));
+                    } else {
+                        $("#result").val((new XMLSerializer()).serializeToString(data));
+                    }
+                })
+            }
+        </script>
+    </head>
+    <body>
+        <form id="restForm">
+            <select id="url">
+                <option value="rest/repository/1/data/LF/0.14.3.1599.30.M/ABS?startPeriod=2010-01-01&endPeriod=2015-01-01">rest/repository/1/data/LF/0.14.3.1599.30.M/ABS?startPeriod=2010-01-01&endPeriod=2015-01-01</option>
+            </select>
+            <label for="mime">Mime Type</label><select id="mime">
+                <option value="application/json;">application/json</option>
+                <option value="application/vnd.sdmx.data+json;version=1.0.0-wd">application/vnd.sdmx.data+json;version=1.0.0-wd</option>
+                <option value="application/vnd.sdmx.genericdata+xml;version=2.1">application/vnd.sdmx.genericdata+xml;version=2.1</option>
+                <option value="application/vnd.sdmx.structurespecificdata+xml;version=2.1">application/vnd.sdmx.structurespecificdata+xml;version=2.1</option>
+            </select>
+            <input type="button" id="getButton" value="Get" onclick="get();"/>
+            <textarea id="result" style="width: 100%"></textarea> 
+        </form>
+    </body>
+</html>
