@@ -15,7 +15,6 @@ and open the template in the editor.
 
                 var url = $("#url").val();
                 var mime = $("#mime").val();
-                alert(mime);
                 $.ajax(url, {
                     headers: {"Accept": mime},
                     cache: false,
