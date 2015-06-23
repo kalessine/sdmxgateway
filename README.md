@@ -35,7 +35,7 @@ so really the only useful formats are sdmx-json and json-stat...
 
 queries can be formatted this way;
 http://www.notionworks.com.au/sdmxgateway/rest/repository/1/data/LF/0.14.3.1599.30.M/ABS?startPeriod=2010-01-01&endPeriod=2015-01-01
-                                                         {provider}/data/{flowRef}/{queryString}/{providerRef}?startPeriod={startPeriod}&endPeriod={endPeriod}
+http://www.notionworks.com.au/sdmxgateway/rest/repository/{provider}/data/{flowRef}/{queryString}/{providerRef}?startPeriod={startPeriod}&endPeriod={endPeriod}
 provider is the number next to the provider list above, here, '1' is the ABS.
 
 
