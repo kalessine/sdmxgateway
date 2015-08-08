@@ -16,6 +16,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -23,6 +25,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.StreamingOutput;
@@ -75,7 +78,7 @@ public class RepositoryService {
      * @return String that will be returned as a text/plain response.
      */
     @GET
-    @Path("{provider}/data/{flowRef}/{query}/{providerRef}")
+    @Path("/data/{flowRef}/{query}/{providerRef}")
     @Produces({"application/vnd.sdmx.data+json;version=1.0.0-wd"})
     public Response getJSONData(@DefaultValue("2000-01-01") @QueryParam("startPeriod") String startPeriod,
             @DefaultValue("2010-01-01") @QueryParam("endPeriod") String endPeriod,
@@ -88,11 +91,12 @@ public class RepositoryService {
             @PathParam("flowRef") String flowRef,
             @PathParam("query") String queryString,
             @PathParam("providerRef") String providerRef,
-            @PathParam("provider") Integer provider) {
-        Queryable quer = getProviderQueryable(provider);
+            @Context HttpServletRequest request) {
+        Queryable quer = getQueryable();
         Registry reg = quer.getRegistry();
         Repository rep = quer.getRepository();
         ParseParams params = new ParseParams();
+        params.setLocale(request.getLocale());
         params.setRegistry(reg);
         DataflowType flow = null;
         List<DataflowType> dataflowList = quer.getRegistry().listDataflows();
@@ -101,8 +105,8 @@ public class RepositoryService {
                 flow = dataflowList.get(i);
             }
         }
-        if( flow == null ) {
-            DataflowReference ref = DataflowReference.create(new NestedNCNameID(providerRef), new IDType(flowRef),Version.ONE);
+        if (flow == null) {
+            DataflowReference ref = DataflowReference.create(new NestedNCNameID(providerRef), new IDType(flowRef), Version.ONE);
             flow = reg.find(ref);
         }
         params.setDataflow(flow);
@@ -171,7 +175,7 @@ public class RepositoryService {
      * @return String that will be returned as a text/plain response.
      */
     @GET
-    @Path("{provider}/data/{flowRef}/{query}/{providerRef}")
+    @Path("/data/{flowRef}/{query}/{providerRef}")
     @Produces({"application/vnd.sdmx.genericdata+xml;version=2.1"})
     public Response getGenericData(@DefaultValue("2000-01-01") @QueryParam("startPeriod") String startPeriod,
             @DefaultValue("2010-01-01") @QueryParam("endPeriod") String endPeriod,
@@ -184,18 +188,23 @@ public class RepositoryService {
             @PathParam("flowRef") String flowRef,
             @PathParam("query") String queryString,
             @PathParam("providerRef") String providerRef,
-            @PathParam("provider") Integer provider) {
-        Queryable quer = getProviderQueryable(provider);
+            @Context HttpServletRequest request) {
+        Queryable quer = getQueryable();
         Registry reg = quer.getRegistry();
         Repository rep = quer.getRepository();
         ParseParams params = new ParseParams();
         params.setRegistry(reg);
+        params.setLocale(request.getLocale());
         DataflowType flow = null;
         List<DataflowType> dataflowList = quer.getRegistry().listDataflows();
         for (int i = 0; i < dataflowList.size(); i++) {
             if (dataflowList.get(i).getId().equals(flowRef)) {
                 flow = dataflowList.get(i);
             }
+        }
+        if (flow == null) {
+            DataflowReference ref = DataflowReference.create(new NestedNCNameID(providerRef), new IDType(flowRef), Version.ONE);
+            flow = reg.find(ref);
         }
         params.setDataflow(flow);
         DataQueryMessage query = new DataQueryMessage();
@@ -263,7 +272,7 @@ public class RepositoryService {
      * @return String that will be returned as a text/plain response.
      */
     @GET
-    @Path("{provider}/data/{flowRef}/{query}/{providerRef}")
+    @Path("/data/{flowRef}/{query}/{providerRef}")
     @Produces({"application/vnd.sdmx.structurespecificdata+xml;version=2.1"})
     public Response getSructSpecData(@DefaultValue("2000-01-01") @QueryParam("startPeriod") String startPeriod,
             @DefaultValue("2010-01-01") @QueryParam("endPeriod") String endPeriod,
@@ -276,18 +285,23 @@ public class RepositoryService {
             @PathParam("flowRef") String flowRef,
             @PathParam("query") String queryString,
             @PathParam("providerRef") String providerRef,
-            @PathParam("provider") Integer provider) {
-        Queryable quer = getProviderQueryable(provider);
+            @Context HttpServletRequest request) {
+        Queryable quer = getQueryable();
         Registry reg = quer.getRegistry();
         Repository rep = quer.getRepository();
         ParseParams params = new ParseParams();
         params.setRegistry(reg);
+        params.setLocale(request.getLocale());
         DataflowType flow = null;
         List<DataflowType> dataflowList = quer.getRegistry().listDataflows();
         for (int i = 0; i < dataflowList.size(); i++) {
             if (dataflowList.get(i).getId().equals(flowRef)) {
                 flow = dataflowList.get(i);
             }
+        }
+        if (flow == null) {
+            DataflowReference ref = DataflowReference.create(new NestedNCNameID(providerRef), new IDType(flowRef), Version.ONE);
+            flow = reg.find(ref);
         }
         params.setDataflow(flow);
         DataQueryMessage query = new DataQueryMessage();
@@ -355,7 +369,7 @@ public class RepositoryService {
      * @return String that will be returned as a text/plain response.
      */
     @GET
-    @Path("{provider}/data/{flowRef}/{query}/{providerRef}")
+    @Path("/data/{flowRef}/{query}/{providerRef}")
     @Produces({"application/json"})
     public Response getJsonStat(@DefaultValue("2000-01-01") @QueryParam("startPeriod") String startPeriod,
             @DefaultValue("2010-01-01") @QueryParam("endPeriod") String endPeriod,
@@ -368,13 +382,15 @@ public class RepositoryService {
             @PathParam("flowRef") String flowRef,
             @PathParam("query") String queryString,
             @PathParam("providerRef") String providerRef,
-            @PathParam("provider") Integer provider) {
+            @Context HttpServletRequest request, @Context HttpServletResponse response) {
+        response.addHeader("Access-Control-Allow-Origin", "*");
         try {
-            Queryable quer = getProviderQueryable(provider);
+            Queryable quer = getQueryable();
             Registry reg = quer.getRegistry();
             Repository rep = quer.getRepository();
             ParseParams params = new ParseParams();
             params.setRegistry(reg);
+            params.setLocale(request.getLocale());
             DataflowType flow = null;
             List<DataflowType> dataflowList = quer.getRegistry().listDataflows();
             for (int i = 0; i < dataflowList.size(); i++) {
@@ -439,12 +455,7 @@ public class RepositoryService {
         return Response.serverError().build();
     }
 
-    public Queryable getProviderQueryable(int i) {
-        Queryable q = providerMap.get(i);
-        if (q == null) {
-            q = DataProvider.getList().get(i-1).getQueryable();
-            providerMap.put(i, q);
-        }
-        return q;
+    public Queryable getQueryable() {
+        return SdmxGatewayApplication.getApplication().getQueryable();
     }
 }
