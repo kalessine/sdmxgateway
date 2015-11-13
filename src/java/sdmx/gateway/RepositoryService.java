@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -23,6 +24,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.StreamingOutput;
@@ -88,11 +90,12 @@ public class RepositoryService {
             @PathParam("flowRef") String flowRef,
             @PathParam("query") String queryString,
             @PathParam("providerRef") String providerRef,
-            @PathParam("provider") Integer provider) {
+            @PathParam("provider") Integer provider,@Context HttpServletRequest request) {
         Queryable quer = getProviderQueryable(provider);
         Registry reg = quer.getRegistry();
         Repository rep = quer.getRepository();
         ParseParams params = new ParseParams();
+        params.setLocale(request.getLocale());
         params.setRegistry(reg);
         DataflowType flow = null;
         List<DataflowType> dataflowList = quer.getRegistry().listDataflows();
@@ -184,18 +187,23 @@ public class RepositoryService {
             @PathParam("flowRef") String flowRef,
             @PathParam("query") String queryString,
             @PathParam("providerRef") String providerRef,
-            @PathParam("provider") Integer provider) {
+            @PathParam("provider") Integer provider,@Context HttpServletRequest request) {
         Queryable quer = getProviderQueryable(provider);
         Registry reg = quer.getRegistry();
         Repository rep = quer.getRepository();
         ParseParams params = new ParseParams();
         params.setRegistry(reg);
+        params.setLocale(request.getLocale());
         DataflowType flow = null;
         List<DataflowType> dataflowList = quer.getRegistry().listDataflows();
         for (int i = 0; i < dataflowList.size(); i++) {
             if (dataflowList.get(i).getId().equals(flowRef)) {
                 flow = dataflowList.get(i);
             }
+        }
+        if( flow == null ) {
+            DataflowReference ref = DataflowReference.create(new NestedNCNameID(providerRef), new IDType(flowRef),Version.ONE);
+            flow = reg.find(ref);
         }
         params.setDataflow(flow);
         DataQueryMessage query = new DataQueryMessage();
@@ -276,18 +284,23 @@ public class RepositoryService {
             @PathParam("flowRef") String flowRef,
             @PathParam("query") String queryString,
             @PathParam("providerRef") String providerRef,
-            @PathParam("provider") Integer provider) {
+            @PathParam("provider") Integer provider,@Context HttpServletRequest request) {
         Queryable quer = getProviderQueryable(provider);
         Registry reg = quer.getRegistry();
         Repository rep = quer.getRepository();
         ParseParams params = new ParseParams();
         params.setRegistry(reg);
+        params.setLocale(request.getLocale());
         DataflowType flow = null;
         List<DataflowType> dataflowList = quer.getRegistry().listDataflows();
         for (int i = 0; i < dataflowList.size(); i++) {
             if (dataflowList.get(i).getId().equals(flowRef)) {
                 flow = dataflowList.get(i);
             }
+        }
+        if( flow == null ) {
+            DataflowReference ref = DataflowReference.create(new NestedNCNameID(providerRef), new IDType(flowRef),Version.ONE);
+            flow = reg.find(ref);
         }
         params.setDataflow(flow);
         DataQueryMessage query = new DataQueryMessage();
@@ -368,13 +381,14 @@ public class RepositoryService {
             @PathParam("flowRef") String flowRef,
             @PathParam("query") String queryString,
             @PathParam("providerRef") String providerRef,
-            @PathParam("provider") Integer provider) {
+            @PathParam("provider") Integer provider,@Context HttpServletRequest request) {
         try {
             Queryable quer = getProviderQueryable(provider);
             Registry reg = quer.getRegistry();
             Repository rep = quer.getRepository();
             ParseParams params = new ParseParams();
             params.setRegistry(reg);
+            params.setLocale(request.getLocale());
             DataflowType flow = null;
             List<DataflowType> dataflowList = quer.getRegistry().listDataflows();
             for (int i = 0; i < dataflowList.size(); i++) {
