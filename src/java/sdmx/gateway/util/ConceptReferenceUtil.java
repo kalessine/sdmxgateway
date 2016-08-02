@@ -20,13 +20,13 @@ public class ConceptReferenceUtil {
         sdmx.gateway.entities.Concept c = ConceptUtil.findDatabaseConcept(em, conceptIdentity.getAgencyId().toString(), conceptIdentity.getMaintainableParentId().toString(), conceptIdentity.getVersion().toString(), conceptIdentity.getId().toString());
         if (c != null) {
             ref.setConcept(c);
-            em.getTransaction().begin();
             em.persist(ref);
-            em.getTransaction().commit();
+            em.flush();
             em.refresh(ref);
             return ref;
         } else {
             System.out.println("target concept is null!!!"+conceptIdentity.getAgencyId()+":"+conceptIdentity.getId()+":"+conceptIdentity.getVersion());
+            conceptIdentity.dump();
             return null;
         }
 

@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.FlushModeType;
+import sdmx.common.TextType;
 import sdmx.gateway.entities.Datastructure;
 import sdmx.gateway.entities.Name;
 import sdmx.structure.codelist.CodeType;
@@ -44,14 +46,15 @@ public class NameUtil {
      } 
      public static sdmx.gateway.entities.Name toDatabaseName(EntityManager em,List<sdmx.common.Name> names) {
         sdmx.gateway.entities.Name nm = new sdmx.gateway.entities.Name();
-        em.getTransaction().begin();
-        em.persist(nm);
-        em.getTransaction().commit();
         List<sdmx.gateway.entities.Nametext> result = new ArrayList<>();
+        em.persist(nm);
+        em.flush();
+        em.refresh(nm);
         for(int i=0;i<names.size(); i++) {
             result.add(toDatabaseNameText(nm,names.get(i)));
         }
         nm.setNametextList(result);
+        em.merge(nm);
         return nm;
      }
      public static sdmx.gateway.entities.Nametext toDatabaseNameText(sdmx.gateway.entities.Name nam,sdmx.common.Name name) {
@@ -66,6 +69,12 @@ public class NameUtil {
         nm.setNametextPK(pk);
         return nm;
      }
-
+    public static List<sdmx.common.Name> toSDMXName(sdmx.gateway.entities.Name name) {
+        List<sdmx.common.Name> result = new ArrayList<sdmx.common.Name>();
+        for(sdmx.gateway.entities.Nametext nt:name.getNametextList()){
+            result.add(new sdmx.common.Name(nt.getNametextPK().getLang(),nt.getText()));
+        }
+        return result;
+    }
 
 }

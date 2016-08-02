@@ -9,8 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import sdmx.commonreferences.IDType;
+import sdmx.commonreferences.LocalCodeRef;
+import sdmx.commonreferences.LocalItemReference;
+import sdmx.commonreferences.NCNameID;
+import sdmx.commonreferences.types.ItemSchemePackageTypeCodelistType;
+import sdmx.commonreferences.types.ItemTypeCodelistType;
+import sdmx.gateway.entities.Code;
 import sdmx.gateway.entities.Concept;
 import sdmx.gateway.entities.Conceptscheme;
+import sdmx.structure.base.ItemType;
+import sdmx.structure.codelist.CodeType;
 import sdmx.structure.concept.ConceptType;
 
 /**
@@ -28,7 +37,6 @@ public class ConceptUtil {
         q.setParameter("id", id);
         return (sdmx.gateway.entities.Concept)q.getSingleResult();
         }catch(Exception e) { 
-            e.printStackTrace();
             return null; }
     }
     public static Concept createDatabaseConcept(EntityManager em, Conceptscheme cs, ConceptType c) {
@@ -47,5 +55,12 @@ public class ConceptUtil {
         NameUtil.setName(em,ct, c);
         return ct;
     }
-    
+
+    public static ConceptType toSDMXConcept(Concept c) {
+        ConceptType cd = new ConceptType();
+        cd.setAnnotations(AnnotationsUtil.toSDMXAnnotations(c.getAnnotations()));
+        cd.setNames(NameUtil.toSDMXName(c.getName()));
+        cd.setId(new NCNameID(c.getConceptPK().getId()));
+        return cd;
+    }
 }

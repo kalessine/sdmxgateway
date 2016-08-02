@@ -6,17 +6,16 @@
 package sdmx.gateway.entities;
 
 import java.io.Serializable;
-import javax.persistence.Basic;
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -29,15 +28,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Annotationtext.findAll", query = "SELECT a FROM Annotationtext a"),
-    @NamedQuery(name = "Annotationtext.findByAnnotation", query = "SELECT a FROM Annotationtext a WHERE a.annotation = :annotation"),
+    @NamedQuery(name = "Annotationtext.findByAnnotated", query = "SELECT a FROM Annotationtext a WHERE a.annotationtextPK.annotated = :annotated"),
+    @NamedQuery(name = "Annotationtext.findByIndex", query = "SELECT a FROM Annotationtext a WHERE a.annotationtextPK.index = :index"),
+    @NamedQuery(name = "Annotationtext.findByTextIndex", query = "SELECT a FROM Annotationtext a WHERE a.annotationtextPK.textIndex = :textIndex"),
     @NamedQuery(name = "Annotationtext.findByLang", query = "SELECT a FROM Annotationtext a WHERE a.lang = :lang")})
 public class Annotationtext implements Serializable {
     private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "Annotation", nullable = false)
-    private Long annotation;
+    @EmbeddedId
+    protected AnnotationtextPK annotationtextPK;
     @Size(max = 10)
     @Column(name = "lang", length = 10)
     private String lang;
@@ -45,23 +43,29 @@ public class Annotationtext implements Serializable {
     @Size(max = 65535)
     @Column(name = "text", length = 65535)
     private String text;
-    @JoinColumn(name = "Annotation", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
-    @OneToOne(optional = false)
-    private Annotation annotation1;
+    @JoinColumns({
+        @JoinColumn(name = "Annotated", referencedColumnName = "Annotated", nullable = false, insertable = false, updatable = false),
+        @JoinColumn(name = "index", referencedColumnName = "index", nullable = false, insertable = false, updatable = false)})
+    @ManyToOne(optional = false)
+    private Annotation annotation;
 
     public Annotationtext() {
     }
 
-    public Annotationtext(Long annotation) {
-        this.annotation = annotation;
+    public Annotationtext(AnnotationtextPK annotationtextPK) {
+        this.annotationtextPK = annotationtextPK;
     }
 
-    public Long getAnnotation() {
-        return annotation;
+    public Annotationtext(long annotated, long index, long textIndex) {
+        this.annotationtextPK = new AnnotationtextPK(annotated, index, textIndex);
     }
 
-    public void setAnnotation(Long annotation) {
-        this.annotation = annotation;
+    public AnnotationtextPK getAnnotationtextPK() {
+        return annotationtextPK;
+    }
+
+    public void setAnnotationtextPK(AnnotationtextPK annotationtextPK) {
+        this.annotationtextPK = annotationtextPK;
     }
 
     public String getLang() {
@@ -80,18 +84,18 @@ public class Annotationtext implements Serializable {
         this.text = text;
     }
 
-    public Annotation getAnnotation1() {
-        return annotation1;
+    public Annotation getAnnotation() {
+        return annotation;
     }
 
-    public void setAnnotation1(Annotation annotation1) {
-        this.annotation1 = annotation1;
+    public void setAnnotation(Annotation annotation) {
+        this.annotation = annotation;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (annotation != null ? annotation.hashCode() : 0);
+        hash += (annotationtextPK != null ? annotationtextPK.hashCode() : 0);
         return hash;
     }
 
@@ -102,7 +106,7 @@ public class Annotationtext implements Serializable {
             return false;
         }
         Annotationtext other = (Annotationtext) object;
-        if ((this.annotation == null && other.annotation != null) || (this.annotation != null && !this.annotation.equals(other.annotation))) {
+        if ((this.annotationtextPK == null && other.annotationtextPK != null) || (this.annotationtextPK != null && !this.annotationtextPK.equals(other.annotationtextPK))) {
             return false;
         }
         return true;
@@ -110,7 +114,7 @@ public class Annotationtext implements Serializable {
 
     @Override
     public String toString() {
-        return "sdmx.gateway.entities.Annotationtext[ annotation=" + annotation + " ]";
+        return "sdmx.gateway.entities.Annotationtext[ annotationtextPK=" + annotationtextPK + " ]";
     }
     
 }

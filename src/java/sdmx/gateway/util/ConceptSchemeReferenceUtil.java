@@ -23,13 +23,13 @@ public class ConceptSchemeReferenceUtil {
         if (c != null) {
             ref.setConceptscheme(c);
             c.getConceptschemereferenceList().add(ref);
-            em.getTransaction().begin();
             em.persist(ref);
-            em.getTransaction().commit();
+            em.flush();
             em.refresh(ref);
             return ref;
         } else {
             System.out.println("Concept scheme doesn't exist!!!");
+            conceptIdentity.dump();
             return null;
         }
 

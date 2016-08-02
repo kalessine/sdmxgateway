@@ -22,6 +22,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.StreamingOutput;
 import sdmx.SdmxIO;
 import sdmx.commonreferences.CodelistReference;
+import sdmx.commonreferences.ConceptSchemeReference;
 import sdmx.commonreferences.IDType;
 import sdmx.commonreferences.NestedNCNameID;
 import sdmx.commonreferences.Version;
@@ -30,8 +31,10 @@ import sdmx.message.BaseHeaderType;
 import sdmx.message.HeaderTimeType;
 import sdmx.structure.CodelistsType;
 import sdmx.message.StructureType;
+import sdmx.structure.ConceptsType;
 import sdmx.structure.StructuresType;
 import sdmx.structure.codelist.CodelistType;
+import sdmx.structure.concept.ConceptSchemeType;
 import sdmx.version.common.ParseParams;
 
 /**
@@ -62,7 +65,33 @@ public class RegistryService {
                 os.close();
             }
         };
-        MediaType m = new MediaType("application", "vnd.sdmx.genericdata+xml;version=2.1");
+        MediaType m = new MediaType("application", "application/vnd.sdmx.structure+xml;version=2.1");
+        return Response.ok(stream).type(m).build();
+    }
+    @GET
+    @Path("conceptscheme/{agencyId}/{idtype}/{version}")
+    @Produces("application/vnd.sdmx.structure+xml;version=2.1")
+    public Response getConceptSchemetXML21(@PathParam("agencyId") String agencyId,@PathParam("idtype") String id, @PathParam("version") String version,@QueryParam("references") String references){
+        ConceptSchemeReference ref = ConceptSchemeReference.create(new NestedNCNameID(agencyId), new IDType(id), new Version(version));
+        List<ConceptSchemeType> conceptschemes = SdmxGatewayApplication.getApplication().getRegistry().search(ref);
+        StructureType struct = new StructureType();
+        ConceptsType concepts2 = new ConceptsType();
+        concepts2.setConceptSchemes(conceptschemes);
+        StructuresType structures = new StructuresType();
+        structures.setConcepts(concepts2);
+        struct.setStructures(structures);
+        struct.setHeader(getStructureHeader());
+        StreamingOutput stream = new StreamingOutput() {
+            @Override
+            public void write(OutputStream os) throws IOException,
+                    WebApplicationException {
+                ParseParams params = new ParseParams();
+                SdmxIO.write(params, "application/vnd.sdmx.structure+xml;version=2.1", struct, os);
+                os.flush();
+                os.close();
+            }
+        };
+        MediaType m = new MediaType("application", "application/vnd.sdmx.structure+xml;version=2.1");
         return Response.ok(stream).type(m).build();
     }
     /*

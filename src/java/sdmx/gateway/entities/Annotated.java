@@ -8,12 +8,10 @@ package sdmx.gateway.entities;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -39,10 +37,7 @@ public class Annotated implements Serializable {
     @NotNull
     @Column(name = "id", nullable = false)
     private Long id;
-    @JoinTable(name = "annotations", joinColumns = {
-        @JoinColumn(name = "Annotated", referencedColumnName = "id", nullable = false)}, inverseJoinColumns = {
-        @JoinColumn(name = "Annotation", referencedColumnName = "id", nullable = false)})
-    @ManyToMany
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "annotated1")
     private List<Annotation> annotationList;
     @OneToMany(mappedBy = "annotations")
     private List<Code> codeList;

@@ -7,17 +7,15 @@ package sdmx.gateway.entities;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -32,18 +30,16 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Annotation.findAll", query = "SELECT a FROM Annotation a"),
-    @NamedQuery(name = "Annotation.findById", query = "SELECT a FROM Annotation a WHERE a.id = :id"),
+    @NamedQuery(name = "Annotation.findByAnnotated", query = "SELECT a FROM Annotation a WHERE a.annotationPK.annotated = :annotated"),
+    @NamedQuery(name = "Annotation.findByIndex", query = "SELECT a FROM Annotation a WHERE a.annotationPK.index = :index"),
     @NamedQuery(name = "Annotation.findByTitle", query = "SELECT a FROM Annotation a WHERE a.title = :title"),
     @NamedQuery(name = "Annotation.findByUrl", query = "SELECT a FROM Annotation a WHERE a.url = :url"),
     @NamedQuery(name = "Annotation.findByType", query = "SELECT a FROM Annotation a WHERE a.type = :type"),
     @NamedQuery(name = "Annotation.findByAnnotationId", query = "SELECT a FROM Annotation a WHERE a.annotationId = :annotationId")})
 public class Annotation implements Serializable {
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id", nullable = false)
-    private Long id;
+    @EmbeddedId
+    protected AnnotationPK annotationPK;
     @Size(max = 200)
     @Column(name = "title", length = 200)
     private String title;
@@ -56,24 +52,29 @@ public class Annotation implements Serializable {
     @Size(max = 200)
     @Column(name = "annotationId", length = 200)
     private String annotationId;
-    @ManyToMany(mappedBy = "annotationList")
-    private List<Annotated> annotatedList;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "annotation1")
-    private Annotationtext annotationtext;
+    @JoinColumn(name = "Annotated", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
+    @ManyToOne(optional = false)
+    private Annotated annotated1;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "annotation")
+    private List<Annotationtext> annotationtextList;
 
     public Annotation() {
     }
 
-    public Annotation(Long id) {
-        this.id = id;
+    public Annotation(AnnotationPK annotationPK) {
+        this.annotationPK = annotationPK;
     }
 
-    public Long getId() {
-        return id;
+    public Annotation(long annotated, long index) {
+        this.annotationPK = new AnnotationPK(annotated, index);
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public AnnotationPK getAnnotationPK() {
+        return annotationPK;
+    }
+
+    public void setAnnotationPK(AnnotationPK annotationPK) {
+        this.annotationPK = annotationPK;
     }
 
     public String getTitle() {
@@ -108,27 +109,27 @@ public class Annotation implements Serializable {
         this.annotationId = annotationId;
     }
 
+    public Annotated getAnnotated1() {
+        return annotated1;
+    }
+
+    public void setAnnotated1(Annotated annotated1) {
+        this.annotated1 = annotated1;
+    }
+
     @XmlTransient
-    public List<Annotated> getAnnotatedList() {
-        return annotatedList;
+    public List<Annotationtext> getAnnotationtextList() {
+        return annotationtextList;
     }
 
-    public void setAnnotatedList(List<Annotated> annotatedList) {
-        this.annotatedList = annotatedList;
-    }
-
-    public Annotationtext getAnnotationtext() {
-        return annotationtext;
-    }
-
-    public void setAnnotationtext(Annotationtext annotationtext) {
-        this.annotationtext = annotationtext;
+    public void setAnnotationtextList(List<Annotationtext> annotationtextList) {
+        this.annotationtextList = annotationtextList;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (annotationPK != null ? annotationPK.hashCode() : 0);
         return hash;
     }
 
@@ -139,7 +140,7 @@ public class Annotation implements Serializable {
             return false;
         }
         Annotation other = (Annotation) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.annotationPK == null && other.annotationPK != null) || (this.annotationPK != null && !this.annotationPK.equals(other.annotationPK))) {
             return false;
         }
         return true;
@@ -147,7 +148,7 @@ public class Annotation implements Serializable {
 
     @Override
     public String toString() {
-        return "sdmx.gateway.entities.Annotation[ id=" + id + " ]";
+        return "sdmx.gateway.entities.Annotation[ annotationPK=" + annotationPK + " ]";
     }
     
 }

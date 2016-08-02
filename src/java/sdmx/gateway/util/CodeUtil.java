@@ -7,7 +7,16 @@ package sdmx.gateway.util;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import sdmx.commonreferences.IDType;
+import sdmx.commonreferences.LocalCodeRef;
+import sdmx.commonreferences.LocalItemReference;
+import sdmx.commonreferences.types.ItemSchemePackageTypeCodelistType;
+import sdmx.commonreferences.types.ItemTypeCodelistType;
+import sdmx.commonreferences.types.ObjectTypeCodelistType;
+import sdmx.commonreferences.types.PackageTypeCodelistType;
+import sdmx.gateway.entities.Code;
 import sdmx.gateway.entities.Concept;
+import sdmx.structure.base.ItemType;
 import sdmx.structure.codelist.CodeType;
 import sdmx.structure.codelist.CodelistType;
 
@@ -44,5 +53,17 @@ public class CodeUtil {
             code.setParentCode(c.getParent().getId().toString());
         }
         return code;
+    }
+
+    public static CodeType toSDMXCode(Code c) {
+        CodeType cd = new CodeType();
+        cd.setAnnotations(AnnotationsUtil.toSDMXAnnotations(c.getAnnotations()));
+        cd.setNames(NameUtil.toSDMXName(c.getName()));
+        cd.setId(new IDType(c.getCodePK().getId()));
+        if (c.getParentCode() != null) {
+            sdmx.commonreferences.LocalCodeRef ref = new LocalCodeRef(new IDType(c.getParentCode()), ItemTypeCodelistType.CODE, ItemSchemePackageTypeCodelistType.CODELIST);
+            cd.setParent(new LocalItemReference(ref));
+        }
+        return cd;
     }
 }

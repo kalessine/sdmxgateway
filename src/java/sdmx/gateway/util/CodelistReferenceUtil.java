@@ -21,12 +21,12 @@ public class CodelistReferenceUtil {
          if(c !=null ) {
          ref.setCodelist(c);
          c.getCodelistreferenceList().add(ref);
-         em.getTransaction().begin();
          em.persist(ref);
-         em.getTransaction().commit();
+         em.flush();
          em.refresh(ref);
          }else{
              System.out.println("Target Codelist is null!!"+":"+enumeration.getAgencyId()+":"+enumeration.getId()+":"+enumeration.getVersion());
+             enumeration.dump();
              return null;
          }
          return ref;
