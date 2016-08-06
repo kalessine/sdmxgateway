@@ -33,6 +33,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Annotationtext.findByTextIndex", query = "SELECT a FROM Annotationtext a WHERE a.annotationtextPK.textIndex = :textIndex"),
     @NamedQuery(name = "Annotationtext.findByLang", query = "SELECT a FROM Annotationtext a WHERE a.lang = :lang")})
 public class Annotationtext implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected AnnotationtextPK annotationtextPK;

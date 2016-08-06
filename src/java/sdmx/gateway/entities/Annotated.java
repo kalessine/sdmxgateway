@@ -31,6 +31,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Annotated.findAll", query = "SELECT a FROM Annotated a"),
     @NamedQuery(name = "Annotated.findById", query = "SELECT a FROM Annotated a WHERE a.id = :id")})
 public class Annotated implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -52,7 +53,7 @@ public class Annotated implements Serializable {
     @OneToMany(mappedBy = "annotations")
     private List<Datastructure> datastructureList;
     @OneToMany(mappedBy = "annotations")
-    private List<Datastructurecomponents> datastructurecomponentsList;
+    private List<Datastructurecomponent> datastructurecomponentList;
 
     public Annotated() {
     }
@@ -133,12 +134,12 @@ public class Annotated implements Serializable {
     }
 
     @XmlTransient
-    public List<Datastructurecomponents> getDatastructurecomponentsList() {
-        return datastructurecomponentsList;
+    public List<Datastructurecomponent> getDatastructurecomponentList() {
+        return datastructurecomponentList;
     }
 
-    public void setDatastructurecomponentsList(List<Datastructurecomponents> datastructurecomponentsList) {
-        this.datastructurecomponentsList = datastructurecomponentsList;
+    public void setDatastructurecomponentList(List<Datastructurecomponent> datastructurecomponentList) {
+        this.datastructurecomponentList = datastructurecomponentList;
     }
 
     @Override

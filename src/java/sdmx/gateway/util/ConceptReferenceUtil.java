@@ -7,6 +7,9 @@ package sdmx.gateway.util;
 
 import javax.persistence.EntityManager;
 import sdmx.commonreferences.ConceptReference;
+import sdmx.commonreferences.IDType;
+import sdmx.commonreferences.NestedNCNameID;
+import sdmx.commonreferences.Version;
 import sdmx.gateway.entities.Conceptreference;
 
 /**
@@ -30,6 +33,9 @@ public class ConceptReferenceUtil {
             return null;
         }
 
+    }
+    public static ConceptReference toSDMXReference(sdmx.gateway.entities.Conceptreference con) {
+        return ConceptReference.create(new NestedNCNameID(con.getConcept().getConceptPK().getConceptSchemeAgencyID()), new IDType(con.getConcept().getConceptPK().getConceptSchemeID()), new Version(con.getConcept().getConceptPK().getConceptSchemeVersion()), new IDType(con.getConcept().getConceptPK().getId()));
     }
 
 }

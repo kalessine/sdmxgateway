@@ -33,6 +33,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Code.findById", query = "SELECT c FROM Code c WHERE c.codePK.id = :id"),
     @NamedQuery(name = "Code.findByParentCode", query = "SELECT c FROM Code c WHERE c.parentCode = :parentCode")})
 public class Code implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected CodePK codePK;

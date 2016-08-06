@@ -28,6 +28,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Dataflow.findByAgencyID", query = "SELECT d FROM Dataflow d WHERE d.dataflowPK.agencyID = :agencyID"),
     @NamedQuery(name = "Dataflow.findByVersion", query = "SELECT d FROM Dataflow d WHERE d.dataflowPK.version = :version")})
 public class Dataflow implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected DataflowPK dataflowPK;

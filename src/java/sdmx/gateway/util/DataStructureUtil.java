@@ -12,7 +12,18 @@ import javax.persistence.Query;
 import sdmx.commonreferences.IDType;
 import sdmx.commonreferences.NestedNCNameID;
 import sdmx.commonreferences.Version;
+import sdmx.gateway.entities.Datastructurecomponent;
+import sdmx.structure.base.Component;
+import sdmx.structure.datastructure.AttributeListType;
+import sdmx.structure.datastructure.AttributeType;
+import sdmx.structure.datastructure.DataStructureComponents;
 import sdmx.structure.datastructure.DataStructureType;
+import sdmx.structure.datastructure.DimensionListType;
+import sdmx.structure.datastructure.DimensionType;
+import sdmx.structure.datastructure.MeasureDimensionType;
+import sdmx.structure.datastructure.MeasureListType;
+import sdmx.structure.datastructure.PrimaryMeasure;
+import sdmx.structure.datastructure.TimeDimensionType;
 
 /**
  *
@@ -33,7 +44,7 @@ public class DataStructureUtil {
         ds2.setDatastructurePK(pk);
         ds2.setAnnotations(AnnotationsUtil.toDatabaseAnnotations(ds.getAnnotations()));
         NameUtil.setName(em, ds2, ds);
-        List<sdmx.gateway.entities.Datastructurecomponents> comps = new ArrayList<>();
+        List<sdmx.gateway.entities.Datastructurecomponent> comps = new ArrayList<>();
         int position = 0;
         for (int i = 0; i < ds.getDataStructureComponents().getDimensionList().getDimensions().size(); i++) {
             comps.add(DimensionUtil.toDatabaseDimension(em, ds, ds.getDataStructureComponents().getDimensionList().getDimensions().get(i), position++));
@@ -48,7 +59,7 @@ public class DataStructureUtil {
             comps.add(DimensionUtil.toDatabaseDimension(em, ds, ds.getDataStructureComponents().getAttributeList().getAttribute(i), position++));
         }
         comps.add(DimensionUtil.toDatabaseDimension(em, ds, ds.getDataStructureComponents().getMeasureList().getPrimaryMeasure(), position++));
-        ds2.setDatastructurecomponentsList(comps);
+        ds2.setDatastructurecomponentList(comps);
         ds2.setDatastructurePK(pk);
         return ds2;
     }
@@ -68,7 +79,7 @@ public class DataStructureUtil {
 
     public static List<sdmx.gateway.entities.Datastructure> searchDataStructure(EntityManager em, String agency, String id, String version) {
         if ("*".equals(version) && "all".equals(id) && "all".equals(agency)) {
-            Query q = em.createQuery("select d from Datastructure");
+            Query q = em.createQuery("select d from Datastructure d");
             return (List<sdmx.gateway.entities.Datastructure>) q.getResultList();
         } else if ("all".equals(id) && "all".equals(agency)) {
             Query q = em.createQuery("select d from Datastructure d where d.datastructurePK.version=:version");
@@ -110,6 +121,46 @@ public class DataStructureUtil {
         struct.setAgencyID(new NestedNCNameID(d.getDatastructurePK().getAgencyID()));
         struct.setId(new IDType(d.getDatastructurePK().getId()));
         struct.setVersion(new Version(d.getDatastructurePK().getVersion()));
+        struct.setNames(NameUtil.toSDMXName(d.getName()));
+        struct.setAnnotations(AnnotationsUtil.toSDMXAnnotations(d.getAnnotations()));
+        List<Datastructurecomponent> dcl=d.getDatastructurecomponentList();
+        if( struct.getDataStructureComponents()==null ) {
+            struct.setDataStructureComponents(new DataStructureComponents());
+        }
+        for(Datastructurecomponent dc:dcl){
+            Component comp = DimensionUtil.toSDMXDimension(dc);
+            if( comp instanceof DimensionType ) {
+                if( struct.getDataStructureComponents().getDimensionList()==null ) {
+                    struct.getDataStructureComponents().setDimensionList(new DimensionListType());
+                }
+                struct.getDataStructureComponents().getDimensionList().getDimensions().add((DimensionType)comp);
+            }
+            if( comp instanceof AttributeType ) {
+                if( struct.getDataStructureComponents().getAttributeList()==null ) {
+                    struct.getDataStructureComponents().setAttributeList(new AttributeListType());
+                }
+                struct.getDataStructureComponents().getAttributeList().getAttributes().add((AttributeType)comp);
+            }
+            if( comp instanceof PrimaryMeasure ) {
+                if( struct.getDataStructureComponents().getMeasureList()==null ) {
+                    struct.getDataStructureComponents().setMeasureList(new MeasureListType());
+                }
+                struct.getDataStructureComponents().getMeasureList().setPrimaryMeasure((PrimaryMeasure)comp);
+            }
+            if( comp instanceof MeasureDimensionType ) {
+                if( struct.getDataStructureComponents().getDimensionList()==null ) {
+                    struct.getDataStructureComponents().setDimensionList(new DimensionListType());
+                }
+                struct.getDataStructureComponents().getDimensionList().setMeasureDimension((MeasureDimensionType)comp);
+            }
+            if( comp instanceof TimeDimensionType ) {
+                if( struct.getDataStructureComponents().getDimensionList()==null ) {
+                    struct.getDataStructureComponents().setDimensionList(new DimensionListType());
+                }
+                struct.getDataStructureComponents().getDimensionList().setTimeDimension((TimeDimensionType)comp);
+            }
+            
+        }
         return struct;
     }
 }

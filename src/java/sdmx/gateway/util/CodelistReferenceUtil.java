@@ -6,7 +6,12 @@
 package sdmx.gateway.util;
 
 import javax.persistence.EntityManager;
+import sdmx.commonreferences.CodelistReference;
 import sdmx.commonreferences.ConceptReference;
+import sdmx.commonreferences.IDType;
+import sdmx.commonreferences.ItemSchemeReferenceBase;
+import sdmx.commonreferences.NestedNCNameID;
+import sdmx.commonreferences.Version;
 import sdmx.gateway.entities.Codelistreference;
 import sdmx.gateway.entities.Conceptreference;
 
@@ -31,4 +36,8 @@ public class CodelistReferenceUtil {
          }
          return ref;
     }    
+
+    public static ItemSchemeReferenceBase toSDMXCodelistReference(Codelistreference clr) {
+       return CodelistReference.create(new NestedNCNameID(clr.getCodelist().getCodelistPK().getAgencyID()),new IDType(clr.getCodelist().getCodelistPK().getId()),new Version(clr.getCodelist().getCodelistPK().getVersion()));
+    }
 }

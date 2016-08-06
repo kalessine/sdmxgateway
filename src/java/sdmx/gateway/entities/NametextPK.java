@@ -18,6 +18,7 @@ import javax.validation.constraints.Size;
  */
 @Embeddable
 public class NametextPK implements Serializable {
+
     @Basic(optional = false)
     @NotNull
     @Column(name = "id", nullable = false)

@@ -1,4 +1,3 @@
-
 INSERT INTO `sdmxgateway`.`languages` (`lang`, `Name`) VALUES ('en', 'English');
 INSERT INTO `sdmxgateway`.`languages` (`lang`, `Name`) VALUES ('fr', 'French');
 INSERT INTO `sdmxgateway`.`sequence` (`SEQ_COUNT`, `SEQ_NAME`) VALUES ('0', 'Name');

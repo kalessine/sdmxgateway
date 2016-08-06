@@ -32,6 +32,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Codelist.findById", query = "SELECT c FROM Codelist c WHERE c.codelistPK.id = :id"),
     @NamedQuery(name = "Codelist.findByVersion", query = "SELECT c FROM Codelist c WHERE c.codelistPK.version = :version")})
 public class Codelist implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected CodelistPK codelistPK;

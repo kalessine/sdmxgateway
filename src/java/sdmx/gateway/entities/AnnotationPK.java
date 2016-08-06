@@ -17,6 +17,7 @@ import javax.validation.constraints.NotNull;
  */
 @Embeddable
 public class AnnotationPK implements Serializable {
+
     @Basic(optional = false)
     @NotNull
     @Column(name = "Annotated", nullable = false)

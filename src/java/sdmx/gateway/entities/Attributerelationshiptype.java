@@ -37,6 +37,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Attributerelationshiptype.findByAttachGroups", query = "SELECT a FROM Attributerelationshiptype a WHERE a.attachGroups = :attachGroups"),
     @NamedQuery(name = "Attributerelationshiptype.findByPrimaryMeasureReference", query = "SELECT a FROM Attributerelationshiptype a WHERE a.primaryMeasureReference = :primaryMeasureReference")})
 public class Attributerelationshiptype implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -56,7 +57,7 @@ public class Attributerelationshiptype implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "attributerelationshiptype")
     private List<Attributerelationshipattachgroups> attributerelationshipattachgroupsList;
     @OneToMany(mappedBy = "attributeRelationshipType")
-    private List<Datastructurecomponents> datastructurecomponentsList;
+    private List<Datastructurecomponent> datastructurecomponentList;
 
     public Attributerelationshiptype() {
     }
@@ -115,12 +116,12 @@ public class Attributerelationshiptype implements Serializable {
     }
 
     @XmlTransient
-    public List<Datastructurecomponents> getDatastructurecomponentsList() {
-        return datastructurecomponentsList;
+    public List<Datastructurecomponent> getDatastructurecomponentList() {
+        return datastructurecomponentList;
     }
 
-    public void setDatastructurecomponentsList(List<Datastructurecomponents> datastructurecomponentsList) {
-        this.datastructurecomponentsList = datastructurecomponentsList;
+    public void setDatastructurecomponentList(List<Datastructurecomponent> datastructurecomponentList) {
+        this.datastructurecomponentList = datastructurecomponentList;
     }
 
     @Override

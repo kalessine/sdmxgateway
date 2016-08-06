@@ -36,7 +36,9 @@ import sdmx.structure.StructuresType;
 import sdmx.structure.codelist.CodelistType;
 import sdmx.structure.concept.ConceptSchemeType;
 import sdmx.version.common.ParseParams;
-
+import sdmx.commonreferences.DataStructureReference;
+import sdmx.structure.DataStructuresType;
+import sdmx.structure.datastructure.DataStructureType;
 /**
  *
  * @author James
@@ -79,6 +81,32 @@ public class RegistryService {
         concepts2.setConceptSchemes(conceptschemes);
         StructuresType structures = new StructuresType();
         structures.setConcepts(concepts2);
+        struct.setStructures(structures);
+        struct.setHeader(getStructureHeader());
+        StreamingOutput stream = new StreamingOutput() {
+            @Override
+            public void write(OutputStream os) throws IOException,
+                    WebApplicationException {
+                ParseParams params = new ParseParams();
+                SdmxIO.write(params, "application/vnd.sdmx.structure+xml;version=2.1", struct, os);
+                os.flush();
+                os.close();
+            }
+        };
+        MediaType m = new MediaType("application", "application/vnd.sdmx.structure+xml;version=2.1");
+        return Response.ok(stream).type(m).build();
+    }
+    @GET
+    @Path("datastructure/{agencyId}/{idtype}/{version}")
+    @Produces("application/vnd.sdmx.structure+xml;version=2.1")
+    public Response getDataStructre21(@PathParam("agencyId") String agencyId,@PathParam("idtype") String id, @PathParam("version") String version,@QueryParam("references") String references){
+        DataStructureReference ref = DataStructureReference.create(new NestedNCNameID(agencyId), new IDType(id), new Version(version));
+        List<DataStructureType> dss = SdmxGatewayApplication.getApplication().getRegistry().search(ref);
+        StructureType struct = new StructureType();
+        DataStructuresType dst2 = new DataStructuresType();
+        dst2.setDataStructures(dss);
+        StructuresType structures = new StructuresType();
+        structures.setDataStructures(dst2);
         struct.setStructures(structures);
         struct.setHeader(getStructureHeader());
         StreamingOutput stream = new StreamingOutput() {

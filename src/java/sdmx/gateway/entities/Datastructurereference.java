@@ -33,6 +33,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Datastructurereference.findAll", query = "SELECT d FROM Datastructurereference d"),
     @NamedQuery(name = "Datastructurereference.findById", query = "SELECT d FROM Datastructurereference d WHERE d.id = :id")})
 public class Datastructurereference implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)

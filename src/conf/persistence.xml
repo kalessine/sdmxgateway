@@ -25,6 +25,7 @@
     <class>sdmx.gateway.entities.Sequence_1</class>
     <class>sdmx.gateway.entities.Name_1</class>
     <class>sdmx.gateway.entities.Nametext_1</class>
+    <class>sdmx.gateway.entities.Datastructurecomponent</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/sdmxgateway?zeroDateTimeBehavior=convertToNull"/>

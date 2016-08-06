@@ -34,6 +34,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Codelistreference.findAll", query = "SELECT c FROM Codelistreference c"),
     @NamedQuery(name = "Codelistreference.findById", query = "SELECT c FROM Codelistreference c WHERE c.id = :id")})
 public class Codelistreference implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,7 +48,7 @@ public class Codelistreference implements Serializable {
     @ManyToOne(optional = false)
     private Codelist codelist;
     @OneToMany(mappedBy = "codelistEnumeration")
-    private List<Datastructurecomponents> datastructurecomponentsList;
+    private List<Datastructurecomponent> datastructurecomponentList;
 
     public Codelistreference() {
     }
@@ -73,12 +74,12 @@ public class Codelistreference implements Serializable {
     }
 
     @XmlTransient
-    public List<Datastructurecomponents> getDatastructurecomponentsList() {
-        return datastructurecomponentsList;
+    public List<Datastructurecomponent> getDatastructurecomponentList() {
+        return datastructurecomponentList;
     }
 
-    public void setDatastructurecomponentsList(List<Datastructurecomponents> datastructurecomponentsList) {
-        this.datastructurecomponentsList = datastructurecomponentsList;
+    public void setDatastructurecomponentList(List<Datastructurecomponent> datastructurecomponentList) {
+        this.datastructurecomponentList = datastructurecomponentList;
     }
 
     @Override

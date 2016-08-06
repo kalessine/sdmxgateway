@@ -34,6 +34,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Conceptschemereference.findAll", query = "SELECT c FROM Conceptschemereference c"),
     @NamedQuery(name = "Conceptschemereference.findById", query = "SELECT c FROM Conceptschemereference c WHERE c.id = :id")})
 public class Conceptschemereference implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,7 +48,7 @@ public class Conceptschemereference implements Serializable {
     @ManyToOne(optional = false)
     private Conceptscheme conceptscheme;
     @OneToMany(mappedBy = "conceptSchemeEnumeration")
-    private List<Datastructurecomponents> datastructurecomponentsList;
+    private List<Datastructurecomponent> datastructurecomponentList;
 
     public Conceptschemereference() {
     }
@@ -73,12 +74,12 @@ public class Conceptschemereference implements Serializable {
     }
 
     @XmlTransient
-    public List<Datastructurecomponents> getDatastructurecomponentsList() {
-        return datastructurecomponentsList;
+    public List<Datastructurecomponent> getDatastructurecomponentList() {
+        return datastructurecomponentList;
     }
 
-    public void setDatastructurecomponentsList(List<Datastructurecomponents> datastructurecomponentsList) {
-        this.datastructurecomponentsList = datastructurecomponentsList;
+    public void setDatastructurecomponentList(List<Datastructurecomponent> datastructurecomponentList) {
+        this.datastructurecomponentList = datastructurecomponentList;
     }
 
     @Override

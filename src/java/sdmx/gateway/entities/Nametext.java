@@ -30,6 +30,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Nametext.findById", query = "SELECT n FROM Nametext n WHERE n.nametextPK.id = :id"),
     @NamedQuery(name = "Nametext.findByLang", query = "SELECT n FROM Nametext n WHERE n.nametextPK.lang = :lang")})
 public class Nametext implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected NametextPK nametextPK;

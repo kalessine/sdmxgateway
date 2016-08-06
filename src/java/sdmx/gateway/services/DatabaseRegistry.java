@@ -31,6 +31,7 @@ import sdmx.commonreferences.ItemSchemeReferenceBase;
 import sdmx.exception.ParseException;
 import sdmx.gateway.SdmxGatewayApplication;
 import sdmx.gateway.entities.Codelist;
+import sdmx.gateway.entities.Datastructure;
 import sdmx.gateway.util.AnnotationsUtil;
 import sdmx.gateway.util.CodeUtil;
 import sdmx.gateway.util.CodelistUtil;
@@ -293,9 +294,14 @@ public class DatabaseRegistry implements Registry {
 
     @Override
     public List<DataStructureType> search(DataStructureReference ref) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ref.dump();
+        List<Datastructure> list = DataStructureUtil.searchDataStructure(query, ref.getAgencyId().toString(),ref.getMaintainableParentId().toString(),ref.getVersion().toString());
+        List<DataStructureType> result = new ArrayList<DataStructureType>();
+        for(Datastructure ds:list) {
+            result.add(DataStructureUtil.toSDMXDataStructure(ds));
+        }
+        return result;
     }
-
     @Override
     public List<DataflowType> search(DataflowReference ref) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

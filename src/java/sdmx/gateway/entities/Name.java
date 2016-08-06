@@ -34,6 +34,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Name.findAll", query = "SELECT n FROM Name n"),
     @NamedQuery(name = "Name.findById", query = "SELECT n FROM Name n WHERE n.id = :id")})
 public class Name implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

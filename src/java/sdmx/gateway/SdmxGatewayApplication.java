@@ -42,13 +42,6 @@ public class SdmxGatewayApplication {
 
     public void connect(int type, String serviceURL, String options, String agencyId, String attribution, String htmlAttribution) throws MalformedURLException {
         queryable = SdmxIO.connect(type, agencyId, serviceURL, options, attribution, htmlAttribution);
-        List<DataflowType> dataflows = getQueryable().getRegistry().listDataflows();
-        int i = 0;
-        for(DataflowType df:dataflows) {
-            System.out.println("Loading Structure:"+df.getName());
-            getQueryable().getRegistry().find(df.getStructure());
-            if( i++==5 )break;
-        }
     }
 
     /**
