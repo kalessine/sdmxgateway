@@ -115,4 +115,8 @@ public class CodelistUtil {
         }
         return result;
     }
+    public static void stub(CodelistType cl) {
+        cl.setItems(null);
+    
+    }
 }

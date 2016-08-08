@@ -31,6 +31,7 @@ import sdmx.commonreferences.ItemSchemeReferenceBase;
 import sdmx.exception.ParseException;
 import sdmx.gateway.SdmxGatewayApplication;
 import sdmx.gateway.entities.Codelist;
+import sdmx.gateway.entities.Dataflow;
 import sdmx.gateway.entities.Datastructure;
 import sdmx.gateway.util.AnnotationsUtil;
 import sdmx.gateway.util.CodeUtil;
@@ -84,6 +85,13 @@ public class DatabaseRegistry implements Registry {
         }
     }
 
+    public void loadDataflows(StructureType struct) {
+        if( struct.getStructures().getDataflows()==null ) {return; }
+        for(int i=0;i<struct.getStructures().getDataflows().size();i++) {
+            DataflowType df = struct.getStructures().getDataflows().getDataflow(i);
+            
+        }
+    }    
     public void loadCodelists(StructureType struct) {
         if (struct.getStructures().getCodelists() == null) {
             return;
@@ -269,7 +277,7 @@ public class DatabaseRegistry implements Registry {
 
     @Override
     public CodelistType find(CodelistReference ref) {
-        return CodelistUtil.toSDMXCodelist(CodelistUtil.findDatabaseCodelist(this.query, ref.getAgencyId().toString(), ref.getId().toString(), ref.getVersion().toString()));
+        return CodelistUtil.toSDMXCodelist(CodelistUtil.findDatabaseCodelist(this.query, ref.getAgencyId().toString(), ref.getMaintainableParentId().toString(), ref.getVersion().toString()));
     }
 
     @Override
@@ -279,22 +287,29 @@ public class DatabaseRegistry implements Registry {
 
     @Override
     public ItemSchemeType find(ItemSchemeReferenceBase ref) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ConceptSchemeType ct = find(ref.asConceptSchemeReference());
+        if( ct != null ) return ct;
+        CodelistType ct2 = find(ref.asCodelistReference());
+        return ct2;
     }
 
     @Override
     public ConceptType find(ConceptReference ref) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ConceptSchemeType cs = this.find(ref.toConceptSchemeReference());
+        return cs.findConcept(ref.getId());
     }
 
     @Override
     public ConceptSchemeType find(ConceptSchemeReference ref) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<ConceptSchemeType> css = this.search(ref);
+        if( css.size()>0 ) {
+            return css.get(0);
+        }else return null;
     }
 
     @Override
     public List<DataStructureType> search(DataStructureReference ref) {
-        ref.dump();
+        //ref.dump();
         List<Datastructure> list = DataStructureUtil.searchDataStructure(query, ref.getAgencyId().toString(),ref.getMaintainableParentId().toString(),ref.getVersion().toString());
         List<DataStructureType> result = new ArrayList<DataStructureType>();
         for(Datastructure ds:list) {

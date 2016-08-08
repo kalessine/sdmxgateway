@@ -11,12 +11,14 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.FlushModeType;
 import sdmx.common.TextType;
+import sdmx.gateway.entities.Dataflow;
 import sdmx.gateway.entities.Datastructure;
 import sdmx.gateway.entities.Name;
 import sdmx.structure.codelist.CodeType;
 import sdmx.structure.codelist.CodelistType;
 import sdmx.structure.concept.ConceptSchemeType;
 import sdmx.structure.concept.ConceptType;
+import sdmx.structure.dataflow.DataflowType;
 import sdmx.structure.datastructure.DataStructureType;
 
 /**
@@ -27,6 +29,10 @@ public class NameUtil {
     public static void setName(EntityManager em, Datastructure ds2, DataStructureType ds) {
          sdmx.gateway.entities.Name name = toDatabaseName(em,ds.getNames());
          ds2.setName(name);
+    }
+    public static void setName(EntityManager em, Dataflow df1, DataflowType df) {
+         sdmx.gateway.entities.Name name = toDatabaseName(em,df.getNames());
+         df1.setName(name);
     }
      public static void setName(EntityManager em, sdmx.gateway.entities.Conceptscheme conceptScheme,ConceptSchemeType cl){
          sdmx.gateway.entities.Name name = toDatabaseName(em,cl.getNames());

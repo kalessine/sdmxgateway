@@ -38,7 +38,7 @@ public class LoadABSDotStat {
     @BeforeClass
     public static void setUpClass() {
         System.out.println("Start Test Database Registry");
-        File f = new File("C:\\Users\\James\\Dropbox\\Programming\\sdmxgateway\\test\\resources\\");
+        File f = new File(".\\test\\resources\\");
         if (!f.exists()) {
             f.mkdirs();
             Sdmx20SOAPQueryable q = new Sdmx20SOAPQueryable("ABS", "http://stat.abs.gov.au/sdmxws/sdmx.asmx");
@@ -84,7 +84,7 @@ public class LoadABSDotStat {
 
     @Test
     public void testLoadStructure() throws IOException, ParseException {
-        File f = new File("C:\\Users\\James\\Dropbox\\Programming\\sdmxgateway\\test\\resources\\");
+        File f = new File(".\\test\\resources\\");
         DatabaseRegistry dr = new DatabaseRegistry();
         loadFile(dr, f);
     }

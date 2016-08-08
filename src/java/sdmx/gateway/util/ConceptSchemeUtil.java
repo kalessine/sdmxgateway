@@ -110,4 +110,7 @@ public class ConceptSchemeUtil {
         }
         return result;
     }
+    public static void stub(ConceptSchemeType cs) {
+        cs.setItems(null);
+    }
 }

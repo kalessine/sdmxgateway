@@ -163,4 +163,7 @@ public class DataStructureUtil {
         }
         return struct;
     }
+    public void stub(DataStructureType dst) {
+        dst.setDataStructureComponents(null);
+    }
 }
