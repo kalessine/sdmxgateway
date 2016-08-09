@@ -92,7 +92,6 @@ public class LoadABSDotStatData {
             ParseParams params = new ParseParams();
             params.setDataflow(flow);
             params.setRegistry(reg);
-            params.setCallbackHandler(new FlatParseDataCallbackHandler());
             DataMessage dm = null;
             try {
                 dm = rep.query(params, query);
@@ -102,7 +101,7 @@ public class LoadABSDotStatData {
                 Logger.getLogger(Example.class.getName()).log(Level.SEVERE, null, ex);
             }
             dm.dump();
-            dd.insertDataflow((FlatDataSet)dm.getDataSets().get(0), "ALC");
+            dd.insertDataflow(dm.getDataSets().get(0), "ALC");
         } catch (SQLException ex) {
             Logger.getLogger(LoadABSDotStatData.class.getName()).log(Level.SEVERE, null, ex);
         }

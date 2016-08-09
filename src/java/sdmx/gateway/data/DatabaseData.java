@@ -18,6 +18,7 @@ import org.apache.commons.dbcp2.PoolableConnectionFactory;
 import org.apache.commons.dbcp2.PoolingDataSource;
 import org.apache.commons.pool2.impl.GenericObjectPool;
 import sdmx.data.ColumnMapper;
+import sdmx.data.DataSet;
 import sdmx.data.flat.FlatDataSet;
 import sdmx.data.flat.FlatDataSetWriter;
 import sdmx.data.flat.FlatObs;
@@ -87,6 +88,7 @@ public class DatabaseData {
         create += ");";
         Connection con = pool.getConnection();
         System.out.println(create);
+        // TODO Add Column Indexes to improve query performance
         PreparedStatement pst = con.prepareStatement(create);
         pst.executeUpdate();
         returnConnection(con);
@@ -128,7 +130,7 @@ public class DatabaseData {
         return w.finishDataSet();
     }
 
-    public void insertDataflow(FlatDataSet ds, String flow) throws SQLException {
+    public void insertDataflow(DataSet ds, String flow) throws SQLException {
         Connection con = pool.getConnection();
         String insert = "insert into `flow_" + flow + "`";
         ColumnMapper mapper = ds.getColumnMapper();
@@ -145,15 +147,14 @@ public class DatabaseData {
         values += ")";
         params += ")";
         insert += " " + values + " values " + params+";";
+        PreparedStatement pst = con.prepareStatement(insert);
         for (int i = 0; i < ds.size(); i++) {
-            System.out.println(insert);
-            PreparedStatement pst = con.prepareStatement(insert);
             for(int j=1;j<mapper.size()+1;j++) {
                 pst.setString(j, ds.getFlatObs(i).getValue(j-1));
             }
-            pst.executeUpdate();
-            pst.close();
+            pst.addBatch();
         }
+        pst.executeBatch();
         returnConnection(con);
     }
 }
