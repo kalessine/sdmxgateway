@@ -4,6 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Public/Dropbox/Programming/sdmxgateway/src/java/sdmx/vtl/Cube.java</file>
+            <file>file:/C:/Users/Public/Dropbox/Programming/sdmxgateway/src/java/sdmx/gateway/data/DatabaseData.java</file>
+            <file>file:/C:/Users/Public/Dropbox/Programming/sdmxgateway/src/java/sdmx/gateway/services/DatabaseRegistry.java</file>
+            <file>file:/C:/Users/Public/Dropbox/Programming/sdmxgateway/src/java/sdmx/gateway/data/DatabaseCube.java</file>
         </group>
     </open-files>
 </project-private>

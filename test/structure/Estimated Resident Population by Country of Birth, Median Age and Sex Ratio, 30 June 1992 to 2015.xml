@@ -1,0 +1,2131 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<mes:Structure xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common" xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/structure">
+    <mes:Header>
+        <mes:ID>none</mes:ID>
+        <mes:Test>false</mes:Test>
+        <mes:Prepared>2016-07-13T22:13:08.000+08:00</mes:Prepared>
+        <mes:Sender id="ABS">
+            <com:Name xml:lang="en">Australian Bureau of Statistics</com:Name>
+        </mes:Sender>
+    </mes:Header>
+    <mes:Structures>
+        <str:Codelists>
+            <str:Codelist agencyID="ABS" isExternalReference="false" isFinal="false" version="1.0" id="CL_ABS_ERP_COB_MAG_SEXRATIO_OBS_STATUS">
+                <com:Name xml:lang="en">Observation Status</com:Name>
+                <com:Name xml:lang="fr">Statut d'observation</com:Name>
+                <str:Code id="n">
+                    <com:Name xml:lang="en">not available for publication but included in totals where applicable, unless otherwise indicated</com:Name>
+                    <com:Name xml:lang="fr">not available for publication but included in totals where applicable, unless otherwise indicated</com:Name>
+                </str:Code>
+                <str:Code id="o">
+                    <com:Name xml:lang="en">nil or rounded to zero, including null cells</com:Name>
+                    <com:Name xml:lang="fr">nil or rounded to zero, including null cells</com:Name>
+                </str:Code>
+                <str:Code id="p">
+                    <com:Name xml:lang="en">preliminary figure or series subject to revision</com:Name>
+                    <com:Name xml:lang="fr">preliminary figure or series subject to revision</com:Name>
+                </str:Code>
+                <str:Code id="q">
+                    <com:Name xml:lang="en">not available</com:Name>
+                    <com:Name xml:lang="fr">not available</com:Name>
+                </str:Code>
+                <str:Code id="r">
+                    <com:Name xml:lang="en">revised</com:Name>
+                    <com:Name xml:lang="fr">revised</com:Name>
+                </str:Code>
+                <str:Code id="s">
+                    <com:Name xml:lang="en">not currently available due to break in time series</com:Name>
+                    <com:Name xml:lang="fr">not currently available due to break in time series</com:Name>
+                </str:Code>
+                <str:Code id="t">
+                    <com:Name xml:lang="en">not yet available</com:Name>
+                    <com:Name xml:lang="fr">not yet available</com:Name>
+                </str:Code>
+                <str:Code id="u">
+                    <com:Name xml:lang="en">not applicable</com:Name>
+                    <com:Name xml:lang="fr">not applicable</com:Name>
+                </str:Code>
+                <str:Code id="v">
+                    <com:Name xml:lang="en">not available for publication but included in totals where applicable, unless otherwise indicated</com:Name>
+                    <com:Name xml:lang="fr">not available for publication but included in totals where applicable, unless otherwise indicated</com:Name>
+                </str:Code>
+                <str:Code id="w">
+                    <com:Name xml:lang="en">estimate is subject to sampling variability too high for most practical purposes</com:Name>
+                    <com:Name xml:lang="fr">estimate is subject to sampling variability too high for most practical purposes</com:Name>
+                </str:Code>
+                <str:Code id="x">
+                    <com:Name xml:lang="en">estimate has a relative standard error of 10% to less than 25% and should be used with caution</com:Name>
+                    <com:Name xml:lang="fr">estimate has a relative standard error of 10% to less than 25% and should be used with caution</com:Name>
+                </str:Code>
+                <str:Code id="y">
+                    <com:Name xml:lang="en">estimate has a relative standard error between 25% and 50% and should be used with caution</com:Name>
+                    <com:Name xml:lang="fr">estimate has a relative standard error between 25% and 50% and should be used with caution</com:Name>
+                </str:Code>
+                <str:Code id="z">
+                    <com:Name xml:lang="en">estimate has a relative standard error greater than 50% and is considered too unreliable for general use</com:Name>
+                    <com:Name xml:lang="fr">estimate has a relative standard error greater than 50% and is considered too unreliable for general use</com:Name>
+                </str:Code>
+            </str:Codelist>
+            <str:Codelist agencyID="ABS" isExternalReference="false" isFinal="false" version="1.0" id="CL_ABS_ERP_COB_MAG_SEXRATIO_MEASURE">
+                <com:Name xml:lang="en">ABS_ERP_COB_MAG_SEXRATIO_MEASURE codelist</com:Name>
+                <str:Code id="SEX_RATIO">
+                    <com:Name xml:lang="en">Sex ratio</com:Name>
+                    <com:Name xml:lang="fr">SEX_RATIO</com:Name>
+                </str:Code>
+                <str:Code id="MEDIAN_AGE">
+                    <com:Name xml:lang="en">Median Age</com:Name>
+                    <com:Name xml:lang="fr">MEDIAN_AGE</com:Name>
+                </str:Code>
+            </str:Codelist>
+            <str:Codelist agencyID="ABS" isExternalReference="false" isFinal="false" version="1.0" id="CL_ABS_ERP_COB_MAG_SEXRATIO_SEX_ABS">
+                <com:Name xml:lang="en">ABS_ERP_COB_MAG_SEXRATIO_SEX_ABS codelist</com:Name>
+                <str:Code id="3">
+                    <com:Name xml:lang="en">Persons</com:Name>
+                    <com:Name xml:lang="fr">3</com:Name>
+                </str:Code>
+            </str:Codelist>
+            <str:Codelist agencyID="ABS" isExternalReference="false" isFinal="false" version="1.0" id="CL_ABS_ERP_COB_MAG_SEXRATIO_AGE">
+                <com:Name xml:lang="en">ABS_ERP_COB_MAG_SEXRATIO_AGE codelist</com:Name>
+                <str:Code id="TT">
+                    <com:Name xml:lang="en">All ages</com:Name>
+                    <com:Name xml:lang="fr">TT</com:Name>
+                </str:Code>
+            </str:Codelist>
+            <str:Codelist agencyID="ABS" isExternalReference="false" isFinal="false" version="1.0" id="CL_ABS_ERP_COB_MAG_SEXRATIO_COB">
+                <com:Name xml:lang="en">ABS_ERP_COB_MAG_SEXRATIO_COB codelist</com:Name>
+                <str:Code id="TOTAL">
+                    <com:Name xml:lang="en">Total</com:Name>
+                    <com:Name xml:lang="fr">Total</com:Name>
+                </str:Code>
+                <str:Code id="1">
+                    <com:Name xml:lang="en">Oceania and Antarctica</com:Name>
+                    <com:Name xml:lang="fr">Oceania and Antarctica</com:Name>
+                    <str:Parent>
+                        <Ref id="TOTAL"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="1101">
+                    <com:Name xml:lang="en">Australia</com:Name>
+                    <com:Name xml:lang="fr">Australia</com:Name>
+                    <str:Parent>
+                        <Ref id="1"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="1201">
+                    <com:Name xml:lang="en">New Zealand</com:Name>
+                    <com:Name xml:lang="fr">New Zealand</com:Name>
+                    <str:Parent>
+                        <Ref id="1"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="1302">
+                    <com:Name xml:lang="en">Papua New Guinea</com:Name>
+                    <com:Name xml:lang="fr">Papua New Guinea</com:Name>
+                    <str:Parent>
+                        <Ref id="1"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="1501">
+                    <com:Name xml:lang="en">Cook Islands</com:Name>
+                    <com:Name xml:lang="fr">Cook Islands</com:Name>
+                    <str:Parent>
+                        <Ref id="1"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="1502">
+                    <com:Name xml:lang="en">Fiji</com:Name>
+                    <com:Name xml:lang="fr">Fiji</com:Name>
+                    <str:Parent>
+                        <Ref id="1"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="1505">
+                    <com:Name xml:lang="en">Samoa</com:Name>
+                    <com:Name xml:lang="fr">Samoa</com:Name>
+                    <str:Parent>
+                        <Ref id="1"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="1508">
+                    <com:Name xml:lang="en">Tonga</com:Name>
+                    <com:Name xml:lang="fr">Tonga</com:Name>
+                    <str:Parent>
+                        <Ref id="1"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="2">
+                    <com:Name xml:lang="en">North-Western Europe</com:Name>
+                    <com:Name xml:lang="fr">North-Western Europe</com:Name>
+                    <str:Parent>
+                        <Ref id="TOTAL"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="2100">
+                    <com:Name xml:lang="en">United Kingdom</com:Name>
+                    <com:Name xml:lang="fr">United Kingdom</com:Name>
+                    <str:Parent>
+                        <Ref id="2"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="2201">
+                    <com:Name xml:lang="en">Ireland</com:Name>
+                    <com:Name xml:lang="fr">Ireland</com:Name>
+                    <str:Parent>
+                        <Ref id="2"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="2301">
+                    <com:Name xml:lang="en">Austria</com:Name>
+                    <com:Name xml:lang="fr">Austria</com:Name>
+                    <str:Parent>
+                        <Ref id="2"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="2302">
+                    <com:Name xml:lang="en">Belgium</com:Name>
+                    <com:Name xml:lang="fr">Belgium</com:Name>
+                    <str:Parent>
+                        <Ref id="2"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="2303">
+                    <com:Name xml:lang="en">France</com:Name>
+                    <com:Name xml:lang="fr">France</com:Name>
+                    <str:Parent>
+                        <Ref id="2"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="2304">
+                    <com:Name xml:lang="en">Germany</com:Name>
+                    <com:Name xml:lang="fr">Germany</com:Name>
+                    <str:Parent>
+                        <Ref id="2"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="2308">
+                    <com:Name xml:lang="en">Netherlands</com:Name>
+                    <com:Name xml:lang="fr">Netherlands</com:Name>
+                    <str:Parent>
+                        <Ref id="2"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="2311">
+                    <com:Name xml:lang="en">Switzerland</com:Name>
+                    <com:Name xml:lang="fr">Switzerland</com:Name>
+                    <str:Parent>
+                        <Ref id="2"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="2401">
+                    <com:Name xml:lang="en">Denmark</com:Name>
+                    <com:Name xml:lang="fr">Denmark</com:Name>
+                    <str:Parent>
+                        <Ref id="2"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="2403">
+                    <com:Name xml:lang="en">Finland</com:Name>
+                    <com:Name xml:lang="fr">Finland</com:Name>
+                    <str:Parent>
+                        <Ref id="2"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="2406">
+                    <com:Name xml:lang="en">Norway</com:Name>
+                    <com:Name xml:lang="fr">Norway</com:Name>
+                    <str:Parent>
+                        <Ref id="2"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="2407">
+                    <com:Name xml:lang="en">Sweden</com:Name>
+                    <com:Name xml:lang="fr">Sweden</com:Name>
+                    <str:Parent>
+                        <Ref id="2"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="3">
+                    <com:Name xml:lang="en">Southern and Eastern Europe</com:Name>
+                    <com:Name xml:lang="fr">Southern and Eastern Europe</com:Name>
+                    <str:Parent>
+                        <Ref id="TOTAL"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="3104">
+                    <com:Name xml:lang="en">Italy</com:Name>
+                    <com:Name xml:lang="fr">Italy</com:Name>
+                    <str:Parent>
+                        <Ref id="3"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="3105">
+                    <com:Name xml:lang="en">Malta</com:Name>
+                    <com:Name xml:lang="fr">Malta</com:Name>
+                    <str:Parent>
+                        <Ref id="3"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="3106">
+                    <com:Name xml:lang="en">Portugal</com:Name>
+                    <com:Name xml:lang="fr">Portugal</com:Name>
+                    <str:Parent>
+                        <Ref id="3"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="3108">
+                    <com:Name xml:lang="en">Spain</com:Name>
+                    <com:Name xml:lang="fr">Spain</com:Name>
+                    <str:Parent>
+                        <Ref id="3"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="3202">
+                    <com:Name xml:lang="en">Bosnia And Herzegovina</com:Name>
+                    <com:Name xml:lang="fr">Bosnia And Herzegovina</com:Name>
+                    <str:Parent>
+                        <Ref id="3"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="3203">
+                    <com:Name xml:lang="en">Bulgaria</com:Name>
+                    <com:Name xml:lang="fr">Bulgaria</com:Name>
+                    <str:Parent>
+                        <Ref id="3"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="3204">
+                    <com:Name xml:lang="en">Croatia</com:Name>
+                    <com:Name xml:lang="fr">Croatia</com:Name>
+                    <str:Parent>
+                        <Ref id="3"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="3205">
+                    <com:Name xml:lang="en">Cyprus</com:Name>
+                    <com:Name xml:lang="fr">Cyprus</com:Name>
+                    <str:Parent>
+                        <Ref id="3"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="3206">
+                    <com:Name xml:lang="en">Former Yugoslav Republic Of Macedonia (FYROM)</com:Name>
+                    <com:Name xml:lang="fr">Former Yugoslav Republic Of Macedonia (FYROM)</com:Name>
+                    <str:Parent>
+                        <Ref id="3"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="3207">
+                    <com:Name xml:lang="en">Greece</com:Name>
+                    <com:Name xml:lang="fr">Greece</com:Name>
+                    <str:Parent>
+                        <Ref id="3"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="3211">
+                    <com:Name xml:lang="en">Romania</com:Name>
+                    <com:Name xml:lang="fr">Romania</com:Name>
+                    <str:Parent>
+                        <Ref id="3"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="3212">
+                    <com:Name xml:lang="en">Slovenia</com:Name>
+                    <com:Name xml:lang="fr">Slovenia</com:Name>
+                    <str:Parent>
+                        <Ref id="3"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="3215">
+                    <com:Name xml:lang="en">Serbia</com:Name>
+                    <com:Name xml:lang="fr">Serbia</com:Name>
+                    <str:Parent>
+                        <Ref id="3"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="3302">
+                    <com:Name xml:lang="en">Czech Republic</com:Name>
+                    <com:Name xml:lang="fr">Czech Republic</com:Name>
+                    <str:Parent>
+                        <Ref id="3"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="3303">
+                    <com:Name xml:lang="en">Estonia</com:Name>
+                    <com:Name xml:lang="fr">Estonia</com:Name>
+                    <str:Parent>
+                        <Ref id="3"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="3304">
+                    <com:Name xml:lang="en">Hungary</com:Name>
+                    <com:Name xml:lang="fr">Hungary</com:Name>
+                    <str:Parent>
+                        <Ref id="3"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="3305">
+                    <com:Name xml:lang="en">Latvia</com:Name>
+                    <com:Name xml:lang="fr">Latvia</com:Name>
+                    <str:Parent>
+                        <Ref id="3"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="3307">
+                    <com:Name xml:lang="en">Poland</com:Name>
+                    <com:Name xml:lang="fr">Poland</com:Name>
+                    <str:Parent>
+                        <Ref id="3"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="3308">
+                    <com:Name xml:lang="en">Russian Federation</com:Name>
+                    <com:Name xml:lang="fr">Russian Federation</com:Name>
+                    <str:Parent>
+                        <Ref id="3"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="3311">
+                    <com:Name xml:lang="en">Slovakia</com:Name>
+                    <com:Name xml:lang="fr">Slovakia</com:Name>
+                    <str:Parent>
+                        <Ref id="3"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="3312">
+                    <com:Name xml:lang="en">Ukraine</com:Name>
+                    <com:Name xml:lang="fr">Ukraine</com:Name>
+                    <str:Parent>
+                        <Ref id="3"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="4">
+                    <com:Name xml:lang="en">North Africa and the Middle East</com:Name>
+                    <com:Name xml:lang="fr">North Africa and the Middle East</com:Name>
+                    <str:Parent>
+                        <Ref id="TOTAL"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="4102">
+                    <com:Name xml:lang="en">Egypt</com:Name>
+                    <com:Name xml:lang="fr">Egypt</com:Name>
+                    <str:Parent>
+                        <Ref id="4"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="4105">
+                    <com:Name xml:lang="en">Sudan</com:Name>
+                    <com:Name xml:lang="fr">Sudan</com:Name>
+                    <str:Parent>
+                        <Ref id="4"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="4111">
+                    <com:Name xml:lang="en">South Sudan</com:Name>
+                    <com:Name xml:lang="fr">South Sudan</com:Name>
+                    <str:Parent>
+                        <Ref id="4"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="4203">
+                    <com:Name xml:lang="en">Iran</com:Name>
+                    <com:Name xml:lang="fr">Iran</com:Name>
+                    <str:Parent>
+                        <Ref id="4"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="4204">
+                    <com:Name xml:lang="en">Iraq</com:Name>
+                    <com:Name xml:lang="fr">Iraq</com:Name>
+                    <str:Parent>
+                        <Ref id="4"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="4205">
+                    <com:Name xml:lang="en">Israel</com:Name>
+                    <com:Name xml:lang="fr">Israel</com:Name>
+                    <str:Parent>
+                        <Ref id="4"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="4206">
+                    <com:Name xml:lang="en">Jordan</com:Name>
+                    <com:Name xml:lang="fr">Jordan</com:Name>
+                    <str:Parent>
+                        <Ref id="4"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="4207">
+                    <com:Name xml:lang="en">Kuwait</com:Name>
+                    <com:Name xml:lang="fr">Kuwait</com:Name>
+                    <str:Parent>
+                        <Ref id="4"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="4208">
+                    <com:Name xml:lang="en">Lebanon</com:Name>
+                    <com:Name xml:lang="fr">Lebanon</com:Name>
+                    <str:Parent>
+                        <Ref id="4"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="4213">
+                    <com:Name xml:lang="en">Saudi Arabia</com:Name>
+                    <com:Name xml:lang="fr">Saudi Arabia</com:Name>
+                    <str:Parent>
+                        <Ref id="4"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="4214">
+                    <com:Name xml:lang="en">Syria</com:Name>
+                    <com:Name xml:lang="fr">Syria</com:Name>
+                    <str:Parent>
+                        <Ref id="4"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="4215">
+                    <com:Name xml:lang="en">Turkey</com:Name>
+                    <com:Name xml:lang="fr">Turkey</com:Name>
+                    <str:Parent>
+                        <Ref id="4"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="4216">
+                    <com:Name xml:lang="en">United Arab Emirates</com:Name>
+                    <com:Name xml:lang="fr">United Arab Emirates</com:Name>
+                    <str:Parent>
+                        <Ref id="4"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="5">
+                    <com:Name xml:lang="en">South-East Asia</com:Name>
+                    <com:Name xml:lang="fr">South-East Asia</com:Name>
+                    <str:Parent>
+                        <Ref id="TOTAL"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="5101">
+                    <com:Name xml:lang="en">Myanmar</com:Name>
+                    <com:Name xml:lang="fr">Myanmar</com:Name>
+                    <str:Parent>
+                        <Ref id="5"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="5102">
+                    <com:Name xml:lang="en">Cambodia</com:Name>
+                    <com:Name xml:lang="fr">Cambodia</com:Name>
+                    <str:Parent>
+                        <Ref id="5"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="5103">
+                    <com:Name xml:lang="en">Laos</com:Name>
+                    <com:Name xml:lang="fr">Laos</com:Name>
+                    <str:Parent>
+                        <Ref id="5"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="5104">
+                    <com:Name xml:lang="en">Thailand</com:Name>
+                    <com:Name xml:lang="fr">Thailand</com:Name>
+                    <str:Parent>
+                        <Ref id="5"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="5105">
+                    <com:Name xml:lang="en">Vietnam</com:Name>
+                    <com:Name xml:lang="fr">Vietnam</com:Name>
+                    <str:Parent>
+                        <Ref id="5"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="5202">
+                    <com:Name xml:lang="en">Indonesia</com:Name>
+                    <com:Name xml:lang="fr">Indonesia</com:Name>
+                    <str:Parent>
+                        <Ref id="5"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="5203">
+                    <com:Name xml:lang="en">Malaysia</com:Name>
+                    <com:Name xml:lang="fr">Malaysia</com:Name>
+                    <str:Parent>
+                        <Ref id="5"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="5204">
+                    <com:Name xml:lang="en">Philippines</com:Name>
+                    <com:Name xml:lang="fr">Philippines</com:Name>
+                    <str:Parent>
+                        <Ref id="5"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="5205">
+                    <com:Name xml:lang="en">Singapore</com:Name>
+                    <com:Name xml:lang="fr">Singapore</com:Name>
+                    <str:Parent>
+                        <Ref id="5"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="5206">
+                    <com:Name xml:lang="en">Timor-Leste</com:Name>
+                    <com:Name xml:lang="fr">Timor-Leste</com:Name>
+                    <str:Parent>
+                        <Ref id="5"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="6">
+                    <com:Name xml:lang="en">North-East Asia</com:Name>
+                    <com:Name xml:lang="fr">North-East Asia</com:Name>
+                    <str:Parent>
+                        <Ref id="TOTAL"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="6101">
+                    <com:Name xml:lang="en">China (Excludes SAR and Taiwan)</com:Name>
+                    <com:Name xml:lang="fr">China (Excludes SAR and Taiwan)</com:Name>
+                    <str:Parent>
+                        <Ref id="6"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="6102">
+                    <com:Name xml:lang="en">Hong Kong (SAR of China)</com:Name>
+                    <com:Name xml:lang="fr">Hong Kong (SAR of China)</com:Name>
+                    <str:Parent>
+                        <Ref id="6"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="6105">
+                    <com:Name xml:lang="en">Taiwan</com:Name>
+                    <com:Name xml:lang="fr">Taiwan</com:Name>
+                    <str:Parent>
+                        <Ref id="6"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="6201">
+                    <com:Name xml:lang="en">Japan</com:Name>
+                    <com:Name xml:lang="fr">Japan</com:Name>
+                    <str:Parent>
+                        <Ref id="6"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="6203">
+                    <com:Name xml:lang="en">Korea, Republic of (South)</com:Name>
+                    <com:Name xml:lang="fr">Korea, Republic of (South)</com:Name>
+                    <str:Parent>
+                        <Ref id="6"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="7">
+                    <com:Name xml:lang="en">Southern and Central Asia</com:Name>
+                    <com:Name xml:lang="fr">Southern and Central Asia</com:Name>
+                    <str:Parent>
+                        <Ref id="TOTAL"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="7101">
+                    <com:Name xml:lang="en">Bangladesh</com:Name>
+                    <com:Name xml:lang="fr">Bangladesh</com:Name>
+                    <str:Parent>
+                        <Ref id="7"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="7102">
+                    <com:Name xml:lang="en">Bhutan</com:Name>
+                    <com:Name xml:lang="fr">Bhutan</com:Name>
+                    <str:Parent>
+                        <Ref id="7"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="7103">
+                    <com:Name xml:lang="en">India</com:Name>
+                    <com:Name xml:lang="fr">India</com:Name>
+                    <str:Parent>
+                        <Ref id="7"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="7105">
+                    <com:Name xml:lang="en">Nepal</com:Name>
+                    <com:Name xml:lang="fr">Nepal</com:Name>
+                    <str:Parent>
+                        <Ref id="7"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="7106">
+                    <com:Name xml:lang="en">Pakistan</com:Name>
+                    <com:Name xml:lang="fr">Pakistan</com:Name>
+                    <str:Parent>
+                        <Ref id="7"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="7107">
+                    <com:Name xml:lang="en">Sri Lanka</com:Name>
+                    <com:Name xml:lang="fr">Sri Lanka</com:Name>
+                    <str:Parent>
+                        <Ref id="7"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="7201">
+                    <com:Name xml:lang="en">Afghanistan</com:Name>
+                    <com:Name xml:lang="fr">Afghanistan</com:Name>
+                    <str:Parent>
+                        <Ref id="7"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="8">
+                    <com:Name xml:lang="en">Americas</com:Name>
+                    <com:Name xml:lang="fr">Americas</com:Name>
+                    <str:Parent>
+                        <Ref id="TOTAL"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="8102">
+                    <com:Name xml:lang="en">Canada</com:Name>
+                    <com:Name xml:lang="fr">Canada</com:Name>
+                    <str:Parent>
+                        <Ref id="8"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="8104">
+                    <com:Name xml:lang="en">United States of America</com:Name>
+                    <com:Name xml:lang="fr">United States of America</com:Name>
+                    <str:Parent>
+                        <Ref id="8"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="8201">
+                    <com:Name xml:lang="en">Argentina</com:Name>
+                    <com:Name xml:lang="fr">Argentina</com:Name>
+                    <str:Parent>
+                        <Ref id="8"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="8203">
+                    <com:Name xml:lang="en">Brazil</com:Name>
+                    <com:Name xml:lang="fr">Brazil</com:Name>
+                    <str:Parent>
+                        <Ref id="8"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="8204">
+                    <com:Name xml:lang="en">Chile</com:Name>
+                    <com:Name xml:lang="fr">Chile</com:Name>
+                    <str:Parent>
+                        <Ref id="8"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="8205">
+                    <com:Name xml:lang="en">Colombia</com:Name>
+                    <com:Name xml:lang="fr">Colombia</com:Name>
+                    <str:Parent>
+                        <Ref id="8"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="8213">
+                    <com:Name xml:lang="en">Peru</com:Name>
+                    <com:Name xml:lang="fr">Peru</com:Name>
+                    <str:Parent>
+                        <Ref id="8"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="8215">
+                    <com:Name xml:lang="en">Uruguay</com:Name>
+                    <com:Name xml:lang="fr">Uruguay</com:Name>
+                    <str:Parent>
+                        <Ref id="8"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="8216">
+                    <com:Name xml:lang="en">Venezuela</com:Name>
+                    <com:Name xml:lang="fr">Venezuela</com:Name>
+                    <str:Parent>
+                        <Ref id="8"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="8303">
+                    <com:Name xml:lang="en">El Salvador</com:Name>
+                    <com:Name xml:lang="fr">El Salvador</com:Name>
+                    <str:Parent>
+                        <Ref id="8"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="8306">
+                    <com:Name xml:lang="en">Mexico</com:Name>
+                    <com:Name xml:lang="fr">Mexico</com:Name>
+                    <str:Parent>
+                        <Ref id="8"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="9">
+                    <com:Name xml:lang="en">Sub-Saharan Africa</com:Name>
+                    <com:Name xml:lang="fr">Sub-Saharan Africa</com:Name>
+                    <str:Parent>
+                        <Ref id="TOTAL"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="9108">
+                    <com:Name xml:lang="en">Congo</com:Name>
+                    <com:Name xml:lang="fr">Congo</com:Name>
+                    <str:Parent>
+                        <Ref id="9"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="9115">
+                    <com:Name xml:lang="en">Ghana</com:Name>
+                    <com:Name xml:lang="fr">Ghana</com:Name>
+                    <str:Parent>
+                        <Ref id="9"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="9124">
+                    <com:Name xml:lang="en">Nigeria</com:Name>
+                    <com:Name xml:lang="fr">Nigeria</com:Name>
+                    <str:Parent>
+                        <Ref id="9"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="9127">
+                    <com:Name xml:lang="en">Sierra Leone</com:Name>
+                    <com:Name xml:lang="fr">Sierra Leone</com:Name>
+                    <str:Parent>
+                        <Ref id="9"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="9206">
+                    <com:Name xml:lang="en">Eritrea</com:Name>
+                    <com:Name xml:lang="fr">Eritrea</com:Name>
+                    <str:Parent>
+                        <Ref id="9"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="9207">
+                    <com:Name xml:lang="en">Ethiopia</com:Name>
+                    <com:Name xml:lang="fr">Ethiopia</com:Name>
+                    <str:Parent>
+                        <Ref id="9"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="9208">
+                    <com:Name xml:lang="en">Kenya</com:Name>
+                    <com:Name xml:lang="fr">Kenya</com:Name>
+                    <str:Parent>
+                        <Ref id="9"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="9214">
+                    <com:Name xml:lang="en">Mauritius</com:Name>
+                    <com:Name xml:lang="fr">Mauritius</com:Name>
+                    <str:Parent>
+                        <Ref id="9"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="9224">
+                    <com:Name xml:lang="en">Somalia</com:Name>
+                    <com:Name xml:lang="fr">Somalia</com:Name>
+                    <str:Parent>
+                        <Ref id="9"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="9225">
+                    <com:Name xml:lang="en">South Africa</com:Name>
+                    <com:Name xml:lang="fr">South Africa</com:Name>
+                    <str:Parent>
+                        <Ref id="9"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="9227">
+                    <com:Name xml:lang="en">Tanzania</com:Name>
+                    <com:Name xml:lang="fr">Tanzania</com:Name>
+                    <str:Parent>
+                        <Ref id="9"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="9228">
+                    <com:Name xml:lang="en">Uganda</com:Name>
+                    <com:Name xml:lang="fr">Uganda</com:Name>
+                    <str:Parent>
+                        <Ref id="9"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="9231">
+                    <com:Name xml:lang="en">Zambia</com:Name>
+                    <com:Name xml:lang="fr">Zambia</com:Name>
+                    <str:Parent>
+                        <Ref id="9"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="9232">
+                    <com:Name xml:lang="en">Zimbabwe</com:Name>
+                    <com:Name xml:lang="fr">Zimbabwe</com:Name>
+                    <str:Parent>
+                        <Ref id="9"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="A">
+                    <com:Name xml:lang="en">Other &amp; Not Stated</com:Name>
+                    <com:Name xml:lang="fr">Other &amp; Not Stated</com:Name>
+                    <str:Parent>
+                        <Ref id="TOTAL"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="AUST_BORN">
+                    <com:Name xml:lang="en">Australia-Born</com:Name>
+                    <com:Name xml:lang="fr">Australia-Born</com:Name>
+                    <str:Parent>
+                        <Ref id="TOTAL"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="TOB">
+                    <com:Name xml:lang="en">Overseas-Born</com:Name>
+                    <com:Name xml:lang="fr">Overseas-Born</com:Name>
+                    <str:Parent>
+                        <Ref id="TOTAL"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="6000">
+                    <com:Name xml:lang="en">North-East Asia nfd</com:Name>
+                    <com:Name xml:lang="fr">6000</com:Name>
+                </str:Code>
+            </str:Codelist>
+            <str:Codelist agencyID="ABS" isExternalReference="false" isFinal="false" version="1.0" id="CL_ABS_ERP_COB_MAG_SEXRATIO_FREQUENCY">
+                <com:Name xml:lang="en">ABS_ERP_COB_MAG_SEXRATIO_FREQUENCY codelist</com:Name>
+                <str:Code id="A">
+                    <com:Name xml:lang="en">Annual</com:Name>
+                    <com:Name xml:lang="fr">Annuelle</com:Name>
+                </str:Code>
+            </str:Codelist>
+            <str:Codelist agencyID="ABS" isExternalReference="false" isFinal="false" version="1.0" id="CL_ABS_ERP_COB_MAG_SEXRATIO_TIME">
+                <com:Name xml:lang="en">ABS_ERP_COB_MAG_SEXRATIO_TIME codelist</com:Name>
+                <str:Code id="1992">
+                    <com:Name xml:lang="en">1992</com:Name>
+                    <com:Name xml:lang="fr">1992</com:Name>
+                </str:Code>
+                <str:Code id="1993">
+                    <com:Name xml:lang="en">1993</com:Name>
+                    <com:Name xml:lang="fr">1993</com:Name>
+                </str:Code>
+                <str:Code id="1994">
+                    <com:Name xml:lang="en">1994</com:Name>
+                    <com:Name xml:lang="fr">1994</com:Name>
+                </str:Code>
+                <str:Code id="1995">
+                    <com:Name xml:lang="en">1995</com:Name>
+                    <com:Name xml:lang="fr">1995</com:Name>
+                </str:Code>
+                <str:Code id="1996">
+                    <com:Name xml:lang="en">1996</com:Name>
+                    <com:Name xml:lang="fr">1996</com:Name>
+                </str:Code>
+                <str:Code id="1997">
+                    <com:Name xml:lang="en">1997</com:Name>
+                    <com:Name xml:lang="fr">1997</com:Name>
+                </str:Code>
+                <str:Code id="1998">
+                    <com:Name xml:lang="en">1998</com:Name>
+                    <com:Name xml:lang="fr">1998</com:Name>
+                </str:Code>
+                <str:Code id="1999">
+                    <com:Name xml:lang="en">1999</com:Name>
+                    <com:Name xml:lang="fr">1999</com:Name>
+                </str:Code>
+                <str:Code id="2000">
+                    <com:Name xml:lang="en">2000</com:Name>
+                    <com:Name xml:lang="fr">2000</com:Name>
+                </str:Code>
+                <str:Code id="2001">
+                    <com:Name xml:lang="en">2001</com:Name>
+                    <com:Name xml:lang="fr">2001</com:Name>
+                </str:Code>
+                <str:Code id="2002">
+                    <com:Name xml:lang="en">2002</com:Name>
+                    <com:Name xml:lang="fr">2002</com:Name>
+                </str:Code>
+                <str:Code id="2003">
+                    <com:Name xml:lang="en">2003</com:Name>
+                    <com:Name xml:lang="fr">2003</com:Name>
+                </str:Code>
+                <str:Code id="2004">
+                    <com:Name xml:lang="en">2004</com:Name>
+                    <com:Name xml:lang="fr">2004</com:Name>
+                </str:Code>
+                <str:Code id="2005">
+                    <com:Name xml:lang="en">2005</com:Name>
+                    <com:Name xml:lang="fr">2005</com:Name>
+                </str:Code>
+                <str:Code id="2006">
+                    <com:Name xml:lang="en">2006</com:Name>
+                    <com:Name xml:lang="fr">2006</com:Name>
+                </str:Code>
+                <str:Code id="2007">
+                    <com:Name xml:lang="en">2007</com:Name>
+                    <com:Name xml:lang="fr">2007</com:Name>
+                </str:Code>
+                <str:Code id="2008">
+                    <com:Name xml:lang="en">2008</com:Name>
+                    <com:Name xml:lang="fr">2008</com:Name>
+                </str:Code>
+                <str:Code id="2009">
+                    <com:Name xml:lang="en">2009</com:Name>
+                    <com:Name xml:lang="fr">2009</com:Name>
+                </str:Code>
+                <str:Code id="2010">
+                    <com:Name xml:lang="en">2010</com:Name>
+                    <com:Name xml:lang="fr">2010</com:Name>
+                </str:Code>
+                <str:Code id="2011">
+                    <com:Name xml:lang="en">2011</com:Name>
+                    <com:Name xml:lang="fr">2011</com:Name>
+                </str:Code>
+                <str:Code id="2012">
+                    <com:Name xml:lang="en">2012</com:Name>
+                    <com:Name xml:lang="fr">2012</com:Name>
+                </str:Code>
+                <str:Code id="2013">
+                    <com:Name xml:lang="en">2013</com:Name>
+                    <com:Name xml:lang="fr">2013</com:Name>
+                </str:Code>
+                <str:Code id="2014">
+                    <com:Name xml:lang="en">2014</com:Name>
+                    <com:Name xml:lang="fr">2014</com:Name>
+                </str:Code>
+                <str:Code id="2015">
+                    <com:Name xml:lang="en">2015</com:Name>
+                    <com:Name xml:lang="fr">2015</com:Name>
+                </str:Code>
+            </str:Codelist>
+            <str:Codelist agencyID="ABS" isExternalReference="false" isFinal="false" version="1.0" id="CL_ABS_ERP_COB_MAG_SEXRATIO_UNIT">
+                <com:Name xml:lang="en">ABS_ERP_COB_MAG_SEXRATIO_UNIT codelist</com:Name>
+                <str:Code id="CUR">
+                    <com:Name xml:lang="en">Currencies</com:Name>
+                    <com:Name xml:lang="fr">Monnaie</com:Name>
+                </str:Code>
+                <str:Code id="DOL">
+                    <com:Name xml:lang="en">US Dollar</com:Name>
+                    <com:Name xml:lang="fr">US Dollar</com:Name>
+                </str:Code>
+                <str:Code id="EUR">
+                    <com:Name xml:lang="en">Euro</com:Name>
+                    <com:Name xml:lang="fr">Euro</com:Name>
+                </str:Code>
+                <str:Code id="AMD">
+                    <com:Name xml:lang="en">Armenian Dram</com:Name>
+                    <com:Name xml:lang="fr">Dram armÃ?Â©nien</com:Name>
+                </str:Code>
+                <str:Code id="ANG">
+                    <com:Name xml:lang="en">Netherlands Antillian Guilder</com:Name>
+                    <com:Name xml:lang="fr">Florin des Antilles nÃ?Â©erlandaises</com:Name>
+                </str:Code>
+                <str:Code id="AOA">
+                    <com:Name xml:lang="en">Angola Kwanza</com:Name>
+                    <com:Name xml:lang="fr">Kwanza angolais</com:Name>
+                </str:Code>
+                <str:Code id="ARS">
+                    <com:Name xml:lang="en">Argentine Peso</com:Name>
+                    <com:Name xml:lang="fr">Peso argentin</com:Name>
+                </str:Code>
+                <str:Code id="AUD">
+                    <com:Name xml:lang="en">Australian Dollar</com:Name>
+                    <com:Name xml:lang="fr">Dollar australien</com:Name>
+                </str:Code>
+                <str:Code id="AWG">
+                    <com:Name xml:lang="en">Aruban Guilder</com:Name>
+                    <com:Name xml:lang="fr">Florin dAruba</com:Name>
+                </str:Code>
+                <str:Code id="AZM">
+                    <com:Name xml:lang="en">Azerbaijanian Manat</com:Name>
+                    <com:Name xml:lang="fr">Manat d AzerbaÃ?Â¯djan</com:Name>
+                </str:Code>
+                <str:Code id="BAM">
+                    <com:Name xml:lang="en">Convertible Marks</com:Name>
+                    <com:Name xml:lang="fr">Marks convertibles</com:Name>
+                </str:Code>
+                <str:Code id="BBD">
+                    <com:Name xml:lang="en">Barbados Dollar</com:Name>
+                    <com:Name xml:lang="fr">Dollar de la Barbade</com:Name>
+                </str:Code>
+                <str:Code id="BDT">
+                    <com:Name xml:lang="en">Bangladeshi Taka</com:Name>
+                    <com:Name xml:lang="fr">Taka bangladais</com:Name>
+                </str:Code>
+                <str:Code id="BGL">
+                    <com:Name xml:lang="en">Bulgarian Lev</com:Name>
+                    <com:Name xml:lang="fr">Lev bulgare</com:Name>
+                </str:Code>
+                <str:Code id="BGN">
+                    <com:Name xml:lang="en">Bulgarian Lev</com:Name>
+                    <com:Name xml:lang="fr">Lev bulgare</com:Name>
+                </str:Code>
+                <str:Code id="BHD">
+                    <com:Name xml:lang="en">Bahraini Dinar</com:Name>
+                    <com:Name xml:lang="fr">Dinar de BahreÃ?Â¯n</com:Name>
+                </str:Code>
+                <str:Code id="BIF">
+                    <com:Name xml:lang="en">Burundi Franc</com:Name>
+                    <com:Name xml:lang="fr">Franc burundais</com:Name>
+                </str:Code>
+                <str:Code id="BMD">
+                    <com:Name xml:lang="en">Bermudian Dollar</com:Name>
+                    <com:Name xml:lang="fr">Dollar des Bermudes</com:Name>
+                </str:Code>
+                <str:Code id="BND">
+                    <com:Name xml:lang="en">Brunei Dollar</com:Name>
+                    <com:Name xml:lang="fr">Dollar de Brunei</com:Name>
+                </str:Code>
+                <str:Code id="BOB">
+                    <com:Name xml:lang="en">Boliviano</com:Name>
+                    <com:Name xml:lang="fr">Boliviano bolivien</com:Name>
+                </str:Code>
+                <str:Code id="BOV">
+                    <com:Name xml:lang="en">Bolivian Mvdol</com:Name>
+                    <com:Name xml:lang="fr">Boliviano bolivien</com:Name>
+                </str:Code>
+                <str:Code id="BRL">
+                    <com:Name xml:lang="en">Brazilian Real</com:Name>
+                    <com:Name xml:lang="fr">Real brÃ?Â©silien</com:Name>
+                </str:Code>
+                <str:Code id="BSD">
+                    <com:Name xml:lang="en">Bahamian Dollar</com:Name>
+                    <com:Name xml:lang="fr">Dollar des Bahamas</com:Name>
+                </str:Code>
+                <str:Code id="BTN">
+                    <com:Name xml:lang="en">Bhutan Ngultrum</com:Name>
+                    <com:Name xml:lang="fr">Ngultrum bhoutanais</com:Name>
+                </str:Code>
+                <str:Code id="BWP">
+                    <com:Name xml:lang="en">Botswana Pula</com:Name>
+                    <com:Name xml:lang="fr">Pula botswanais</com:Name>
+                </str:Code>
+                <str:Code id="BYR">
+                    <com:Name xml:lang="en">Belarussian Rouble</com:Name>
+                    <com:Name xml:lang="fr">Rouble biÃ?Â©lorusse</com:Name>
+                </str:Code>
+                <str:Code id="BZD">
+                    <com:Name xml:lang="en">Belize Dollar</com:Name>
+                    <com:Name xml:lang="fr">Dollar de Belize</com:Name>
+                </str:Code>
+                <str:Code id="CAD">
+                    <com:Name xml:lang="en">Canadian Dollar</com:Name>
+                    <com:Name xml:lang="fr">Dollar canadien</com:Name>
+                </str:Code>
+                <str:Code id="CDF">
+                    <com:Name xml:lang="en">Franc Congolais</com:Name>
+                    <com:Name xml:lang="fr">Franc Congolais</com:Name>
+                </str:Code>
+                <str:Code id="CHF">
+                    <com:Name xml:lang="en">Swiss Franc</com:Name>
+                    <com:Name xml:lang="fr">Franc suisse</com:Name>
+                </str:Code>
+                <str:Code id="CLF">
+                    <com:Name xml:lang="en">Unidades de fomento</com:Name>
+                    <com:Name xml:lang="fr">Unidades de fomento</com:Name>
+                </str:Code>
+                <str:Code id="CLP">
+                    <com:Name xml:lang="en">Chilean Peso</com:Name>
+                    <com:Name xml:lang="fr">Peso chilien</com:Name>
+                </str:Code>
+                <str:Code id="CNY">
+                    <com:Name xml:lang="en">Chinese Yuan Renminbi</com:Name>
+                    <com:Name xml:lang="fr">Yuan renmimbi chinois</com:Name>
+                </str:Code>
+                <str:Code id="COP">
+                    <com:Name xml:lang="en">Colombian Peso</com:Name>
+                    <com:Name xml:lang="fr">Peso colombien</com:Name>
+                </str:Code>
+                <str:Code id="CRC">
+                    <com:Name xml:lang="en">Costa Rican Colon</com:Name>
+                    <com:Name xml:lang="fr">ColÃ?Â³n costaricain</com:Name>
+                </str:Code>
+                <str:Code id="CUP">
+                    <com:Name xml:lang="en">Cuban Peso</com:Name>
+                    <com:Name xml:lang="fr">Peso cubain</com:Name>
+                </str:Code>
+                <str:Code id="CVE">
+                    <com:Name xml:lang="en">Cap Verde Escudo</com:Name>
+                    <com:Name xml:lang="fr">Escudo capverdien</com:Name>
+                </str:Code>
+                <str:Code id="CYP">
+                    <com:Name xml:lang="en">Cyprus Pound</com:Name>
+                    <com:Name xml:lang="fr">Livre chypriote</com:Name>
+                </str:Code>
+                <str:Code id="CZK">
+                    <com:Name xml:lang="en">Czech Koruna</com:Name>
+                    <com:Name xml:lang="fr">Koruna tchÃ?Â¨que</com:Name>
+                </str:Code>
+                <str:Code id="DJF">
+                    <com:Name xml:lang="en">Djibouti Franc</com:Name>
+                    <com:Name xml:lang="fr">Franc djiboutien</com:Name>
+                </str:Code>
+                <str:Code id="DKK">
+                    <com:Name xml:lang="en">Danish Krone</com:Name>
+                    <com:Name xml:lang="fr">Couronne danoise</com:Name>
+                </str:Code>
+                <str:Code id="DOP">
+                    <com:Name xml:lang="en">Dominican Peso</com:Name>
+                    <com:Name xml:lang="fr">Peso dominicain</com:Name>
+                </str:Code>
+                <str:Code id="DZD">
+                    <com:Name xml:lang="en">Algerian Dinar</com:Name>
+                    <com:Name xml:lang="fr">Dinar algÃ?Â©rien</com:Name>
+                </str:Code>
+                <str:Code id="ECV">
+                    <com:Name xml:lang="en">Unidad de Valor Constante UVC</com:Name>
+                    <com:Name xml:lang="fr">UnitÃ?Â© de valeur constante UVC</com:Name>
+                </str:Code>
+                <str:Code id="EEK">
+                    <com:Name xml:lang="en">Estonia Kroon</com:Name>
+                    <com:Name xml:lang="fr">Couronne estonienne</com:Name>
+                </str:Code>
+                <str:Code id="EGP">
+                    <com:Name xml:lang="en">Egyptian Pound</com:Name>
+                    <com:Name xml:lang="fr">Livre Ã?Â©gyptienne</com:Name>
+                </str:Code>
+                <str:Code id="ERN">
+                    <com:Name xml:lang="en">Eritrean Nakfa</com:Name>
+                    <com:Name xml:lang="fr">Eritrean Nakfa</com:Name>
+                </str:Code>
+                <str:Code id="ETB">
+                    <com:Name xml:lang="en">Ethiopian Birr</com:Name>
+                    <com:Name xml:lang="fr">Birr Ã?Â©thiopien</com:Name>
+                </str:Code>
+                <str:Code id="FJD">
+                    <com:Name xml:lang="en">Fiji Dollar</com:Name>
+                    <com:Name xml:lang="fr">Dollar fidjien</com:Name>
+                </str:Code>
+                <str:Code id="FKP">
+                    <com:Name xml:lang="en">Falkland Island Pound</com:Name>
+                    <com:Name xml:lang="fr">Livre des Ã?Â®les Falkland</com:Name>
+                </str:Code>
+                <str:Code id="GBP">
+                    <com:Name xml:lang="en">Pound Sterling</com:Name>
+                    <com:Name xml:lang="fr">Livre sterling</com:Name>
+                </str:Code>
+                <str:Code id="GEL">
+                    <com:Name xml:lang="en">Georgian Lari</com:Name>
+                    <com:Name xml:lang="fr">Lari de GÃ?Â©orgie</com:Name>
+                </str:Code>
+                <str:Code id="GHC">
+                    <com:Name xml:lang="en">Ghanaian Cedi</com:Name>
+                    <com:Name xml:lang="fr">Cedi ghanÃ?Â©en</com:Name>
+                </str:Code>
+                <str:Code id="GIP">
+                    <com:Name xml:lang="en">Gibraltar Pound</com:Name>
+                    <com:Name xml:lang="fr">Livre de Gibraltar</com:Name>
+                </str:Code>
+                <str:Code id="GMD">
+                    <com:Name xml:lang="en">Gambian Dalasi</com:Name>
+                    <com:Name xml:lang="fr">Dalasi gambien</com:Name>
+                </str:Code>
+                <str:Code id="GNF">
+                    <com:Name xml:lang="en">Guinea Franc</com:Name>
+                    <com:Name xml:lang="fr">Franc guinÃ?Â©en</com:Name>
+                </str:Code>
+                <str:Code id="GTQ">
+                    <com:Name xml:lang="en">Guatemalan Quetzal</com:Name>
+                    <com:Name xml:lang="fr">Quetzal guatÃ?Â©maltÃ?Â¨que</com:Name>
+                </str:Code>
+                <str:Code id="GWP">
+                    <com:Name xml:lang="en">Guinea-Bissau Peso</com:Name>
+                    <com:Name xml:lang="fr">Peso de GuinÃ?Â©e-Bissau</com:Name>
+                </str:Code>
+                <str:Code id="GYD">
+                    <com:Name xml:lang="en">Guyana Dollar</com:Name>
+                    <com:Name xml:lang="fr">Dollar de Guyana</com:Name>
+                </str:Code>
+                <str:Code id="HKD">
+                    <com:Name xml:lang="en">Hong Kong Dollar</com:Name>
+                    <com:Name xml:lang="fr">Dollar de Hong-Kong</com:Name>
+                </str:Code>
+                <str:Code id="HNL">
+                    <com:Name xml:lang="en">Honduran Lempira</com:Name>
+                    <com:Name xml:lang="fr">Lempira hondurien</com:Name>
+                </str:Code>
+                <str:Code id="HRK">
+                    <com:Name xml:lang="en">Croatian Kuna</com:Name>
+                    <com:Name xml:lang="fr">Kuna de Croatie</com:Name>
+                </str:Code>
+                <str:Code id="HTG">
+                    <com:Name xml:lang="en">Haitian Gourde</com:Name>
+                    <com:Name xml:lang="fr">Gourde haÃ?Â¯tienne</com:Name>
+                </str:Code>
+                <str:Code id="HUF">
+                    <com:Name xml:lang="en">Hungarian Forint</com:Name>
+                    <com:Name xml:lang="fr">Forint hongrois</com:Name>
+                </str:Code>
+                <str:Code id="IDR">
+                    <com:Name xml:lang="en">Indonesian Rupiah</com:Name>
+                    <com:Name xml:lang="fr">Roupie indonÃ?Â©sienne</com:Name>
+                </str:Code>
+                <str:Code id="ILS">
+                    <com:Name xml:lang="en">Israeli Shekel</com:Name>
+                    <com:Name xml:lang="fr">Shekel israÃ?Â«lien</com:Name>
+                </str:Code>
+                <str:Code id="INR">
+                    <com:Name xml:lang="en">Indian Rupee</com:Name>
+                    <com:Name xml:lang="fr">Roupie indienne</com:Name>
+                </str:Code>
+                <str:Code id="IQD">
+                    <com:Name xml:lang="en">Iraqi Dinar</com:Name>
+                    <com:Name xml:lang="fr">Dinar irakien</com:Name>
+                </str:Code>
+                <str:Code id="IRR">
+                    <com:Name xml:lang="en">Iranian Rial</com:Name>
+                    <com:Name xml:lang="fr">Rial iranien</com:Name>
+                </str:Code>
+                <str:Code id="ISK">
+                    <com:Name xml:lang="en">Iceland Krona</com:Name>
+                    <com:Name xml:lang="fr">Couronne islandaise</com:Name>
+                </str:Code>
+                <str:Code id="JMD">
+                    <com:Name xml:lang="en">Jamaican Dollar</com:Name>
+                    <com:Name xml:lang="fr">Dollar jamaÃ?Â¯cain</com:Name>
+                </str:Code>
+                <str:Code id="JOD">
+                    <com:Name xml:lang="en">Jordanian Dinar</com:Name>
+                    <com:Name xml:lang="fr">Dinar jordanien</com:Name>
+                </str:Code>
+                <str:Code id="JPY">
+                    <com:Name xml:lang="en">Japanese Yen</com:Name>
+                    <com:Name xml:lang="fr">Yen japonais</com:Name>
+                </str:Code>
+                <str:Code id="KES">
+                    <com:Name xml:lang="en">Kenyan Shilling</com:Name>
+                    <com:Name xml:lang="fr">Shilling kenyan</com:Name>
+                </str:Code>
+                <str:Code id="KGS">
+                    <com:Name xml:lang="en">Kyrgyzstan Som</com:Name>
+                    <com:Name xml:lang="fr">Som du Kirghizistan</com:Name>
+                </str:Code>
+                <str:Code id="KHR">
+                    <com:Name xml:lang="en">Cambodian Riel</com:Name>
+                    <com:Name xml:lang="fr">Riel cambodgien</com:Name>
+                </str:Code>
+                <str:Code id="KMF">
+                    <com:Name xml:lang="en">Comoro Franc</com:Name>
+                    <com:Name xml:lang="fr">Franc comorien</com:Name>
+                </str:Code>
+                <str:Code id="KPW">
+                    <com:Name xml:lang="en">North Korean Won</com:Name>
+                    <com:Name xml:lang="fr">Won nord-corÃ?Â©en</com:Name>
+                </str:Code>
+                <str:Code id="KRW">
+                    <com:Name xml:lang="en">South Korean Won</com:Name>
+                    <com:Name xml:lang="fr">Won sud-corÃ?Â©en</com:Name>
+                </str:Code>
+                <str:Code id="KWD">
+                    <com:Name xml:lang="en">Kuwaiti Dinar</com:Name>
+                    <com:Name xml:lang="fr">Dinar koweÃ?Â¯tien</com:Name>
+                </str:Code>
+                <str:Code id="KYD">
+                    <com:Name xml:lang="en">Cayman Islands Dollar</com:Name>
+                    <com:Name xml:lang="fr">Dollar des Ã?Â®les CaÃ?Â¯man</com:Name>
+                </str:Code>
+                <str:Code id="KZT">
+                    <com:Name xml:lang="en">Kazakhstan Tenge</com:Name>
+                    <com:Name xml:lang="fr">Tenge du Kazakhstan</com:Name>
+                </str:Code>
+                <str:Code id="LAK">
+                    <com:Name xml:lang="en">Lao Kip</com:Name>
+                    <com:Name xml:lang="fr">Kip laotien</com:Name>
+                </str:Code>
+                <str:Code id="LBP">
+                    <com:Name xml:lang="en">Lebanese Pound</com:Name>
+                    <com:Name xml:lang="fr">Livre libanaise</com:Name>
+                </str:Code>
+                <str:Code id="LKR">
+                    <com:Name xml:lang="en">Sri Lanka Rupee</com:Name>
+                    <com:Name xml:lang="fr">Roupie sri-lankaise</com:Name>
+                </str:Code>
+                <str:Code id="LRD">
+                    <com:Name xml:lang="en">Liberian Dollar</com:Name>
+                    <com:Name xml:lang="fr">Dollar liberien</com:Name>
+                </str:Code>
+                <str:Code id="LSL">
+                    <com:Name xml:lang="en">Lesotho Loti</com:Name>
+                    <com:Name xml:lang="fr">Loti lesothan</com:Name>
+                </str:Code>
+                <str:Code id="LTL">
+                    <com:Name xml:lang="en">Lithuanian Litas</com:Name>
+                    <com:Name xml:lang="fr">Litas de Lithuanie</com:Name>
+                </str:Code>
+                <str:Code id="LVL">
+                    <com:Name xml:lang="en">Latvian Lats</com:Name>
+                    <com:Name xml:lang="fr">Lats de Lettonie</com:Name>
+                </str:Code>
+                <str:Code id="LYD">
+                    <com:Name xml:lang="en">Libyan Dinar</com:Name>
+                    <com:Name xml:lang="fr">Dinar libyen</com:Name>
+                </str:Code>
+                <str:Code id="MAD">
+                    <com:Name xml:lang="en">Moroccan Dirham</com:Name>
+                    <com:Name xml:lang="fr">Dirham marocain</com:Name>
+                </str:Code>
+                <str:Code id="MDL">
+                    <com:Name xml:lang="en">Moldovan Leu</com:Name>
+                    <com:Name xml:lang="fr">Leu de Moldavie</com:Name>
+                </str:Code>
+                <str:Code id="MGF">
+                    <com:Name xml:lang="en">Malagasy Franc</com:Name>
+                    <com:Name xml:lang="fr">Franc malgache</com:Name>
+                </str:Code>
+                <str:Code id="MKD">
+                    <com:Name xml:lang="en">Macedonian Denar</com:Name>
+                    <com:Name xml:lang="fr">Dinar macÃ?Â©donien</com:Name>
+                </str:Code>
+                <str:Code id="MMK">
+                    <com:Name xml:lang="en">Myanmar Kyat</com:Name>
+                    <com:Name xml:lang="fr">Kyat de Myanmar</com:Name>
+                </str:Code>
+                <str:Code id="MNT">
+                    <com:Name xml:lang="en">Mongolian Tugrik</com:Name>
+                    <com:Name xml:lang="fr">Tugrik mongol</com:Name>
+                </str:Code>
+                <str:Code id="MOP">
+                    <com:Name xml:lang="en">Macao Patacca</com:Name>
+                    <com:Name xml:lang="fr">Pataca de Macau</com:Name>
+                </str:Code>
+                <str:Code id="MRO">
+                    <com:Name xml:lang="en">Mauritanian Ouguiya</com:Name>
+                    <com:Name xml:lang="fr">Ouguiya mauritanien</com:Name>
+                </str:Code>
+                <str:Code id="MTL">
+                    <com:Name xml:lang="en">Maltese Lira</com:Name>
+                    <com:Name xml:lang="fr">Livre maltaise</com:Name>
+                </str:Code>
+                <str:Code id="MUR">
+                    <com:Name xml:lang="en">Mauritius Rupee</com:Name>
+                    <com:Name xml:lang="fr">Roupie mauricienne</com:Name>
+                </str:Code>
+                <str:Code id="MVR">
+                    <com:Name xml:lang="en">Maldive Rufiyaa</com:Name>
+                    <com:Name xml:lang="fr">Roupie maldive</com:Name>
+                </str:Code>
+                <str:Code id="MWK">
+                    <com:Name xml:lang="en">Malawi Kwacha</com:Name>
+                    <com:Name xml:lang="fr">Kwacha malawite</com:Name>
+                </str:Code>
+                <str:Code id="MXN">
+                    <com:Name xml:lang="en">Mexican Peso</com:Name>
+                    <com:Name xml:lang="fr">Peso mexicain</com:Name>
+                </str:Code>
+                <str:Code id="MXV">
+                    <com:Name xml:lang="en">Unidad de Inversion (UDI)</com:Name>
+                    <com:Name xml:lang="fr">UnitÃ?Â© d'inversion (UDI)</com:Name>
+                </str:Code>
+                <str:Code id="MYR">
+                    <com:Name xml:lang="en">Malaysian Ringgit</com:Name>
+                    <com:Name xml:lang="fr">Ringgit malaisien</com:Name>
+                </str:Code>
+                <str:Code id="MZM">
+                    <com:Name xml:lang="en">Mozambique Metical</com:Name>
+                    <com:Name xml:lang="fr">Metical mozambicain</com:Name>
+                </str:Code>
+                <str:Code id="NAD">
+                    <com:Name xml:lang="en">Namibian Dollar</com:Name>
+                    <com:Name xml:lang="fr">Dollar namibien</com:Name>
+                </str:Code>
+                <str:Code id="NGN">
+                    <com:Name xml:lang="en">Nigerian Naira</com:Name>
+                    <com:Name xml:lang="fr">Naira nigÃ?Â©rian</com:Name>
+                </str:Code>
+                <str:Code id="NIO">
+                    <com:Name xml:lang="en">Nicaraguan Cordoba Oro</com:Name>
+                    <com:Name xml:lang="fr">Cordoba Oro nicaragayen</com:Name>
+                </str:Code>
+                <str:Code id="NOK">
+                    <com:Name xml:lang="en">Norwegian Krone</com:Name>
+                    <com:Name xml:lang="fr">Couronne norvÃ?Â©gienne</com:Name>
+                </str:Code>
+                <str:Code id="NPR">
+                    <com:Name xml:lang="en">Nepalese Rupee</com:Name>
+                    <com:Name xml:lang="fr">Roupie nÃ?Â©palaise</com:Name>
+                </str:Code>
+                <str:Code id="NZD">
+                    <com:Name xml:lang="en">New Zealand Dollar</com:Name>
+                    <com:Name xml:lang="fr">Dollar nÃ?Â©o-zÃ?Â©landais</com:Name>
+                </str:Code>
+                <str:Code id="OMR">
+                    <com:Name xml:lang="en">Rial Omani</com:Name>
+                    <com:Name xml:lang="fr">Riyal d'Oman</com:Name>
+                </str:Code>
+                <str:Code id="PAB">
+                    <com:Name xml:lang="en">Panamanian Balboa</com:Name>
+                    <com:Name xml:lang="fr">Balboa panamÃ?Â©en</com:Name>
+                </str:Code>
+                <str:Code id="PEN">
+                    <com:Name xml:lang="en">Peruvian Nuevo Sol</com:Name>
+                    <com:Name xml:lang="fr">Nuevo Sol du PÃ?Â©rou</com:Name>
+                </str:Code>
+                <str:Code id="PGK">
+                    <com:Name xml:lang="en">Papua New Guinea Kina</com:Name>
+                    <com:Name xml:lang="fr">Kina de Papouasie-Nouvelle-GuinÃ?Â©e</com:Name>
+                </str:Code>
+                <str:Code id="PHP">
+                    <com:Name xml:lang="en">Phillipine Peso</com:Name>
+                    <com:Name xml:lang="fr">Peso philippin</com:Name>
+                </str:Code>
+                <str:Code id="PKR">
+                    <com:Name xml:lang="en">Pakistan Rupee</com:Name>
+                    <com:Name xml:lang="fr">Roupie pakistanaise</com:Name>
+                </str:Code>
+                <str:Code id="PLN">
+                    <com:Name xml:lang="en">Polish Zloty</com:Name>
+                    <com:Name xml:lang="fr">Zloty polonais</com:Name>
+                </str:Code>
+                <str:Code id="PYG">
+                    <com:Name xml:lang="en">Paraguay Guarani</com:Name>
+                    <com:Name xml:lang="fr">Guarani paraguayen</com:Name>
+                </str:Code>
+                <str:Code id="QAR">
+                    <com:Name xml:lang="en">Qatari Riyal</com:Name>
+                    <com:Name xml:lang="fr">Riyal du Qatar</com:Name>
+                </str:Code>
+                <str:Code id="ROL">
+                    <com:Name xml:lang="en">Romanian Leu</com:Name>
+                    <com:Name xml:lang="fr">Leu roumain</com:Name>
+                </str:Code>
+                <str:Code id="RUB">
+                    <com:Name xml:lang="en">Russian Rouble</com:Name>
+                    <com:Name xml:lang="fr">Rouble russe</com:Name>
+                </str:Code>
+                <str:Code id="RWF">
+                    <com:Name xml:lang="en">Rwanda Franc</com:Name>
+                    <com:Name xml:lang="fr">Franc du Rwanda</com:Name>
+                </str:Code>
+                <str:Code id="SAR">
+                    <com:Name xml:lang="en">Saudi Riyal</com:Name>
+                    <com:Name xml:lang="fr">Riyal saoudien</com:Name>
+                </str:Code>
+                <str:Code id="SBD">
+                    <com:Name xml:lang="en">Solomon Islands Dollar</com:Name>
+                    <com:Name xml:lang="fr">Dollar des Ã?Â®les Salomon</com:Name>
+                </str:Code>
+                <str:Code id="SCR">
+                    <com:Name xml:lang="en">Seychelles Rupee</com:Name>
+                    <com:Name xml:lang="fr">Roupie seychelloise</com:Name>
+                </str:Code>
+                <str:Code id="SDD">
+                    <com:Name xml:lang="en">Sudanese Dinar</com:Name>
+                    <com:Name xml:lang="fr">Dinar soudanais</com:Name>
+                </str:Code>
+                <str:Code id="SEK">
+                    <com:Name xml:lang="en">Swedish Krona</com:Name>
+                    <com:Name xml:lang="fr">Couronne suÃ?Â©doise</com:Name>
+                </str:Code>
+                <str:Code id="SGD">
+                    <com:Name xml:lang="en">Singapur Dollar</com:Name>
+                    <com:Name xml:lang="fr">Dollar de Singapour</com:Name>
+                </str:Code>
+                <str:Code id="SHP">
+                    <com:Name xml:lang="en">Saint Helena Pound</com:Name>
+                    <com:Name xml:lang="fr">Livre de Sainte-HÃ?Â©lÃ?Â¨ne</com:Name>
+                </str:Code>
+                <str:Code id="SIT">
+                    <com:Name xml:lang="en">Slovenian Tolar</com:Name>
+                    <com:Name xml:lang="fr">Tolar slovÃ?Â¨ne</com:Name>
+                </str:Code>
+                <str:Code id="SKK">
+                    <com:Name xml:lang="en">Slovak Koruna</com:Name>
+                    <com:Name xml:lang="fr">Couronne slovaque</com:Name>
+                </str:Code>
+                <str:Code id="SLL">
+                    <com:Name xml:lang="en">Leone</com:Name>
+                    <com:Name xml:lang="fr">Leone</com:Name>
+                </str:Code>
+                <str:Code id="SOS">
+                    <com:Name xml:lang="en">Somali Schilling</com:Name>
+                    <com:Name xml:lang="fr">Schilling somalien</com:Name>
+                </str:Code>
+                <str:Code id="SRG">
+                    <com:Name xml:lang="en">Suriname Guilder</com:Name>
+                    <com:Name xml:lang="fr">Florin du Surinam</com:Name>
+                </str:Code>
+                <str:Code id="STD">
+                    <com:Name xml:lang="en">Sao Tome and Principe Dobra</com:Name>
+                    <com:Name xml:lang="fr">Dobra santomÃ?Â©en</com:Name>
+                </str:Code>
+                <str:Code id="SVC">
+                    <com:Name xml:lang="en">El Salvador Colon</com:Name>
+                    <com:Name xml:lang="fr">ColÃ?Â³n salvadorien</com:Name>
+                </str:Code>
+                <str:Code id="SYP">
+                    <com:Name xml:lang="en">Syrian Pound</com:Name>
+                    <com:Name xml:lang="fr">Livre syrienne</com:Name>
+                </str:Code>
+                <str:Code id="SZL">
+                    <com:Name xml:lang="en">Swaziland Lilangeni</com:Name>
+                    <com:Name xml:lang="fr">Lilangeni swazilandais</com:Name>
+                </str:Code>
+                <str:Code id="THB">
+                    <com:Name xml:lang="en">Thai Baht</com:Name>
+                    <com:Name xml:lang="fr">Baht thaÃ?Â¯landais</com:Name>
+                </str:Code>
+                <str:Code id="TJS">
+                    <com:Name xml:lang="en">Tajik Somoni</com:Name>
+                    <com:Name xml:lang="fr">Somoni du Tadjikistan</com:Name>
+                </str:Code>
+                <str:Code id="TLE">
+                    <com:Name xml:lang="en">Timor Escudo</com:Name>
+                    <com:Name xml:lang="fr">Escudo du Timor</com:Name>
+                </str:Code>
+                <str:Code id="TMM">
+                    <com:Name xml:lang="en">Turkmenistan Manat</com:Name>
+                    <com:Name xml:lang="fr">Manat turkmÃ?Â¨ne</com:Name>
+                </str:Code>
+                <str:Code id="TND">
+                    <com:Name xml:lang="en">Tunisian Dinar</com:Name>
+                    <com:Name xml:lang="fr">Dinar tunisien</com:Name>
+                </str:Code>
+                <str:Code id="TOP">
+                    <com:Name xml:lang="en">Tongan Pa'anga</com:Name>
+                    <com:Name xml:lang="fr">Pa'anga tongais</com:Name>
+                </str:Code>
+                <str:Code id="TRL">
+                    <com:Name xml:lang="en">Turkish Lira</com:Name>
+                    <com:Name xml:lang="fr">Livre turque</com:Name>
+                </str:Code>
+                <str:Code id="TTD">
+                    <com:Name xml:lang="en">Trinidad and Tobago Dollar</com:Name>
+                    <com:Name xml:lang="fr">Dollar de TrinitÃ?Â©-et-Tobago</com:Name>
+                </str:Code>
+                <str:Code id="TWD">
+                    <com:Name xml:lang="en">New Taiwan Dollar</com:Name>
+                    <com:Name xml:lang="fr">Nouveau Dollar taÃ?Â¯wainais</com:Name>
+                </str:Code>
+                <str:Code id="TZS">
+                    <com:Name xml:lang="en">Tazanian Schilling</com:Name>
+                    <com:Name xml:lang="fr">Schilling tanzanien</com:Name>
+                </str:Code>
+                <str:Code id="UAH">
+                    <com:Name xml:lang="en">Ukrainian Hryvnia</com:Name>
+                    <com:Name xml:lang="fr">Hryvia ukrainien</com:Name>
+                </str:Code>
+                <str:Code id="UGX">
+                    <com:Name xml:lang="en">Ugandan Schilling</com:Name>
+                    <com:Name xml:lang="fr">Schilling ougandais</com:Name>
+                </str:Code>
+                <str:Code id="USD">
+                    <com:Name xml:lang="en">USD</com:Name>
+                    <com:Name xml:lang="fr">USD</com:Name>
+                </str:Code>
+                <str:Code id="USN">
+                    <com:Name xml:lang="en">US Dollar (Next day)</com:Name>
+                    <com:Name xml:lang="fr">US Dollar (jour suivant)</com:Name>
+                </str:Code>
+                <str:Code id="USS">
+                    <com:Name xml:lang="en">US Dollar (Same day)</com:Name>
+                    <com:Name xml:lang="fr">US dollar (mÃ?Âªme jour)</com:Name>
+                </str:Code>
+                <str:Code id="UYU">
+                    <com:Name xml:lang="en">Peso Uruguayo</com:Name>
+                    <com:Name xml:lang="fr">Peso d'Uruguay</com:Name>
+                </str:Code>
+                <str:Code id="UZS">
+                    <com:Name xml:lang="en">Uzbekistan Sum</com:Name>
+                    <com:Name xml:lang="fr">Sum d'OuzbÃ?Â©kistant</com:Name>
+                </str:Code>
+                <str:Code id="VEB">
+                    <com:Name xml:lang="en">Venezuela Bolivar</com:Name>
+                    <com:Name xml:lang="fr">BolÃ?Â­var vÃ?Â©nÃ?Â©zuÃ?Â©lien</com:Name>
+                </str:Code>
+                <str:Code id="VND">
+                    <com:Name xml:lang="en">Viet Nam Dong</com:Name>
+                    <com:Name xml:lang="fr">Dong vietnamien</com:Name>
+                </str:Code>
+                <str:Code id="VUV">
+                    <com:Name xml:lang="en">Vanuatu Vatu</com:Name>
+                    <com:Name xml:lang="fr">Vatu du Vanuatu</com:Name>
+                </str:Code>
+                <str:Code id="WST">
+                    <com:Name xml:lang="en">Samoan Tala</com:Name>
+                    <com:Name xml:lang="fr">Tala samoan</com:Name>
+                </str:Code>
+                <str:Code id="XAF">
+                    <com:Name xml:lang="en">CFA Franc BEAC</com:Name>
+                    <com:Name xml:lang="fr">CFA Franc BEAC</com:Name>
+                </str:Code>
+                <str:Code id="XAG">
+                    <com:Name xml:lang="en">Silver</com:Name>
+                    <com:Name xml:lang="fr">Argent</com:Name>
+                </str:Code>
+                <str:Code id="XAU">
+                    <com:Name xml:lang="en">Gold</com:Name>
+                    <com:Name xml:lang="fr">Or</com:Name>
+                </str:Code>
+                <str:Code id="XBA">
+                    <com:Name xml:lang="en">Bond Markets Units</com:Name>
+                    <com:Name xml:lang="fr">UnitÃ?Â©s de marchÃ?Â© des changes</com:Name>
+                </str:Code>
+                <str:Code id="XBB">
+                    <com:Name xml:lang="en">European Composite Unit EURCO</com:Name>
+                    <com:Name xml:lang="fr">UnitÃ?Â© compostie europÃ?Â©enne EURCO</com:Name>
+                </str:Code>
+                <str:Code id="XBC">
+                    <com:Name xml:lang="en">European Monetary Unit EUM</com:Name>
+                    <com:Name xml:lang="fr">UnitÃ?Â© monÃ?Â©taire europÃ?Â©enne EUM</com:Name>
+                </str:Code>
+                <str:Code id="XBD">
+                    <com:Name xml:lang="en">European Unit of Account EUA</com:Name>
+                    <com:Name xml:lang="fr">UnitÃ?Â© de compte europÃ?Â©enne EUA</com:Name>
+                </str:Code>
+                <str:Code id="XCD">
+                    <com:Name xml:lang="en">East Caribean Dollar</com:Name>
+                    <com:Name xml:lang="fr">Dollar des CaraÃ?Â¯bes orientales</com:Name>
+                </str:Code>
+                <str:Code id="XDR">
+                    <com:Name xml:lang="en">Special Drawing Right</com:Name>
+                    <com:Name xml:lang="fr">Special Drawing Right</com:Name>
+                </str:Code>
+                <str:Code id="XOF">
+                    <com:Name xml:lang="en">CFA Franc BCEAO</com:Name>
+                    <com:Name xml:lang="fr">CFA Franc BCEAO</com:Name>
+                </str:Code>
+                <str:Code id="XPD">
+                    <com:Name xml:lang="en">Palladium</com:Name>
+                    <com:Name xml:lang="fr">Palladium</com:Name>
+                </str:Code>
+                <str:Code id="XPF">
+                    <com:Name xml:lang="en">CFP Franc</com:Name>
+                    <com:Name xml:lang="fr">Franc pacifique</com:Name>
+                </str:Code>
+                <str:Code id="XPT">
+                    <com:Name xml:lang="en">Platinum</com:Name>
+                    <com:Name xml:lang="fr">Platine</com:Name>
+                </str:Code>
+                <str:Code id="XTS">
+                    <com:Name xml:lang="en">Code for testing purposes</com:Name>
+                    <com:Name xml:lang="fr">Code destinÃ?Â© aux essais</com:Name>
+                </str:Code>
+                <str:Code id="XXX">
+                    <com:Name xml:lang="en">No currency involved</com:Name>
+                    <com:Name xml:lang="fr">Pas de monnaie</com:Name>
+                </str:Code>
+                <str:Code id="YER">
+                    <com:Name xml:lang="en">Yemini Rial</com:Name>
+                    <com:Name xml:lang="fr">Rial yemenite</com:Name>
+                </str:Code>
+                <str:Code id="YUD">
+                    <com:Name xml:lang="en">Yugoslavian Dinar</com:Name>
+                    <com:Name xml:lang="fr">Dinar yougoslave</com:Name>
+                </str:Code>
+                <str:Code id="ZAR">
+                    <com:Name xml:lang="en">South African Rand</com:Name>
+                    <com:Name xml:lang="fr">Rand sud-africain</com:Name>
+                </str:Code>
+                <str:Code id="ZMK">
+                    <com:Name xml:lang="en">Zambian Kwacha</com:Name>
+                    <com:Name xml:lang="fr">Kwacha zambien</com:Name>
+                </str:Code>
+                <str:Code id="ZWD">
+                    <com:Name xml:lang="en">Zimbabwe Dollar</com:Name>
+                    <com:Name xml:lang="fr">Dollar zimbabwÃ?Â©e</com:Name>
+                </str:Code>
+                <str:Code id="USD1">
+                    <com:Name xml:lang="en">US dollars</com:Name>
+                    <com:Name xml:lang="fr">Dollars Ã?â?°-U</com:Name>
+                </str:Code>
+                <str:Code id="PCT">
+                    <com:Name xml:lang="en">%</com:Name>
+                    <com:Name xml:lang="fr">%</com:Name>
+                </str:Code>
+                <str:Code id="PCT_PT">
+                    <com:Name xml:lang="en">% points</com:Name>
+                    <com:Name xml:lang="fr">% points</com:Name>
+                </str:Code>
+                <str:Code id="2005100">
+                    <com:Name xml:lang="en">2005=100</com:Name>
+                    <com:Name xml:lang="fr">2005=100</com:Name>
+                </str:Code>
+                <str:Code id="HR">
+                    <com:Name xml:lang="en">Hours</com:Name>
+                    <com:Name xml:lang="fr">Heures</com:Name>
+                </str:Code>
+                <str:Code id="JOB">
+                    <com:Name xml:lang="en">Jobs</com:Name>
+                    <com:Name xml:lang="fr">Emplois</com:Name>
+                </str:Code>
+                <str:Code id="NATLBY1">
+                    <com:Name xml:lang="en">National base year = 100</com:Name>
+                    <com:Name xml:lang="fr">AnnÃ?Â©e base nationale = 100</com:Name>
+                </str:Code>
+                <str:Code id="NATLCUR1">
+                    <com:Name xml:lang="en">National currency</com:Name>
+                    <com:Name xml:lang="fr">Monnaie nationale</com:Name>
+                </str:Code>
+                <str:Code id="NATLRY1">
+                    <com:Name xml:lang="en">National reference year = 100</com:Name>
+                    <com:Name xml:lang="fr">AnnÃ?Â©e de rÃ?Â©fÃ?Â©rence nationale = 100</com:Name>
+                </str:Code>
+                <str:Code id="NATLBY">
+                    <com:Name xml:lang="en">NATL base year = 100</com:Name>
+                    <com:Name xml:lang="fr">AnnÃ?Â©e base NAT = 100</com:Name>
+                </str:Code>
+                <str:Code id="NATLCUR">
+                    <com:Name xml:lang="en">NATL currency</com:Name>
+                    <com:Name xml:lang="fr">Monnaie NAT</com:Name>
+                </str:Code>
+                <str:Code id="NATLRY">
+                    <com:Name xml:lang="en">NATL reference year = 100</com:Name>
+                    <com:Name xml:lang="fr">AnnÃ?Â©e rÃ?Â©fÃ?Â©rence NAT = 100</com:Name>
+                </str:Code>
+                <str:Code id="PCT1">
+                    <com:Name xml:lang="en">Percentage</com:Name>
+                    <com:Name xml:lang="fr">Pourcentage</com:Name>
+                </str:Code>
+                <str:Code id="PCT_PT1">
+                    <com:Name xml:lang="en">Percentage points</com:Name>
+                    <com:Name xml:lang="fr">Points pourcentage</com:Name>
+                </str:Code>
+                <str:Code id="PER">
+                    <com:Name xml:lang="en">Persons</com:Name>
+                    <com:Name xml:lang="fr">Personnes</com:Name>
+                </str:Code>
+                <str:Code id="TOEUSDPPP">
+                    <com:Name xml:lang="en">Tonnes of oil equivalent (toe) per thousand 2000 US dollars of GDP calculated using PPPs</com:Name>
+                    <com:Name xml:lang="fr">Tonnes d Ã?Â©quivalent pÃ?Â©trole (tep) par millier de dollars des EU 2000 de PIB calculÃ?Â© avec les PPA</com:Name>
+                </str:Code>
+                <str:Code id="OTH">
+                    <com:Name xml:lang="en">Other</com:Name>
+                    <com:Name xml:lang="fr">Autre</com:Name>
+                </str:Code>
+                <str:Code id="2011100">
+                    <com:Name xml:lang="en">2011=100</com:Name>
+                    <com:Name xml:lang="fr">2011=100</com:Name>
+                </str:Code>
+                <str:Code id="2010100">
+                    <com:Name xml:lang="en">2010=100</com:Name>
+                    <com:Name xml:lang="fr">2010=100</com:Name>
+                </str:Code>
+                <str:Code id="2009100">
+                    <com:Name xml:lang="en">2009=100</com:Name>
+                    <com:Name xml:lang="fr">2009=100</com:Name>
+                </str:Code>
+                <str:Code id="2007100">
+                    <com:Name xml:lang="en">2007=100</com:Name>
+                    <com:Name xml:lang="fr">2007=100</com:Name>
+                </str:Code>
+                <str:Code id="2008100">
+                    <com:Name xml:lang="en">2008=100</com:Name>
+                    <com:Name xml:lang="fr">2008=100</com:Name>
+                </str:Code>
+                <str:Code id="2004100">
+                    <com:Name xml:lang="en">2004=100</com:Name>
+                    <com:Name xml:lang="fr">2004=100</com:Name>
+                </str:Code>
+                <str:Code id="2003100">
+                    <com:Name xml:lang="en">2003=100</com:Name>
+                    <com:Name xml:lang="fr">2003=100</com:Name>
+                </str:Code>
+                <str:Code id="2000100">
+                    <com:Name xml:lang="en">2000=100</com:Name>
+                    <com:Name xml:lang="fr">2000=100</com:Name>
+                </str:Code>
+                <str:Code id="1998100">
+                    <com:Name xml:lang="en">1998=100</com:Name>
+                    <com:Name xml:lang="fr">1998=100</com:Name>
+                </str:Code>
+                <str:Code id="1995100">
+                    <com:Name xml:lang="en">1995=100</com:Name>
+                    <com:Name xml:lang="fr">1995=100</com:Name>
+                </str:Code>
+                <str:Code id="1993100">
+                    <com:Name xml:lang="en">1993=100</com:Name>
+                    <com:Name xml:lang="fr">1993=100</com:Name>
+                </str:Code>
+                <str:Code id="1991100">
+                    <com:Name xml:lang="en">1991=100</com:Name>
+                    <com:Name xml:lang="fr">1991=100</com:Name>
+                </str:Code>
+            </str:Codelist>
+            <str:Codelist agencyID="ABS" isExternalReference="false" isFinal="false" version="1.0" id="CL_ABS_ERP_COB_MAG_SEXRATIO_POWERCODE">
+                <com:Name xml:lang="en">ABS_ERP_COB_MAG_SEXRATIO_POWERCODE codelist</com:Name>
+                <str:Code id="HUN">
+                    <com:Name xml:lang="en">hundreds</com:Name>
+                    <com:Name xml:lang="fr">centaines</com:Name>
+                </str:Code>
+                <str:Code id="THO">
+                    <com:Name xml:lang="en">thousands</com:Name>
+                    <com:Name xml:lang="fr">milliers</com:Name>
+                </str:Code>
+                <str:Code id="MIL">
+                    <com:Name xml:lang="en">millions</com:Name>
+                    <com:Name xml:lang="fr">millions</com:Name>
+                </str:Code>
+                <str:Code id="BIL">
+                    <com:Name xml:lang="en">billions</com:Name>
+                    <com:Name xml:lang="fr">milliards</com:Name>
+                </str:Code>
+                <str:Code id="TRI">
+                    <com:Name xml:lang="en">trillions</com:Name>
+                    <com:Name xml:lang="fr">milliers de milliards</com:Name>
+                </str:Code>
+            </str:Codelist>
+            <str:Codelist agencyID="ABS" isExternalReference="false" isFinal="false" version="1.0" id="CL_ABS_ERP_COB_MAG_SEXRATIO_TIME_FORMAT">
+                <com:Name xml:lang="en">ABS_ERP_COB_MAG_SEXRATIO_TIME_FORMAT codelist</com:Name>
+                <str:Code id="P1Y">
+                    <com:Name xml:lang="en">Annual</com:Name>
+                    <com:Name xml:lang="fr">Annual</com:Name>
+                </str:Code>
+                <str:Code id="P1M">
+                    <com:Name xml:lang="en">Monthly</com:Name>
+                    <com:Name xml:lang="fr">Monthly</com:Name>
+                </str:Code>
+                <str:Code id="P3M">
+                    <com:Name xml:lang="en">Quarterly</com:Name>
+                    <com:Name xml:lang="fr">Quarterly</com:Name>
+                </str:Code>
+                <str:Code id="P6M">
+                    <com:Name xml:lang="en">Half-yearly</com:Name>
+                    <com:Name xml:lang="fr">Half-yearly</com:Name>
+                </str:Code>
+            </str:Codelist>
+        </str:Codelists>
+        <str:Concepts>
+            <str:ConceptScheme agencyID="ABS" version="1.0" id="STANDALONE_CONCEPT_SCHEME">
+                <com:Name xml:lang="en">Standalone Concept Scheme</com:Name>
+                <str:Concept id="MEASURE">
+                    <com:Name xml:lang="en">Measure</com:Name>
+                    <com:Name xml:lang="fr">Measure</com:Name>
+                </str:Concept>
+                <str:Concept id="SEX_ABS">
+                    <com:Name xml:lang="en">Sex</com:Name>
+                    <com:Name xml:lang="fr">Sexe</com:Name>
+                </str:Concept>
+                <str:Concept id="AGE">
+                    <com:Name xml:lang="en">Age</com:Name>
+                    <com:Name xml:lang="fr">Age</com:Name>
+                </str:Concept>
+                <str:Concept id="COB">
+                    <com:Name xml:lang="en">Country of Birth</com:Name>
+                    <com:Name xml:lang="fr">Country of Birth</com:Name>
+                </str:Concept>
+                <str:Concept id="FREQUENCY">
+                    <com:Name xml:lang="en">Frequency</com:Name>
+                    <com:Name xml:lang="fr">FrÃ©quence</com:Name>
+                </str:Concept>
+                <str:Concept id="TIME">
+                    <com:Name xml:lang="en">Time</com:Name>
+                    <com:Name xml:lang="fr">Temps</com:Name>
+                </str:Concept>
+                <str:Concept id="UNIT">
+                    <com:Name xml:lang="en">Unit</com:Name>
+                    <com:Name xml:lang="fr">Unit</com:Name>
+                </str:Concept>
+                <str:Concept id="POWERCODE">
+                    <com:Name xml:lang="en">Powercode</com:Name>
+                    <com:Name xml:lang="fr">Powercode</com:Name>
+                </str:Concept>
+                <str:Concept id="TIME_FORMAT">
+                    <com:Name xml:lang="en">Time format</com:Name>
+                    <com:Name xml:lang="fr">Time format</com:Name>
+                </str:Concept>
+                <str:Concept id="OBS_STATUS">
+                    <com:Name xml:lang="en">Observation Status</com:Name>
+                    <com:Name xml:lang="fr">Statut d'observation</com:Name>
+                </str:Concept>
+                <str:Concept id="REFERENCEPERIOD">
+                    <com:Name xml:lang="en">Unit multplier</com:Name>
+                    <com:Name xml:lang="fr">UnitÃ© multiplicateur</com:Name>
+                </str:Concept>
+            </str:ConceptScheme>
+            <str:ConceptScheme agencyID="OECD" version="1.0" id="STANDALONE_CONCEPT_SCHEME">
+                <com:Name xml:lang="en">Standalone Concept Scheme</com:Name>
+                <str:Concept id="OBS_VALUE">
+                    <com:Name xml:lang="en">Observation Value</com:Name>
+                    <com:Name xml:lang="fr">Valeur d'observation</com:Name>
+                </str:Concept>
+            </str:ConceptScheme>
+            <str:ConceptScheme agencyID="ABS" version="1.0" id="CL_ABS_ERP_COB_MAG_SEXRATIO_MEASURE">
+                <com:Name xml:lang="en">ABS_ERP_COB_MAG_SEXRATIO_MEASURE codelist</com:Name>
+                <str:Concept id="SEX_RATIO">
+                    <com:Name xml:lang="en">Sex ratio</com:Name>
+                    <com:Name xml:lang="fr">SEX_RATIO</com:Name>
+                    <str:CoreRepresentation>
+                        <str:TextFormat textType="Double"/>
+                    </str:CoreRepresentation>
+                </str:Concept>
+                <str:Concept id="MEDIAN_AGE">
+                    <com:Name xml:lang="en">Median Age</com:Name>
+                    <com:Name xml:lang="fr">MEDIAN_AGE</com:Name>
+                    <str:CoreRepresentation>
+                        <str:TextFormat textType="Double"/>
+                    </str:CoreRepresentation>
+                </str:Concept>
+            </str:ConceptScheme>
+        </str:Concepts>
+        <str:DataStructures>
+            <str:DataStructure agencyID="ABS" isExternalReference="false" isFinal="false" version="1.0" id="ABS_ERP_COB_MAG_SEXRATIO">
+                <com:Name xml:lang="en">Estimated Resident Population by Country of Birth, Median Age and Sex Ratio, 30 June 1992 to 2015</com:Name>
+                <com:Name xml:lang="fr">Estimated Resident Population, Country of Birth, Median Age, Sex Ratio, 30 June 1992 to 2015</com:Name>
+                <str:DataStructureComponents>
+                    <str:DimensionList>
+                        <str:Dimension id="SEX_ABS">
+                            <str:ConceptIdentity>
+                                <Ref agencyID="ABS" id="SEX_ABS" maintainableParentID="STANDALONE_CONCEPT_SCHEME" maintainableParentVersion="1.0"/>
+                                <URN>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ABS:STANDALONE_CONCEPT_SCHEME(1.0).SEX_ABS</URN>
+                            </str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>
+                                    <Ref agencyID="ABS" id="CL_ABS_ERP_COB_MAG_SEXRATIO_SEX_ABS" version="1.0"/>
+                                    <URN>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ABS:CL_ABS_ERP_COB_MAG_SEXRATIO_SEX_ABS(1.0)</URN>
+                                </str:Enumeration>
+                            </str:LocalRepresentation>
+                        </str:Dimension>
+                        <str:Dimension id="AGE">
+                            <str:ConceptIdentity>
+                                <Ref agencyID="ABS" id="AGE" maintainableParentID="STANDALONE_CONCEPT_SCHEME" maintainableParentVersion="1.0"/>
+                                <URN>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ABS:STANDALONE_CONCEPT_SCHEME(1.0).AGE</URN>
+                            </str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>
+                                    <Ref agencyID="ABS" id="CL_ABS_ERP_COB_MAG_SEXRATIO_AGE" version="1.0"/>
+                                    <URN>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ABS:CL_ABS_ERP_COB_MAG_SEXRATIO_AGE(1.0)</URN>
+                                </str:Enumeration>
+                            </str:LocalRepresentation>
+                        </str:Dimension>
+                        <str:Dimension id="COB">
+                            <str:ConceptIdentity>
+                                <Ref agencyID="ABS" id="COB" maintainableParentID="STANDALONE_CONCEPT_SCHEME" maintainableParentVersion="1.0"/>
+                                <URN>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ABS:STANDALONE_CONCEPT_SCHEME(1.0).COB</URN>
+                            </str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>
+                                    <Ref agencyID="ABS" id="CL_ABS_ERP_COB_MAG_SEXRATIO_COB" version="1.0"/>
+                                    <URN>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ABS:CL_ABS_ERP_COB_MAG_SEXRATIO_COB(1.0)</URN>
+                                </str:Enumeration>
+                            </str:LocalRepresentation>
+                        </str:Dimension>
+                        <str:Dimension id="FREQUENCY">
+                            <str:ConceptIdentity>
+                                <Ref agencyID="ABS" id="FREQUENCY" maintainableParentID="STANDALONE_CONCEPT_SCHEME" maintainableParentVersion="1.0"/>
+                                <URN>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ABS:STANDALONE_CONCEPT_SCHEME(1.0).FREQUENCY</URN>
+                            </str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>
+                                    <Ref agencyID="ABS" id="CL_ABS_ERP_COB_MAG_SEXRATIO_FREQUENCY" version="1.0"/>
+                                    <URN>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ABS:CL_ABS_ERP_COB_MAG_SEXRATIO_FREQUENCY(1.0)</URN>
+                                </str:Enumeration>
+                            </str:LocalRepresentation>
+                        </str:Dimension>
+                        <str:MeasureDimension id="MEASURE">
+                            <str:ConceptIdentity>
+                                <Ref agencyID="ABS" id="MEASURE" maintainableParentID="STANDALONE_CONCEPT_SCHEME" maintainableParentVersion="1.0"/>
+                                <URN>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ABS:STANDALONE_CONCEPT_SCHEME(1.0).MEASURE</URN>
+                            </str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>
+                                    <Ref agencyID="ABS" id="CL_ABS_ERP_COB_MAG_SEXRATIO_MEASURE" version="1.0"/>
+                                    <URN>urn:sdmx:org.sdmx.infomodel.conceptscheme.ConceptScheme=ABS:CL_ABS_ERP_COB_MAG_SEXRATIO_MEASURE(1.0)</URN>
+                                </str:Enumeration>
+                            </str:LocalRepresentation>
+                        </str:MeasureDimension>
+                        <str:TimeDimension id="TIME">
+                            <str:ConceptIdentity>
+                                <Ref agencyID="ABS" id="TIME" maintainableParentID="STANDALONE_CONCEPT_SCHEME" maintainableParentVersion="1.0"/>
+                                <URN>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ABS:STANDALONE_CONCEPT_SCHEME(1.0).TIME</URN>
+                            </str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:TextFormat textType="ObservationalTimePeriod"/>
+                            </str:LocalRepresentation>
+                        </str:TimeDimension>
+                    </str:DimensionList>
+                    <str:AttributeList>
+                        <str:Attribute id="OBS_STATUS" assignmentStatus="Conditional">
+                            <str:ConceptIdentity>
+                                <Ref agencyID="ABS" id="OBS_STATUS" maintainableParentID="STANDALONE_CONCEPT_SCHEME" maintainableParentVersion="1.0"/>
+                                <URN>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ABS:STANDALONE_CONCEPT_SCHEME(1.0).OBS_STATUS</URN>
+                            </str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>
+                                    <Ref agencyID="ABS" id="CL_ABS_ERP_COB_MAG_SEXRATIO_OBS_STATUS" version="1.0"/>
+                                    <URN>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ABS:CL_ABS_ERP_COB_MAG_SEXRATIO_OBS_STATUS(1.0)</URN>
+                                </str:Enumeration>
+                            </str:LocalRepresentation>
+                            <str:AttributeRelationship>
+                                <str:PrimaryMeasure>
+                                    <URN>urn:sdmx:org.sdmx.infomodel.datastructure.PrimaryMeasure=.OBS_VALUE</URN>
+                                    <Ref id="OBS_VALUE"/>
+                                </str:PrimaryMeasure>
+                            </str:AttributeRelationship>
+                        </str:Attribute>
+                        <str:Attribute id="UNIT" assignmentStatus="Conditional">
+                            <str:ConceptIdentity>
+                                <Ref agencyID="ABS" id="UNIT" maintainableParentID="STANDALONE_CONCEPT_SCHEME" maintainableParentVersion="1.0"/>
+                                <URN>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ABS:STANDALONE_CONCEPT_SCHEME(1.0).UNIT</URN>
+                            </str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>
+                                    <Ref agencyID="ABS" id="CL_ABS_ERP_COB_MAG_SEXRATIO_UNIT" version="1.0"/>
+                                    <URN>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ABS:CL_ABS_ERP_COB_MAG_SEXRATIO_UNIT(1.0)</URN>
+                                </str:Enumeration>
+                            </str:LocalRepresentation>
+                            <str:AttributeRelationship>
+                                <str:PrimaryMeasure>
+                                    <URN>urn:sdmx:org.sdmx.infomodel.datastructure.PrimaryMeasure=.OBS_VALUE</URN>
+                                    <Ref id="OBS_VALUE"/>
+                                </str:PrimaryMeasure>
+                            </str:AttributeRelationship>
+                        </str:Attribute>
+                        <str:Attribute id="POWERCODE" assignmentStatus="Conditional">
+                            <str:ConceptIdentity>
+                                <Ref agencyID="ABS" id="POWERCODE" maintainableParentID="STANDALONE_CONCEPT_SCHEME" maintainableParentVersion="1.0"/>
+                                <URN>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ABS:STANDALONE_CONCEPT_SCHEME(1.0).POWERCODE</URN>
+                            </str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>
+                                    <Ref agencyID="ABS" id="CL_ABS_ERP_COB_MAG_SEXRATIO_POWERCODE" version="1.0"/>
+                                    <URN>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ABS:CL_ABS_ERP_COB_MAG_SEXRATIO_POWERCODE(1.0)</URN>
+                                </str:Enumeration>
+                            </str:LocalRepresentation>
+                            <str:AttributeRelationship>
+                                <str:PrimaryMeasure>
+                                    <URN>urn:sdmx:org.sdmx.infomodel.datastructure.PrimaryMeasure=.OBS_VALUE</URN>
+                                    <Ref id="OBS_VALUE"/>
+                                </str:PrimaryMeasure>
+                            </str:AttributeRelationship>
+                        </str:Attribute>
+                        <str:Attribute id="REFERENCEPERIOD" assignmentStatus="Conditional">
+                            <str:ConceptIdentity>
+                                <Ref agencyID="ABS" id="REFERENCEPERIOD" maintainableParentID="STANDALONE_CONCEPT_SCHEME" maintainableParentVersion="1.0"/>
+                                <URN>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ABS:STANDALONE_CONCEPT_SCHEME(1.0).REFERENCEPERIOD</URN>
+                            </str:ConceptIdentity>
+                            <str:AttributeRelationship>
+                                <str:PrimaryMeasure>
+                                    <URN>urn:sdmx:org.sdmx.infomodel.datastructure.PrimaryMeasure=.OBS_VALUE</URN>
+                                    <Ref id="OBS_VALUE"/>
+                                </str:PrimaryMeasure>
+                            </str:AttributeRelationship>
+                        </str:Attribute>
+                        <str:Attribute id="TIME_FORMAT" assignmentStatus="Conditional">
+                            <str:ConceptIdentity>
+                                <Ref agencyID="ABS" id="TIME_FORMAT" maintainableParentID="STANDALONE_CONCEPT_SCHEME" maintainableParentVersion="1.0"/>
+                                <URN>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ABS:STANDALONE_CONCEPT_SCHEME(1.0).TIME_FORMAT</URN>
+                            </str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>
+                                    <Ref agencyID="ABS" id="CL_ABS_ERP_COB_MAG_SEXRATIO_TIME_FORMAT" version="1.0"/>
+                                    <URN>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ABS:CL_ABS_ERP_COB_MAG_SEXRATIO_TIME_FORMAT(1.0)</URN>
+                                </str:Enumeration>
+                            </str:LocalRepresentation>
+                            <str:AttributeRelationship>
+                                <str:PrimaryMeasure>
+                                    <URN>urn:sdmx:org.sdmx.infomodel.datastructure.PrimaryMeasure=.OBS_VALUE</URN>
+                                    <Ref id="OBS_VALUE"/>
+                                </str:PrimaryMeasure>
+                            </str:AttributeRelationship>
+                        </str:Attribute>
+                    </str:AttributeList>
+                    <str:MeasureList>
+                        <str:PrimaryMeasure id="OBS_VALUE">
+                            <str:ConceptIdentity>
+                                <Ref agencyID="OECD" id="OBS_VALUE" maintainableParentID="STANDALONE_CONCEPT_SCHEME" maintainableParentVersion="1.0"/>
+                                <URN>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=OECD:STANDALONE_CONCEPT_SCHEME(1.0).OBS_VALUE</URN>
+                            </str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:TextFormat textType="Double"/>
+                            </str:LocalRepresentation>
+                        </str:PrimaryMeasure>
+                    </str:MeasureList>
+                </str:DataStructureComponents>
+            </str:DataStructure>
+        </str:DataStructures>
+    </mes:Structures>
+</mes:Structure>

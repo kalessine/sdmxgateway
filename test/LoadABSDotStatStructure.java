@@ -33,12 +33,12 @@ import sdmx.version.twopointone.writer.Sdmx21StructureWriter;
  *
  * @author James
  */
-public class LoadABSDotStat {
+public class LoadABSDotStatStructure {
 
     @BeforeClass
     public static void setUpClass() {
         System.out.println("Start Test Database Registry");
-        File f = new File(".\\test\\resources\\");
+        File f = new File(".\\test\\structure\\");
         if (!f.exists()) {
             f.mkdirs();
             Sdmx20SOAPQueryable q = new Sdmx20SOAPQueryable("ABS", "http://stat.abs.gov.au/sdmxws/sdmx.asmx");
@@ -60,14 +60,14 @@ public class LoadABSDotStat {
                         fos = new FileOutputStream(new File(f, s + ".xml"));
                         Sdmx21StructureWriter.write(st, fos);
                     } catch (FileNotFoundException ex) {
-                        Logger.getLogger(LoadABSDotStat.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(LoadABSDotStatStructure.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (IOException ex) {
-                        Logger.getLogger(LoadABSDotStat.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(LoadABSDotStatStructure.class.getName()).log(Level.SEVERE, null, ex);
                     } finally {
                         try {
                             fos.close();
                         } catch (IOException ex) {
-                            Logger.getLogger(LoadABSDotStat.class.getName()).log(Level.SEVERE, null, ex);
+                            Logger.getLogger(LoadABSDotStatStructure.class.getName()).log(Level.SEVERE, null, ex);
                         }
                     }
 
@@ -84,7 +84,7 @@ public class LoadABSDotStat {
 
     @Test
     public void testLoadStructure() throws IOException, ParseException {
-        File f = new File(".\\test\\resources\\");
+        File f = new File(".\\test\\structure\\");
         DatabaseRegistry dr = new DatabaseRegistry();
         loadFile(dr, f);
     }

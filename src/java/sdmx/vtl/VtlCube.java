@@ -18,14 +18,16 @@ import sdmx.structure.datastructure.DataStructureType;
  *
  * @author James
  */
-public interface Cube {
+public interface VtlCube {
     public DataStructureType getStructure();
-    public Cube query(QueryKey query);
+    public VtlCube query(QueryKey query);
     public FlatObs find(FullKey key);
     public List<String> getStructureValues(String col);
     public List<CodeType> getStructureCodes(String col);
     public List<String> getExistingValues(String col);
     public List<CodeType> getExistingCodes(String col);
+    public int getColumnSize();
+    public int getColumnId(int i);
     // # observations
     public int size(); 
 }
