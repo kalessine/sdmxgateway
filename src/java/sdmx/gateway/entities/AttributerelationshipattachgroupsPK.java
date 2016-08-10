@@ -17,7 +17,6 @@ import javax.validation.constraints.NotNull;
  */
 @Embeddable
 public class AttributerelationshipattachgroupsPK implements Serializable {
-
     @Basic(optional = false)
     @NotNull
     @Column(name = "id", nullable = false)

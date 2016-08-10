@@ -1,10 +1,12 @@
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStreamWriter;
 import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
@@ -20,6 +22,8 @@ import sdmx.message.DataMessage;
 import sdmx.message.StructureType;
 import sdmx.net.LocalRegistry;
 import sdmx.net.service.sdw.Sdmx20SOAPQueryable;
+import sdmx.structure.DataflowsType;
+import sdmx.structure.StructuresType;
 import sdmx.structure.base.NameableType;
 import sdmx.structure.dataflow.DataflowType;
 import sdmx.version.twopointone.writer.Sdmx21StructureWriter;
@@ -44,6 +48,31 @@ public class LoadABSDotStatStructure {
             Sdmx20SOAPQueryable q = new Sdmx20SOAPQueryable("ABS", "http://stat.abs.gov.au/sdmxws/sdmx.asmx");
             q.setSoapNamespace("http://stats.oecd.org/OECDStatWS/SDMX/");
             List<DataflowType> dfs = q.listDataflows();
+            StructureType structure = new StructureType();
+            StructuresType structures = new StructuresType();
+            DataflowsType dfsList = new DataflowsType();
+            dfsList.setDataflows(dfs);
+            structure.setStructures(structures);
+            structures.setDataflows(dfsList);
+            structure.setHeader(SdmxIO.getBaseHeader());
+            FileOutputStream fos2 = null;
+            BufferedWriter bw = null;
+            try {
+                File dfFile = new File(f,"ZZZdataflows.xml");
+                fos2 = new FileOutputStream(dfFile);
+                Sdmx21StructureWriter.write(structure, fos2);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(LoadABSDotStatStructure.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(LoadABSDotStatStructure.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                try {
+                    fos2.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(LoadABSDotStatStructure.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
             for (int i = 0; i < dfs.size(); i++) {
                 System.out.println("Loading: " + NameableType.toString(dfs.get(i)));
                 q.find(dfs.get(i).getStructure());

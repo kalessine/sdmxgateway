@@ -34,7 +34,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Datastructurecomponent.findByType", query = "SELECT d FROM Datastructurecomponent d WHERE d.type = :type"),
     @NamedQuery(name = "Datastructurecomponent.findByAssignmentStatus", query = "SELECT d FROM Datastructurecomponent d WHERE d.assignmentStatus = :assignmentStatus")})
 public class Datastructurecomponent implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected DatastructurecomponentPK datastructurecomponentPK;

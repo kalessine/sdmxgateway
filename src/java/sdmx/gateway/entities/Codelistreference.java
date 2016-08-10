@@ -34,7 +34,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Codelistreference.findAll", query = "SELECT c FROM Codelistreference c"),
     @NamedQuery(name = "Codelistreference.findById", query = "SELECT c FROM Codelistreference c WHERE c.id = :id")})
 public class Codelistreference implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

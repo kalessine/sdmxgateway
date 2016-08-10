@@ -32,7 +32,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Datastructure.findById", query = "SELECT d FROM Datastructure d WHERE d.datastructurePK.id = :id"),
     @NamedQuery(name = "Datastructure.findByVersion", query = "SELECT d FROM Datastructure d WHERE d.datastructurePK.version = :version")})
 public class Datastructure implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected DatastructurePK datastructurePK;

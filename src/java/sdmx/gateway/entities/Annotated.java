@@ -31,7 +31,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Annotated.findAll", query = "SELECT a FROM Annotated a"),
     @NamedQuery(name = "Annotated.findById", query = "SELECT a FROM Annotated a WHERE a.id = :id")})
 public class Annotated implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)

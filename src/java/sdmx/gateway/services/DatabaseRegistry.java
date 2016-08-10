@@ -39,6 +39,7 @@ import sdmx.gateway.util.CodelistUtil;
 import sdmx.gateway.util.ConceptSchemeUtil;
 import sdmx.gateway.util.ConceptUtil;
 import sdmx.gateway.util.DataStructureUtil;
+import sdmx.gateway.util.DataflowUtil;
 import sdmx.message.StructureType;
 import sdmx.structure.base.ItemSchemeType;
 import sdmx.structure.base.ItemType;
@@ -83,13 +84,21 @@ public class DatabaseRegistry implements Registry {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+        try {
+            loadDataflows(struct);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     public void loadDataflows(StructureType struct) {
         if( struct.getStructures().getDataflows()==null ) {return; }
         for(int i=0;i<struct.getStructures().getDataflows().size();i++) {
             DataflowType df = struct.getStructures().getDataflows().getDataflow(i);
-            
+            update.getTransaction().begin();
+            Dataflow dbdf = DataflowUtil.createDatabaseDataflow(update, df);
+            update.merge(dbdf);
+            update.getTransaction().commit();
         }
     }    
     public void loadCodelists(StructureType struct) {
@@ -267,7 +276,9 @@ public class DatabaseRegistry implements Registry {
 
     @Override
     public DataflowType find(DataflowReference ref) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Dataflow result  = DataflowUtil.findDataflow(query, ref.getAgencyId().toString(),ref.getMaintainableParentId().toString(),ref.getVersion().toString());
+        DataflowType sdmxDataflow = DataflowUtil.toSDMXDataflow(result);
+        return sdmxDataflow;
     }
 
     @Override
@@ -319,7 +330,12 @@ public class DatabaseRegistry implements Registry {
     }
     @Override
     public List<DataflowType> search(DataflowReference ref) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Dataflow> list = DataflowUtil.searchDataflow(query, ref.getAgencyId().toString(),ref.getMaintainableParentId().toString(),ref.getVersion().toString());
+        List<DataflowType> result = new ArrayList<DataflowType>();
+        for(Dataflow df:list) {
+            result.add(DataflowUtil.toSDMXDataflow(df));
+        }
+        return result;
     }
 
     @Override

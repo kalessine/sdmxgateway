@@ -37,7 +37,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Attributerelationshiptype.findByAttachGroups", query = "SELECT a FROM Attributerelationshiptype a WHERE a.attachGroups = :attachGroups"),
     @NamedQuery(name = "Attributerelationshiptype.findByPrimaryMeasureReference", query = "SELECT a FROM Attributerelationshiptype a WHERE a.primaryMeasureReference = :primaryMeasureReference")})
 public class Attributerelationshiptype implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

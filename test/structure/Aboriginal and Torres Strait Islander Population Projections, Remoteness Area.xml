@@ -3,7 +3,7 @@
     <mes:Header>
         <mes:ID>none</mes:ID>
         <mes:Test>false</mes:Test>
-        <mes:Prepared>2016-07-13T22:02:35.000+08:00</mes:Prepared>
+        <mes:Prepared>2016-08-11T01:48:36.000+08:00</mes:Prepared>
         <mes:Sender id="ABS">
             <com:Name xml:lang="en">Australian Bureau of Statistics</com:Name>
         </mes:Sender>
@@ -101,64 +101,64 @@
                     <com:Name xml:lang="fr">TT</com:Name>
                 </str:Code>
                 <str:Code id="A04">
-                    <com:Name xml:lang="en">0 to 4</com:Name>
-                    <com:Name xml:lang="fr">A04</com:Name>
+                    <com:Name xml:lang="en">0 - 4</com:Name>
+                    <com:Name xml:lang="fr">0 - 4</com:Name>
                 </str:Code>
                 <str:Code id="A59">
-                    <com:Name xml:lang="en">5 to 9</com:Name>
-                    <com:Name xml:lang="fr">A59</com:Name>
+                    <com:Name xml:lang="en">5 - 9</com:Name>
+                    <com:Name xml:lang="fr">5 - 9</com:Name>
                 </str:Code>
                 <str:Code id="A10">
-                    <com:Name xml:lang="en">10 to 14</com:Name>
-                    <com:Name xml:lang="fr">A10</com:Name>
+                    <com:Name xml:lang="en">10 - 14</com:Name>
+                    <com:Name xml:lang="fr">10 - 14</com:Name>
                 </str:Code>
                 <str:Code id="A15">
-                    <com:Name xml:lang="en">15 to 19</com:Name>
-                    <com:Name xml:lang="fr">A15</com:Name>
+                    <com:Name xml:lang="en">15 - 19</com:Name>
+                    <com:Name xml:lang="fr">15 - 19</com:Name>
                 </str:Code>
                 <str:Code id="A20">
-                    <com:Name xml:lang="en">20 to 24</com:Name>
-                    <com:Name xml:lang="fr">A20</com:Name>
+                    <com:Name xml:lang="en">20 - 24</com:Name>
+                    <com:Name xml:lang="fr">20 - 24</com:Name>
                 </str:Code>
                 <str:Code id="A25">
-                    <com:Name xml:lang="en">25 to 29</com:Name>
-                    <com:Name xml:lang="fr">A25</com:Name>
+                    <com:Name xml:lang="en">25 - 29</com:Name>
+                    <com:Name xml:lang="fr">25 - 29</com:Name>
                 </str:Code>
                 <str:Code id="A30">
-                    <com:Name xml:lang="en">30 to 34</com:Name>
-                    <com:Name xml:lang="fr">A30</com:Name>
+                    <com:Name xml:lang="en">30 - 34</com:Name>
+                    <com:Name xml:lang="fr">30 - 34</com:Name>
                 </str:Code>
                 <str:Code id="A35">
-                    <com:Name xml:lang="en">35 to 39</com:Name>
-                    <com:Name xml:lang="fr">A35</com:Name>
+                    <com:Name xml:lang="en">35 - 39</com:Name>
+                    <com:Name xml:lang="fr">35 - 39</com:Name>
                 </str:Code>
                 <str:Code id="A40">
-                    <com:Name xml:lang="en">40 to 44</com:Name>
-                    <com:Name xml:lang="fr">A40</com:Name>
+                    <com:Name xml:lang="en">40 - 44</com:Name>
+                    <com:Name xml:lang="fr">40 - 44</com:Name>
                 </str:Code>
                 <str:Code id="A45">
-                    <com:Name xml:lang="en">45 to 49</com:Name>
-                    <com:Name xml:lang="fr">A45</com:Name>
+                    <com:Name xml:lang="en">45 - 49</com:Name>
+                    <com:Name xml:lang="fr">45 - 49</com:Name>
                 </str:Code>
                 <str:Code id="A50">
-                    <com:Name xml:lang="en">50 to 54</com:Name>
-                    <com:Name xml:lang="fr">A50</com:Name>
+                    <com:Name xml:lang="en">50 - 54</com:Name>
+                    <com:Name xml:lang="fr">50 - 54</com:Name>
                 </str:Code>
                 <str:Code id="A55">
-                    <com:Name xml:lang="en">55 to 59</com:Name>
-                    <com:Name xml:lang="fr">A55</com:Name>
+                    <com:Name xml:lang="en">55 - 59</com:Name>
+                    <com:Name xml:lang="fr">55 - 59</com:Name>
                 </str:Code>
                 <str:Code id="A60">
-                    <com:Name xml:lang="en">60 to 64</com:Name>
-                    <com:Name xml:lang="fr">A60</com:Name>
+                    <com:Name xml:lang="en">60 - 64</com:Name>
+                    <com:Name xml:lang="fr">60 - 64</com:Name>
                 </str:Code>
                 <str:Code id="A65">
-                    <com:Name xml:lang="en">65 to 69</com:Name>
-                    <com:Name xml:lang="fr">A65</com:Name>
+                    <com:Name xml:lang="en">65 - 69</com:Name>
+                    <com:Name xml:lang="fr">65 - 69</com:Name>
                 </str:Code>
                 <str:Code id="A70">
-                    <com:Name xml:lang="en">70 to 74</com:Name>
-                    <com:Name xml:lang="fr">A70</com:Name>
+                    <com:Name xml:lang="en">70 - 74</com:Name>
+                    <com:Name xml:lang="fr">70 - 74</com:Name>
                 </str:Code>
                 <str:Code id="75OVER">
                     <com:Name xml:lang="en">75 and over</com:Name>

@@ -77,7 +77,7 @@ public class RepositoryService {
      * @return String that will be returned as a text/plain response.
      */
     @GET
-    @Path("{provider}/data/{flowRef}/{query}/{providerRef}")
+    @Path("/data/{flowRef}/{query}/{providerRef}")
     @Produces({"application/vnd.sdmx.data+json;version=1.0.0-wd"})
     public Response getJSONData(@DefaultValue("2000-01-01") @QueryParam("startPeriod") String startPeriod,
             @DefaultValue("2010-01-01") @QueryParam("endPeriod") String endPeriod,
@@ -174,7 +174,7 @@ public class RepositoryService {
      * @return String that will be returned as a text/plain response.
      */
     @GET
-    @Path("{provider}/data/{flowRef}/{query}/{providerRef}")
+    @Path("/data/{flowRef}/{query}/{providerRef}")
     @Produces({"application/vnd.sdmx.genericdata+xml;version=2.1"})
     public Response getGenericData(@DefaultValue("2000-01-01") @QueryParam("startPeriod") String startPeriod,
             @DefaultValue("2010-01-01") @QueryParam("endPeriod") String endPeriod,
@@ -187,8 +187,8 @@ public class RepositoryService {
             @PathParam("flowRef") String flowRef,
             @PathParam("query") String queryString,
             @PathParam("providerRef") String providerRef,
-            @PathParam("provider") Integer provider,@Context HttpServletRequest request) {
-        Queryable quer = getProviderQueryable(provider);
+            @Context HttpServletRequest request) {
+        Queryable quer = SdmxGatewayApplication.getApplication().getQueryable();
         Registry reg = quer.getRegistry();
         Repository rep = quer.getRepository();
         ParseParams params = new ParseParams();
@@ -271,7 +271,7 @@ public class RepositoryService {
      * @return String that will be returned as a text/plain response.
      */
     @GET
-    @Path("{provider}/data/{flowRef}/{query}/{providerRef}")
+    @Path("/data/{flowRef}/{query}/{providerRef}")
     @Produces({"application/vnd.sdmx.structurespecificdata+xml;version=2.1"})
     public Response getSructSpecData(@DefaultValue("2000-01-01") @QueryParam("startPeriod") String startPeriod,
             @DefaultValue("2010-01-01") @QueryParam("endPeriod") String endPeriod,
@@ -284,8 +284,8 @@ public class RepositoryService {
             @PathParam("flowRef") String flowRef,
             @PathParam("query") String queryString,
             @PathParam("providerRef") String providerRef,
-            @PathParam("provider") Integer provider,@Context HttpServletRequest request) {
-        Queryable quer = getProviderQueryable(provider);
+            @Context HttpServletRequest request) {
+        Queryable quer = SdmxGatewayApplication.getApplication().getQueryable();
         Registry reg = quer.getRegistry();
         Repository rep = quer.getRepository();
         ParseParams params = new ParseParams();
@@ -368,7 +368,7 @@ public class RepositoryService {
      * @return String that will be returned as a text/plain response.
      */
     @GET
-    @Path("{provider}/data/{flowRef}/{query}/{providerRef}")
+    @Path("/data/{flowRef}/{query}/{providerRef}")
     @Produces({"application/json"})
     public Response getJsonStat(@DefaultValue("2000-01-01") @QueryParam("startPeriod") String startPeriod,
             @DefaultValue("2010-01-01") @QueryParam("endPeriod") String endPeriod,
@@ -381,9 +381,9 @@ public class RepositoryService {
             @PathParam("flowRef") String flowRef,
             @PathParam("query") String queryString,
             @PathParam("providerRef") String providerRef,
-            @PathParam("provider") Integer provider,@Context HttpServletRequest request) {
+            @Context HttpServletRequest request) {
         try {
-            Queryable quer = getProviderQueryable(provider);
+            Queryable quer = SdmxGatewayApplication.getApplication().getQueryable();
             Registry reg = quer.getRegistry();
             Repository rep = quer.getRepository();
             ParseParams params = new ParseParams();

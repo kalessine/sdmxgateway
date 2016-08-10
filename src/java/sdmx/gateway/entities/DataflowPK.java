@@ -18,7 +18,6 @@ import javax.validation.constraints.Size;
  */
 @Embeddable
 public class DataflowPK implements Serializable {
-
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 100)

@@ -34,7 +34,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Conceptschemereference.findAll", query = "SELECT c FROM Conceptschemereference c"),
     @NamedQuery(name = "Conceptschemereference.findById", query = "SELECT c FROM Conceptschemereference c WHERE c.id = :id")})
 public class Conceptschemereference implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

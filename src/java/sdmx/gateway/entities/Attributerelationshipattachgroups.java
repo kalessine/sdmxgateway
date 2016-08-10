@@ -30,7 +30,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Attributerelationshipattachgroups.findByIndex", query = "SELECT a FROM Attributerelationshipattachgroups a WHERE a.attributerelationshipattachgroupsPK.index = :index"),
     @NamedQuery(name = "Attributerelationshipattachgroups.findByAttachGroup", query = "SELECT a FROM Attributerelationshipattachgroups a WHERE a.attachGroup = :attachGroup")})
 public class Attributerelationshipattachgroups implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected AttributerelationshipattachgroupsPK attributerelationshipattachgroupsPK;

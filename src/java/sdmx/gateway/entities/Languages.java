@@ -33,7 +33,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Languages.findByLang", query = "SELECT l FROM Languages l WHERE l.lang = :lang"),
     @NamedQuery(name = "Languages.findByName", query = "SELECT l FROM Languages l WHERE l.name = :name")})
 public class Languages implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)

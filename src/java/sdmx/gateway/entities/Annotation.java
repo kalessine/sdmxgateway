@@ -37,7 +37,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Annotation.findByType", query = "SELECT a FROM Annotation a WHERE a.type = :type"),
     @NamedQuery(name = "Annotation.findByAnnotationId", query = "SELECT a FROM Annotation a WHERE a.annotationId = :annotationId")})
 public class Annotation implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected AnnotationPK annotationPK;

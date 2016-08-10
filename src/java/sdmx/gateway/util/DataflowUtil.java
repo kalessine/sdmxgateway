@@ -89,6 +89,7 @@ public class DataflowUtil {
     }
 
     public static DataflowType toSDMXDataflow(sdmx.gateway.entities.Dataflow df) {
+        if( df == null ) return null;
         DataflowType df1 = new DataflowType();
         df1.setNames(NameUtil.toSDMXName(df.getName()));
         df1.setAgencyID(new NestedNCNameID(df.getDataflowPK().getAgencyID()));

@@ -22,7 +22,7 @@ import sdmx.data.DefaultParseDataCallbackHandler;
 import sdmx.data.FlatParseDataCallbackHandler;
 import sdmx.data.flat.FlatDataSet;
 import sdmx.exception.ParseException;
-import sdmx.gateway.data.DatabaseData;
+import sdmx.gateway.data.DatabaseRepository;
 import sdmx.message.DataMessage;
 import sdmx.message.DataQueryMessage;
 import sdmx.net.ServiceList;
@@ -48,7 +48,7 @@ import sdmx.version.common.ParseParams;
  */
 public class LoadABSDotStatData {
 
-    public static DatabaseData dd = new DatabaseData();
+    public static DatabaseRepository dd = new DatabaseRepository();
      
     @BeforeClass
     public static void before() {
