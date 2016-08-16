@@ -11,6 +11,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -44,19 +45,19 @@ public class Name implements Serializable {
     @Size(max = 65535)
     @Column(name = "en", length = 65535)
     private String en;
-    @OneToMany(mappedBy = "name")
+    @OneToMany(mappedBy = "name", fetch = FetchType.LAZY)
     private List<Code> codeList;
-    @OneToMany(mappedBy = "name")
+    @OneToMany(mappedBy = "name", fetch = FetchType.LAZY)
     private List<Codelist> codelistList;
-    @OneToMany(mappedBy = "name")
+    @OneToMany(mappedBy = "name", fetch = FetchType.LAZY)
     private List<Concept> conceptList;
-    @OneToMany(mappedBy = "name")
+    @OneToMany(mappedBy = "name", fetch = FetchType.LAZY)
     private List<Dataflow> dataflowList;
-    @OneToMany(mappedBy = "name")
+    @OneToMany(mappedBy = "name", fetch = FetchType.LAZY)
     private List<Conceptscheme> conceptschemeList;
-    @OneToMany(mappedBy = "name")
+    @OneToMany(mappedBy = "name", fetch = FetchType.LAZY)
     private List<Datastructure> datastructureList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "name")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "name", fetch = FetchType.LAZY)
     private List<Nametext> nametextList;
 
     public Name() {

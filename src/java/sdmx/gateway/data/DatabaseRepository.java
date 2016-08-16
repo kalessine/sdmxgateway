@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import org.apache.commons.dbcp2.ConnectionFactory;
 import org.apache.commons.dbcp2.DriverManagerConnectionFactory;
@@ -19,8 +20,11 @@ import org.apache.commons.dbcp2.PoolableConnectionFactory;
 import org.apache.commons.dbcp2.PoolingDataSource;
 import org.apache.commons.pool2.impl.GenericObjectPool;
 import sdmx.Repository;
+import sdmx.SdmxIO;
 import sdmx.data.ColumnMapper;
 import sdmx.data.DataSet;
+import sdmx.data.DataSetWriter;
+import sdmx.data.DefaultParseDataCallbackHandler;
 import sdmx.data.flat.FlatDataSet;
 import sdmx.data.flat.FlatDataSetWriter;
 import sdmx.data.flat.FlatObs;
@@ -36,6 +40,7 @@ import sdmx.structure.datastructure.DimensionType;
 import sdmx.structure.datastructure.MeasureDimensionType;
 import sdmx.structure.datastructure.PrimaryMeasure;
 import sdmx.structure.datastructure.TimeDimensionType;
+import sdmx.version.common.ParseDataCallbackHandler;
 import sdmx.version.common.ParseParams;
 
 /**
@@ -69,7 +74,7 @@ public class DatabaseRepository {
         for (int i = 0; i < struct.getDataStructureComponents().getDimensionList().size(); i++) {
             DimensionType dim = struct.getDataStructureComponents().getDimensionList().getDimension(i);
             create += "`" + dim.getId().toString() + "` VARCHAR(50)";
-            if (struct.getDataStructureComponents().getDimensionList().size()-1 > i) {
+            if (struct.getDataStructureComponents().getDimensionList().size() - 1 > i) {
                 create += ",";
             }
         }
@@ -88,7 +93,7 @@ public class DatabaseRepository {
             AttributeType att = struct.getDataStructureComponents().getAttributeList().getAttribute(i);
             create += "`" + att.getId().toString() + "` VARCHAR(50)";
         }
-        create+=",";
+        create += ",";
         PrimaryMeasure pm = struct.getDataStructureComponents().getMeasureList().getPrimaryMeasure();
         create += "`" + pm.getId().toString() + "` VARCHAR(50)";
         create += ");";
@@ -104,36 +109,64 @@ public class DatabaseRepository {
 
     }
 
-    public FlatDataSet queryDataflow(QueryKey query) throws SQLException {
+    public DataMessage queryDataflow(ParseParams params, QueryKey query) throws SQLException {
         List<FlatObs> result = new ArrayList<FlatObs>();
         Connection con = pool.getConnection();
         String select = "select * from `flow_" + query.getDataflowId() + "`";
-        if (query.size() > 0) {
+        int count = 0;
+        if (query.getQuerySize() > 0) {
             select += " where ";
-            for (int i = 0; i < query.size(); i++) {
-                select += query.getQueryDimension(i) + " in ";
+            for (int i = 0; i < query.size()&&query.getQueryDimension(i).size()>0; i++) {
+                count+=query.size();
+                select += query.getQueryDimension(i).getConcept() + " in ";
                 select += "(";
                 for (int j = 0; j < query.getQueryDimension(i).size(); j++) {
                     select += "'" + query.getQueryDimension(i).getValues().get(j) + "'";
+                    if (j < query.getQueryDimension(i).size() - 1) {
+                        select += ",";
+                    }
                 }
-                if (i < query.size()) {
+                select += ")";
+                if (count<query.getQuerySize()) {
                     select += " and ";
                 }
             }
         }
         select += ";";
+        System.out.println("Query:" + select);
         PreparedStatement pst = con.prepareStatement(select);
         ResultSet rst = pst.executeQuery();
-        FlatDataSetWriter w = new FlatDataSetWriter();
+        ParseDataCallbackHandler handler = params.getCallbackHandler();
+        if (handler == null) {
+            handler = new DefaultParseDataCallbackHandler();
+        }
+        handler.headerParsed(SdmxIO.getBaseHeader());
+        DataSetWriter w = handler.getDataSetWriter();
+        w.newDataSet();
         while (rst.next()) {
-            for (int i = 0; i < rst.getMetaData().getColumnCount(); i++) {
-                w.newObservation();
-                w.writeObservationComponent(rst.getMetaData().getColumnName(i), rst.getString(i));
-                w.finishObservation();
+            w.newObservation();
+            for (int i = 1; i < rst.getMetaData().getColumnCount(); i++) {
+                String n = rst.getMetaData().getColumnName(i);
+                String s = rst.getString(i);
+                //System.out.println("n="+n+":s="+s);
+                if (s != null && !"".equals(s)&&!"".equals(n)&&n!=null) {
+                    w.writeObservationComponent(rst.getMetaData().getColumnName(i), s);
+                }
             }
+            w.finishObservation();
         }
         returnConnection(con);
-        return w.finishDataSet();
+        // streaming output writers return null at w.finishDataSet();
+        DataSet ds = w.finishDataSet();
+        DataMessage dm = new DataMessage();
+        ArrayList list = new ArrayList<DataSet>();
+        list.add(ds);
+        dm.setDataSets(list);
+        dm.setHeader(SdmxIO.getBaseHeader());
+        handler.footerParsed(null);
+        System.out.println("Handler="+handler.toString());
+        handler.documentFinished();
+        return dm;
     }
 
     public void insertDataflow(DataSet ds, String flow) throws SQLException {
@@ -145,18 +178,18 @@ public class DatabaseRepository {
         for (int i = 0; i < mapper.size(); i++) {
             values += "`" + mapper.getColumnName(i) + "`";
             params += "?";
-            if (mapper.size()-1 > i) {
+            if (mapper.size() - 1 > i) {
                 values += ",";
                 params += ",";
             }
         }
         values += ")";
         params += ")";
-        insert += " " + values + " values " + params+";";
+        insert += " " + values + " values " + params + ";";
         PreparedStatement pst = con.prepareStatement(insert);
         for (int i = 0; i < ds.size(); i++) {
-            for(int j=1;j<mapper.size()+1;j++) {
-                pst.setString(j, ds.getFlatObs(i).getValue(j-1));
+            for (int j = 0; j < mapper.size(); j++) {
+                pst.setString(j+1, ds.getFlatObs(i).getValue(j));
             }
             pst.addBatch();
         }

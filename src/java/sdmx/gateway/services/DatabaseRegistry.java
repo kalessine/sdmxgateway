@@ -26,8 +26,11 @@ import sdmx.commonreferences.ConceptReference;
 import sdmx.commonreferences.ConceptSchemeReference;
 import sdmx.commonreferences.DataStructureReference;
 import sdmx.commonreferences.DataflowReference;
+import sdmx.commonreferences.IDType;
 import sdmx.commonreferences.ItemReference;
 import sdmx.commonreferences.ItemSchemeReferenceBase;
+import sdmx.commonreferences.NestedNCNameID;
+import sdmx.commonreferences.Version;
 import sdmx.exception.ParseException;
 import sdmx.gateway.SdmxGatewayApplication;
 import sdmx.gateway.entities.Codelist;
@@ -266,12 +269,13 @@ public class DatabaseRegistry implements Registry {
 
     @Override
     public List<DataflowType> listDataflows() {
-        return Collections.EMPTY_LIST;
+        List<DataflowType> dataflows = search(DataflowReference.create(new NestedNCNameID("all"),new IDType("all"), new Version("*")));
+        return dataflows;
     }
 
     @Override
     public DataStructureType find(DataStructureReference ref) {
-        return null;
+        return DataStructureUtil.toSDMXDataStructure(DataStructureUtil.findDataStructure(query, ref.getAgencyId().toString(), ref.getMaintainableParentId().toString(), ref.getVersion().toString()));
     }
 
     @Override

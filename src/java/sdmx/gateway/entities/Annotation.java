@@ -11,6 +11,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -53,9 +54,9 @@ public class Annotation implements Serializable {
     @Column(name = "annotationId", length = 200)
     private String annotationId;
     @JoinColumn(name = "Annotated", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Annotated annotated1;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "annotation")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "annotation", fetch = FetchType.LAZY)
     private List<Annotationtext> annotationtextList;
 
     public Annotation() {

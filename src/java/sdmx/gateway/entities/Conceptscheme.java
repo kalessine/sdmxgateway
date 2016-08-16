@@ -10,6 +10,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -35,15 +36,15 @@ public class Conceptscheme implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected ConceptschemePK conceptschemePK;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "conceptscheme")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "conceptscheme", fetch = FetchType.LAZY)
     private List<Concept> conceptList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "conceptscheme")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "conceptscheme", fetch = FetchType.LAZY)
     private List<Conceptschemereference> conceptschemereferenceList;
     @JoinColumn(name = "annotations", referencedColumnName = "id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Annotated annotations;
     @JoinColumn(name = "name", referencedColumnName = "id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Name name;
 
     public Conceptscheme() {

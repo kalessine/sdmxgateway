@@ -1,0 +1,2723 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<mes:Structure xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common" xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/structure">
+    <mes:Header>
+        <mes:ID>none</mes:ID>
+        <mes:Test>false</mes:Test>
+        <mes:Prepared>2016-08-11T02:00:27.000+08:00</mes:Prepared>
+        <mes:Sender id="ABS">
+            <com:Name xml:lang="en">Australian Bureau of Statistics</com:Name>
+        </mes:Sender>
+    </mes:Header>
+    <mes:Structures>
+        <str:Codelists>
+            <str:Codelist agencyID="ABS" isExternalReference="false" isFinal="false" version="1.0" id="CL_RIM_SA4_GCCSA_STE_H_OBS_STATUS">
+                <com:Name xml:lang="en">Observation Status</com:Name>
+                <com:Name xml:lang="fr">Statut d'observation</com:Name>
+                <str:Code id="n">
+                    <com:Name xml:lang="en">not available for publication but included in totals where applicable, unless otherwise indicated</com:Name>
+                    <com:Name xml:lang="fr">not available for publication but included in totals where applicable, unless otherwise indicated</com:Name>
+                </str:Code>
+                <str:Code id="o">
+                    <com:Name xml:lang="en">nil or rounded to zero, including null cells</com:Name>
+                    <com:Name xml:lang="fr">nil or rounded to zero, including null cells</com:Name>
+                </str:Code>
+                <str:Code id="p">
+                    <com:Name xml:lang="en">preliminary figure or series subject to revision</com:Name>
+                    <com:Name xml:lang="fr">preliminary figure or series subject to revision</com:Name>
+                </str:Code>
+                <str:Code id="q">
+                    <com:Name xml:lang="en">not available</com:Name>
+                    <com:Name xml:lang="fr">not available</com:Name>
+                </str:Code>
+                <str:Code id="r">
+                    <com:Name xml:lang="en">revised</com:Name>
+                    <com:Name xml:lang="fr">revised</com:Name>
+                </str:Code>
+                <str:Code id="s">
+                    <com:Name xml:lang="en">not currently available due to break in time series</com:Name>
+                    <com:Name xml:lang="fr">not currently available due to break in time series</com:Name>
+                </str:Code>
+                <str:Code id="t">
+                    <com:Name xml:lang="en">not yet available</com:Name>
+                    <com:Name xml:lang="fr">not yet available</com:Name>
+                </str:Code>
+                <str:Code id="u">
+                    <com:Name xml:lang="en">not applicable</com:Name>
+                    <com:Name xml:lang="fr">not applicable</com:Name>
+                </str:Code>
+                <str:Code id="v">
+                    <com:Name xml:lang="en">not available for publication but included in totals where applicable, unless otherwise indicated</com:Name>
+                    <com:Name xml:lang="fr">not available for publication but included in totals where applicable, unless otherwise indicated</com:Name>
+                </str:Code>
+                <str:Code id="w">
+                    <com:Name xml:lang="en">estimate is subject to sampling variability too high for most practical purposes</com:Name>
+                    <com:Name xml:lang="fr">estimate is subject to sampling variability too high for most practical purposes</com:Name>
+                </str:Code>
+                <str:Code id="x">
+                    <com:Name xml:lang="en">estimate has a relative standard error of 10% to less than 25% and should be used with caution</com:Name>
+                    <com:Name xml:lang="fr">estimate has a relative standard error of 10% to less than 25% and should be used with caution</com:Name>
+                </str:Code>
+                <str:Code id="y">
+                    <com:Name xml:lang="en">estimate has a relative standard error between 25% and 50% and should be used with caution</com:Name>
+                    <com:Name xml:lang="fr">estimate has a relative standard error between 25% and 50% and should be used with caution</com:Name>
+                </str:Code>
+                <str:Code id="z">
+                    <com:Name xml:lang="en">estimate has a relative standard error greater than 50% and is considered too unreliable for general use</com:Name>
+                    <com:Name xml:lang="fr">estimate has a relative standard error greater than 50% and is considered too unreliable for general use</com:Name>
+                </str:Code>
+            </str:Codelist>
+            <str:Codelist agencyID="ABS" isExternalReference="false" isFinal="false" version="1.0" id="CL_RIM_SA4_GCCSA_STE_H_ASGS_2011_SA4_GCCSA_STE">
+                <com:Name xml:lang="en">RIM_SA4_GCCSA_STE_H_ASGS_2011_SA4_GCCSA_STE codelist</com:Name>
+                <str:Code id="1">
+                    <com:Name xml:lang="en">New South Wales</com:Name>
+                    <com:Name xml:lang="fr">New South Wales</com:Name>
+                </str:Code>
+                <str:Code id="1GSYD">
+                    <com:Name xml:lang="en">Greater Sydney</com:Name>
+                    <com:Name xml:lang="fr">Greater Sydney</com:Name>
+                    <str:Parent>
+                        <Ref id="1"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="102">
+                    <com:Name xml:lang="en">Central Coast</com:Name>
+                    <com:Name xml:lang="fr">Central Coast</com:Name>
+                    <str:Parent>
+                        <Ref id="1GSYD"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="115">
+                    <com:Name xml:lang="en">Sydney - Baulkham Hills and Hawkesbury</com:Name>
+                    <com:Name xml:lang="fr">Sydney - Baulkham Hills and Hawkesbury</com:Name>
+                    <str:Parent>
+                        <Ref id="1GSYD"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="116">
+                    <com:Name xml:lang="en">Sydney - Blacktown</com:Name>
+                    <com:Name xml:lang="fr">Sydney - Blacktown</com:Name>
+                    <str:Parent>
+                        <Ref id="1GSYD"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="117">
+                    <com:Name xml:lang="en">Sydney - City and Inner South</com:Name>
+                    <com:Name xml:lang="fr">Sydney - City and Inner South</com:Name>
+                    <str:Parent>
+                        <Ref id="1GSYD"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="118">
+                    <com:Name xml:lang="en">Sydney - Eastern Suburbs</com:Name>
+                    <com:Name xml:lang="fr">Sydney - Eastern Suburbs</com:Name>
+                    <str:Parent>
+                        <Ref id="1GSYD"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="119">
+                    <com:Name xml:lang="en">Sydney - Inner South West</com:Name>
+                    <com:Name xml:lang="fr">Sydney - Inner South West</com:Name>
+                    <str:Parent>
+                        <Ref id="1GSYD"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="120">
+                    <com:Name xml:lang="en">Sydney - Inner West</com:Name>
+                    <com:Name xml:lang="fr">Sydney - Inner West</com:Name>
+                    <str:Parent>
+                        <Ref id="1GSYD"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="121">
+                    <com:Name xml:lang="en">Sydney - North Sydney and Hornsby</com:Name>
+                    <com:Name xml:lang="fr">Sydney - North Sydney and Hornsby</com:Name>
+                    <str:Parent>
+                        <Ref id="1GSYD"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="122">
+                    <com:Name xml:lang="en">Sydney - Northern Beaches</com:Name>
+                    <com:Name xml:lang="fr">Sydney - Northern Beaches</com:Name>
+                    <str:Parent>
+                        <Ref id="1GSYD"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="123">
+                    <com:Name xml:lang="en">Sydney - Outer South West</com:Name>
+                    <com:Name xml:lang="fr">Sydney - Outer South West</com:Name>
+                    <str:Parent>
+                        <Ref id="1GSYD"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="124">
+                    <com:Name xml:lang="en">Sydney - Outer West and Blue Mountains</com:Name>
+                    <com:Name xml:lang="fr">Sydney - Outer West and Blue Mountains</com:Name>
+                    <str:Parent>
+                        <Ref id="1GSYD"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="125">
+                    <com:Name xml:lang="en">Sydney - Parramatta</com:Name>
+                    <com:Name xml:lang="fr">Sydney - Parramatta</com:Name>
+                    <str:Parent>
+                        <Ref id="1GSYD"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="126">
+                    <com:Name xml:lang="en">Sydney - Ryde</com:Name>
+                    <com:Name xml:lang="fr">Sydney - Ryde</com:Name>
+                    <str:Parent>
+                        <Ref id="1GSYD"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="127">
+                    <com:Name xml:lang="en">Sydney - South West</com:Name>
+                    <com:Name xml:lang="fr">Sydney - South West</com:Name>
+                    <str:Parent>
+                        <Ref id="1GSYD"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="128">
+                    <com:Name xml:lang="en">Sydney - Sutherland</com:Name>
+                    <com:Name xml:lang="fr">Sydney - Sutherland</com:Name>
+                    <str:Parent>
+                        <Ref id="1GSYD"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="1RNSW">
+                    <com:Name xml:lang="en">Rest of NSW</com:Name>
+                    <com:Name xml:lang="fr">Rest of NSW</com:Name>
+                    <str:Parent>
+                        <Ref id="1"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="101">
+                    <com:Name xml:lang="en">Capital Region</com:Name>
+                    <com:Name xml:lang="fr">Capital Region</com:Name>
+                    <str:Parent>
+                        <Ref id="1RNSW"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="103">
+                    <com:Name xml:lang="en">Central West</com:Name>
+                    <com:Name xml:lang="fr">Central West</com:Name>
+                    <str:Parent>
+                        <Ref id="1RNSW"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="104">
+                    <com:Name xml:lang="en">Coffs Harbour - Grafton</com:Name>
+                    <com:Name xml:lang="fr">Coffs Harbour - Grafton</com:Name>
+                    <str:Parent>
+                        <Ref id="1RNSW"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="105">
+                    <com:Name xml:lang="en">Far West and Orana</com:Name>
+                    <com:Name xml:lang="fr">Far West and Orana</com:Name>
+                    <str:Parent>
+                        <Ref id="1RNSW"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="106">
+                    <com:Name xml:lang="en">Hunter Valley exc Newcastle</com:Name>
+                    <com:Name xml:lang="fr">Hunter Valley exc Newcastle</com:Name>
+                    <str:Parent>
+                        <Ref id="1RNSW"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="107">
+                    <com:Name xml:lang="en">Illawarra</com:Name>
+                    <com:Name xml:lang="fr">Illawarra</com:Name>
+                    <str:Parent>
+                        <Ref id="1RNSW"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="108">
+                    <com:Name xml:lang="en">Mid North Coast</com:Name>
+                    <com:Name xml:lang="fr">Mid North Coast</com:Name>
+                    <str:Parent>
+                        <Ref id="1RNSW"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="109">
+                    <com:Name xml:lang="en">Murray</com:Name>
+                    <com:Name xml:lang="fr">Murray</com:Name>
+                    <str:Parent>
+                        <Ref id="1RNSW"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="110">
+                    <com:Name xml:lang="en">New England and North West</com:Name>
+                    <com:Name xml:lang="fr">New England and North West</com:Name>
+                    <str:Parent>
+                        <Ref id="1RNSW"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="111">
+                    <com:Name xml:lang="en">Newcastle and Lake Macquarie</com:Name>
+                    <com:Name xml:lang="fr">Newcastle and Lake Macquarie</com:Name>
+                    <str:Parent>
+                        <Ref id="1RNSW"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="112">
+                    <com:Name xml:lang="en">Richmond - Tweed</com:Name>
+                    <com:Name xml:lang="fr">Richmond - Tweed</com:Name>
+                    <str:Parent>
+                        <Ref id="1RNSW"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="113">
+                    <com:Name xml:lang="en">Riverina</com:Name>
+                    <com:Name xml:lang="fr">Riverina</com:Name>
+                    <str:Parent>
+                        <Ref id="1RNSW"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="114">
+                    <com:Name xml:lang="en">Southern Highlands and Shoalhaven</com:Name>
+                    <com:Name xml:lang="fr">Southern Highlands and Shoalhaven</com:Name>
+                    <str:Parent>
+                        <Ref id="1RNSW"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="2">
+                    <com:Name xml:lang="en">Victoria</com:Name>
+                    <com:Name xml:lang="fr">Victoria</com:Name>
+                </str:Code>
+                <str:Code id="2GMEL">
+                    <com:Name xml:lang="en">Greater Melbourne</com:Name>
+                    <com:Name xml:lang="fr">Greater Melbourne</com:Name>
+                    <str:Parent>
+                        <Ref id="2"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="206">
+                    <com:Name xml:lang="en">Melbourne - Inner</com:Name>
+                    <com:Name xml:lang="fr">Melbourne - Inner</com:Name>
+                    <str:Parent>
+                        <Ref id="2GMEL"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="207">
+                    <com:Name xml:lang="en">Melbourne - Inner East</com:Name>
+                    <com:Name xml:lang="fr">Melbourne - Inner East</com:Name>
+                    <str:Parent>
+                        <Ref id="2GMEL"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="208">
+                    <com:Name xml:lang="en">Melbourne - Inner South</com:Name>
+                    <com:Name xml:lang="fr">Melbourne - Inner South</com:Name>
+                    <str:Parent>
+                        <Ref id="2GMEL"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="209">
+                    <com:Name xml:lang="en">Melbourne - North East</com:Name>
+                    <com:Name xml:lang="fr">Melbourne - North East</com:Name>
+                    <str:Parent>
+                        <Ref id="2GMEL"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="210">
+                    <com:Name xml:lang="en">Melbourne - North West</com:Name>
+                    <com:Name xml:lang="fr">Melbourne - North West</com:Name>
+                    <str:Parent>
+                        <Ref id="2GMEL"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="211">
+                    <com:Name xml:lang="en">Melbourne - Outer East</com:Name>
+                    <com:Name xml:lang="fr">Melbourne - Outer East</com:Name>
+                    <str:Parent>
+                        <Ref id="2GMEL"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="212">
+                    <com:Name xml:lang="en">Melbourne - South East</com:Name>
+                    <com:Name xml:lang="fr">Melbourne - South East</com:Name>
+                    <str:Parent>
+                        <Ref id="2GMEL"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="213">
+                    <com:Name xml:lang="en">Melbourne - West</com:Name>
+                    <com:Name xml:lang="fr">Melbourne - West</com:Name>
+                    <str:Parent>
+                        <Ref id="2GMEL"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="214">
+                    <com:Name xml:lang="en">Mornington Peninsula</com:Name>
+                    <com:Name xml:lang="fr">Mornington Peninsula</com:Name>
+                    <str:Parent>
+                        <Ref id="2GMEL"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="2RVIC">
+                    <com:Name xml:lang="en">Rest of Vic.</com:Name>
+                    <com:Name xml:lang="fr">Rest of Vic.</com:Name>
+                    <str:Parent>
+                        <Ref id="2"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="201">
+                    <com:Name xml:lang="en">Ballarat</com:Name>
+                    <com:Name xml:lang="fr">Ballarat</com:Name>
+                    <str:Parent>
+                        <Ref id="2RVIC"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="202">
+                    <com:Name xml:lang="en">Bendigo</com:Name>
+                    <com:Name xml:lang="fr">Bendigo</com:Name>
+                    <str:Parent>
+                        <Ref id="2RVIC"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="203">
+                    <com:Name xml:lang="en">Geelong</com:Name>
+                    <com:Name xml:lang="fr">Geelong</com:Name>
+                    <str:Parent>
+                        <Ref id="2RVIC"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="204">
+                    <com:Name xml:lang="en">Hume</com:Name>
+                    <com:Name xml:lang="fr">Hume</com:Name>
+                    <str:Parent>
+                        <Ref id="2RVIC"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="205">
+                    <com:Name xml:lang="en">Latrobe - Gippsland</com:Name>
+                    <com:Name xml:lang="fr">Latrobe - Gippsland</com:Name>
+                    <str:Parent>
+                        <Ref id="2RVIC"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="215">
+                    <com:Name xml:lang="en">North West</com:Name>
+                    <com:Name xml:lang="fr">North West</com:Name>
+                    <str:Parent>
+                        <Ref id="2RVIC"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="216">
+                    <com:Name xml:lang="en">Shepparton</com:Name>
+                    <com:Name xml:lang="fr">Shepparton</com:Name>
+                    <str:Parent>
+                        <Ref id="2RVIC"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="217">
+                    <com:Name xml:lang="en">Warrnambool and South West</com:Name>
+                    <com:Name xml:lang="fr">Warrnambool and South West</com:Name>
+                    <str:Parent>
+                        <Ref id="2RVIC"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="3">
+                    <com:Name xml:lang="en">Queensland</com:Name>
+                    <com:Name xml:lang="fr">Queensland</com:Name>
+                </str:Code>
+                <str:Code id="3GBRI">
+                    <com:Name xml:lang="en">Greater Brisbane</com:Name>
+                    <com:Name xml:lang="fr">Greater Brisbane</com:Name>
+                    <str:Parent>
+                        <Ref id="3"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="301">
+                    <com:Name xml:lang="en">Brisbane - East</com:Name>
+                    <com:Name xml:lang="fr">Brisbane - East</com:Name>
+                    <str:Parent>
+                        <Ref id="3GBRI"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="302">
+                    <com:Name xml:lang="en">Brisbane - North</com:Name>
+                    <com:Name xml:lang="fr">Brisbane - North</com:Name>
+                    <str:Parent>
+                        <Ref id="3GBRI"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="303">
+                    <com:Name xml:lang="en">Brisbane - South</com:Name>
+                    <com:Name xml:lang="fr">Brisbane - South</com:Name>
+                    <str:Parent>
+                        <Ref id="3GBRI"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="304">
+                    <com:Name xml:lang="en">Brisbane - West</com:Name>
+                    <com:Name xml:lang="fr">Brisbane - West</com:Name>
+                    <str:Parent>
+                        <Ref id="3GBRI"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="305">
+                    <com:Name xml:lang="en">Brisbane Inner City</com:Name>
+                    <com:Name xml:lang="fr">Brisbane Inner City</com:Name>
+                    <str:Parent>
+                        <Ref id="3GBRI"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="310">
+                    <com:Name xml:lang="en">Ipswich</com:Name>
+                    <com:Name xml:lang="fr">Ipswich</com:Name>
+                    <str:Parent>
+                        <Ref id="3GBRI"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="311">
+                    <com:Name xml:lang="en">Logan - Beaudesert</com:Name>
+                    <com:Name xml:lang="fr">Logan - Beaudesert</com:Name>
+                    <str:Parent>
+                        <Ref id="3GBRI"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="313">
+                    <com:Name xml:lang="en">Moreton Bay - North</com:Name>
+                    <com:Name xml:lang="fr">Moreton Bay - North</com:Name>
+                    <str:Parent>
+                        <Ref id="3GBRI"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="314">
+                    <com:Name xml:lang="en">Moreton Bay - South</com:Name>
+                    <com:Name xml:lang="fr">Moreton Bay - South</com:Name>
+                    <str:Parent>
+                        <Ref id="3GBRI"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="3RQLD">
+                    <com:Name xml:lang="en">Rest of Qld</com:Name>
+                    <com:Name xml:lang="fr">Rest of Qld</com:Name>
+                    <str:Parent>
+                        <Ref id="3"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="306">
+                    <com:Name xml:lang="en">Cairns</com:Name>
+                    <com:Name xml:lang="fr">Cairns</com:Name>
+                    <str:Parent>
+                        <Ref id="3RQLD"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="307">
+                    <com:Name xml:lang="en">Darling Downs - Maranoa</com:Name>
+                    <com:Name xml:lang="fr">Darling Downs - Maranoa</com:Name>
+                    <str:Parent>
+                        <Ref id="3RQLD"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="308">
+                    <com:Name xml:lang="en">Fitzroy</com:Name>
+                    <com:Name xml:lang="fr">Fitzroy</com:Name>
+                    <str:Parent>
+                        <Ref id="3RQLD"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="309">
+                    <com:Name xml:lang="en">Gold Coast</com:Name>
+                    <com:Name xml:lang="fr">Gold Coast</com:Name>
+                    <str:Parent>
+                        <Ref id="3RQLD"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="312">
+                    <com:Name xml:lang="en">Mackay</com:Name>
+                    <com:Name xml:lang="fr">Mackay</com:Name>
+                    <str:Parent>
+                        <Ref id="3RQLD"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="315">
+                    <com:Name xml:lang="en">Queensland - Outback</com:Name>
+                    <com:Name xml:lang="fr">Queensland - Outback</com:Name>
+                    <str:Parent>
+                        <Ref id="3RQLD"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="316">
+                    <com:Name xml:lang="en">Sunshine Coast</com:Name>
+                    <com:Name xml:lang="fr">Sunshine Coast</com:Name>
+                    <str:Parent>
+                        <Ref id="3RQLD"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="317">
+                    <com:Name xml:lang="en">Toowoomba</com:Name>
+                    <com:Name xml:lang="fr">Toowoomba</com:Name>
+                    <str:Parent>
+                        <Ref id="3RQLD"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="318">
+                    <com:Name xml:lang="en">Townsville</com:Name>
+                    <com:Name xml:lang="fr">Townsville</com:Name>
+                    <str:Parent>
+                        <Ref id="3RQLD"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="319">
+                    <com:Name xml:lang="en">Wide Bay</com:Name>
+                    <com:Name xml:lang="fr">Wide Bay</com:Name>
+                    <str:Parent>
+                        <Ref id="3RQLD"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="4">
+                    <com:Name xml:lang="en">South Australia</com:Name>
+                    <com:Name xml:lang="fr">South Australia</com:Name>
+                </str:Code>
+                <str:Code id="4GADE">
+                    <com:Name xml:lang="en">Greater Adelaide</com:Name>
+                    <com:Name xml:lang="fr">Greater Adelaide</com:Name>
+                    <str:Parent>
+                        <Ref id="4"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="401">
+                    <com:Name xml:lang="en">Adelaide - Central and Hills</com:Name>
+                    <com:Name xml:lang="fr">Adelaide - Central and Hills</com:Name>
+                    <str:Parent>
+                        <Ref id="4GADE"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="402">
+                    <com:Name xml:lang="en">Adelaide - North</com:Name>
+                    <com:Name xml:lang="fr">Adelaide - North</com:Name>
+                    <str:Parent>
+                        <Ref id="4GADE"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="403">
+                    <com:Name xml:lang="en">Adelaide - South</com:Name>
+                    <com:Name xml:lang="fr">Adelaide - South</com:Name>
+                    <str:Parent>
+                        <Ref id="4GADE"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="404">
+                    <com:Name xml:lang="en">Adelaide - West</com:Name>
+                    <com:Name xml:lang="fr">Adelaide - West</com:Name>
+                    <str:Parent>
+                        <Ref id="4GADE"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="4RSAU">
+                    <com:Name xml:lang="en">Rest of SA</com:Name>
+                    <com:Name xml:lang="fr">Rest of SA</com:Name>
+                    <str:Parent>
+                        <Ref id="4"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="405">
+                    <com:Name xml:lang="en">Barossa - Yorke - Mid North</com:Name>
+                    <com:Name xml:lang="fr">Barossa - Yorke - Mid North</com:Name>
+                    <str:Parent>
+                        <Ref id="4RSAU"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="406">
+                    <com:Name xml:lang="en">South Australia - Outback</com:Name>
+                    <com:Name xml:lang="fr">South Australia - Outback</com:Name>
+                    <str:Parent>
+                        <Ref id="4RSAU"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="407">
+                    <com:Name xml:lang="en">South Australia - South East</com:Name>
+                    <com:Name xml:lang="fr">South Australia - South East</com:Name>
+                    <str:Parent>
+                        <Ref id="4RSAU"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="5">
+                    <com:Name xml:lang="en">Western Australia</com:Name>
+                    <com:Name xml:lang="fr">Western Australia</com:Name>
+                </str:Code>
+                <str:Code id="5GPER">
+                    <com:Name xml:lang="en">Greater Perth</com:Name>
+                    <com:Name xml:lang="fr">Greater Perth</com:Name>
+                    <str:Parent>
+                        <Ref id="5"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="502">
+                    <com:Name xml:lang="en">Mandurah</com:Name>
+                    <com:Name xml:lang="fr">Mandurah</com:Name>
+                    <str:Parent>
+                        <Ref id="5GPER"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="503">
+                    <com:Name xml:lang="en">Perth - Inner</com:Name>
+                    <com:Name xml:lang="fr">Perth - Inner</com:Name>
+                    <str:Parent>
+                        <Ref id="5GPER"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="504">
+                    <com:Name xml:lang="en">Perth - North East</com:Name>
+                    <com:Name xml:lang="fr">Perth - North East</com:Name>
+                    <str:Parent>
+                        <Ref id="5GPER"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="505">
+                    <com:Name xml:lang="en">Perth - North West</com:Name>
+                    <com:Name xml:lang="fr">Perth - North West</com:Name>
+                    <str:Parent>
+                        <Ref id="5GPER"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="506">
+                    <com:Name xml:lang="en">Perth - South East</com:Name>
+                    <com:Name xml:lang="fr">Perth - South East</com:Name>
+                    <str:Parent>
+                        <Ref id="5GPER"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="507">
+                    <com:Name xml:lang="en">Perth - South West</com:Name>
+                    <com:Name xml:lang="fr">Perth - South West</com:Name>
+                    <str:Parent>
+                        <Ref id="5GPER"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="5RWAU">
+                    <com:Name xml:lang="en">Rest of WA</com:Name>
+                    <com:Name xml:lang="fr">Rest of WA</com:Name>
+                    <str:Parent>
+                        <Ref id="5"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="501">
+                    <com:Name xml:lang="en">Bunbury</com:Name>
+                    <com:Name xml:lang="fr">Bunbury</com:Name>
+                    <str:Parent>
+                        <Ref id="5RWAU"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="508">
+                    <com:Name xml:lang="en">Western Australia - Outback</com:Name>
+                    <com:Name xml:lang="fr">Western Australia - Outback</com:Name>
+                    <str:Parent>
+                        <Ref id="5RWAU"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="509">
+                    <com:Name xml:lang="en">Western Australia - Wheat Belt</com:Name>
+                    <com:Name xml:lang="fr">Western Australia - Wheat Belt</com:Name>
+                    <str:Parent>
+                        <Ref id="5RWAU"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="6">
+                    <com:Name xml:lang="en">Tasmania</com:Name>
+                    <com:Name xml:lang="fr">Tasmania</com:Name>
+                </str:Code>
+                <str:Code id="6GHOB">
+                    <com:Name xml:lang="en">Greater Hobart</com:Name>
+                    <com:Name xml:lang="fr">Greater Hobart</com:Name>
+                    <str:Parent>
+                        <Ref id="6"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="601">
+                    <com:Name xml:lang="en">Hobart</com:Name>
+                    <com:Name xml:lang="fr">Hobart</com:Name>
+                    <str:Parent>
+                        <Ref id="6GHOB"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="6RTAS">
+                    <com:Name xml:lang="en">Rest of Tas.</com:Name>
+                    <com:Name xml:lang="fr">Rest of Tas.</com:Name>
+                    <str:Parent>
+                        <Ref id="6"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="602">
+                    <com:Name xml:lang="en">Launceston and North East</com:Name>
+                    <com:Name xml:lang="fr">Launceston and North East</com:Name>
+                    <str:Parent>
+                        <Ref id="6RTAS"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="603">
+                    <com:Name xml:lang="en">South East</com:Name>
+                    <com:Name xml:lang="fr">South East</com:Name>
+                    <str:Parent>
+                        <Ref id="6RTAS"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="604">
+                    <com:Name xml:lang="en">West and North West</com:Name>
+                    <com:Name xml:lang="fr">West and North West</com:Name>
+                    <str:Parent>
+                        <Ref id="6RTAS"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="7">
+                    <com:Name xml:lang="en">Northern Territory</com:Name>
+                    <com:Name xml:lang="fr">Northern Territory</com:Name>
+                </str:Code>
+                <str:Code id="7GDAR">
+                    <com:Name xml:lang="en">Greater Darwin</com:Name>
+                    <com:Name xml:lang="fr">Greater Darwin</com:Name>
+                    <str:Parent>
+                        <Ref id="7"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="701">
+                    <com:Name xml:lang="en">Darwin</com:Name>
+                    <com:Name xml:lang="fr">Darwin</com:Name>
+                    <str:Parent>
+                        <Ref id="7GDAR"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="7RNTE">
+                    <com:Name xml:lang="en">Rest of NT</com:Name>
+                    <com:Name xml:lang="fr">Rest of NT</com:Name>
+                    <str:Parent>
+                        <Ref id="7"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="702">
+                    <com:Name xml:lang="en">Northern Territory - Outback</com:Name>
+                    <com:Name xml:lang="fr">Northern Territory - Outback</com:Name>
+                    <str:Parent>
+                        <Ref id="7RNTE"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="8">
+                    <com:Name xml:lang="en">Australian Capital Territory</com:Name>
+                    <com:Name xml:lang="fr">Australian Capital Territory</com:Name>
+                </str:Code>
+                <str:Code id="8ACTE">
+                    <com:Name xml:lang="en">Australian Capital Territory</com:Name>
+                    <com:Name xml:lang="fr">Australian Capital Territory</com:Name>
+                    <str:Parent>
+                        <Ref id="8"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="801">
+                    <com:Name xml:lang="en">Australian Capital Territory</com:Name>
+                    <com:Name xml:lang="fr">Australian Capital Territory</com:Name>
+                    <str:Parent>
+                        <Ref id="8ACTE"/>
+                    </str:Parent>
+                </str:Code>
+            </str:Codelist>
+            <str:Codelist agencyID="ABS" isExternalReference="false" isFinal="false" version="1.0" id="CL_RIM_SA4_GCCSA_STE_H_ASGS_2011_STE_GGCSA_SA4A">
+                <com:Name xml:lang="en">RIM_SA4_GCCSA_STE_H_ASGS_2011_STE_GGCSA_SA4A codelist</com:Name>
+                <str:Code id="1">
+                    <com:Name xml:lang="en">New South Wales</com:Name>
+                    <com:Name xml:lang="fr">New South Wales</com:Name>
+                </str:Code>
+                <str:Code id="1GSYD">
+                    <com:Name xml:lang="en">Greater Sydney</com:Name>
+                    <com:Name xml:lang="fr">Greater Sydney</com:Name>
+                    <str:Parent>
+                        <Ref id="1"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="102">
+                    <com:Name xml:lang="en">Central Coast</com:Name>
+                    <com:Name xml:lang="fr">Central Coast</com:Name>
+                    <str:Parent>
+                        <Ref id="1GSYD"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="115">
+                    <com:Name xml:lang="en">Sydney - Baulkham Hills and Hawkesbury</com:Name>
+                    <com:Name xml:lang="fr">Sydney - Baulkham Hills and Hawkesbury</com:Name>
+                    <str:Parent>
+                        <Ref id="1GSYD"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="116">
+                    <com:Name xml:lang="en">Sydney - Blacktown</com:Name>
+                    <com:Name xml:lang="fr">Sydney - Blacktown</com:Name>
+                    <str:Parent>
+                        <Ref id="1GSYD"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="117">
+                    <com:Name xml:lang="en">Sydney - City and Inner South</com:Name>
+                    <com:Name xml:lang="fr">Sydney - City and Inner South</com:Name>
+                    <str:Parent>
+                        <Ref id="1GSYD"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="118">
+                    <com:Name xml:lang="en">Sydney - Eastern Suburbs</com:Name>
+                    <com:Name xml:lang="fr">Sydney - Eastern Suburbs</com:Name>
+                    <str:Parent>
+                        <Ref id="1GSYD"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="119">
+                    <com:Name xml:lang="en">Sydney - Inner South West</com:Name>
+                    <com:Name xml:lang="fr">Sydney - Inner South West</com:Name>
+                    <str:Parent>
+                        <Ref id="1GSYD"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="120">
+                    <com:Name xml:lang="en">Sydney - Inner West</com:Name>
+                    <com:Name xml:lang="fr">Sydney - Inner West</com:Name>
+                    <str:Parent>
+                        <Ref id="1GSYD"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="121">
+                    <com:Name xml:lang="en">Sydney - North Sydney and Hornsby</com:Name>
+                    <com:Name xml:lang="fr">Sydney - North Sydney and Hornsby</com:Name>
+                    <str:Parent>
+                        <Ref id="1GSYD"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="122">
+                    <com:Name xml:lang="en">Sydney - Northern Beaches</com:Name>
+                    <com:Name xml:lang="fr">Sydney - Northern Beaches</com:Name>
+                    <str:Parent>
+                        <Ref id="1GSYD"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="123">
+                    <com:Name xml:lang="en">Sydney - Outer South West</com:Name>
+                    <com:Name xml:lang="fr">Sydney - Outer South West</com:Name>
+                    <str:Parent>
+                        <Ref id="1GSYD"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="124">
+                    <com:Name xml:lang="en">Sydney - Outer West and Blue Mountains</com:Name>
+                    <com:Name xml:lang="fr">Sydney - Outer West and Blue Mountains</com:Name>
+                    <str:Parent>
+                        <Ref id="1GSYD"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="125">
+                    <com:Name xml:lang="en">Sydney - Parramatta</com:Name>
+                    <com:Name xml:lang="fr">Sydney - Parramatta</com:Name>
+                    <str:Parent>
+                        <Ref id="1GSYD"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="126">
+                    <com:Name xml:lang="en">Sydney - Ryde</com:Name>
+                    <com:Name xml:lang="fr">Sydney - Ryde</com:Name>
+                    <str:Parent>
+                        <Ref id="1GSYD"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="127">
+                    <com:Name xml:lang="en">Sydney - South West</com:Name>
+                    <com:Name xml:lang="fr">Sydney - South West</com:Name>
+                    <str:Parent>
+                        <Ref id="1GSYD"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="128">
+                    <com:Name xml:lang="en">Sydney - Sutherland</com:Name>
+                    <com:Name xml:lang="fr">Sydney - Sutherland</com:Name>
+                    <str:Parent>
+                        <Ref id="1GSYD"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="1RNSW">
+                    <com:Name xml:lang="en">Rest of NSW</com:Name>
+                    <com:Name xml:lang="fr">Rest of NSW</com:Name>
+                    <str:Parent>
+                        <Ref id="1"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="101">
+                    <com:Name xml:lang="en">Capital Region</com:Name>
+                    <com:Name xml:lang="fr">Capital Region</com:Name>
+                    <str:Parent>
+                        <Ref id="1RNSW"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="103">
+                    <com:Name xml:lang="en">Central West</com:Name>
+                    <com:Name xml:lang="fr">Central West</com:Name>
+                    <str:Parent>
+                        <Ref id="1RNSW"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="104">
+                    <com:Name xml:lang="en">Coffs Harbour - Grafton</com:Name>
+                    <com:Name xml:lang="fr">Coffs Harbour - Grafton</com:Name>
+                    <str:Parent>
+                        <Ref id="1RNSW"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="105">
+                    <com:Name xml:lang="en">Far West and Orana</com:Name>
+                    <com:Name xml:lang="fr">Far West and Orana</com:Name>
+                    <str:Parent>
+                        <Ref id="1RNSW"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="106">
+                    <com:Name xml:lang="en">Hunter Valley exc Newcastle</com:Name>
+                    <com:Name xml:lang="fr">Hunter Valley exc Newcastle</com:Name>
+                    <str:Parent>
+                        <Ref id="1RNSW"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="107">
+                    <com:Name xml:lang="en">Illawarra</com:Name>
+                    <com:Name xml:lang="fr">Illawarra</com:Name>
+                    <str:Parent>
+                        <Ref id="1RNSW"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="108">
+                    <com:Name xml:lang="en">Mid North Coast</com:Name>
+                    <com:Name xml:lang="fr">Mid North Coast</com:Name>
+                    <str:Parent>
+                        <Ref id="1RNSW"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="109">
+                    <com:Name xml:lang="en">Murray</com:Name>
+                    <com:Name xml:lang="fr">Murray</com:Name>
+                    <str:Parent>
+                        <Ref id="1RNSW"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="110">
+                    <com:Name xml:lang="en">New England and North West</com:Name>
+                    <com:Name xml:lang="fr">New England and North West</com:Name>
+                    <str:Parent>
+                        <Ref id="1RNSW"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="111">
+                    <com:Name xml:lang="en">Newcastle and Lake Macquarie</com:Name>
+                    <com:Name xml:lang="fr">Newcastle and Lake Macquarie</com:Name>
+                    <str:Parent>
+                        <Ref id="1RNSW"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="112">
+                    <com:Name xml:lang="en">Richmond - Tweed</com:Name>
+                    <com:Name xml:lang="fr">Richmond - Tweed</com:Name>
+                    <str:Parent>
+                        <Ref id="1RNSW"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="113">
+                    <com:Name xml:lang="en">Riverina</com:Name>
+                    <com:Name xml:lang="fr">Riverina</com:Name>
+                    <str:Parent>
+                        <Ref id="1RNSW"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="114">
+                    <com:Name xml:lang="en">Southern Highlands and Shoalhaven</com:Name>
+                    <com:Name xml:lang="fr">Southern Highlands and Shoalhaven</com:Name>
+                    <str:Parent>
+                        <Ref id="1RNSW"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="2">
+                    <com:Name xml:lang="en">Victoria</com:Name>
+                    <com:Name xml:lang="fr">Victoria</com:Name>
+                </str:Code>
+                <str:Code id="2GMEL">
+                    <com:Name xml:lang="en">Greater Melbourne</com:Name>
+                    <com:Name xml:lang="fr">Greater Melbourne</com:Name>
+                    <str:Parent>
+                        <Ref id="2"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="206">
+                    <com:Name xml:lang="en">Melbourne - Inner</com:Name>
+                    <com:Name xml:lang="fr">Melbourne - Inner</com:Name>
+                    <str:Parent>
+                        <Ref id="2GMEL"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="207">
+                    <com:Name xml:lang="en">Melbourne - Inner East</com:Name>
+                    <com:Name xml:lang="fr">Melbourne - Inner East</com:Name>
+                    <str:Parent>
+                        <Ref id="2GMEL"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="208">
+                    <com:Name xml:lang="en">Melbourne - Inner South</com:Name>
+                    <com:Name xml:lang="fr">Melbourne - Inner South</com:Name>
+                    <str:Parent>
+                        <Ref id="2GMEL"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="209">
+                    <com:Name xml:lang="en">Melbourne - North East</com:Name>
+                    <com:Name xml:lang="fr">Melbourne - North East</com:Name>
+                    <str:Parent>
+                        <Ref id="2GMEL"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="210">
+                    <com:Name xml:lang="en">Melbourne - North West</com:Name>
+                    <com:Name xml:lang="fr">Melbourne - North West</com:Name>
+                    <str:Parent>
+                        <Ref id="2GMEL"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="211">
+                    <com:Name xml:lang="en">Melbourne - Outer East</com:Name>
+                    <com:Name xml:lang="fr">Melbourne - Outer East</com:Name>
+                    <str:Parent>
+                        <Ref id="2GMEL"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="212">
+                    <com:Name xml:lang="en">Melbourne - South East</com:Name>
+                    <com:Name xml:lang="fr">Melbourne - South East</com:Name>
+                    <str:Parent>
+                        <Ref id="2GMEL"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="213">
+                    <com:Name xml:lang="en">Melbourne - West</com:Name>
+                    <com:Name xml:lang="fr">Melbourne - West</com:Name>
+                    <str:Parent>
+                        <Ref id="2GMEL"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="214">
+                    <com:Name xml:lang="en">Mornington Peninsula</com:Name>
+                    <com:Name xml:lang="fr">Mornington Peninsula</com:Name>
+                    <str:Parent>
+                        <Ref id="2GMEL"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="2RVIC">
+                    <com:Name xml:lang="en">Rest of Vic.</com:Name>
+                    <com:Name xml:lang="fr">Rest of Vic.</com:Name>
+                    <str:Parent>
+                        <Ref id="2"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="201">
+                    <com:Name xml:lang="en">Ballarat</com:Name>
+                    <com:Name xml:lang="fr">Ballarat</com:Name>
+                    <str:Parent>
+                        <Ref id="2RVIC"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="202">
+                    <com:Name xml:lang="en">Bendigo</com:Name>
+                    <com:Name xml:lang="fr">Bendigo</com:Name>
+                    <str:Parent>
+                        <Ref id="2RVIC"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="203">
+                    <com:Name xml:lang="en">Geelong</com:Name>
+                    <com:Name xml:lang="fr">Geelong</com:Name>
+                    <str:Parent>
+                        <Ref id="2RVIC"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="204">
+                    <com:Name xml:lang="en">Hume</com:Name>
+                    <com:Name xml:lang="fr">Hume</com:Name>
+                    <str:Parent>
+                        <Ref id="2RVIC"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="205">
+                    <com:Name xml:lang="en">Latrobe - Gippsland</com:Name>
+                    <com:Name xml:lang="fr">Latrobe - Gippsland</com:Name>
+                    <str:Parent>
+                        <Ref id="2RVIC"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="215">
+                    <com:Name xml:lang="en">North West</com:Name>
+                    <com:Name xml:lang="fr">North West</com:Name>
+                    <str:Parent>
+                        <Ref id="2RVIC"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="216">
+                    <com:Name xml:lang="en">Shepparton</com:Name>
+                    <com:Name xml:lang="fr">Shepparton</com:Name>
+                    <str:Parent>
+                        <Ref id="2RVIC"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="217">
+                    <com:Name xml:lang="en">Warrnambool and South West</com:Name>
+                    <com:Name xml:lang="fr">Warrnambool and South West</com:Name>
+                    <str:Parent>
+                        <Ref id="2RVIC"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="3">
+                    <com:Name xml:lang="en">Queensland</com:Name>
+                    <com:Name xml:lang="fr">Queensland</com:Name>
+                </str:Code>
+                <str:Code id="3GBRI">
+                    <com:Name xml:lang="en">Greater Brisbane</com:Name>
+                    <com:Name xml:lang="fr">Greater Brisbane</com:Name>
+                    <str:Parent>
+                        <Ref id="3"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="301">
+                    <com:Name xml:lang="en">Brisbane - East</com:Name>
+                    <com:Name xml:lang="fr">Brisbane - East</com:Name>
+                    <str:Parent>
+                        <Ref id="3GBRI"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="302">
+                    <com:Name xml:lang="en">Brisbane - North</com:Name>
+                    <com:Name xml:lang="fr">Brisbane - North</com:Name>
+                    <str:Parent>
+                        <Ref id="3GBRI"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="303">
+                    <com:Name xml:lang="en">Brisbane - South</com:Name>
+                    <com:Name xml:lang="fr">Brisbane - South</com:Name>
+                    <str:Parent>
+                        <Ref id="3GBRI"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="304">
+                    <com:Name xml:lang="en">Brisbane - West</com:Name>
+                    <com:Name xml:lang="fr">Brisbane - West</com:Name>
+                    <str:Parent>
+                        <Ref id="3GBRI"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="305">
+                    <com:Name xml:lang="en">Brisbane Inner City</com:Name>
+                    <com:Name xml:lang="fr">Brisbane Inner City</com:Name>
+                    <str:Parent>
+                        <Ref id="3GBRI"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="310">
+                    <com:Name xml:lang="en">Ipswich</com:Name>
+                    <com:Name xml:lang="fr">Ipswich</com:Name>
+                    <str:Parent>
+                        <Ref id="3GBRI"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="311">
+                    <com:Name xml:lang="en">Logan - Beaudesert</com:Name>
+                    <com:Name xml:lang="fr">Logan - Beaudesert</com:Name>
+                    <str:Parent>
+                        <Ref id="3GBRI"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="313">
+                    <com:Name xml:lang="en">Moreton Bay - North</com:Name>
+                    <com:Name xml:lang="fr">Moreton Bay - North</com:Name>
+                    <str:Parent>
+                        <Ref id="3GBRI"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="314">
+                    <com:Name xml:lang="en">Moreton Bay - South</com:Name>
+                    <com:Name xml:lang="fr">Moreton Bay - South</com:Name>
+                    <str:Parent>
+                        <Ref id="3GBRI"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="3RQLD">
+                    <com:Name xml:lang="en">Rest of Qld</com:Name>
+                    <com:Name xml:lang="fr">Rest of Qld</com:Name>
+                    <str:Parent>
+                        <Ref id="3"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="306">
+                    <com:Name xml:lang="en">Cairns</com:Name>
+                    <com:Name xml:lang="fr">Cairns</com:Name>
+                    <str:Parent>
+                        <Ref id="3RQLD"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="307">
+                    <com:Name xml:lang="en">Darling Downs - Maranoa</com:Name>
+                    <com:Name xml:lang="fr">Darling Downs - Maranoa</com:Name>
+                    <str:Parent>
+                        <Ref id="3RQLD"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="308">
+                    <com:Name xml:lang="en">Fitzroy</com:Name>
+                    <com:Name xml:lang="fr">Fitzroy</com:Name>
+                    <str:Parent>
+                        <Ref id="3RQLD"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="309">
+                    <com:Name xml:lang="en">Gold Coast</com:Name>
+                    <com:Name xml:lang="fr">Gold Coast</com:Name>
+                    <str:Parent>
+                        <Ref id="3RQLD"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="312">
+                    <com:Name xml:lang="en">Mackay</com:Name>
+                    <com:Name xml:lang="fr">Mackay</com:Name>
+                    <str:Parent>
+                        <Ref id="3RQLD"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="315">
+                    <com:Name xml:lang="en">Queensland - Outback</com:Name>
+                    <com:Name xml:lang="fr">Queensland - Outback</com:Name>
+                    <str:Parent>
+                        <Ref id="3RQLD"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="316">
+                    <com:Name xml:lang="en">Sunshine Coast</com:Name>
+                    <com:Name xml:lang="fr">Sunshine Coast</com:Name>
+                    <str:Parent>
+                        <Ref id="3RQLD"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="317">
+                    <com:Name xml:lang="en">Toowoomba</com:Name>
+                    <com:Name xml:lang="fr">Toowoomba</com:Name>
+                    <str:Parent>
+                        <Ref id="3RQLD"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="318">
+                    <com:Name xml:lang="en">Townsville</com:Name>
+                    <com:Name xml:lang="fr">Townsville</com:Name>
+                    <str:Parent>
+                        <Ref id="3RQLD"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="319">
+                    <com:Name xml:lang="en">Wide Bay</com:Name>
+                    <com:Name xml:lang="fr">Wide Bay</com:Name>
+                    <str:Parent>
+                        <Ref id="3RQLD"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="4">
+                    <com:Name xml:lang="en">South Australia</com:Name>
+                    <com:Name xml:lang="fr">South Australia</com:Name>
+                </str:Code>
+                <str:Code id="4GADE">
+                    <com:Name xml:lang="en">Greater Adelaide</com:Name>
+                    <com:Name xml:lang="fr">Greater Adelaide</com:Name>
+                    <str:Parent>
+                        <Ref id="4"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="401">
+                    <com:Name xml:lang="en">Adelaide - Central and Hills</com:Name>
+                    <com:Name xml:lang="fr">Adelaide - Central and Hills</com:Name>
+                    <str:Parent>
+                        <Ref id="4GADE"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="402">
+                    <com:Name xml:lang="en">Adelaide - North</com:Name>
+                    <com:Name xml:lang="fr">Adelaide - North</com:Name>
+                    <str:Parent>
+                        <Ref id="4GADE"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="403">
+                    <com:Name xml:lang="en">Adelaide - South</com:Name>
+                    <com:Name xml:lang="fr">Adelaide - South</com:Name>
+                    <str:Parent>
+                        <Ref id="4GADE"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="404">
+                    <com:Name xml:lang="en">Adelaide - West</com:Name>
+                    <com:Name xml:lang="fr">Adelaide - West</com:Name>
+                    <str:Parent>
+                        <Ref id="4GADE"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="4RSAU">
+                    <com:Name xml:lang="en">Rest of SA</com:Name>
+                    <com:Name xml:lang="fr">Rest of SA</com:Name>
+                    <str:Parent>
+                        <Ref id="4"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="405">
+                    <com:Name xml:lang="en">Barossa - Yorke - Mid North</com:Name>
+                    <com:Name xml:lang="fr">Barossa - Yorke - Mid North</com:Name>
+                    <str:Parent>
+                        <Ref id="4RSAU"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="406">
+                    <com:Name xml:lang="en">South Australia - Outback</com:Name>
+                    <com:Name xml:lang="fr">South Australia - Outback</com:Name>
+                    <str:Parent>
+                        <Ref id="4RSAU"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="407">
+                    <com:Name xml:lang="en">South Australia - South East</com:Name>
+                    <com:Name xml:lang="fr">South Australia - South East</com:Name>
+                    <str:Parent>
+                        <Ref id="4RSAU"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="5">
+                    <com:Name xml:lang="en">Western Australia</com:Name>
+                    <com:Name xml:lang="fr">Western Australia</com:Name>
+                </str:Code>
+                <str:Code id="5GPER">
+                    <com:Name xml:lang="en">Greater Perth</com:Name>
+                    <com:Name xml:lang="fr">Greater Perth</com:Name>
+                    <str:Parent>
+                        <Ref id="5"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="502">
+                    <com:Name xml:lang="en">Mandurah</com:Name>
+                    <com:Name xml:lang="fr">Mandurah</com:Name>
+                    <str:Parent>
+                        <Ref id="5GPER"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="503">
+                    <com:Name xml:lang="en">Perth - Inner</com:Name>
+                    <com:Name xml:lang="fr">Perth - Inner</com:Name>
+                    <str:Parent>
+                        <Ref id="5GPER"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="504">
+                    <com:Name xml:lang="en">Perth - North East</com:Name>
+                    <com:Name xml:lang="fr">Perth - North East</com:Name>
+                    <str:Parent>
+                        <Ref id="5GPER"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="505">
+                    <com:Name xml:lang="en">Perth - North West</com:Name>
+                    <com:Name xml:lang="fr">Perth - North West</com:Name>
+                    <str:Parent>
+                        <Ref id="5GPER"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="506">
+                    <com:Name xml:lang="en">Perth - South East</com:Name>
+                    <com:Name xml:lang="fr">Perth - South East</com:Name>
+                    <str:Parent>
+                        <Ref id="5GPER"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="507">
+                    <com:Name xml:lang="en">Perth - South West</com:Name>
+                    <com:Name xml:lang="fr">Perth - South West</com:Name>
+                    <str:Parent>
+                        <Ref id="5GPER"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="5RWAU">
+                    <com:Name xml:lang="en">Rest of WA</com:Name>
+                    <com:Name xml:lang="fr">Rest of WA</com:Name>
+                    <str:Parent>
+                        <Ref id="5"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="501">
+                    <com:Name xml:lang="en">Bunbury</com:Name>
+                    <com:Name xml:lang="fr">Bunbury</com:Name>
+                    <str:Parent>
+                        <Ref id="5RWAU"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="508">
+                    <com:Name xml:lang="en">Western Australia - Outback</com:Name>
+                    <com:Name xml:lang="fr">Western Australia - Outback</com:Name>
+                    <str:Parent>
+                        <Ref id="5RWAU"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="509">
+                    <com:Name xml:lang="en">Western Australia - Wheat Belt</com:Name>
+                    <com:Name xml:lang="fr">Western Australia - Wheat Belt</com:Name>
+                    <str:Parent>
+                        <Ref id="5RWAU"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="6">
+                    <com:Name xml:lang="en">Tasmania</com:Name>
+                    <com:Name xml:lang="fr">Tasmania</com:Name>
+                </str:Code>
+                <str:Code id="6GHOB">
+                    <com:Name xml:lang="en">Greater Hobart</com:Name>
+                    <com:Name xml:lang="fr">Greater Hobart</com:Name>
+                    <str:Parent>
+                        <Ref id="6"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="601">
+                    <com:Name xml:lang="en">Hobart</com:Name>
+                    <com:Name xml:lang="fr">Hobart</com:Name>
+                    <str:Parent>
+                        <Ref id="6GHOB"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="6RTAS">
+                    <com:Name xml:lang="en">Rest of Tas.</com:Name>
+                    <com:Name xml:lang="fr">Rest of Tas.</com:Name>
+                    <str:Parent>
+                        <Ref id="6"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="602">
+                    <com:Name xml:lang="en">Launceston and North East</com:Name>
+                    <com:Name xml:lang="fr">Launceston and North East</com:Name>
+                    <str:Parent>
+                        <Ref id="6RTAS"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="603">
+                    <com:Name xml:lang="en">South East</com:Name>
+                    <com:Name xml:lang="fr">South East</com:Name>
+                    <str:Parent>
+                        <Ref id="6RTAS"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="604">
+                    <com:Name xml:lang="en">West and North West</com:Name>
+                    <com:Name xml:lang="fr">West and North West</com:Name>
+                    <str:Parent>
+                        <Ref id="6RTAS"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="7">
+                    <com:Name xml:lang="en">Northern Territory</com:Name>
+                    <com:Name xml:lang="fr">Northern Territory</com:Name>
+                </str:Code>
+                <str:Code id="7GDAR">
+                    <com:Name xml:lang="en">Greater Darwin</com:Name>
+                    <com:Name xml:lang="fr">Greater Darwin</com:Name>
+                    <str:Parent>
+                        <Ref id="7"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="701">
+                    <com:Name xml:lang="en">Darwin</com:Name>
+                    <com:Name xml:lang="fr">Darwin</com:Name>
+                    <str:Parent>
+                        <Ref id="7GDAR"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="7RNTE">
+                    <com:Name xml:lang="en">Rest of NT</com:Name>
+                    <com:Name xml:lang="fr">Rest of NT</com:Name>
+                    <str:Parent>
+                        <Ref id="7"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="702">
+                    <com:Name xml:lang="en">Northern Territory - Outback</com:Name>
+                    <com:Name xml:lang="fr">Northern Territory - Outback</com:Name>
+                    <str:Parent>
+                        <Ref id="7RNTE"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="8">
+                    <com:Name xml:lang="en">Australian Capital Territory</com:Name>
+                    <com:Name xml:lang="fr">Australian Capital Territory</com:Name>
+                </str:Code>
+                <str:Code id="8ACTE">
+                    <com:Name xml:lang="en">Australian Capital Territory</com:Name>
+                    <com:Name xml:lang="fr">Australian Capital Territory</com:Name>
+                    <str:Parent>
+                        <Ref id="8"/>
+                    </str:Parent>
+                </str:Code>
+                <str:Code id="801">
+                    <com:Name xml:lang="en">Australian Capital Territory</com:Name>
+                    <com:Name xml:lang="fr">Australian Capital Territory</com:Name>
+                    <str:Parent>
+                        <Ref id="8ACTE"/>
+                    </str:Parent>
+                </str:Code>
+            </str:Codelist>
+            <str:Codelist agencyID="ABS" isExternalReference="false" isFinal="false" version="1.0" id="CL_RIM_SA4_GCCSA_STE_H_FREQUENCY">
+                <com:Name xml:lang="en">RIM_SA4_GCCSA_STE_H_FREQUENCY codelist</com:Name>
+                <str:Code id="A">
+                    <com:Name xml:lang="en">Annual</com:Name>
+                    <com:Name xml:lang="fr">Annuelle</com:Name>
+                </str:Code>
+            </str:Codelist>
+            <str:Codelist agencyID="ABS" isExternalReference="false" isFinal="false" version="1.0" id="CL_RIM_SA4_GCCSA_STE_H_TIME_FY">
+                <com:Name xml:lang="en">RIM_SA4_GCCSA_STE_H_TIME_FY codelist</com:Name>
+                <str:Code id="2007">
+                    <com:Name xml:lang="en">2006-07</com:Name>
+                    <com:Name xml:lang="fr">2007</com:Name>
+                </str:Code>
+                <str:Code id="2008">
+                    <com:Name xml:lang="en">2007-08</com:Name>
+                    <com:Name xml:lang="fr">2008</com:Name>
+                </str:Code>
+                <str:Code id="2009">
+                    <com:Name xml:lang="en">2008-09</com:Name>
+                    <com:Name xml:lang="fr">2009</com:Name>
+                </str:Code>
+                <str:Code id="2010">
+                    <com:Name xml:lang="en">2009-10</com:Name>
+                    <com:Name xml:lang="fr">2010</com:Name>
+                </str:Code>
+                <str:Code id="2011">
+                    <com:Name xml:lang="en">2010-11</com:Name>
+                    <com:Name xml:lang="fr">2011</com:Name>
+                </str:Code>
+                <str:Code id="2012">
+                    <com:Name xml:lang="en">2011-12</com:Name>
+                    <com:Name xml:lang="fr">2012</com:Name>
+                </str:Code>
+                <str:Code id="2013">
+                    <com:Name xml:lang="en">2012-13</com:Name>
+                    <com:Name xml:lang="fr">2013</com:Name>
+                </str:Code>
+                <str:Code id="2014">
+                    <com:Name xml:lang="en">2013-14</com:Name>
+                    <com:Name xml:lang="fr">2014</com:Name>
+                </str:Code>
+                <str:Code id="2015">
+                    <com:Name xml:lang="en">2014-15</com:Name>
+                    <com:Name xml:lang="fr">2015</com:Name>
+                </str:Code>
+            </str:Codelist>
+            <str:Codelist agencyID="ABS" isExternalReference="false" isFinal="false" version="1.0" id="CL_RIM_SA4_GCCSA_STE_H_UNIT">
+                <com:Name xml:lang="en">RIM_SA4_GCCSA_STE_H_UNIT codelist</com:Name>
+                <str:Code id="CUR">
+                    <com:Name xml:lang="en">Currencies</com:Name>
+                    <com:Name xml:lang="fr">Monnaie</com:Name>
+                </str:Code>
+                <str:Code id="DOL">
+                    <com:Name xml:lang="en">US Dollar</com:Name>
+                    <com:Name xml:lang="fr">US Dollar</com:Name>
+                </str:Code>
+                <str:Code id="EUR">
+                    <com:Name xml:lang="en">Euro</com:Name>
+                    <com:Name xml:lang="fr">Euro</com:Name>
+                </str:Code>
+                <str:Code id="AMD">
+                    <com:Name xml:lang="en">Armenian Dram</com:Name>
+                    <com:Name xml:lang="fr">Dram armÃ?Â©nien</com:Name>
+                </str:Code>
+                <str:Code id="ANG">
+                    <com:Name xml:lang="en">Netherlands Antillian Guilder</com:Name>
+                    <com:Name xml:lang="fr">Florin des Antilles nÃ?Â©erlandaises</com:Name>
+                </str:Code>
+                <str:Code id="AOA">
+                    <com:Name xml:lang="en">Angola Kwanza</com:Name>
+                    <com:Name xml:lang="fr">Kwanza angolais</com:Name>
+                </str:Code>
+                <str:Code id="ARS">
+                    <com:Name xml:lang="en">Argentine Peso</com:Name>
+                    <com:Name xml:lang="fr">Peso argentin</com:Name>
+                </str:Code>
+                <str:Code id="AUD">
+                    <com:Name xml:lang="en">Australian Dollar</com:Name>
+                    <com:Name xml:lang="fr">Dollar australien</com:Name>
+                </str:Code>
+                <str:Code id="AWG">
+                    <com:Name xml:lang="en">Aruban Guilder</com:Name>
+                    <com:Name xml:lang="fr">Florin dAruba</com:Name>
+                </str:Code>
+                <str:Code id="AZM">
+                    <com:Name xml:lang="en">Azerbaijanian Manat</com:Name>
+                    <com:Name xml:lang="fr">Manat d AzerbaÃ?Â¯djan</com:Name>
+                </str:Code>
+                <str:Code id="BAM">
+                    <com:Name xml:lang="en">Convertible Marks</com:Name>
+                    <com:Name xml:lang="fr">Marks convertibles</com:Name>
+                </str:Code>
+                <str:Code id="BBD">
+                    <com:Name xml:lang="en">Barbados Dollar</com:Name>
+                    <com:Name xml:lang="fr">Dollar de la Barbade</com:Name>
+                </str:Code>
+                <str:Code id="BDT">
+                    <com:Name xml:lang="en">Bangladeshi Taka</com:Name>
+                    <com:Name xml:lang="fr">Taka bangladais</com:Name>
+                </str:Code>
+                <str:Code id="BGL">
+                    <com:Name xml:lang="en">Bulgarian Lev</com:Name>
+                    <com:Name xml:lang="fr">Lev bulgare</com:Name>
+                </str:Code>
+                <str:Code id="BGN">
+                    <com:Name xml:lang="en">Bulgarian Lev</com:Name>
+                    <com:Name xml:lang="fr">Lev bulgare</com:Name>
+                </str:Code>
+                <str:Code id="BHD">
+                    <com:Name xml:lang="en">Bahraini Dinar</com:Name>
+                    <com:Name xml:lang="fr">Dinar de BahreÃ?Â¯n</com:Name>
+                </str:Code>
+                <str:Code id="BIF">
+                    <com:Name xml:lang="en">Burundi Franc</com:Name>
+                    <com:Name xml:lang="fr">Franc burundais</com:Name>
+                </str:Code>
+                <str:Code id="BMD">
+                    <com:Name xml:lang="en">Bermudian Dollar</com:Name>
+                    <com:Name xml:lang="fr">Dollar des Bermudes</com:Name>
+                </str:Code>
+                <str:Code id="BND">
+                    <com:Name xml:lang="en">Brunei Dollar</com:Name>
+                    <com:Name xml:lang="fr">Dollar de Brunei</com:Name>
+                </str:Code>
+                <str:Code id="BOB">
+                    <com:Name xml:lang="en">Boliviano</com:Name>
+                    <com:Name xml:lang="fr">Boliviano bolivien</com:Name>
+                </str:Code>
+                <str:Code id="BOV">
+                    <com:Name xml:lang="en">Bolivian Mvdol</com:Name>
+                    <com:Name xml:lang="fr">Boliviano bolivien</com:Name>
+                </str:Code>
+                <str:Code id="BRL">
+                    <com:Name xml:lang="en">Brazilian Real</com:Name>
+                    <com:Name xml:lang="fr">Real brÃ?Â©silien</com:Name>
+                </str:Code>
+                <str:Code id="BSD">
+                    <com:Name xml:lang="en">Bahamian Dollar</com:Name>
+                    <com:Name xml:lang="fr">Dollar des Bahamas</com:Name>
+                </str:Code>
+                <str:Code id="BTN">
+                    <com:Name xml:lang="en">Bhutan Ngultrum</com:Name>
+                    <com:Name xml:lang="fr">Ngultrum bhoutanais</com:Name>
+                </str:Code>
+                <str:Code id="BWP">
+                    <com:Name xml:lang="en">Botswana Pula</com:Name>
+                    <com:Name xml:lang="fr">Pula botswanais</com:Name>
+                </str:Code>
+                <str:Code id="BYR">
+                    <com:Name xml:lang="en">Belarussian Rouble</com:Name>
+                    <com:Name xml:lang="fr">Rouble biÃ?Â©lorusse</com:Name>
+                </str:Code>
+                <str:Code id="BZD">
+                    <com:Name xml:lang="en">Belize Dollar</com:Name>
+                    <com:Name xml:lang="fr">Dollar de Belize</com:Name>
+                </str:Code>
+                <str:Code id="CAD">
+                    <com:Name xml:lang="en">Canadian Dollar</com:Name>
+                    <com:Name xml:lang="fr">Dollar canadien</com:Name>
+                </str:Code>
+                <str:Code id="CDF">
+                    <com:Name xml:lang="en">Franc Congolais</com:Name>
+                    <com:Name xml:lang="fr">Franc Congolais</com:Name>
+                </str:Code>
+                <str:Code id="CHF">
+                    <com:Name xml:lang="en">Swiss Franc</com:Name>
+                    <com:Name xml:lang="fr">Franc suisse</com:Name>
+                </str:Code>
+                <str:Code id="CLF">
+                    <com:Name xml:lang="en">Unidades de fomento</com:Name>
+                    <com:Name xml:lang="fr">Unidades de fomento</com:Name>
+                </str:Code>
+                <str:Code id="CLP">
+                    <com:Name xml:lang="en">Chilean Peso</com:Name>
+                    <com:Name xml:lang="fr">Peso chilien</com:Name>
+                </str:Code>
+                <str:Code id="CNY">
+                    <com:Name xml:lang="en">Chinese Yuan Renminbi</com:Name>
+                    <com:Name xml:lang="fr">Yuan renmimbi chinois</com:Name>
+                </str:Code>
+                <str:Code id="COP">
+                    <com:Name xml:lang="en">Colombian Peso</com:Name>
+                    <com:Name xml:lang="fr">Peso colombien</com:Name>
+                </str:Code>
+                <str:Code id="CRC">
+                    <com:Name xml:lang="en">Costa Rican Colon</com:Name>
+                    <com:Name xml:lang="fr">ColÃ?Â³n costaricain</com:Name>
+                </str:Code>
+                <str:Code id="CUP">
+                    <com:Name xml:lang="en">Cuban Peso</com:Name>
+                    <com:Name xml:lang="fr">Peso cubain</com:Name>
+                </str:Code>
+                <str:Code id="CVE">
+                    <com:Name xml:lang="en">Cap Verde Escudo</com:Name>
+                    <com:Name xml:lang="fr">Escudo capverdien</com:Name>
+                </str:Code>
+                <str:Code id="CYP">
+                    <com:Name xml:lang="en">Cyprus Pound</com:Name>
+                    <com:Name xml:lang="fr">Livre chypriote</com:Name>
+                </str:Code>
+                <str:Code id="CZK">
+                    <com:Name xml:lang="en">Czech Koruna</com:Name>
+                    <com:Name xml:lang="fr">Koruna tchÃ?Â¨que</com:Name>
+                </str:Code>
+                <str:Code id="DJF">
+                    <com:Name xml:lang="en">Djibouti Franc</com:Name>
+                    <com:Name xml:lang="fr">Franc djiboutien</com:Name>
+                </str:Code>
+                <str:Code id="DKK">
+                    <com:Name xml:lang="en">Danish Krone</com:Name>
+                    <com:Name xml:lang="fr">Couronne danoise</com:Name>
+                </str:Code>
+                <str:Code id="DOP">
+                    <com:Name xml:lang="en">Dominican Peso</com:Name>
+                    <com:Name xml:lang="fr">Peso dominicain</com:Name>
+                </str:Code>
+                <str:Code id="DZD">
+                    <com:Name xml:lang="en">Algerian Dinar</com:Name>
+                    <com:Name xml:lang="fr">Dinar algÃ?Â©rien</com:Name>
+                </str:Code>
+                <str:Code id="ECV">
+                    <com:Name xml:lang="en">Unidad de Valor Constante UVC</com:Name>
+                    <com:Name xml:lang="fr">UnitÃ?Â© de valeur constante UVC</com:Name>
+                </str:Code>
+                <str:Code id="EEK">
+                    <com:Name xml:lang="en">Estonia Kroon</com:Name>
+                    <com:Name xml:lang="fr">Couronne estonienne</com:Name>
+                </str:Code>
+                <str:Code id="EGP">
+                    <com:Name xml:lang="en">Egyptian Pound</com:Name>
+                    <com:Name xml:lang="fr">Livre Ã?Â©gyptienne</com:Name>
+                </str:Code>
+                <str:Code id="ERN">
+                    <com:Name xml:lang="en">Eritrean Nakfa</com:Name>
+                    <com:Name xml:lang="fr">Eritrean Nakfa</com:Name>
+                </str:Code>
+                <str:Code id="ETB">
+                    <com:Name xml:lang="en">Ethiopian Birr</com:Name>
+                    <com:Name xml:lang="fr">Birr Ã?Â©thiopien</com:Name>
+                </str:Code>
+                <str:Code id="FJD">
+                    <com:Name xml:lang="en">Fiji Dollar</com:Name>
+                    <com:Name xml:lang="fr">Dollar fidjien</com:Name>
+                </str:Code>
+                <str:Code id="FKP">
+                    <com:Name xml:lang="en">Falkland Island Pound</com:Name>
+                    <com:Name xml:lang="fr">Livre des Ã?Â®les Falkland</com:Name>
+                </str:Code>
+                <str:Code id="GBP">
+                    <com:Name xml:lang="en">Pound Sterling</com:Name>
+                    <com:Name xml:lang="fr">Livre sterling</com:Name>
+                </str:Code>
+                <str:Code id="GEL">
+                    <com:Name xml:lang="en">Georgian Lari</com:Name>
+                    <com:Name xml:lang="fr">Lari de GÃ?Â©orgie</com:Name>
+                </str:Code>
+                <str:Code id="GHC">
+                    <com:Name xml:lang="en">Ghanaian Cedi</com:Name>
+                    <com:Name xml:lang="fr">Cedi ghanÃ?Â©en</com:Name>
+                </str:Code>
+                <str:Code id="GIP">
+                    <com:Name xml:lang="en">Gibraltar Pound</com:Name>
+                    <com:Name xml:lang="fr">Livre de Gibraltar</com:Name>
+                </str:Code>
+                <str:Code id="GMD">
+                    <com:Name xml:lang="en">Gambian Dalasi</com:Name>
+                    <com:Name xml:lang="fr">Dalasi gambien</com:Name>
+                </str:Code>
+                <str:Code id="GNF">
+                    <com:Name xml:lang="en">Guinea Franc</com:Name>
+                    <com:Name xml:lang="fr">Franc guinÃ?Â©en</com:Name>
+                </str:Code>
+                <str:Code id="GTQ">
+                    <com:Name xml:lang="en">Guatemalan Quetzal</com:Name>
+                    <com:Name xml:lang="fr">Quetzal guatÃ?Â©maltÃ?Â¨que</com:Name>
+                </str:Code>
+                <str:Code id="GWP">
+                    <com:Name xml:lang="en">Guinea-Bissau Peso</com:Name>
+                    <com:Name xml:lang="fr">Peso de GuinÃ?Â©e-Bissau</com:Name>
+                </str:Code>
+                <str:Code id="GYD">
+                    <com:Name xml:lang="en">Guyana Dollar</com:Name>
+                    <com:Name xml:lang="fr">Dollar de Guyana</com:Name>
+                </str:Code>
+                <str:Code id="HKD">
+                    <com:Name xml:lang="en">Hong Kong Dollar</com:Name>
+                    <com:Name xml:lang="fr">Dollar de Hong-Kong</com:Name>
+                </str:Code>
+                <str:Code id="HNL">
+                    <com:Name xml:lang="en">Honduran Lempira</com:Name>
+                    <com:Name xml:lang="fr">Lempira hondurien</com:Name>
+                </str:Code>
+                <str:Code id="HRK">
+                    <com:Name xml:lang="en">Croatian Kuna</com:Name>
+                    <com:Name xml:lang="fr">Kuna de Croatie</com:Name>
+                </str:Code>
+                <str:Code id="HTG">
+                    <com:Name xml:lang="en">Haitian Gourde</com:Name>
+                    <com:Name xml:lang="fr">Gourde haÃ?Â¯tienne</com:Name>
+                </str:Code>
+                <str:Code id="HUF">
+                    <com:Name xml:lang="en">Hungarian Forint</com:Name>
+                    <com:Name xml:lang="fr">Forint hongrois</com:Name>
+                </str:Code>
+                <str:Code id="IDR">
+                    <com:Name xml:lang="en">Indonesian Rupiah</com:Name>
+                    <com:Name xml:lang="fr">Roupie indonÃ?Â©sienne</com:Name>
+                </str:Code>
+                <str:Code id="ILS">
+                    <com:Name xml:lang="en">Israeli Shekel</com:Name>
+                    <com:Name xml:lang="fr">Shekel israÃ?Â«lien</com:Name>
+                </str:Code>
+                <str:Code id="INR">
+                    <com:Name xml:lang="en">Indian Rupee</com:Name>
+                    <com:Name xml:lang="fr">Roupie indienne</com:Name>
+                </str:Code>
+                <str:Code id="IQD">
+                    <com:Name xml:lang="en">Iraqi Dinar</com:Name>
+                    <com:Name xml:lang="fr">Dinar irakien</com:Name>
+                </str:Code>
+                <str:Code id="IRR">
+                    <com:Name xml:lang="en">Iranian Rial</com:Name>
+                    <com:Name xml:lang="fr">Rial iranien</com:Name>
+                </str:Code>
+                <str:Code id="ISK">
+                    <com:Name xml:lang="en">Iceland Krona</com:Name>
+                    <com:Name xml:lang="fr">Couronne islandaise</com:Name>
+                </str:Code>
+                <str:Code id="JMD">
+                    <com:Name xml:lang="en">Jamaican Dollar</com:Name>
+                    <com:Name xml:lang="fr">Dollar jamaÃ?Â¯cain</com:Name>
+                </str:Code>
+                <str:Code id="JOD">
+                    <com:Name xml:lang="en">Jordanian Dinar</com:Name>
+                    <com:Name xml:lang="fr">Dinar jordanien</com:Name>
+                </str:Code>
+                <str:Code id="JPY">
+                    <com:Name xml:lang="en">Japanese Yen</com:Name>
+                    <com:Name xml:lang="fr">Yen japonais</com:Name>
+                </str:Code>
+                <str:Code id="KES">
+                    <com:Name xml:lang="en">Kenyan Shilling</com:Name>
+                    <com:Name xml:lang="fr">Shilling kenyan</com:Name>
+                </str:Code>
+                <str:Code id="KGS">
+                    <com:Name xml:lang="en">Kyrgyzstan Som</com:Name>
+                    <com:Name xml:lang="fr">Som du Kirghizistan</com:Name>
+                </str:Code>
+                <str:Code id="KHR">
+                    <com:Name xml:lang="en">Cambodian Riel</com:Name>
+                    <com:Name xml:lang="fr">Riel cambodgien</com:Name>
+                </str:Code>
+                <str:Code id="KMF">
+                    <com:Name xml:lang="en">Comoro Franc</com:Name>
+                    <com:Name xml:lang="fr">Franc comorien</com:Name>
+                </str:Code>
+                <str:Code id="KPW">
+                    <com:Name xml:lang="en">North Korean Won</com:Name>
+                    <com:Name xml:lang="fr">Won nord-corÃ?Â©en</com:Name>
+                </str:Code>
+                <str:Code id="KRW">
+                    <com:Name xml:lang="en">South Korean Won</com:Name>
+                    <com:Name xml:lang="fr">Won sud-corÃ?Â©en</com:Name>
+                </str:Code>
+                <str:Code id="KWD">
+                    <com:Name xml:lang="en">Kuwaiti Dinar</com:Name>
+                    <com:Name xml:lang="fr">Dinar koweÃ?Â¯tien</com:Name>
+                </str:Code>
+                <str:Code id="KYD">
+                    <com:Name xml:lang="en">Cayman Islands Dollar</com:Name>
+                    <com:Name xml:lang="fr">Dollar des Ã?Â®les CaÃ?Â¯man</com:Name>
+                </str:Code>
+                <str:Code id="KZT">
+                    <com:Name xml:lang="en">Kazakhstan Tenge</com:Name>
+                    <com:Name xml:lang="fr">Tenge du Kazakhstan</com:Name>
+                </str:Code>
+                <str:Code id="LAK">
+                    <com:Name xml:lang="en">Lao Kip</com:Name>
+                    <com:Name xml:lang="fr">Kip laotien</com:Name>
+                </str:Code>
+                <str:Code id="LBP">
+                    <com:Name xml:lang="en">Lebanese Pound</com:Name>
+                    <com:Name xml:lang="fr">Livre libanaise</com:Name>
+                </str:Code>
+                <str:Code id="LKR">
+                    <com:Name xml:lang="en">Sri Lanka Rupee</com:Name>
+                    <com:Name xml:lang="fr">Roupie sri-lankaise</com:Name>
+                </str:Code>
+                <str:Code id="LRD">
+                    <com:Name xml:lang="en">Liberian Dollar</com:Name>
+                    <com:Name xml:lang="fr">Dollar liberien</com:Name>
+                </str:Code>
+                <str:Code id="LSL">
+                    <com:Name xml:lang="en">Lesotho Loti</com:Name>
+                    <com:Name xml:lang="fr">Loti lesothan</com:Name>
+                </str:Code>
+                <str:Code id="LTL">
+                    <com:Name xml:lang="en">Lithuanian Litas</com:Name>
+                    <com:Name xml:lang="fr">Litas de Lithuanie</com:Name>
+                </str:Code>
+                <str:Code id="LVL">
+                    <com:Name xml:lang="en">Latvian Lats</com:Name>
+                    <com:Name xml:lang="fr">Lats de Lettonie</com:Name>
+                </str:Code>
+                <str:Code id="LYD">
+                    <com:Name xml:lang="en">Libyan Dinar</com:Name>
+                    <com:Name xml:lang="fr">Dinar libyen</com:Name>
+                </str:Code>
+                <str:Code id="MAD">
+                    <com:Name xml:lang="en">Moroccan Dirham</com:Name>
+                    <com:Name xml:lang="fr">Dirham marocain</com:Name>
+                </str:Code>
+                <str:Code id="MDL">
+                    <com:Name xml:lang="en">Moldovan Leu</com:Name>
+                    <com:Name xml:lang="fr">Leu de Moldavie</com:Name>
+                </str:Code>
+                <str:Code id="MGF">
+                    <com:Name xml:lang="en">Malagasy Franc</com:Name>
+                    <com:Name xml:lang="fr">Franc malgache</com:Name>
+                </str:Code>
+                <str:Code id="MKD">
+                    <com:Name xml:lang="en">Macedonian Denar</com:Name>
+                    <com:Name xml:lang="fr">Dinar macÃ?Â©donien</com:Name>
+                </str:Code>
+                <str:Code id="MMK">
+                    <com:Name xml:lang="en">Myanmar Kyat</com:Name>
+                    <com:Name xml:lang="fr">Kyat de Myanmar</com:Name>
+                </str:Code>
+                <str:Code id="MNT">
+                    <com:Name xml:lang="en">Mongolian Tugrik</com:Name>
+                    <com:Name xml:lang="fr">Tugrik mongol</com:Name>
+                </str:Code>
+                <str:Code id="MOP">
+                    <com:Name xml:lang="en">Macao Patacca</com:Name>
+                    <com:Name xml:lang="fr">Pataca de Macau</com:Name>
+                </str:Code>
+                <str:Code id="MRO">
+                    <com:Name xml:lang="en">Mauritanian Ouguiya</com:Name>
+                    <com:Name xml:lang="fr">Ouguiya mauritanien</com:Name>
+                </str:Code>
+                <str:Code id="MTL">
+                    <com:Name xml:lang="en">Maltese Lira</com:Name>
+                    <com:Name xml:lang="fr">Livre maltaise</com:Name>
+                </str:Code>
+                <str:Code id="MUR">
+                    <com:Name xml:lang="en">Mauritius Rupee</com:Name>
+                    <com:Name xml:lang="fr">Roupie mauricienne</com:Name>
+                </str:Code>
+                <str:Code id="MVR">
+                    <com:Name xml:lang="en">Maldive Rufiyaa</com:Name>
+                    <com:Name xml:lang="fr">Roupie maldive</com:Name>
+                </str:Code>
+                <str:Code id="MWK">
+                    <com:Name xml:lang="en">Malawi Kwacha</com:Name>
+                    <com:Name xml:lang="fr">Kwacha malawite</com:Name>
+                </str:Code>
+                <str:Code id="MXN">
+                    <com:Name xml:lang="en">Mexican Peso</com:Name>
+                    <com:Name xml:lang="fr">Peso mexicain</com:Name>
+                </str:Code>
+                <str:Code id="MXV">
+                    <com:Name xml:lang="en">Unidad de Inversion (UDI)</com:Name>
+                    <com:Name xml:lang="fr">UnitÃ?Â© d'inversion (UDI)</com:Name>
+                </str:Code>
+                <str:Code id="MYR">
+                    <com:Name xml:lang="en">Malaysian Ringgit</com:Name>
+                    <com:Name xml:lang="fr">Ringgit malaisien</com:Name>
+                </str:Code>
+                <str:Code id="MZM">
+                    <com:Name xml:lang="en">Mozambique Metical</com:Name>
+                    <com:Name xml:lang="fr">Metical mozambicain</com:Name>
+                </str:Code>
+                <str:Code id="NAD">
+                    <com:Name xml:lang="en">Namibian Dollar</com:Name>
+                    <com:Name xml:lang="fr">Dollar namibien</com:Name>
+                </str:Code>
+                <str:Code id="NGN">
+                    <com:Name xml:lang="en">Nigerian Naira</com:Name>
+                    <com:Name xml:lang="fr">Naira nigÃ?Â©rian</com:Name>
+                </str:Code>
+                <str:Code id="NIO">
+                    <com:Name xml:lang="en">Nicaraguan Cordoba Oro</com:Name>
+                    <com:Name xml:lang="fr">Cordoba Oro nicaragayen</com:Name>
+                </str:Code>
+                <str:Code id="NOK">
+                    <com:Name xml:lang="en">Norwegian Krone</com:Name>
+                    <com:Name xml:lang="fr">Couronne norvÃ?Â©gienne</com:Name>
+                </str:Code>
+                <str:Code id="NPR">
+                    <com:Name xml:lang="en">Nepalese Rupee</com:Name>
+                    <com:Name xml:lang="fr">Roupie nÃ?Â©palaise</com:Name>
+                </str:Code>
+                <str:Code id="NZD">
+                    <com:Name xml:lang="en">New Zealand Dollar</com:Name>
+                    <com:Name xml:lang="fr">Dollar nÃ?Â©o-zÃ?Â©landais</com:Name>
+                </str:Code>
+                <str:Code id="OMR">
+                    <com:Name xml:lang="en">Rial Omani</com:Name>
+                    <com:Name xml:lang="fr">Riyal d'Oman</com:Name>
+                </str:Code>
+                <str:Code id="PAB">
+                    <com:Name xml:lang="en">Panamanian Balboa</com:Name>
+                    <com:Name xml:lang="fr">Balboa panamÃ?Â©en</com:Name>
+                </str:Code>
+                <str:Code id="PEN">
+                    <com:Name xml:lang="en">Peruvian Nuevo Sol</com:Name>
+                    <com:Name xml:lang="fr">Nuevo Sol du PÃ?Â©rou</com:Name>
+                </str:Code>
+                <str:Code id="PGK">
+                    <com:Name xml:lang="en">Papua New Guinea Kina</com:Name>
+                    <com:Name xml:lang="fr">Kina de Papouasie-Nouvelle-GuinÃ?Â©e</com:Name>
+                </str:Code>
+                <str:Code id="PHP">
+                    <com:Name xml:lang="en">Phillipine Peso</com:Name>
+                    <com:Name xml:lang="fr">Peso philippin</com:Name>
+                </str:Code>
+                <str:Code id="PKR">
+                    <com:Name xml:lang="en">Pakistan Rupee</com:Name>
+                    <com:Name xml:lang="fr">Roupie pakistanaise</com:Name>
+                </str:Code>
+                <str:Code id="PLN">
+                    <com:Name xml:lang="en">Polish Zloty</com:Name>
+                    <com:Name xml:lang="fr">Zloty polonais</com:Name>
+                </str:Code>
+                <str:Code id="PYG">
+                    <com:Name xml:lang="en">Paraguay Guarani</com:Name>
+                    <com:Name xml:lang="fr">Guarani paraguayen</com:Name>
+                </str:Code>
+                <str:Code id="QAR">
+                    <com:Name xml:lang="en">Qatari Riyal</com:Name>
+                    <com:Name xml:lang="fr">Riyal du Qatar</com:Name>
+                </str:Code>
+                <str:Code id="ROL">
+                    <com:Name xml:lang="en">Romanian Leu</com:Name>
+                    <com:Name xml:lang="fr">Leu roumain</com:Name>
+                </str:Code>
+                <str:Code id="RUB">
+                    <com:Name xml:lang="en">Russian Rouble</com:Name>
+                    <com:Name xml:lang="fr">Rouble russe</com:Name>
+                </str:Code>
+                <str:Code id="RWF">
+                    <com:Name xml:lang="en">Rwanda Franc</com:Name>
+                    <com:Name xml:lang="fr">Franc du Rwanda</com:Name>
+                </str:Code>
+                <str:Code id="SAR">
+                    <com:Name xml:lang="en">Saudi Riyal</com:Name>
+                    <com:Name xml:lang="fr">Riyal saoudien</com:Name>
+                </str:Code>
+                <str:Code id="SBD">
+                    <com:Name xml:lang="en">Solomon Islands Dollar</com:Name>
+                    <com:Name xml:lang="fr">Dollar des Ã?Â®les Salomon</com:Name>
+                </str:Code>
+                <str:Code id="SCR">
+                    <com:Name xml:lang="en">Seychelles Rupee</com:Name>
+                    <com:Name xml:lang="fr">Roupie seychelloise</com:Name>
+                </str:Code>
+                <str:Code id="SDD">
+                    <com:Name xml:lang="en">Sudanese Dinar</com:Name>
+                    <com:Name xml:lang="fr">Dinar soudanais</com:Name>
+                </str:Code>
+                <str:Code id="SEK">
+                    <com:Name xml:lang="en">Swedish Krona</com:Name>
+                    <com:Name xml:lang="fr">Couronne suÃ?Â©doise</com:Name>
+                </str:Code>
+                <str:Code id="SGD">
+                    <com:Name xml:lang="en">Singapur Dollar</com:Name>
+                    <com:Name xml:lang="fr">Dollar de Singapour</com:Name>
+                </str:Code>
+                <str:Code id="SHP">
+                    <com:Name xml:lang="en">Saint Helena Pound</com:Name>
+                    <com:Name xml:lang="fr">Livre de Sainte-HÃ?Â©lÃ?Â¨ne</com:Name>
+                </str:Code>
+                <str:Code id="SIT">
+                    <com:Name xml:lang="en">Slovenian Tolar</com:Name>
+                    <com:Name xml:lang="fr">Tolar slovÃ?Â¨ne</com:Name>
+                </str:Code>
+                <str:Code id="SKK">
+                    <com:Name xml:lang="en">Slovak Koruna</com:Name>
+                    <com:Name xml:lang="fr">Couronne slovaque</com:Name>
+                </str:Code>
+                <str:Code id="SLL">
+                    <com:Name xml:lang="en">Leone</com:Name>
+                    <com:Name xml:lang="fr">Leone</com:Name>
+                </str:Code>
+                <str:Code id="SOS">
+                    <com:Name xml:lang="en">Somali Schilling</com:Name>
+                    <com:Name xml:lang="fr">Schilling somalien</com:Name>
+                </str:Code>
+                <str:Code id="SRG">
+                    <com:Name xml:lang="en">Suriname Guilder</com:Name>
+                    <com:Name xml:lang="fr">Florin du Surinam</com:Name>
+                </str:Code>
+                <str:Code id="STD">
+                    <com:Name xml:lang="en">Sao Tome and Principe Dobra</com:Name>
+                    <com:Name xml:lang="fr">Dobra santomÃ?Â©en</com:Name>
+                </str:Code>
+                <str:Code id="SVC">
+                    <com:Name xml:lang="en">El Salvador Colon</com:Name>
+                    <com:Name xml:lang="fr">ColÃ?Â³n salvadorien</com:Name>
+                </str:Code>
+                <str:Code id="SYP">
+                    <com:Name xml:lang="en">Syrian Pound</com:Name>
+                    <com:Name xml:lang="fr">Livre syrienne</com:Name>
+                </str:Code>
+                <str:Code id="SZL">
+                    <com:Name xml:lang="en">Swaziland Lilangeni</com:Name>
+                    <com:Name xml:lang="fr">Lilangeni swazilandais</com:Name>
+                </str:Code>
+                <str:Code id="THB">
+                    <com:Name xml:lang="en">Thai Baht</com:Name>
+                    <com:Name xml:lang="fr">Baht thaÃ?Â¯landais</com:Name>
+                </str:Code>
+                <str:Code id="TJS">
+                    <com:Name xml:lang="en">Tajik Somoni</com:Name>
+                    <com:Name xml:lang="fr">Somoni du Tadjikistan</com:Name>
+                </str:Code>
+                <str:Code id="TLE">
+                    <com:Name xml:lang="en">Timor Escudo</com:Name>
+                    <com:Name xml:lang="fr">Escudo du Timor</com:Name>
+                </str:Code>
+                <str:Code id="TMM">
+                    <com:Name xml:lang="en">Turkmenistan Manat</com:Name>
+                    <com:Name xml:lang="fr">Manat turkmÃ?Â¨ne</com:Name>
+                </str:Code>
+                <str:Code id="TND">
+                    <com:Name xml:lang="en">Tunisian Dinar</com:Name>
+                    <com:Name xml:lang="fr">Dinar tunisien</com:Name>
+                </str:Code>
+                <str:Code id="TOP">
+                    <com:Name xml:lang="en">Tongan Pa'anga</com:Name>
+                    <com:Name xml:lang="fr">Pa'anga tongais</com:Name>
+                </str:Code>
+                <str:Code id="TRL">
+                    <com:Name xml:lang="en">Turkish Lira</com:Name>
+                    <com:Name xml:lang="fr">Livre turque</com:Name>
+                </str:Code>
+                <str:Code id="TTD">
+                    <com:Name xml:lang="en">Trinidad and Tobago Dollar</com:Name>
+                    <com:Name xml:lang="fr">Dollar de TrinitÃ?Â©-et-Tobago</com:Name>
+                </str:Code>
+                <str:Code id="TWD">
+                    <com:Name xml:lang="en">New Taiwan Dollar</com:Name>
+                    <com:Name xml:lang="fr">Nouveau Dollar taÃ?Â¯wainais</com:Name>
+                </str:Code>
+                <str:Code id="TZS">
+                    <com:Name xml:lang="en">Tazanian Schilling</com:Name>
+                    <com:Name xml:lang="fr">Schilling tanzanien</com:Name>
+                </str:Code>
+                <str:Code id="UAH">
+                    <com:Name xml:lang="en">Ukrainian Hryvnia</com:Name>
+                    <com:Name xml:lang="fr">Hryvia ukrainien</com:Name>
+                </str:Code>
+                <str:Code id="UGX">
+                    <com:Name xml:lang="en">Ugandan Schilling</com:Name>
+                    <com:Name xml:lang="fr">Schilling ougandais</com:Name>
+                </str:Code>
+                <str:Code id="USD">
+                    <com:Name xml:lang="en">USD</com:Name>
+                    <com:Name xml:lang="fr">USD</com:Name>
+                </str:Code>
+                <str:Code id="USN">
+                    <com:Name xml:lang="en">US Dollar (Next day)</com:Name>
+                    <com:Name xml:lang="fr">US Dollar (jour suivant)</com:Name>
+                </str:Code>
+                <str:Code id="USS">
+                    <com:Name xml:lang="en">US Dollar (Same day)</com:Name>
+                    <com:Name xml:lang="fr">US dollar (mÃ?Âªme jour)</com:Name>
+                </str:Code>
+                <str:Code id="UYU">
+                    <com:Name xml:lang="en">Peso Uruguayo</com:Name>
+                    <com:Name xml:lang="fr">Peso d'Uruguay</com:Name>
+                </str:Code>
+                <str:Code id="UZS">
+                    <com:Name xml:lang="en">Uzbekistan Sum</com:Name>
+                    <com:Name xml:lang="fr">Sum d'OuzbÃ?Â©kistant</com:Name>
+                </str:Code>
+                <str:Code id="VEB">
+                    <com:Name xml:lang="en">Venezuela Bolivar</com:Name>
+                    <com:Name xml:lang="fr">BolÃ?Â­var vÃ?Â©nÃ?Â©zuÃ?Â©lien</com:Name>
+                </str:Code>
+                <str:Code id="VND">
+                    <com:Name xml:lang="en">Viet Nam Dong</com:Name>
+                    <com:Name xml:lang="fr">Dong vietnamien</com:Name>
+                </str:Code>
+                <str:Code id="VUV">
+                    <com:Name xml:lang="en">Vanuatu Vatu</com:Name>
+                    <com:Name xml:lang="fr">Vatu du Vanuatu</com:Name>
+                </str:Code>
+                <str:Code id="WST">
+                    <com:Name xml:lang="en">Samoan Tala</com:Name>
+                    <com:Name xml:lang="fr">Tala samoan</com:Name>
+                </str:Code>
+                <str:Code id="XAF">
+                    <com:Name xml:lang="en">CFA Franc BEAC</com:Name>
+                    <com:Name xml:lang="fr">CFA Franc BEAC</com:Name>
+                </str:Code>
+                <str:Code id="XAG">
+                    <com:Name xml:lang="en">Silver</com:Name>
+                    <com:Name xml:lang="fr">Argent</com:Name>
+                </str:Code>
+                <str:Code id="XAU">
+                    <com:Name xml:lang="en">Gold</com:Name>
+                    <com:Name xml:lang="fr">Or</com:Name>
+                </str:Code>
+                <str:Code id="XBA">
+                    <com:Name xml:lang="en">Bond Markets Units</com:Name>
+                    <com:Name xml:lang="fr">UnitÃ?Â©s de marchÃ?Â© des changes</com:Name>
+                </str:Code>
+                <str:Code id="XBB">
+                    <com:Name xml:lang="en">European Composite Unit EURCO</com:Name>
+                    <com:Name xml:lang="fr">UnitÃ?Â© compostie europÃ?Â©enne EURCO</com:Name>
+                </str:Code>
+                <str:Code id="XBC">
+                    <com:Name xml:lang="en">European Monetary Unit EUM</com:Name>
+                    <com:Name xml:lang="fr">UnitÃ?Â© monÃ?Â©taire europÃ?Â©enne EUM</com:Name>
+                </str:Code>
+                <str:Code id="XBD">
+                    <com:Name xml:lang="en">European Unit of Account EUA</com:Name>
+                    <com:Name xml:lang="fr">UnitÃ?Â© de compte europÃ?Â©enne EUA</com:Name>
+                </str:Code>
+                <str:Code id="XCD">
+                    <com:Name xml:lang="en">East Caribean Dollar</com:Name>
+                    <com:Name xml:lang="fr">Dollar des CaraÃ?Â¯bes orientales</com:Name>
+                </str:Code>
+                <str:Code id="XDR">
+                    <com:Name xml:lang="en">Special Drawing Right</com:Name>
+                    <com:Name xml:lang="fr">Special Drawing Right</com:Name>
+                </str:Code>
+                <str:Code id="XOF">
+                    <com:Name xml:lang="en">CFA Franc BCEAO</com:Name>
+                    <com:Name xml:lang="fr">CFA Franc BCEAO</com:Name>
+                </str:Code>
+                <str:Code id="XPD">
+                    <com:Name xml:lang="en">Palladium</com:Name>
+                    <com:Name xml:lang="fr">Palladium</com:Name>
+                </str:Code>
+                <str:Code id="XPF">
+                    <com:Name xml:lang="en">CFP Franc</com:Name>
+                    <com:Name xml:lang="fr">Franc pacifique</com:Name>
+                </str:Code>
+                <str:Code id="XPT">
+                    <com:Name xml:lang="en">Platinum</com:Name>
+                    <com:Name xml:lang="fr">Platine</com:Name>
+                </str:Code>
+                <str:Code id="XTS">
+                    <com:Name xml:lang="en">Code for testing purposes</com:Name>
+                    <com:Name xml:lang="fr">Code destinÃ?Â© aux essais</com:Name>
+                </str:Code>
+                <str:Code id="XXX">
+                    <com:Name xml:lang="en">No currency involved</com:Name>
+                    <com:Name xml:lang="fr">Pas de monnaie</com:Name>
+                </str:Code>
+                <str:Code id="YER">
+                    <com:Name xml:lang="en">Yemini Rial</com:Name>
+                    <com:Name xml:lang="fr">Rial yemenite</com:Name>
+                </str:Code>
+                <str:Code id="YUD">
+                    <com:Name xml:lang="en">Yugoslavian Dinar</com:Name>
+                    <com:Name xml:lang="fr">Dinar yougoslave</com:Name>
+                </str:Code>
+                <str:Code id="ZAR">
+                    <com:Name xml:lang="en">South African Rand</com:Name>
+                    <com:Name xml:lang="fr">Rand sud-africain</com:Name>
+                </str:Code>
+                <str:Code id="ZMK">
+                    <com:Name xml:lang="en">Zambian Kwacha</com:Name>
+                    <com:Name xml:lang="fr">Kwacha zambien</com:Name>
+                </str:Code>
+                <str:Code id="ZWD">
+                    <com:Name xml:lang="en">Zimbabwe Dollar</com:Name>
+                    <com:Name xml:lang="fr">Dollar zimbabwÃ?Â©e</com:Name>
+                </str:Code>
+                <str:Code id="USD1">
+                    <com:Name xml:lang="en">US dollars</com:Name>
+                    <com:Name xml:lang="fr">Dollars Ã?â?°-U</com:Name>
+                </str:Code>
+                <str:Code id="PCT">
+                    <com:Name xml:lang="en">%</com:Name>
+                    <com:Name xml:lang="fr">%</com:Name>
+                </str:Code>
+                <str:Code id="PCT_PT">
+                    <com:Name xml:lang="en">% points</com:Name>
+                    <com:Name xml:lang="fr">% points</com:Name>
+                </str:Code>
+                <str:Code id="2005100">
+                    <com:Name xml:lang="en">2005=100</com:Name>
+                    <com:Name xml:lang="fr">2005=100</com:Name>
+                </str:Code>
+                <str:Code id="HR">
+                    <com:Name xml:lang="en">Hours</com:Name>
+                    <com:Name xml:lang="fr">Heures</com:Name>
+                </str:Code>
+                <str:Code id="JOB">
+                    <com:Name xml:lang="en">Jobs</com:Name>
+                    <com:Name xml:lang="fr">Emplois</com:Name>
+                </str:Code>
+                <str:Code id="NATLBY1">
+                    <com:Name xml:lang="en">National base year = 100</com:Name>
+                    <com:Name xml:lang="fr">AnnÃ?Â©e base nationale = 100</com:Name>
+                </str:Code>
+                <str:Code id="NATLCUR1">
+                    <com:Name xml:lang="en">National currency</com:Name>
+                    <com:Name xml:lang="fr">Monnaie nationale</com:Name>
+                </str:Code>
+                <str:Code id="NATLRY1">
+                    <com:Name xml:lang="en">National reference year = 100</com:Name>
+                    <com:Name xml:lang="fr">AnnÃ?Â©e de rÃ?Â©fÃ?Â©rence nationale = 100</com:Name>
+                </str:Code>
+                <str:Code id="NATLBY">
+                    <com:Name xml:lang="en">NATL base year = 100</com:Name>
+                    <com:Name xml:lang="fr">AnnÃ?Â©e base NAT = 100</com:Name>
+                </str:Code>
+                <str:Code id="NATLCUR">
+                    <com:Name xml:lang="en">NATL currency</com:Name>
+                    <com:Name xml:lang="fr">Monnaie NAT</com:Name>
+                </str:Code>
+                <str:Code id="NATLRY">
+                    <com:Name xml:lang="en">NATL reference year = 100</com:Name>
+                    <com:Name xml:lang="fr">AnnÃ?Â©e rÃ?Â©fÃ?Â©rence NAT = 100</com:Name>
+                </str:Code>
+                <str:Code id="PCT1">
+                    <com:Name xml:lang="en">Percentage</com:Name>
+                    <com:Name xml:lang="fr">Pourcentage</com:Name>
+                </str:Code>
+                <str:Code id="PCT_PT1">
+                    <com:Name xml:lang="en">Percentage points</com:Name>
+                    <com:Name xml:lang="fr">Points pourcentage</com:Name>
+                </str:Code>
+                <str:Code id="PER">
+                    <com:Name xml:lang="en">Persons</com:Name>
+                    <com:Name xml:lang="fr">Personnes</com:Name>
+                </str:Code>
+                <str:Code id="TOEUSDPPP">
+                    <com:Name xml:lang="en">Tonnes of oil equivalent (toe) per thousand 2000 US dollars of GDP calculated using PPPs</com:Name>
+                    <com:Name xml:lang="fr">Tonnes d Ã?Â©quivalent pÃ?Â©trole (tep) par millier de dollars des EU 2000 de PIB calculÃ?Â© avec les PPA</com:Name>
+                </str:Code>
+                <str:Code id="OTH">
+                    <com:Name xml:lang="en">Other</com:Name>
+                    <com:Name xml:lang="fr">Autre</com:Name>
+                </str:Code>
+                <str:Code id="2011100">
+                    <com:Name xml:lang="en">2011=100</com:Name>
+                    <com:Name xml:lang="fr">2011=100</com:Name>
+                </str:Code>
+                <str:Code id="2010100">
+                    <com:Name xml:lang="en">2010=100</com:Name>
+                    <com:Name xml:lang="fr">2010=100</com:Name>
+                </str:Code>
+                <str:Code id="2009100">
+                    <com:Name xml:lang="en">2009=100</com:Name>
+                    <com:Name xml:lang="fr">2009=100</com:Name>
+                </str:Code>
+                <str:Code id="2007100">
+                    <com:Name xml:lang="en">2007=100</com:Name>
+                    <com:Name xml:lang="fr">2007=100</com:Name>
+                </str:Code>
+                <str:Code id="2008100">
+                    <com:Name xml:lang="en">2008=100</com:Name>
+                    <com:Name xml:lang="fr">2008=100</com:Name>
+                </str:Code>
+                <str:Code id="2004100">
+                    <com:Name xml:lang="en">2004=100</com:Name>
+                    <com:Name xml:lang="fr">2004=100</com:Name>
+                </str:Code>
+                <str:Code id="2003100">
+                    <com:Name xml:lang="en">2003=100</com:Name>
+                    <com:Name xml:lang="fr">2003=100</com:Name>
+                </str:Code>
+                <str:Code id="2000100">
+                    <com:Name xml:lang="en">2000=100</com:Name>
+                    <com:Name xml:lang="fr">2000=100</com:Name>
+                </str:Code>
+                <str:Code id="1998100">
+                    <com:Name xml:lang="en">1998=100</com:Name>
+                    <com:Name xml:lang="fr">1998=100</com:Name>
+                </str:Code>
+                <str:Code id="1995100">
+                    <com:Name xml:lang="en">1995=100</com:Name>
+                    <com:Name xml:lang="fr">1995=100</com:Name>
+                </str:Code>
+                <str:Code id="1993100">
+                    <com:Name xml:lang="en">1993=100</com:Name>
+                    <com:Name xml:lang="fr">1993=100</com:Name>
+                </str:Code>
+                <str:Code id="1991100">
+                    <com:Name xml:lang="en">1991=100</com:Name>
+                    <com:Name xml:lang="fr">1991=100</com:Name>
+                </str:Code>
+            </str:Codelist>
+            <str:Codelist agencyID="ABS" isExternalReference="false" isFinal="false" version="1.0" id="CL_RIM_SA4_GCCSA_STE_H_POWERCODE">
+                <com:Name xml:lang="en">RIM_SA4_GCCSA_STE_H_POWERCODE codelist</com:Name>
+                <str:Code id="HUN">
+                    <com:Name xml:lang="en">hundreds</com:Name>
+                    <com:Name xml:lang="fr">centaines</com:Name>
+                </str:Code>
+                <str:Code id="THO">
+                    <com:Name xml:lang="en">thousands</com:Name>
+                    <com:Name xml:lang="fr">milliers</com:Name>
+                </str:Code>
+                <str:Code id="MIL">
+                    <com:Name xml:lang="en">millions</com:Name>
+                    <com:Name xml:lang="fr">millions</com:Name>
+                </str:Code>
+                <str:Code id="BIL">
+                    <com:Name xml:lang="en">billions</com:Name>
+                    <com:Name xml:lang="fr">milliards</com:Name>
+                </str:Code>
+                <str:Code id="TRI">
+                    <com:Name xml:lang="en">trillions</com:Name>
+                    <com:Name xml:lang="fr">milliers de milliards</com:Name>
+                </str:Code>
+            </str:Codelist>
+            <str:Codelist agencyID="ABS" isExternalReference="false" isFinal="false" version="1.0" id="CL_RIM_SA4_GCCSA_STE_H_TIME_FORMAT">
+                <com:Name xml:lang="en">RIM_SA4_GCCSA_STE_H_TIME_FORMAT codelist</com:Name>
+                <str:Code id="P1Y">
+                    <com:Name xml:lang="en">Annual</com:Name>
+                    <com:Name xml:lang="fr">Annual</com:Name>
+                </str:Code>
+                <str:Code id="P1M">
+                    <com:Name xml:lang="en">Monthly</com:Name>
+                    <com:Name xml:lang="fr">Monthly</com:Name>
+                </str:Code>
+                <str:Code id="P3M">
+                    <com:Name xml:lang="en">Quarterly</com:Name>
+                    <com:Name xml:lang="fr">Quarterly</com:Name>
+                </str:Code>
+                <str:Code id="P6M">
+                    <com:Name xml:lang="en">Half-yearly</com:Name>
+                    <com:Name xml:lang="fr">Half-yearly</com:Name>
+                </str:Code>
+            </str:Codelist>
+            <str:Codelist agencyID="ABS" isExternalReference="false" isFinal="false" version="1.0" id="CL_RIM_SA4_GCCSA_STE_H_TIME">
+                <com:Name xml:lang="en">RIM_SA4_GCCSA_STE_H_TIME codelist</com:Name>
+                <str:Code id="9999">
+                    <com:Name xml:lang="en">9999</com:Name>
+                    <com:Name xml:lang="fr">9999</com:Name>
+                </str:Code>
+            </str:Codelist>
+        </str:Codelists>
+        <str:Concepts>
+            <str:ConceptScheme agencyID="ABS" version="1.0" id="STANDALONE_CONCEPT_SCHEME">
+                <com:Name xml:lang="en">Standalone Concept Scheme</com:Name>
+                <str:Concept id="ASGS_2011_SA4_GCCSA_STE">
+                    <com:Name xml:lang="en">Region of Departure</com:Name>
+                    <com:Name xml:lang="fr">Region of Departure</com:Name>
+                </str:Concept>
+                <str:Concept id="ASGS_2011_STE_GGCSA_SA4A">
+                    <com:Name xml:lang="en">Region of Arrival</com:Name>
+                    <com:Name xml:lang="fr">Region of Arrival</com:Name>
+                </str:Concept>
+                <str:Concept id="FREQUENCY">
+                    <com:Name xml:lang="en">Frequency</com:Name>
+                    <com:Name xml:lang="fr">FrÃ©quence</com:Name>
+                </str:Concept>
+                <str:Concept id="TIME_FY">
+                    <com:Name xml:lang="en">Time</com:Name>
+                    <com:Name xml:lang="fr">Time</com:Name>
+                </str:Concept>
+                <str:Concept id="UNIT">
+                    <com:Name xml:lang="en">Unit</com:Name>
+                    <com:Name xml:lang="fr">Unit</com:Name>
+                </str:Concept>
+                <str:Concept id="POWERCODE">
+                    <com:Name xml:lang="en">Powercode</com:Name>
+                    <com:Name xml:lang="fr">Powercode</com:Name>
+                </str:Concept>
+                <str:Concept id="TIME_FORMAT">
+                    <com:Name xml:lang="en">Time format</com:Name>
+                    <com:Name xml:lang="fr">Time format</com:Name>
+                </str:Concept>
+                <str:Concept id="TIME">
+                    <com:Name xml:lang="en">Time</com:Name>
+                    <com:Name xml:lang="fr">Temps</com:Name>
+                </str:Concept>
+                <str:Concept id="OBS_STATUS">
+                    <com:Name xml:lang="en">Observation Status</com:Name>
+                    <com:Name xml:lang="fr">Statut d'observation</com:Name>
+                </str:Concept>
+                <str:Concept id="REFERENCEPERIOD">
+                    <com:Name xml:lang="en">Unit multplier</com:Name>
+                    <com:Name xml:lang="fr">UnitÃ© multiplicateur</com:Name>
+                </str:Concept>
+            </str:ConceptScheme>
+            <str:ConceptScheme agencyID="OECD" version="1.0" id="STANDALONE_CONCEPT_SCHEME">
+                <com:Name xml:lang="en">Standalone Concept Scheme</com:Name>
+                <str:Concept id="OBS_VALUE">
+                    <com:Name xml:lang="en">Observation Value</com:Name>
+                    <com:Name xml:lang="fr">Valeur d'observation</com:Name>
+                </str:Concept>
+            </str:ConceptScheme>
+        </str:Concepts>
+        <str:DataStructures>
+            <str:DataStructure agencyID="ABS" isExternalReference="false" isFinal="false" version="1.0" id="RIM_SA4_GCCSA_STE_H">
+                <com:Name xml:lang="en">Regional Internal Migration Estimates by Region of Arrival and Departure (SA4 and above), 2006-07 to 2014-15</com:Name>
+                <com:Name xml:lang="fr">Regional Internal Migration Estimates by Region of Arrival and Departure (SA4 and above), 2006-07 to 2014-15</com:Name>
+                <str:DataStructureComponents>
+                    <str:DimensionList>
+                        <str:Dimension id="ASGS_2011_SA4_GCCSA_STE">
+                            <str:ConceptIdentity>
+                                <Ref agencyID="ABS" id="ASGS_2011_SA4_GCCSA_STE" maintainableParentID="STANDALONE_CONCEPT_SCHEME" maintainableParentVersion="1.0"/>
+                                <URN>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ABS:STANDALONE_CONCEPT_SCHEME(1.0).ASGS_2011_SA4_GCCSA_STE</URN>
+                            </str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>
+                                    <Ref agencyID="ABS" id="CL_RIM_SA4_GCCSA_STE_H_ASGS_2011_SA4_GCCSA_STE" version="1.0"/>
+                                    <URN>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ABS:CL_RIM_SA4_GCCSA_STE_H_ASGS_2011_SA4_GCCSA_STE(1.0)</URN>
+                                </str:Enumeration>
+                            </str:LocalRepresentation>
+                        </str:Dimension>
+                        <str:Dimension id="ASGS_2011_STE_GGCSA_SA4A">
+                            <str:ConceptIdentity>
+                                <Ref agencyID="ABS" id="ASGS_2011_STE_GGCSA_SA4A" maintainableParentID="STANDALONE_CONCEPT_SCHEME" maintainableParentVersion="1.0"/>
+                                <URN>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ABS:STANDALONE_CONCEPT_SCHEME(1.0).ASGS_2011_STE_GGCSA_SA4A</URN>
+                            </str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>
+                                    <Ref agencyID="ABS" id="CL_RIM_SA4_GCCSA_STE_H_ASGS_2011_STE_GGCSA_SA4A" version="1.0"/>
+                                    <URN>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ABS:CL_RIM_SA4_GCCSA_STE_H_ASGS_2011_STE_GGCSA_SA4A(1.0)</URN>
+                                </str:Enumeration>
+                            </str:LocalRepresentation>
+                        </str:Dimension>
+                        <str:Dimension id="FREQUENCY">
+                            <str:ConceptIdentity>
+                                <Ref agencyID="ABS" id="FREQUENCY" maintainableParentID="STANDALONE_CONCEPT_SCHEME" maintainableParentVersion="1.0"/>
+                                <URN>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ABS:STANDALONE_CONCEPT_SCHEME(1.0).FREQUENCY</URN>
+                            </str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>
+                                    <Ref agencyID="ABS" id="CL_RIM_SA4_GCCSA_STE_H_FREQUENCY" version="1.0"/>
+                                    <URN>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ABS:CL_RIM_SA4_GCCSA_STE_H_FREQUENCY(1.0)</URN>
+                                </str:Enumeration>
+                            </str:LocalRepresentation>
+                        </str:Dimension>
+                        <str:Dimension id="TIME_FY">
+                            <str:ConceptIdentity>
+                                <Ref agencyID="ABS" id="TIME_FY" maintainableParentID="STANDALONE_CONCEPT_SCHEME" maintainableParentVersion="1.0"/>
+                                <URN>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ABS:STANDALONE_CONCEPT_SCHEME(1.0).TIME_FY</URN>
+                            </str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>
+                                    <Ref agencyID="ABS" id="CL_RIM_SA4_GCCSA_STE_H_TIME_FY" version="1.0"/>
+                                    <URN>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ABS:CL_RIM_SA4_GCCSA_STE_H_TIME_FY(1.0)</URN>
+                                </str:Enumeration>
+                            </str:LocalRepresentation>
+                        </str:Dimension>
+                        <str:TimeDimension id="TIME">
+                            <str:ConceptIdentity>
+                                <Ref agencyID="ABS" id="TIME" maintainableParentID="STANDALONE_CONCEPT_SCHEME" maintainableParentVersion="1.0"/>
+                                <URN>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ABS:STANDALONE_CONCEPT_SCHEME(1.0).TIME</URN>
+                            </str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:TextFormat textType="ObservationalTimePeriod"/>
+                            </str:LocalRepresentation>
+                        </str:TimeDimension>
+                    </str:DimensionList>
+                    <str:AttributeList>
+                        <str:Attribute id="OBS_STATUS" assignmentStatus="Conditional">
+                            <str:ConceptIdentity>
+                                <Ref agencyID="ABS" id="OBS_STATUS" maintainableParentID="STANDALONE_CONCEPT_SCHEME" maintainableParentVersion="1.0"/>
+                                <URN>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ABS:STANDALONE_CONCEPT_SCHEME(1.0).OBS_STATUS</URN>
+                            </str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>
+                                    <Ref agencyID="ABS" id="CL_RIM_SA4_GCCSA_STE_H_OBS_STATUS" version="1.0"/>
+                                    <URN>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ABS:CL_RIM_SA4_GCCSA_STE_H_OBS_STATUS(1.0)</URN>
+                                </str:Enumeration>
+                            </str:LocalRepresentation>
+                            <str:AttributeRelationship>
+                                <str:PrimaryMeasure>
+                                    <URN>urn:sdmx:org.sdmx.infomodel.datastructure.PrimaryMeasure=.OBS_VALUE</URN>
+                                    <Ref id="OBS_VALUE"/>
+                                </str:PrimaryMeasure>
+                            </str:AttributeRelationship>
+                        </str:Attribute>
+                        <str:Attribute id="UNIT" assignmentStatus="Conditional">
+                            <str:ConceptIdentity>
+                                <Ref agencyID="ABS" id="UNIT" maintainableParentID="STANDALONE_CONCEPT_SCHEME" maintainableParentVersion="1.0"/>
+                                <URN>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ABS:STANDALONE_CONCEPT_SCHEME(1.0).UNIT</URN>
+                            </str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>
+                                    <Ref agencyID="ABS" id="CL_RIM_SA4_GCCSA_STE_H_UNIT" version="1.0"/>
+                                    <URN>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ABS:CL_RIM_SA4_GCCSA_STE_H_UNIT(1.0)</URN>
+                                </str:Enumeration>
+                            </str:LocalRepresentation>
+                            <str:AttributeRelationship>
+                                <str:PrimaryMeasure>
+                                    <URN>urn:sdmx:org.sdmx.infomodel.datastructure.PrimaryMeasure=.OBS_VALUE</URN>
+                                    <Ref id="OBS_VALUE"/>
+                                </str:PrimaryMeasure>
+                            </str:AttributeRelationship>
+                        </str:Attribute>
+                        <str:Attribute id="POWERCODE" assignmentStatus="Conditional">
+                            <str:ConceptIdentity>
+                                <Ref agencyID="ABS" id="POWERCODE" maintainableParentID="STANDALONE_CONCEPT_SCHEME" maintainableParentVersion="1.0"/>
+                                <URN>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ABS:STANDALONE_CONCEPT_SCHEME(1.0).POWERCODE</URN>
+                            </str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>
+                                    <Ref agencyID="ABS" id="CL_RIM_SA4_GCCSA_STE_H_POWERCODE" version="1.0"/>
+                                    <URN>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ABS:CL_RIM_SA4_GCCSA_STE_H_POWERCODE(1.0)</URN>
+                                </str:Enumeration>
+                            </str:LocalRepresentation>
+                            <str:AttributeRelationship>
+                                <str:PrimaryMeasure>
+                                    <URN>urn:sdmx:org.sdmx.infomodel.datastructure.PrimaryMeasure=.OBS_VALUE</URN>
+                                    <Ref id="OBS_VALUE"/>
+                                </str:PrimaryMeasure>
+                            </str:AttributeRelationship>
+                        </str:Attribute>
+                        <str:Attribute id="REFERENCEPERIOD" assignmentStatus="Conditional">
+                            <str:ConceptIdentity>
+                                <Ref agencyID="ABS" id="REFERENCEPERIOD" maintainableParentID="STANDALONE_CONCEPT_SCHEME" maintainableParentVersion="1.0"/>
+                                <URN>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ABS:STANDALONE_CONCEPT_SCHEME(1.0).REFERENCEPERIOD</URN>
+                            </str:ConceptIdentity>
+                            <str:AttributeRelationship>
+                                <str:PrimaryMeasure>
+                                    <URN>urn:sdmx:org.sdmx.infomodel.datastructure.PrimaryMeasure=.OBS_VALUE</URN>
+                                    <Ref id="OBS_VALUE"/>
+                                </str:PrimaryMeasure>
+                            </str:AttributeRelationship>
+                        </str:Attribute>
+                        <str:Attribute id="TIME_FORMAT" assignmentStatus="Conditional">
+                            <str:ConceptIdentity>
+                                <Ref agencyID="ABS" id="TIME_FORMAT" maintainableParentID="STANDALONE_CONCEPT_SCHEME" maintainableParentVersion="1.0"/>
+                                <URN>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ABS:STANDALONE_CONCEPT_SCHEME(1.0).TIME_FORMAT</URN>
+                            </str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>
+                                    <Ref agencyID="ABS" id="CL_RIM_SA4_GCCSA_STE_H_TIME_FORMAT" version="1.0"/>
+                                    <URN>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ABS:CL_RIM_SA4_GCCSA_STE_H_TIME_FORMAT(1.0)</URN>
+                                </str:Enumeration>
+                            </str:LocalRepresentation>
+                            <str:AttributeRelationship>
+                                <str:PrimaryMeasure>
+                                    <URN>urn:sdmx:org.sdmx.infomodel.datastructure.PrimaryMeasure=.OBS_VALUE</URN>
+                                    <Ref id="OBS_VALUE"/>
+                                </str:PrimaryMeasure>
+                            </str:AttributeRelationship>
+                        </str:Attribute>
+                    </str:AttributeList>
+                    <str:MeasureList>
+                        <str:PrimaryMeasure id="OBS_VALUE">
+                            <str:ConceptIdentity>
+                                <Ref agencyID="OECD" id="OBS_VALUE" maintainableParentID="STANDALONE_CONCEPT_SCHEME" maintainableParentVersion="1.0"/>
+                                <URN>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=OECD:STANDALONE_CONCEPT_SCHEME(1.0).OBS_VALUE</URN>
+                            </str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:TextFormat textType="Double"/>
+                            </str:LocalRepresentation>
+                        </str:PrimaryMeasure>
+                    </str:MeasureList>
+                </str:DataStructureComponents>
+            </str:DataStructure>
+        </str:DataStructures>
+    </mes:Structures>
+</mes:Structure>

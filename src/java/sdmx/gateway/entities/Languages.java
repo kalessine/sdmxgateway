@@ -11,6 +11,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -43,7 +44,7 @@ public class Languages implements Serializable {
     @Size(max = 2000)
     @Column(name = "Name", length = 2000)
     private String name;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "languages")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "languages", fetch = FetchType.LAZY)
     private List<Nametext> nametextList;
 
     public Languages() {

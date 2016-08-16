@@ -21,6 +21,7 @@ import sdmx.commonreferences.DataStructureReference;
 import sdmx.commonreferences.DataflowReference;
 import sdmx.commonreferences.IDType;
 import sdmx.commonreferences.NestedNCNameID;
+import sdmx.commonreferences.Version;
 import sdmx.exception.ParseException;
 import sdmx.message.BaseHeaderType;
 import sdmx.message.DataMessage;
@@ -57,16 +58,18 @@ public class DatabaseRepositoryFront implements Repository {
     @Override
     public DataMessage query(ParseParams pparams, DataQueryMessage message) throws ParseException, IOException {
         try {
+            NestedNCNameID agency = message.getQuery().getDataWhere().getAnd().get(0).getDataflow().get(0).getAgencyId();
             IDType flowid = message.getQuery().getDataWhere().getAnd().get(0).getDataflow().get(0).getMaintainableParentId();
+            Version version = message.getQuery().getDataWhere().getAnd().get(0).getDataflow().get(0).getVersion();
             DataStructureType dst = null;
-            DataflowReference dfref = DataflowReference.create(null, flowid, null);
+            DataflowReference dfref = DataflowReference.create(agency, flowid, version);
             DataflowType df = reg.find(dfref);
             List<DataflowType> dataflowList = null;
             if (df == null) {
                 dataflowList = reg.listDataflows();
                 for (int i = 0; i < dataflowList.size(); i++) {
                     if (dataflowList.get(i).getId().equals(flowid)) {
-                        DataStructureReference ref = DataStructureReference.create(dataflowList.get(i).getStructure().getAgencyId(), dataflowList.get(i).getStructure().getMaintainableParentId(), dataflowList.get(i).getStructure().getMaintainedParentVersion());
+                        DataStructureReference ref = DataStructureReference.create(dataflowList.get(i).getStructure().getAgencyId(), dataflowList.get(i).getStructure().getMaintainableParentId(), dataflowList.get(i).getStructure().getVersion());
                         dst = reg.find(ref);
                     }
                 }
@@ -98,11 +101,9 @@ public class DatabaseRepositoryFront implements Repository {
             } catch (java.text.ParseException ex) {
                 Logger.getLogger(DatabaseRepositoryFront.class.getName()).log(Level.SEVERE, null, ex);
             }
-            DataMessage msg = null;
-            msg.setHeader(getBaseHeader());
-            msg.setDataSets(Collections.singletonList(rep.queryDataflow(queryKey)));
-            return msg;
+            return rep.queryDataflow(pparams, queryKey);
         } catch (SQLException ex) {
+            ex.printStackTrace();
             Logger.getLogger(DatabaseRepositoryFront.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }

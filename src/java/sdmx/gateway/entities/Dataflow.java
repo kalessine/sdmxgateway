@@ -8,6 +8,7 @@ package sdmx.gateway.entities;
 import java.io.Serializable;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -32,13 +33,13 @@ public class Dataflow implements Serializable {
     @EmbeddedId
     protected DataflowPK dataflowPK;
     @JoinColumn(name = "annotations", referencedColumnName = "id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Annotated annotations;
     @JoinColumn(name = "structure", referencedColumnName = "id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Datastructurereference structure;
     @JoinColumn(name = "name", referencedColumnName = "id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Name name;
 
     public Dataflow() {

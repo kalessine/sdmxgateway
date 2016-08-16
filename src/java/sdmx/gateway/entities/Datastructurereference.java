@@ -10,6 +10,7 @@ import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -40,13 +41,13 @@ public class Datastructurereference implements Serializable {
     @Basic(optional = false)
     @Column(name = "id", nullable = false)
     private Long id;
-    @OneToMany(mappedBy = "structure")
+    @OneToMany(mappedBy = "structure", fetch = FetchType.LAZY)
     private List<Dataflow> dataflowList;
     @JoinColumns({
         @JoinColumn(name = "DataStructureAgencyID", referencedColumnName = "AgencyID", nullable = false),
         @JoinColumn(name = "DataStructureID", referencedColumnName = "ID", nullable = false),
         @JoinColumn(name = "DataStructureVersion", referencedColumnName = "Version", nullable = false)})
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Datastructure datastructure;
 
     public Datastructurereference() {

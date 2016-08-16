@@ -11,6 +11,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -37,21 +38,21 @@ public class Annotated implements Serializable {
     @NotNull
     @Column(name = "id", nullable = false)
     private Long id;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "annotated1")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "annotated1", fetch = FetchType.LAZY)
     private List<Annotation> annotationList;
-    @OneToMany(mappedBy = "annotations")
+    @OneToMany(mappedBy = "annotations", fetch = FetchType.LAZY)
     private List<Code> codeList;
-    @OneToMany(mappedBy = "annotations")
+    @OneToMany(mappedBy = "annotations", fetch = FetchType.LAZY)
     private List<Codelist> codelistList;
-    @OneToMany(mappedBy = "annotations")
+    @OneToMany(mappedBy = "annotations", fetch = FetchType.LAZY)
     private List<Concept> conceptList;
-    @OneToMany(mappedBy = "annotations")
+    @OneToMany(mappedBy = "annotations", fetch = FetchType.LAZY)
     private List<Dataflow> dataflowList;
-    @OneToMany(mappedBy = "annotations")
+    @OneToMany(mappedBy = "annotations", fetch = FetchType.LAZY)
     private List<Conceptscheme> conceptschemeList;
-    @OneToMany(mappedBy = "annotations")
+    @OneToMany(mappedBy = "annotations", fetch = FetchType.LAZY)
     private List<Datastructure> datastructureList;
-    @OneToMany(mappedBy = "annotations")
+    @OneToMany(mappedBy = "annotations", fetch = FetchType.LAZY)
     private List<Datastructurecomponent> datastructurecomponentList;
 
     public Annotated() {

@@ -10,6 +10,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -35,15 +36,15 @@ public class Codelist implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected CodelistPK codelistPK;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codelist")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codelist", fetch = FetchType.LAZY)
     private List<Code> codeList;
     @JoinColumn(name = "annotations", referencedColumnName = "id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Annotated annotations;
     @JoinColumn(name = "name", referencedColumnName = "id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Name name;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codelist")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codelist", fetch = FetchType.LAZY)
     private List<Codelistreference> codelistreferenceList;
 
     public Codelist() {

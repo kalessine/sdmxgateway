@@ -9,6 +9,7 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.Lob;
@@ -46,7 +47,7 @@ public class Annotationtext implements Serializable {
     @JoinColumns({
         @JoinColumn(name = "Annotated", referencedColumnName = "Annotated", nullable = false, insertable = false, updatable = false),
         @JoinColumn(name = "index", referencedColumnName = "index", nullable = false, insertable = false, updatable = false)})
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Annotation annotation;
 
     public Annotationtext() {

@@ -32,6 +32,7 @@ public class DataflowUtil {
         df1.setAnnotations(AnnotationsUtil.toDatabaseAnnotations(df.getAnnotations()));
         df1.setDataflowPK(pk);
         NameUtil.setName(em, df1, df);
+        
         df1.setStructure(DataStructureReferenceUtil.toDatabaseDataStructureReference(em, df.getStructure()));
         return df1;
     }

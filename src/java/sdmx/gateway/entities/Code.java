@@ -9,6 +9,7 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
@@ -40,16 +41,16 @@ public class Code implements Serializable {
     @Column(name = "parentCode", length = 100)
     private String parentCode;
     @JoinColumn(name = "annotations", referencedColumnName = "id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Annotated annotations;
     @JoinColumns({
         @JoinColumn(name = "AgencyID", referencedColumnName = "AgencyID", nullable = false, insertable = false, updatable = false),
         @JoinColumn(name = "CodelistID", referencedColumnName = "ID", nullable = false, insertable = false, updatable = false),
         @JoinColumn(name = "Version", referencedColumnName = "Version", nullable = false, insertable = false, updatable = false)})
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Codelist codelist;
     @JoinColumn(name = "name", referencedColumnName = "id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Name name;
 
     public Code() {

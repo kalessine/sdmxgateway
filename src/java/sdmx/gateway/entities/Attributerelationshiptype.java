@@ -11,6 +11,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -53,9 +54,9 @@ public class Attributerelationshiptype implements Serializable {
     @Size(max = 200)
     @Column(name = "primaryMeasureReference", length = 200)
     private String primaryMeasureReference;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "attributerelationshiptype")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "attributerelationshiptype", fetch = FetchType.LAZY)
     private List<Attributerelationshipattachgroups> attributerelationshipattachgroupsList;
-    @OneToMany(mappedBy = "attributeRelationshipType")
+    @OneToMany(mappedBy = "attributeRelationshipType", fetch = FetchType.LAZY)
     private List<Datastructurecomponent> datastructurecomponentList;
 
     public Attributerelationshiptype() {

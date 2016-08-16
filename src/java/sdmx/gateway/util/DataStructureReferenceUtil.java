@@ -30,6 +30,7 @@ public class DataStructureReferenceUtil {
             ref.setDatastructure(ds);
             ds.getDatastructurereferenceList().add(ref);
             em.persist(ref);
+            em.merge(ds);
             em.flush();
             em.refresh(ref);
             return ref;

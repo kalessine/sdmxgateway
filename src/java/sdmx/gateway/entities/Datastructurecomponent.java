@@ -9,6 +9,7 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
@@ -43,25 +44,25 @@ public class Datastructurecomponent implements Serializable {
     @Column(name = "AssignmentStatus", length = 50)
     private String assignmentStatus;
     @JoinColumn(name = "annotations", referencedColumnName = "id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Annotated annotations;
     @JoinColumn(name = "AttributeRelationshipType", referencedColumnName = "id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Attributerelationshiptype attributeRelationshipType;
     @JoinColumn(name = "CodelistEnumeration", referencedColumnName = "id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Codelistreference codelistEnumeration;
     @JoinColumn(name = "ConceptIdentity", referencedColumnName = "id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Conceptreference conceptIdentity;
     @JoinColumn(name = "ConceptSchemeEnumeration", referencedColumnName = "id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Conceptschemereference conceptSchemeEnumeration;
     @JoinColumns({
         @JoinColumn(name = "DataStructureAgencyID", referencedColumnName = "AgencyID", nullable = false, insertable = false, updatable = false),
         @JoinColumn(name = "DataStructureID", referencedColumnName = "ID", nullable = false, insertable = false, updatable = false),
         @JoinColumn(name = "DataStructureVersion", referencedColumnName = "Version", nullable = false, insertable = false, updatable = false)})
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Datastructure datastructure;
 
     public Datastructurecomponent() {

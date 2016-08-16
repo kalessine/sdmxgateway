@@ -10,6 +10,7 @@ import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -45,9 +46,9 @@ public class Conceptreference implements Serializable {
         @JoinColumn(name = "ConceptSchemeID", referencedColumnName = "ConceptSchemeID", nullable = false),
         @JoinColumn(name = "ConceptSchemeVersion", referencedColumnName = "ConceptSchemeVersion", nullable = false),
         @JoinColumn(name = "ConceptID", referencedColumnName = "ID", nullable = false)})
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Concept concept;
-    @OneToMany(mappedBy = "conceptIdentity")
+    @OneToMany(mappedBy = "conceptIdentity", fetch = FetchType.LAZY)
     private List<Datastructurecomponent> datastructurecomponentList;
 
     public Conceptreference() {
