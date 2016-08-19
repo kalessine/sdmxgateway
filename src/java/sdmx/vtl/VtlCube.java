@@ -10,7 +10,7 @@ import sdmx.data.DataSet;
 import sdmx.data.flat.FlatObs;
 import sdmx.data.key.FullKey;
 import sdmx.data.key.Key;
-import sdmx.querykey.QueryKey;
+import sdmx.querykey.Query;
 import sdmx.structure.codelist.CodeType;
 import sdmx.structure.datastructure.DataStructureType;
 
@@ -20,7 +20,7 @@ import sdmx.structure.datastructure.DataStructureType;
  */
 public interface VtlCube {
     public DataStructureType getStructure();
-    public VtlCube query(QueryKey query);
+    public VtlCube query(Query query);
     public FlatObs find(FullKey key);
     public List<String> getStructureValues(String col);
     public List<CodeType> getStructureCodes(String col);

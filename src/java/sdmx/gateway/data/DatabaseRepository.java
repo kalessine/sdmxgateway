@@ -19,8 +19,14 @@ import org.apache.commons.dbcp2.DriverManagerConnectionFactory;
 import org.apache.commons.dbcp2.PoolableConnectionFactory;
 import org.apache.commons.dbcp2.PoolingDataSource;
 import org.apache.commons.pool2.impl.GenericObjectPool;
+import sdmx.Registry;
 import sdmx.Repository;
 import sdmx.SdmxIO;
+import sdmx.common.PayloadStructureType;
+import sdmx.commonreferences.DataflowReference;
+import sdmx.commonreferences.IDType;
+import sdmx.commonreferences.NestedNCNameID;
+import sdmx.commonreferences.Version;
 import sdmx.data.ColumnMapper;
 import sdmx.data.DataSet;
 import sdmx.data.DataSetWriter;
@@ -29,10 +35,12 @@ import sdmx.data.flat.FlatDataSet;
 import sdmx.data.flat.FlatDataSetWriter;
 import sdmx.data.flat.FlatObs;
 import sdmx.exception.ParseException;
+import sdmx.gateway.SdmxGatewayApplication;
+import sdmx.message.BaseHeaderType;
 import sdmx.message.DataMessage;
 import sdmx.message.DataQueryMessage;
 import sdmx.message.DataStructure;
-import sdmx.querykey.QueryKey;
+import sdmx.querykey.Query;
 import sdmx.structure.dataflow.DataflowType;
 import sdmx.structure.datastructure.AttributeType;
 import sdmx.structure.datastructure.DataStructureType;
@@ -40,6 +48,7 @@ import sdmx.structure.datastructure.DimensionType;
 import sdmx.structure.datastructure.MeasureDimensionType;
 import sdmx.structure.datastructure.PrimaryMeasure;
 import sdmx.structure.datastructure.TimeDimensionType;
+import sdmx.util.PostParseUtilities;
 import sdmx.version.common.ParseDataCallbackHandler;
 import sdmx.version.common.ParseParams;
 
@@ -109,15 +118,18 @@ public class DatabaseRepository {
 
     }
 
-    public DataMessage queryDataflow(ParseParams params, QueryKey query) throws SQLException {
+    public DataMessage query(Query query) throws SQLException {
         List<FlatObs> result = new ArrayList<FlatObs>();
         Connection con = pool.getConnection();
-        String select = "select * from `flow_" + query.getDataflowId() + "`";
+        String select = "select * from `flow_" + query.getFlowRef() + "`";
         int count = 0;
         if (query.getQuerySize() > 0) {
             select += " where ";
-            for (int i = 0; i < query.size()&&query.getQueryDimension(i).size()>0; i++) {
-                count+=query.size();
+            for (int i = 0; i < query.size() && query.getQueryDimension(i).size() > 0; i++) {
+                if (count != 0 && count < query.size() - 1) {
+                    select += " and ";
+                }
+                count += query.getQueryDimension(i).size();
                 select += query.getQueryDimension(i).getConcept() + " in ";
                 select += "(";
                 for (int j = 0; j < query.getQueryDimension(i).size(); j++) {
@@ -127,19 +139,14 @@ public class DatabaseRepository {
                     }
                 }
                 select += ")";
-                if (count<query.getQuerySize()) {
-                    select += " and ";
-                }
+
             }
         }
         select += ";";
         System.out.println("Query:" + select);
         PreparedStatement pst = con.prepareStatement(select);
         ResultSet rst = pst.executeQuery();
-        ParseDataCallbackHandler handler = params.getCallbackHandler();
-        if (handler == null) {
-            handler = new DefaultParseDataCallbackHandler();
-        }
+        ParseDataCallbackHandler handler = new DefaultParseDataCallbackHandler();
         handler.headerParsed(SdmxIO.getBaseHeader());
         DataSetWriter w = handler.getDataSetWriter();
         w.newDataSet();
@@ -149,7 +156,7 @@ public class DatabaseRepository {
                 String n = rst.getMetaData().getColumnName(i);
                 String s = rst.getString(i);
                 //System.out.println("n="+n+":s="+s);
-                if (s != null && !"".equals(s)&&!"".equals(n)&&n!=null) {
+                if (s != null && !"".equals(s) && !"".equals(n) && n != null) {
                     w.writeObservationComponent(rst.getMetaData().getColumnName(i), s);
                 }
             }
@@ -163,10 +170,71 @@ public class DatabaseRepository {
         list.add(ds);
         dm.setDataSets(list);
         dm.setHeader(SdmxIO.getBaseHeader());
+        Registry reg = SdmxGatewayApplication.getApplication().getRegistry();
+        DataflowReference ref = DataflowReference.create(new NestedNCNameID(query.getProviderRef()), new IDType(query.getFlowRef()), Version.ONE);
+        DataflowType flow = reg.find(ref);
+        PostParseUtilities.setStructureReference(dm, flow.getStructure());
         handler.footerParsed(null);
-        System.out.println("Handler="+handler.toString());
         handler.documentFinished();
         return dm;
+    }
+
+    public void query(Query query, ParseDataCallbackHandler handler) throws SQLException {
+        List<FlatObs> result = new ArrayList<FlatObs>();
+        Connection con = pool.getConnection();
+        String select = "select * from `flow_" + query.getFlowRef() + "`";
+        int count = 0;
+        if (query.getQuerySize() > 0) {
+            select += " where ";
+            for (int i = 0; i < query.size() && query.getQueryDimension(i).size() > 0; i++) {
+                if (count != 0 && count < query.size() - 1) {
+                    select += " and ";
+                }
+                count += query.getQueryDimension(i).size();
+                select += query.getQueryDimension(i).getConcept() + " in ";
+                select += "(";
+                for (int j = 0; j < query.getQueryDimension(i).size(); j++) {
+                    select += "'" + query.getQueryDimension(i).getValues().get(j) + "'";
+                    if (j < query.getQueryDimension(i).size() - 1) {
+                        select += ",";
+                    }
+                }
+                select += ")";
+
+            }
+        }
+        select += ";";
+        System.out.println("Query:" + select);
+        PreparedStatement pst = con.prepareStatement(select);
+        ResultSet rst = pst.executeQuery();
+        BaseHeaderType header = SdmxIO.getBaseHeader();
+        Registry reg = SdmxGatewayApplication.getApplication().getRegistry();
+        DataflowReference ref = DataflowReference.create(new NestedNCNameID(query.getProviderRef()), new IDType(query.getFlowRef()), Version.ONE);
+        DataflowType flow = reg.find(ref);
+        PayloadStructureType payload = new PayloadStructureType();
+        payload.setStructure(flow.getStructure());
+        header.setStructures(new ArrayList<PayloadStructureType>());
+        header.getStructures().add(payload);
+        handler.headerParsed(header);
+        DataSetWriter w = handler.getDataSetWriter();
+        w.newDataSet();
+        while (rst.next()) {
+            w.newObservation();
+            for (int i = 1; i < rst.getMetaData().getColumnCount(); i++) {
+                String n = rst.getMetaData().getColumnName(i);
+                String s = rst.getString(i);
+                //System.out.println("n="+n+":s="+s);
+                if (s != null && !"".equals(s) && !"".equals(n) && n != null) {
+                    w.writeObservationComponent(rst.getMetaData().getColumnName(i), s);
+                }
+            }
+            w.finishObservation();
+        }
+        w.finishDataSet();
+        returnConnection(con);
+        // streaming output writers return null at w.finishDataSet();
+        handler.footerParsed(null);
+        handler.documentFinished();
     }
 
     public void insertDataflow(DataSet ds, String flow) throws SQLException {
@@ -189,7 +257,7 @@ public class DatabaseRepository {
         PreparedStatement pst = con.prepareStatement(insert);
         for (int i = 0; i < ds.size(); i++) {
             for (int j = 0; j < mapper.size(); j++) {
-                pst.setString(j+1, ds.getFlatObs(i).getValue(j));
+                pst.setString(j + 1, ds.getFlatObs(i).getValue(j));
             }
             pst.addBatch();
         }

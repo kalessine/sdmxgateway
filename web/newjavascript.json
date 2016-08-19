@@ -1,0 +1,149 @@
+{
+    "ALC": {
+        "label": "Apparent Consumption of Alcohol, Australia",
+        "source": "Sdmx-Sax",
+        "updated": "2016-08-17",
+        "extension": {},
+        "value": {},
+        "status": [],
+        "dimension": {
+            "id": ["TYP", "MEA", "BEVT", "SUB", "FREQUENCY", "TIME"],
+            "size": [1, 1, 2, 10, 1, 70],
+            "role": {
+                "time": ["TIME"]
+            },
+            "TYP": {
+                "label": "Type of Volume",
+                "category": {
+                    "index": ["2"],
+                    "label": {
+                        "2": "Volume of beverage"
+                    }
+                }
+            },
+            "MEA": {
+                "label": "Measure",
+                "category": {
+                    "index": ["1"],
+                    "label": {
+                        "1": "Total apparent consumption ('000 litres)"
+                    }
+                }
+            },
+            "BEVT": {
+                "label": "Beverage Type",
+                "category": {
+                    "index": ["1", "2"],
+                    "label": {
+                        "1": "Beer",
+                        "2": "Wine"
+                    }
+                }
+            },
+            "SUB": {
+                "label": "Beverage Subtype/Strength",
+                "category": {
+                    "index": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
+                    "label": {
+                        "1": "Low alcohol beer",
+                        "2": "Other alcohol beer",
+                        "3": "Low strength beer",
+                        "4": "Mid strength beer",
+                        "5": "Full strength beer",
+                        "6": "Total beer",
+                        "7": "White table wine",
+                        "8": "Red table wine",
+                        "9": "Other wines",
+                        "10": "Total wine"
+                    }
+                }
+            },
+            "FREQUENCY": {
+                "label": "Frequency",
+                "category": {
+                    "index": ["A"],
+                    "label": {
+                        "A": "Annual"
+                    }
+                }
+            },
+            "TIME": {
+                "label": "Time",
+                "category": {
+                    "index": {
+                        "1985": 0,
+                        "1986": 1,
+                        "1987": 2,
+                        "1988": 3,
+                        "1989": 4,
+                        "1990": 5,
+                        "1991": 6,
+                        "1992": 7,
+                        "1993": 8,
+                        "1994": 9,
+                        "1995": 10,
+                        "1996": 11,
+                        "1997": 12,
+                        "1998": 13,
+                        "1999": 14,
+                        "2000": 15,
+                        "2001": 16,
+                        "2002": 17,
+                        "2003": 18,
+                        "2004": 19,
+                        "2005": 20,
+                        "2006": 21,
+                        "2007": 22,
+                        "2008": 23,
+                        "2009": 24,
+                        "2010": 25,
+                        "2011": 26,
+                        "2012": 27,
+                        "2013": 28,
+                        "2014": 29,
+                        "1945": 30,
+                        "1946": 31,
+                        "1947": 32,
+                        "1948": 33,
+                        "1949": 34,
+                        "1950": 35,
+                        "1951": 36,
+                        "1952": 37,
+                        "1953": 38,
+                        "1954": 39,
+                        "1955": 40,
+                        "1956": 41,
+                        "1957": 42,
+                        "1958": 43,
+                        "1959": 44,
+                        "1960": 45,
+                        "1961": 46,
+                        "1962": 47,
+                        "1963": 48,
+                        "1964": 49,
+                        "1965": 50,
+                        "1966": 51,
+                        "1967": 52,
+                        "1968": 53,
+                        "1969": 54,
+                        "1970": 55,
+                        "1971": 56,
+                        "1972": 57,
+                        "1973": 58,
+                        "1974": 59,
+                        "1975": 60,
+                        "1976": 61,
+                        "1977": 62,
+                        "1978": 63,
+                        "1979": 64,
+                        "1980": 65,
+                        "1981": 66,
+                        "1982": 67,
+                        "1983": 68,
+                        "1984": 69
+                    }
+                }
+            }
+        }
+    }
+}

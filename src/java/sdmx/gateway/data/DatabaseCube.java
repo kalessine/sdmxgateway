@@ -8,7 +8,7 @@ package sdmx.gateway.data;
 import java.util.List;
 import sdmx.data.flat.FlatObs;
 import sdmx.data.key.FullKey;
-import sdmx.querykey.QueryKey;
+import sdmx.querykey.Query;
 import sdmx.structure.codelist.CodeType;
 import sdmx.structure.datastructure.DataStructureType;
 import sdmx.vtl.VtlCube;
@@ -25,7 +25,7 @@ public class DatabaseCube implements VtlCube {
     }
 
     @Override
-    public VtlCube query(QueryKey query) {
+    public VtlCube query(Query query) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

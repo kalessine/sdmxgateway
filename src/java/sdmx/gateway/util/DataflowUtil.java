@@ -39,12 +39,13 @@ public class DataflowUtil {
 
     public static Dataflow findDataflow(EntityManager em, String agency, String id, String version) {
         try {
-            Query q = em.createQuery("select d from Dataflow d where d.dataflowPK.agencyID=:agency and d.dataflowPK.id=:id and d.dataflowPK.version==:version");
+            Query q = em.createQuery("select d from Dataflow d where d.dataflowPK.agencyID=:agency and d.dataflowPK.id=:id and d.dataflowPK.version=:version");
             q.setParameter("agency", agency);
             q.setParameter("id", id);
             q.setParameter("version", version);
             return (sdmx.gateway.entities.Dataflow) q.getSingleResult();
         } catch (Exception ex) {
+            ex.printStackTrace();
             return null;
         }
     }

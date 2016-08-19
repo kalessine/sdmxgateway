@@ -10,10 +10,12 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
@@ -53,6 +55,8 @@ import sdmx.commonreferences.DataflowReference;
 import sdmx.commonreferences.IDType;
 import sdmx.commonreferences.NestedNCNameID;
 import sdmx.commonreferences.Version;
+import sdmx.querykey.Query;
+import sdmx.querykey.impl.RegistryQuery;
 
 /**
  *
@@ -60,6 +64,8 @@ import sdmx.commonreferences.Version;
  */
 @Path("repository")
 public class RepositoryService {
+
+    public static final SimpleDateFormat displayFormat = new SimpleDateFormat("yyyy-MM-dd");
 
     HashMap<Integer, Queryable> providerMap = null;
 
@@ -94,29 +100,41 @@ public class RepositoryService {
         Queryable quer = SdmxGatewayApplication.getApplication().getQueryable();
         Registry reg = quer.getRegistry();
         Repository rep = quer.getRepository();
-        ParseParams params = new ParseParams();
-        params.setRegistry(reg);
-        params.setLocale(request.getLocale());
-        DataflowType flow = null;
-        List<DataflowType> dataflowList = quer.getRegistry().listDataflows();
-        for (int i = 0; i < dataflowList.size(); i++) {
-            if (dataflowList.get(i).getId().equals(flowRef)) {
-                flow = dataflowList.get(i);
+        DataflowReference ref = DataflowReference.create(new NestedNCNameID(providerRef), new IDType(flowRef), Version.ONE);
+        DataflowType flow = reg.find(ref);
+        Query q = new RegistryQuery(reg.find(flow.getStructure()), reg, flowRef);
+        q.setProviderRef(providerRef);
+        q.setFlowRef(flowRef);
+        String[] dims = queryString.split(".");
+        for (int i = 0; i < q.size(); i++) {
+            if (dims.length > i) {
+                String[] params = dims[i].split("+");
+                if (params.length > 0) {
+                    for (int j = 0; j < params.length; j++) {
+                        q.getQueryDimension(i).addValue(params[j]);
+                    }
+                }
             }
         }
-        if (flow == null) {
-            DataflowReference ref = DataflowReference.create(new NestedNCNameID(providerRef), new IDType(flowRef), Version.ONE);
-            flow = reg.find(ref);
+        try {
+            q.getQueryTime().setStartTime(displayFormat.parse(startPeriod));
+        } catch (java.text.ParseException ex) {
+            Logger.getLogger(RepositoryService.class.getName()).log(Level.SEVERE, null, ex);
         }
-        params.setDataflow(flow);
-        String queryString2 = queryString + "?startPeriod=" + startPeriod + "&endPeriod=" + endPeriod;
+        try {
+            q.getQueryTime().setEndTime(displayFormat.parse(endPeriod));
+        } catch (java.text.ParseException ex) {
+            Logger.getLogger(RepositoryService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ParseParams params = new ParseParams();
+        params.setRegistry(reg);
+        params.setLocale(Locale.forLanguageTag(request.getHeader("Accept-Language")));
         StreamingOutput stream = new StreamingOutput() {
             @Override
             public void write(OutputStream os) throws IOException,
                     WebApplicationException {
-                params.setCallbackHandler(SdmxIO.openForStreamWriting("application/vnd.sdmx.data+json;version=1.0.0-wd", os, params));
                 try {
-                    rep.query(params, queryString2);
+                    rep.query(q, SdmxIO.openForStreamWriting("application/vnd.sdmx.data+json;version=1.0.0-wd", os, params));
                 } catch (ParseException ex) {
                     Logger.getLogger(RepositoryService.class.getName()).log(Level.SEVERE, null, ex);
                     ex.printStackTrace();
@@ -156,29 +174,41 @@ public class RepositoryService {
         Queryable quer = SdmxGatewayApplication.getApplication().getQueryable();
         Registry reg = quer.getRegistry();
         Repository rep = quer.getRepository();
-        ParseParams params = new ParseParams();
-        params.setRegistry(reg);
-        params.setLocale(request.getLocale());
-        DataflowType flow = null;
-        List<DataflowType> dataflowList = quer.getRegistry().listDataflows();
-        for (int i = 0; i < dataflowList.size(); i++) {
-            if (dataflowList.get(i).getId().equals(flowRef)) {
-                flow = dataflowList.get(i);
+        DataflowReference ref = DataflowReference.create(new NestedNCNameID(providerRef), new IDType(flowRef), Version.ONE);
+        DataflowType flow = reg.find(ref);
+        Query q = new RegistryQuery(reg.find(flow.getStructure()), reg, flowRef);
+        q.setProviderRef(providerRef);
+        q.setFlowRef(flowRef);
+        String[] dims = queryString.split(".");
+        for (int i = 0; i < q.size(); i++) {
+            if (dims.length > i) {
+                String[] params = dims[i].split("+");
+                if (params.length > 0) {
+                    for (int j = 0; j < params.length; j++) {
+                        q.getQueryDimension(i).addValue(params[j]);
+                    }
+                }
             }
         }
-        if (flow == null) {
-            DataflowReference ref = DataflowReference.create(new NestedNCNameID(providerRef), new IDType(flowRef), Version.ONE);
-            flow = reg.find(ref);
+        try {
+            q.getQueryTime().setStartTime(displayFormat.parse(startPeriod));
+        } catch (java.text.ParseException ex) {
+            Logger.getLogger(RepositoryService.class.getName()).log(Level.SEVERE, null, ex);
         }
-        params.setDataflow(flow);
-        String queryString2 = queryString + "?startPeriod=" + startPeriod + "&endPeriod=" + endPeriod;
+        try {
+            q.getQueryTime().setEndTime(displayFormat.parse(endPeriod));
+        } catch (java.text.ParseException ex) {
+            Logger.getLogger(RepositoryService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ParseParams params = new ParseParams();
+        params.setRegistry(reg);
+        params.setLocale(Locale.forLanguageTag(request.getHeader("Accept-Language")));
         StreamingOutput stream = new StreamingOutput() {
             @Override
             public void write(OutputStream os) throws IOException,
                     WebApplicationException {
-                params.setCallbackHandler(SdmxIO.openForStreamWriting("application/vnd.sdmx.genericdata+xml;version=2.1", os, params));
                 try {
-                    rep.query(params, queryString2);
+                    rep.query(q, SdmxIO.openForStreamWriting("application/vnd.sdmx.genericdata+xml;version=2.1", os, params));
                 } catch (ParseException ex) {
                     Logger.getLogger(RepositoryService.class.getName()).log(Level.SEVERE, null, ex);
                     ex.printStackTrace();
@@ -187,7 +217,7 @@ public class RepositoryService {
                 os.close();
             }
         };
-        MediaType m = new MediaType("application", "vnd.sdmx.structurespecificdata+xml;version=2.1");
+        MediaType m = new MediaType("application", "vnd.sdmx.genericdata+xml;version=2.1");
         return Response.ok(stream).type(m).build();
     }
 
@@ -218,29 +248,41 @@ public class RepositoryService {
         Queryable quer = SdmxGatewayApplication.getApplication().getQueryable();
         Registry reg = quer.getRegistry();
         Repository rep = quer.getRepository();
-        ParseParams params = new ParseParams();
-        params.setRegistry(reg);
-        params.setLocale(request.getLocale());
-        DataflowType flow = null;
-        List<DataflowType> dataflowList = quer.getRegistry().listDataflows();
-        for (int i = 0; i < dataflowList.size(); i++) {
-            if (dataflowList.get(i).getId().equals(flowRef)) {
-                flow = dataflowList.get(i);
+        DataflowReference ref = DataflowReference.create(new NestedNCNameID(providerRef), new IDType(flowRef), Version.ONE);
+        DataflowType flow = reg.find(ref);
+        Query q = new RegistryQuery(reg.find(flow.getStructure()), reg, flowRef);
+        q.setProviderRef(providerRef);
+        q.setFlowRef(flowRef);
+        String[] dims = queryString.split(".");
+        for (int i = 0; i < q.size(); i++) {
+            if (dims.length > i) {
+                String[] params = dims[i].split("+");
+                if (params.length > 0) {
+                    for (int j = 0; j < params.length; j++) {
+                        q.getQueryDimension(i).addValue(params[j]);
+                    }
+                }
             }
         }
-        if (flow == null) {
-            DataflowReference ref = DataflowReference.create(new NestedNCNameID(providerRef), new IDType(flowRef), Version.ONE);
-            flow = reg.find(ref);
+        try {
+            q.getQueryTime().setStartTime(displayFormat.parse(startPeriod));
+        } catch (java.text.ParseException ex) {
+            Logger.getLogger(RepositoryService.class.getName()).log(Level.SEVERE, null, ex);
         }
-        params.setDataflow(flow);
-        String queryString2 = queryString + "?startPeriod=" + startPeriod + "&endPeriod=" + endPeriod;
+        try {
+            q.getQueryTime().setEndTime(displayFormat.parse(endPeriod));
+        } catch (java.text.ParseException ex) {
+            Logger.getLogger(RepositoryService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ParseParams params = new ParseParams();
+        params.setRegistry(reg);
+        params.setLocale(Locale.forLanguageTag(request.getHeader("Accept-Language")));
         StreamingOutput stream = new StreamingOutput() {
             @Override
             public void write(OutputStream os) throws IOException,
                     WebApplicationException {
-                params.setCallbackHandler(SdmxIO.openForStreamWriting("application/vnd.sdmx.structurespecificdata+xml;version=2.1", os, params));
                 try {
-                    rep.query(params, queryString2);
+                    rep.query(q, SdmxIO.openForStreamWriting("application/vnd.sdmx.structurespecificdata+xml;version=2.1", os, params));
                 } catch (ParseException ex) {
                     Logger.getLogger(RepositoryService.class.getName()).log(Level.SEVERE, null, ex);
                     ex.printStackTrace();
@@ -277,27 +319,43 @@ public class RepositoryService {
             @PathParam("query") String queryString,
             @PathParam("providerRef") String providerRef,
             @Context HttpServletRequest request) {
-        try {
-            Queryable quer = SdmxGatewayApplication.getApplication().getQueryable();
-            Registry reg = quer.getRegistry();
-            Repository rep = quer.getRepository();
-            ParseParams params = new ParseParams();
-            params.setRegistry(reg);
-            params.setLocale(request.getLocale());
-            DataflowType flow = null;
-            List<DataflowType> dataflowList = quer.getRegistry().listDataflows();
-            for (int i = 0; i < dataflowList.size(); i++) {
-                if (dataflowList.get(i).getId().equals(flowRef)) {
-                    flow = dataflowList.get(i);
+        Queryable quer = SdmxGatewayApplication.getApplication().getQueryable();
+        Registry reg = quer.getRegistry();
+        Repository rep = quer.getRepository();
+        DataflowReference ref = DataflowReference.create(new NestedNCNameID(providerRef), new IDType(flowRef), Version.ONE);
+        DataflowType flow = reg.find(ref);
+        ref.dump();
+        System.out.println("Flow" + flow);
+        System.out.println("Ref=" + reg);
+        Query q = new RegistryQuery(reg.find(flow.getStructure()), reg, flowRef);
+        q.setProviderRef(providerRef);
+        q.setFlowRef(flowRef);
+        String[] dims = queryString.split(".");
+        for (int i = 0; i < q.size(); i++) {
+            if (dims.length > i) {
+                String[] params = dims[i].split("+");
+                if (params.length > 0) {
+                    for (int j = 0; j < params.length; j++) {
+                        q.getQueryDimension(i).addValue(params[j]);
+                    }
                 }
             }
-            if (flow == null) {
-                DataflowReference ref = DataflowReference.create(new NestedNCNameID(providerRef), new IDType(flowRef), Version.ONE);
-                flow = reg.find(ref);
-            }
-            params.setDataflow(flow);
-            String queryString2 = queryString + "?startPeriod=" + startPeriod + "&endPeriod=" + endPeriod;
-            DataMessage dm = rep.query(params, queryString2);
+        }
+        try {
+            q.getQueryTime().setStartTime(displayFormat.parse(startPeriod));
+        } catch (java.text.ParseException ex) {
+            Logger.getLogger(RepositoryService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            q.getQueryTime().setEndTime(displayFormat.parse(endPeriod));
+        } catch (java.text.ParseException ex) {
+            Logger.getLogger(RepositoryService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ParseParams params = new ParseParams();
+        params.setRegistry(reg);
+        params.setLocale(Locale.forLanguageTag(request.getHeader("Accept-Language")));
+        try {
+            final DataMessage dm = rep.query(q);
             StreamingOutput stream = new StreamingOutput() {
                 @Override
                 public void write(OutputStream os) throws IOException,
@@ -311,12 +369,11 @@ public class RepositoryService {
             return Response.ok(stream).type(m).build();
         } catch (ParseException ex) {
             Logger.getLogger(RepositoryService.class.getName()).log(Level.SEVERE, null, ex);
-            ex.printStackTrace();
+            return Response.serverError().build();
         } catch (IOException ex) {
             Logger.getLogger(RepositoryService.class.getName()).log(Level.SEVERE, null, ex);
-            ex.printStackTrace();
+            return Response.serverError().build();
         }
-        return Response.serverError().build();
     }
 
     public Queryable getProviderQueryable(int i) {

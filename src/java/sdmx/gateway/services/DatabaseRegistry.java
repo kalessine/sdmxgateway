@@ -281,7 +281,9 @@ public class DatabaseRegistry implements Registry {
     @Override
     public DataflowType find(DataflowReference ref) {
         Dataflow result  = DataflowUtil.findDataflow(query, ref.getAgencyId().toString(),ref.getMaintainableParentId().toString(),ref.getVersion().toString());
+        System.out.println("Result="+result);
         DataflowType sdmxDataflow = DataflowUtil.toSDMXDataflow(result);
+        System.out.println("SDMX Dataflow"+sdmxDataflow);
         return sdmxDataflow;
     }
 

@@ -88,7 +88,7 @@ public class RegistryService {
             public void write(OutputStream os) throws IOException,
                     WebApplicationException {
                 ParseParams params = new ParseParams();
-                SdmxIO.write(params, "application/vnd.sdmx.structure+xml;version=2.1", struct, os);
+                SdmxIO.writeStructure("application/vnd.sdmx.structure+xml;version=2.1", struct, os);
                 os.flush();
                 os.close();
             }
@@ -124,8 +124,7 @@ public class RegistryService {
             @Override
             public void write(OutputStream os) throws IOException,
                     WebApplicationException {
-                ParseParams params = new ParseParams();
-                SdmxIO.write(params, "application/vnd.sdmx.structure+xml;version=2.1", struct, os);
+                SdmxIO.writeStructure("application/vnd.sdmx.structure+xml;version=2.1", struct, os);
                 os.flush();
                 os.close();
             }
@@ -271,7 +270,7 @@ public class RegistryService {
             public void write(OutputStream os) throws IOException,
                     WebApplicationException {
                 ParseParams params = new ParseParams();
-                SdmxIO.write(params, "application/vnd.sdmx.structure+xml;version=2.1", struct, os);
+                SdmxIO.writeStructure("application/vnd.sdmx.structure+xml;version=2.1", struct, os);
                 os.flush();
                 os.close();
             }
