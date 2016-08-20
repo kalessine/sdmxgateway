@@ -56,7 +56,7 @@ import sdmx.version.common.ParseParams;
  *
  * @author James
  */
-public class DatabaseRepository {
+public class DatabaseRepository implements Repository {
 
     PoolingDataSource<Connection> pool;
 
@@ -118,7 +118,15 @@ public class DatabaseRepository {
 
     }
 
-    public DataMessage query(Query query) throws SQLException {
+    /**
+     *
+     * @param query
+     * @return
+     * @throws SQLException
+     */
+    @Override
+    public DataMessage query(Query query) {
+        try{
         List<FlatObs> result = new ArrayList<FlatObs>();
         Connection con = pool.getConnection();
         String select = "select * from `flow_" + query.getFlowRef() + "`";
@@ -152,12 +160,12 @@ public class DatabaseRepository {
         w.newDataSet();
         while (rst.next()) {
             w.newObservation();
-            for (int i = 1; i < rst.getMetaData().getColumnCount(); i++) {
+            for (int i = 1; i <= rst.getMetaData().getColumnCount(); i++) {
                 String n = rst.getMetaData().getColumnName(i);
                 String s = rst.getString(i);
                 //System.out.println("n="+n+":s="+s);
                 if (s != null && !"".equals(s) && !"".equals(n) && n != null) {
-                    w.writeObservationComponent(rst.getMetaData().getColumnName(i), s);
+                    w.writeObservationComponent(n, s);
                 }
             }
             w.finishObservation();
@@ -177,9 +185,14 @@ public class DatabaseRepository {
         handler.footerParsed(null);
         handler.documentFinished();
         return dm;
+        }catch(SQLException sql) {
+            throw new Error(sql);
+        }
     }
 
-    public void query(Query query, ParseDataCallbackHandler handler) throws SQLException {
+    @Override
+    public void query(Query query, ParseDataCallbackHandler handler) {
+        try{
         List<FlatObs> result = new ArrayList<FlatObs>();
         Connection con = pool.getConnection();
         String select = "select * from `flow_" + query.getFlowRef() + "`";
@@ -220,7 +233,7 @@ public class DatabaseRepository {
         w.newDataSet();
         while (rst.next()) {
             w.newObservation();
-            for (int i = 1; i < rst.getMetaData().getColumnCount(); i++) {
+            for (int i = 1; i <= rst.getMetaData().getColumnCount(); i++) {
                 String n = rst.getMetaData().getColumnName(i);
                 String s = rst.getString(i);
                 //System.out.println("n="+n+":s="+s);
@@ -235,6 +248,9 @@ public class DatabaseRepository {
         // streaming output writers return null at w.finishDataSet();
         handler.footerParsed(null);
         handler.documentFinished();
+        }catch(SQLException sql) {
+            throw new Error(sql);
+        }
     }
 
     public void insertDataflow(DataSet ds, String flow) throws SQLException {

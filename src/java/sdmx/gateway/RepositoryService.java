@@ -62,7 +62,7 @@ import sdmx.querykey.impl.RegistryQuery;
  *
  * @author James
  */
-@Path("repository")
+@Path("/")
 public class RepositoryService {
 
     public static final SimpleDateFormat displayFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -360,7 +360,7 @@ public class RepositoryService {
                 @Override
                 public void write(OutputStream os) throws IOException,
                         WebApplicationException {
-                    SdmxIO.write(params, "application/json", dm, os);
+                    SdmxIO.writeDataMessage(params, "application/json", dm, os);
                     os.flush();
                     os.close();
                 }

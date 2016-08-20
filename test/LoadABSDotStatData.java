@@ -3,7 +3,9 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -33,6 +35,8 @@ import sdmx.query.data.DataParametersOrType;
 import sdmx.query.data.DataParametersType;
 import sdmx.query.data.DataQuery;
 import sdmx.query.data.TimeDimensionValueType;
+import sdmx.querykey.Query;
+import sdmx.querykey.impl.RegistryQuery;
 import sdmx.structure.dataflow.DataflowType;
 import sdmx.structure.datastructure.DataStructureType;
 import sdmx.version.common.ParseParams;
@@ -49,7 +53,7 @@ import sdmx.version.common.ParseParams;
 public class LoadABSDotStatData {
 
     public static DatabaseRepository dd = new DatabaseRepository();
-     
+
     @BeforeClass
     public static void before() {
     }
@@ -60,50 +64,67 @@ public class LoadABSDotStatData {
 
     @Test
     public void loadALC() throws MalformedURLException {
-        try {
-            DataProvider dp = ServiceList.getDataProvider(0, "ABS", "http://stat.abs.gov.au/sdmxws/sdmx.asmx", "http://stats.oecd.org/OECDStatWS/SDMX/", "Based on Australian Bureau of Statistics data", "Based on Australian Bureau of Statistics data");
-            Queryable queryable = dp.getQueryable();
-            Registry reg = queryable.getRegistry();
-            Repository rep = queryable.getRepository();
-            DataflowType flow = new DataflowType();
-            flow.setAgencyID(new NestedNCNameID("ABS"));
-            flow.setId(new IDType("ALC"));
-            flow.setVersion(Version.ONE);
-            DataStructureReference ref = DataStructureReference.create(new NestedNCNameID("ABS"),new IDType("ALC"), Version.ONE);
-            flow.setStructure(ref);
-            DataStructureType struct = reg.find(ref);
-            dd.createDataflow(struct, "ALC");
-            DataQueryMessage query = new DataQueryMessage();
-            DataQuery q = new DataQuery();
-            DataParametersAndType dw = new DataParametersAndType();
-            // This sets which cube we want to query...
-            // some queryables fudge the dataflow name (like SDW)
-            // as SDW does not have dataflows, only a list of datastructures
-            dw.setDataflow(Collections.singletonList(flow.asReference()));
-            // hard coded times
-            // year-month-day
-            dw.setTimeDimensionValue(Collections.singletonList(new TimeDimensionValueType(new TimeValue("1940-01-01"), new TimeValue("2017-01-01"))));
-            DataParametersType dpt = new DataParametersType();
-            // Some Providers require another "AND" query element to be under the main DataParametersType(which is an And)
-            // so we put everything into dw and set it here
-            dpt.setAnd(Collections.singletonList(dw));
-            q.setDataWhere(dpt);
-            query.setQuery(q);
+        SdmxIO.setDumpQuery(true);
+        DataProvider dp = ServiceList.getDataProvider(0, "ABS", "http://stat.abs.gov.au/sdmxws/sdmx.asmx", "http://stats.oecd.org/OECDStatWS/SDMX/", "Based on Australian Bureau of Statistics data", "Based on Australian Bureau of Statistics data");
+        Queryable queryable = dp.getQueryable();
+        Registry reg = queryable.getRegistry();
+        Repository rep = queryable.getRepository();
+        List<DataflowType> dfs = reg.listDataflows();
+        Calendar start = Calendar.getInstance();
+        Calendar end = Calendar.getInstance();
+        start.set(Calendar.YEAR,2000);
+        start.set(Calendar.MONTH,1);
+        start.set(Calendar.DATE, 1);
+        end.set(Calendar.YEAR,2000);
+        end.set(Calendar.MONTH,1);
+        end.set(Calendar.DATE, 1);
+        for (int i = 0; i < dfs.size(); i++) {
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException ie) {
+            }
+            DataflowType flow = dfs.get(i);
+            DataStructureType struct = reg.find(flow.getStructure());
+            try {
+                dd.createDataflow(struct, flow.getId().toString());
+            } catch (SQLException ex) {
+                Logger.getLogger(LoadABSDotStatData.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            Query q = new RegistryQuery(struct, reg, flow.getId().toString());
+            for(int j=0;j<q.size();j++) {
+                for(int k=0;k<q.getQueryDimension(j).getPossibleValues().size();k++){
+                    q.getQueryDimension(j).addValue(q.getQueryDimension(j).getPossibleValues().get(k).getId().toString());
+                }
+            }
+            q.setProviderRef("ABS");
+            q.getQueryTime().setStartTime(start.getTime());
+            q.getQueryTime().setEndTime(end.getTime());
             ParseParams params = new ParseParams();
-            params.setDataflow(flow);
             params.setRegistry(reg);
             DataMessage dm = null;
             try {
-                dm = rep.query(params, query);
+                Thread.sleep(5000);
+            } catch (InterruptedException ie) {
+            }
+            try {
+                dm = rep.query(q);
             } catch (ParseException ex) {
                 Logger.getLogger(Example.class.getName()).log(Level.SEVERE, null, ex);
+                ex.printStackTrace();
             } catch (IOException ex) {
                 Logger.getLogger(Example.class.getName()).log(Level.SEVERE, null, ex);
+                ex.printStackTrace();
+            } catch (IllegalArgumentException ilae) {
+                ilae.printStackTrace();
             }
-            dm.dump();
-            dd.insertDataflow(dm.getDataSets().get(0), "ALC");
-        } catch (SQLException ex) {
-            Logger.getLogger(LoadABSDotStatData.class.getName()).log(Level.SEVERE, null, ex);
+            if (dm != null) {
+                try {
+                    dd.insertDataflow(dm.getDataSets().get(0), flow.getId().toString());
+                } catch (SQLException ex) {
+                    Logger.getLogger(LoadABSDotStatData.class.getName()).log(Level.SEVERE, null, ex);
+                    ex.printStackTrace();
+                }
+            }
         }
     }
 }
