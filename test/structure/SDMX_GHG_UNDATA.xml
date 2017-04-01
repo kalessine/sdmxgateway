@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<mes:Structure xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common" xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/structure">
+    <mes:Header>
+        <mes:ID>UNSD</mes:ID>
+        <mes:Test>false</mes:Test>
+        <mes:Prepared>2016-09-30T02:12:26.324+08:00</mes:Prepared>
+        <mes:Sender id="UNSD">
+            <com:Name xml:lang="en">United Nations Statistics Division</com:Name>
+            <mes:Contact>
+                <com:Name xml:lang="en">UNSD</com:Name>
+                <mes:Department xml:lang="en">United Nations Statistics Division</mes:Department>
+                <mes:Role xml:lang="en">UNSD</mes:Role>
+            </mes:Contact>
+        </mes:Sender>
+        <mes:Receiver id="ZZZZ">
+            <com:Name xml:lang="en">Z</com:Name>
+            <mes:Contact>
+                <com:Name xml:lang="en">Z</com:Name>
+                <mes:Department xml:lang="en">Z</mes:Department>
+                <mes:Role xml:lang="en">Z</mes:Role>
+            </mes:Contact>
+        </mes:Receiver>
+        <com:Name xml:lang="en">UN</com:Name>
+    </mes:Header>
+    <mes:Structures>
+        <str:Codelists>
+            <str:Codelist agencyID="UNSD" isExternalReference="false" isFinal="true" version="1.0" urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=UNSD:CL_FREQ(1.0)" id="CL_FREQ">
+                <com:Name xml:lang="en">Frequency Cross-Domain Codelist</com:Name>
+                <str:Code id="A" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_FREQ(1.0).A">
+                    <com:Name xml:lang="en">Annual</com:Name>
+                </str:Code>
+                <str:Code id="S" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_FREQ(1.0).S">
+                    <com:Name xml:lang="en">Half-yearly, semester</com:Name>
+                </str:Code>
+                <str:Code id="Q" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_FREQ(1.0).Q">
+                    <com:Name xml:lang="en">Quarterly</com:Name>
+                </str:Code>
+                <str:Code id="M" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_FREQ(1.0).M">
+                    <com:Name xml:lang="en">Monthly</com:Name>
+                </str:Code>
+                <str:Code id="W" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_FREQ(1.0).W">
+                    <com:Name xml:lang="en">Weekly</com:Name>
+                </str:Code>
+                <str:Code id="D" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_FREQ(1.0).D">
+                    <com:Name xml:lang="en">Daily</com:Name>
+                </str:Code>
+                <str:Code id="B" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_FREQ(1.0).B">
+                    <com:Name xml:lang="en">Daily - business week</com:Name>
+                </str:Code>
+                <str:Code id="N" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_FREQ(1.0).N">
+                    <com:Name xml:lang="en">Minutely</com:Name>
+                </str:Code>
+            </str:Codelist>
+            <str:Codelist agencyID="UNSD" isExternalReference="false" isFinal="true" version="1.0" urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=UNSD:CL_INDICATOR(1.0)" id="CL_INDICATOR">
+                <com:Name xml:lang="en">Indicator GHG CodeList</com:Name>
+                <str:Code id="EN_ATM_METH_XLULUCF" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_INDICATOR(1.0).EN_ATM_METH_XLULUCF">
+                    <com:Name xml:lang="en">Methane (CH4) Emissions without Land Use, Land-Use Change and Forestry (LULUCF)</com:Name>
+                </str:Code>
+                <str:Code id="EN_ATM_CO2E_XLULUCF" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_INDICATOR(1.0).EN_ATM_CO2E_XLULUCF">
+                    <com:Name xml:lang="en">Carbon dioxide (CO2) Emissions without Land Use, Land-Use Change and Forestry (LULUCF)</com:Name>
+                </str:Code>
+                <str:Code id="EN_CLC_GHGE_XLULUCF" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_INDICATOR(1.0).EN_CLC_GHGE_XLULUCF">
+                    <com:Name xml:lang="en">Greenhouse Gas (GHGs) Emissions without Land Use, Land-Use Change and Forestry (LULUCF)</com:Name>
+                </str:Code>
+                <str:Code id="EN_ATM_HFCE" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_INDICATOR(1.0).EN_ATM_HFCE">
+                    <com:Name xml:lang="en">Hydrofluorocarbons (HFCs) Emissions</com:Name>
+                </str:Code>
+                <str:Code id="EN_ATM_NO2E_XLULUCF" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_INDICATOR(1.0).EN_ATM_NO2E_XLULUCF">
+                    <com:Name xml:lang="en">Nitrous oxide (N2O) Emissions without Land Use, Land-Use Change and Forestry (LULUCF)</com:Name>
+                </str:Code>
+                <str:Code id="EN_ATM_PFCE" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_INDICATOR(1.0).EN_ATM_PFCE">
+                    <com:Name xml:lang="en">Perfluorocarbons (PFCs) Emissions</com:Name>
+                </str:Code>
+                <str:Code id="EN_ATM_SF6E" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_INDICATOR(1.0).EN_ATM_SF6E">
+                    <com:Name xml:lang="en">Sulphur hexafluoride (SF6) Emissions</com:Name>
+                </str:Code>
+            </str:Codelist>
+            <str:Codelist agencyID="UNSD" isExternalReference="false" isFinal="true" version="1.0" urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=UNSD:CL_REF_AREA(1.0)" id="CL_REF_AREA">
+                <com:Name xml:lang="en">Reference Area GHG CodeList</com:Name>
+                <str:Code id="AUS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_REF_AREA(1.0).AUS">
+                    <com:Name xml:lang="en">Australia</com:Name>
+                </str:Code>
+                <str:Code id="AUT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_REF_AREA(1.0).AUT">
+                    <com:Name xml:lang="en">Austria</com:Name>
+                </str:Code>
+                <str:Code id="BLR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_REF_AREA(1.0).BLR">
+                    <com:Name xml:lang="en">Belarus</com:Name>
+                </str:Code>
+                <str:Code id="BEL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_REF_AREA(1.0).BEL">
+                    <com:Name xml:lang="en">Belgium</com:Name>
+                </str:Code>
+                <str:Code id="BGR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_REF_AREA(1.0).BGR">
+                    <com:Name xml:lang="en">Bulgaria</com:Name>
+                </str:Code>
+                <str:Code id="CAN" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_REF_AREA(1.0).CAN">
+                    <com:Name xml:lang="en">Canada</com:Name>
+                </str:Code>
+                <str:Code id="HRV" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_REF_AREA(1.0).HRV">
+                    <com:Name xml:lang="en">Croatia</com:Name>
+                </str:Code>
+                <str:Code id="CYP" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_REF_AREA(1.0).CYP">
+                    <com:Name xml:lang="en">Cyprus</com:Name>
+                </str:Code>
+                <str:Code id="CZE" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_REF_AREA(1.0).CZE">
+                    <com:Name xml:lang="en">Czech Republic</com:Name>
+                </str:Code>
+                <str:Code id="DNK" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_REF_AREA(1.0).DNK">
+                    <com:Name xml:lang="en">Denmark</com:Name>
+                </str:Code>
+                <str:Code id="EST" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_REF_AREA(1.0).EST">
+                    <com:Name xml:lang="en">Estonia</com:Name>
+                </str:Code>
+                <str:Code id="FIN" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_REF_AREA(1.0).FIN">
+                    <com:Name xml:lang="en">Finland</com:Name>
+                </str:Code>
+                <str:Code id="FRA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_REF_AREA(1.0).FRA">
+                    <com:Name xml:lang="en">France</com:Name>
+                </str:Code>
+                <str:Code id="DEU" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_REF_AREA(1.0).DEU">
+                    <com:Name xml:lang="en">Germany</com:Name>
+                </str:Code>
+                <str:Code id="GRC" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_REF_AREA(1.0).GRC">
+                    <com:Name xml:lang="en">Greece</com:Name>
+                </str:Code>
+                <str:Code id="HUN" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_REF_AREA(1.0).HUN">
+                    <com:Name xml:lang="en">Hungary</com:Name>
+                </str:Code>
+                <str:Code id="ISL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_REF_AREA(1.0).ISL">
+                    <com:Name xml:lang="en">Iceland</com:Name>
+                </str:Code>
+                <str:Code id="IRL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_REF_AREA(1.0).IRL">
+                    <com:Name xml:lang="en">Ireland</com:Name>
+                </str:Code>
+                <str:Code id="ITA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_REF_AREA(1.0).ITA">
+                    <com:Name xml:lang="en">Italy</com:Name>
+                </str:Code>
+                <str:Code id="JPN" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_REF_AREA(1.0).JPN">
+                    <com:Name xml:lang="en">Japan</com:Name>
+                </str:Code>
+                <str:Code id="LVA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_REF_AREA(1.0).LVA">
+                    <com:Name xml:lang="en">Latvia</com:Name>
+                </str:Code>
+                <str:Code id="LIE" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_REF_AREA(1.0).LIE">
+                    <com:Name xml:lang="en">Liechtenstein</com:Name>
+                </str:Code>
+                <str:Code id="LTU" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_REF_AREA(1.0).LTU">
+                    <com:Name xml:lang="en">Lithuania</com:Name>
+                </str:Code>
+                <str:Code id="LUX" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_REF_AREA(1.0).LUX">
+                    <com:Name xml:lang="en">Luxembourg</com:Name>
+                </str:Code>
+                <str:Code id="MLT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_REF_AREA(1.0).MLT">
+                    <com:Name xml:lang="en">Malta</com:Name>
+                </str:Code>
+                <str:Code id="MCO" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_REF_AREA(1.0).MCO">
+                    <com:Name xml:lang="en">Monaco</com:Name>
+                </str:Code>
+                <str:Code id="NLD" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_REF_AREA(1.0).NLD">
+                    <com:Name xml:lang="en">Netherlands</com:Name>
+                </str:Code>
+                <str:Code id="NZL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_REF_AREA(1.0).NZL">
+                    <com:Name xml:lang="en">New Zealand</com:Name>
+                </str:Code>
+                <str:Code id="NOR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_REF_AREA(1.0).NOR">
+                    <com:Name xml:lang="en">Norway</com:Name>
+                </str:Code>
+                <str:Code id="POL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_REF_AREA(1.0).POL">
+                    <com:Name xml:lang="en">Poland</com:Name>
+                </str:Code>
+                <str:Code id="PRT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_REF_AREA(1.0).PRT">
+                    <com:Name xml:lang="en">Portugal</com:Name>
+                </str:Code>
+                <str:Code id="ROU" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_REF_AREA(1.0).ROU">
+                    <com:Name xml:lang="en">Romania</com:Name>
+                </str:Code>
+                <str:Code id="RUS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_REF_AREA(1.0).RUS">
+                    <com:Name xml:lang="en">Russian Federation</com:Name>
+                </str:Code>
+                <str:Code id="SVK" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_REF_AREA(1.0).SVK">
+                    <com:Name xml:lang="en">Slovakia</com:Name>
+                </str:Code>
+                <str:Code id="SVN" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_REF_AREA(1.0).SVN">
+                    <com:Name xml:lang="en">Slovenia</com:Name>
+                </str:Code>
+                <str:Code id="ESP" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_REF_AREA(1.0).ESP">
+                    <com:Name xml:lang="en">Spain</com:Name>
+                </str:Code>
+                <str:Code id="SWE" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_REF_AREA(1.0).SWE">
+                    <com:Name xml:lang="en">Sweden</com:Name>
+                </str:Code>
+                <str:Code id="CHE" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_REF_AREA(1.0).CHE">
+                    <com:Name xml:lang="en">Switzerland</com:Name>
+                </str:Code>
+                <str:Code id="TUR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_REF_AREA(1.0).TUR">
+                    <com:Name xml:lang="en">Turkey</com:Name>
+                </str:Code>
+                <str:Code id="UKR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_REF_AREA(1.0).UKR">
+                    <com:Name xml:lang="en">Ukraine</com:Name>
+                </str:Code>
+                <str:Code id="GBR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_REF_AREA(1.0).GBR">
+                    <com:Name xml:lang="en">United Kingdom of Great Britain and Northern Ireland</com:Name>
+                </str:Code>
+                <str:Code id="USA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_REF_AREA(1.0).USA">
+                    <com:Name xml:lang="en">United States of America</com:Name>
+                </str:Code>
+                <str:Code id="EU1" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_REF_AREA(1.0).EU1">
+                    <com:Name xml:lang="en">European Union</com:Name>
+                </str:Code>
+            </str:Codelist>
+            <str:Codelist agencyID="UNSD" isExternalReference="false" isFinal="true" version="1.0" urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=UNSD:CL_UNIT(1.0)" id="CL_UNIT">
+                <com:Name xml:lang="en">Unit GHG CodeList</com:Name>
+                <str:Code id="Gg_CO2" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_UNIT(1.0).Gg_CO2">
+                    <com:Name xml:lang="en">Gigagrams (Gg) CO2 equivalent</com:Name>
+                </str:Code>
+            </str:Codelist>
+        </str:Codelists>
+        <str:Concepts>
+            <str:ConceptScheme agencyID="UNSD" isExternalReference="false" isFinal="true" version="1.0" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.ConceptScheme=UNSD:CS_UNDATA(1.0)" id="CS_UNDATA">
+                <com:Name xml:lang="en">UNData Core Concept Scheme</com:Name>
+                <com:Description xml:lang="en">Core UNData cross-domain concepts</com:Description>
+                <str:Concept id="DATASET_NAME" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=UNSD:CS_UNDATA(1.0).DATASET_NAME">
+                    <com:Name xml:lang="en">Dataset Name</com:Name>
+                </str:Concept>
+                <str:Concept id="DATASET_SOURCE" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=UNSD:CS_UNDATA(1.0).DATASET_SOURCE">
+                    <com:Name xml:lang="en">Dataset Source</com:Name>
+                </str:Concept>
+                <str:Concept id="DATASET_DESC" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=UNSD:CS_UNDATA(1.0).DATASET_DESC">
+                    <com:Name xml:lang="en">Dataset Description</com:Name>
+                </str:Concept>
+                <str:Concept id="UNDATA_LASTUPDATE" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=UNSD:CS_UNDATA(1.0).UNDATA_LASTUPDATE">
+                    <com:Name xml:lang="en">UNData Last Update</com:Name>
+                </str:Concept>
+                <str:Concept id="UNDATA_NEXTUPDATE" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=UNSD:CS_UNDATA(1.0).UNDATA_NEXTUPDATE">
+                    <com:Name xml:lang="en">UNData Next Update</com:Name>
+                </str:Concept>
+                <str:Concept id="INDICATOR" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=UNSD:CS_UNDATA(1.0).INDICATOR">
+                    <com:Name xml:lang="en">Indicator</com:Name>
+                </str:Concept>
+                <str:Concept id="METADATA" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=UNSD:CS_UNDATA(1.0).METADATA">
+                    <com:Name xml:lang="en">Metadata</com:Name>
+                </str:Concept>
+                <str:Concept id="FREQ" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=UNSD:CS_UNDATA(1.0).FREQ">
+                    <com:Name xml:lang="en">Frequency</com:Name>
+                    <com:Description xml:lang="en">The time interval at which observations occur over a given time period.</com:Description>
+                </str:Concept>
+                <str:Concept id="UNIT" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=UNSD:CS_UNDATA(1.0).UNIT">
+                    <com:Name xml:lang="en">Unit</com:Name>
+                </str:Concept>
+                <str:Concept id="UNIT_MULT" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=UNSD:CS_UNDATA(1.0).UNIT_MULT">
+                    <com:Name xml:lang="en">Unit Multiplier</com:Name>
+                </str:Concept>
+                <str:Concept id="AGE" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=UNSD:CS_UNDATA(1.0).AGE">
+                    <com:Name xml:lang="en">Age</com:Name>
+                </str:Concept>
+                <str:Concept id="SEX" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=UNSD:CS_UNDATA(1.0).SEX">
+                    <com:Name xml:lang="en">Sex</com:Name>
+                </str:Concept>
+                <str:Concept id="LOCATION" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=UNSD:CS_UNDATA(1.0).LOCATION">
+                    <com:Name xml:lang="en">Location</com:Name>
+                </str:Concept>
+                <str:Concept id="REF_AREA" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=UNSD:CS_UNDATA(1.0).REF_AREA">
+                    <com:Name xml:lang="en">Reference Area</com:Name>
+                </str:Concept>
+                <str:Concept id="TIME_PERIOD" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=UNSD:CS_UNDATA(1.0).TIME_PERIOD">
+                    <com:Name xml:lang="en">Time Period</com:Name>
+                    <com:Description xml:lang="en">Reference date - or date range - the observed value refers to (usually different from the dates of data production or dissemination). For MDG data exchange it is usually expressed as a four-digit year (e.g.: 1995) so, if the observation refers to a period of time (range), details about such period should be specified in the attribute TIME_DETAIL</com:Description>
+                </str:Concept>
+                <str:Concept id="TIME_SPAN" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=UNSD:CS_UNDATA(1.0).TIME_SPAN">
+                    <com:Name xml:lang="en">Time Span</com:Name>
+                    <com:Description xml:lang="en">Specifies time range for series describing multiple year intervals.</com:Description>
+                </str:Concept>
+                <str:Concept id="OBS_VALUE" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=UNSD:CS_UNDATA(1.0).OBS_VALUE">
+                    <com:Name xml:lang="en">Observation Value</com:Name>
+                </str:Concept>
+                <str:Concept id="FOOTNOTES" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=UNSD:CS_UNDATA(1.0).FOOTNOTES">
+                    <com:Name xml:lang="en">Footnotes</com:Name>
+                    <com:Description xml:lang="en">Additional information on specific aspects of each observation, such as how the observation was computed/estimated or details that could affect the comparability of this data point with others in a time series.</com:Description>
+                </str:Concept>
+            </str:ConceptScheme>
+        </str:Concepts>
+        <str:DataStructures>
+            <str:DataStructure agencyID="UNSD" isExternalReference="false" isFinal="true" version="1.0" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=UNSD:DSD_GHG_UNDATA(1.0)" id="DSD_GHG_UNDATA">
+                <com:Name xml:lang="en">Green House Gas DSD</com:Name>
+                <str:DataStructureComponents>
+                    <str:DimensionList>
+                        <str:Dimension id="FREQ">
+                            <str:ConceptIdentity>
+                                <Ref agencyID="UNSD" id="FREQ" maintainableParentID="CS_UNDATA" maintainableParentVersion="1.0"/>
+                                <URN>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=UNSD:CS_UNDATA(1.0).FREQ</URN>
+                            </str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>
+                                    <Ref agencyID="UNSD" id="CL_FREQ" version="1.0"/>
+                                    <URN>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=UNSD:CL_FREQ(1.0)</URN>
+                                </str:Enumeration>
+                            </str:LocalRepresentation>
+                        </str:Dimension>
+                        <str:Dimension id="INDICATOR">
+                            <str:ConceptIdentity>
+                                <Ref agencyID="UNSD" id="INDICATOR" maintainableParentID="CS_UNDATA" maintainableParentVersion="1.0"/>
+                                <URN>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=UNSD:CS_UNDATA(1.0).INDICATOR</URN>
+                            </str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>
+                                    <Ref agencyID="UNSD" id="CL_INDICATOR" version="1.0"/>
+                                    <URN>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=UNSD:CL_INDICATOR(1.0)</URN>
+                                </str:Enumeration>
+                            </str:LocalRepresentation>
+                        </str:Dimension>
+                        <str:Dimension id="REF_AREA">
+                            <str:ConceptIdentity>
+                                <Ref agencyID="UNSD" id="REF_AREA" maintainableParentID="CS_UNDATA" maintainableParentVersion="1.0"/>
+                                <URN>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=UNSD:CS_UNDATA(1.0).REF_AREA</URN>
+                            </str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>
+                                    <Ref agencyID="UNSD" id="CL_REF_AREA" version="1.0"/>
+                                    <URN>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=UNSD:CL_REF_AREA(1.0)</URN>
+                                </str:Enumeration>
+                            </str:LocalRepresentation>
+                        </str:Dimension>
+                        <str:Dimension id="UNIT">
+                            <str:ConceptIdentity>
+                                <Ref agencyID="UNSD" id="UNIT" maintainableParentID="CS_UNDATA" maintainableParentVersion="1.0"/>
+                                <URN>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=UNSD:CS_UNDATA(1.0).UNIT</URN>
+                            </str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>
+                                    <Ref agencyID="UNSD" id="CL_UNIT" version="1.0"/>
+                                    <URN>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=UNSD:CL_UNIT(1.0)</URN>
+                                </str:Enumeration>
+                            </str:LocalRepresentation>
+                        </str:Dimension>
+                        <str:TimeDimension id="TIME_PERIOD">
+                            <str:ConceptIdentity>
+                                <Ref agencyID="UNSD" id="TIME_PERIOD" maintainableParentID="CS_UNDATA" maintainableParentVersion="1.0"/>
+                                <URN>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=UNSD:CS_UNDATA(1.0).TIME_PERIOD</URN>
+                            </str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:TextFormat/>
+                            </str:LocalRepresentation>
+                        </str:TimeDimension>
+                    </str:DimensionList>
+                    <str:AttributeList/>
+                    <str:MeasureList>
+                        <str:PrimaryMeasure id="OBS_VALUE">
+                            <str:ConceptIdentity>
+                                <Ref agencyID="UNSD" id="OBS_VALUE" maintainableParentID="CS_UNDATA" maintainableParentVersion="1.0"/>
+                                <URN>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=UNSD:CS_UNDATA(1.0).OBS_VALUE</URN>
+                            </str:ConceptIdentity>
+                            <str:LocalRepresentation/>
+                        </str:PrimaryMeasure>
+                    </str:MeasureList>
+                </str:DataStructureComponents>
+            </str:DataStructure>
+        </str:DataStructures>
+    </mes:Structures>
+</mes:Structure>

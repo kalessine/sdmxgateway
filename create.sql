@@ -23,7 +23,8 @@ DROP TABLE IF EXISTS `Name` ;
 
 SHOW WARNINGS;
 CREATE TABLE IF NOT EXISTS `Name` (
-  `id` BIGINT NOT NULL,
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `en` TEXT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -52,21 +53,21 @@ CREATE TABLE IF NOT EXISTS `Codelist` (
   `AgencyID` VARCHAR(100) NOT NULL,
   `ID` VARCHAR(100) NOT NULL,
   `Version` VARCHAR(50) NOT NULL,
-  `name` BIGINT NOT NULL,
-  `annotations` BIGINT NOT NULL,
-  PRIMARY KEY (`AgencyID`, `ID`, `Version`, `annotations`),
+  `name` BIGINT NULL,
+  `annotations` BIGINT NULL,
+  PRIMARY KEY (`AgencyID`, `ID`, `Version`),
   INDEX `fk_Codelist_Name1_idx` (`name` ASC),
   INDEX `fk_Codelist_Annotated1_idx` (`annotations` ASC),
   CONSTRAINT `fk_Codelist_Name1`
     FOREIGN KEY (`name`)
     REFERENCES `Name` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_Codelist_Annotated1`
     FOREIGN KEY (`annotations`)
     REFERENCES `Annotated` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 SHOW WARNINGS;
@@ -81,11 +82,11 @@ CREATE TABLE IF NOT EXISTS `Code` (
   `AgencyID` VARCHAR(100) NOT NULL,
   `CodelistID` VARCHAR(100) NOT NULL,
   `Version` VARCHAR(50) NOT NULL,
-  `id` VARCHAR(100) NULL,
+  `id` VARCHAR(100) NOT NULL,
   `parentCode` VARCHAR(100) NULL,
-  `name` BIGINT NOT NULL,
-  `annotations` BIGINT NOT NULL,
-  PRIMARY KEY (`AgencyID`, `CodelistID`, `Version`),
+  `name` BIGINT NULL,
+  `annotations` BIGINT NULL,
+  PRIMARY KEY (`AgencyID`, `CodelistID`, `Version`, `id`),
   INDEX `fk_Code_Name1_idx` (`name` ASC),
   INDEX `fk_Code_Annotated1_idx` (`annotations` ASC),
   CONSTRAINT `fk_Code_Codelist`
@@ -118,7 +119,7 @@ CREATE TABLE IF NOT EXISTS `DataStructure` (
   `ID` VARCHAR(100) NOT NULL,
   `Version` VARCHAR(50) NOT NULL,
   `name` BIGINT NULL,
-  `annotations` BIGINT NOT NULL,
+  `annotations` BIGINT NULL,
   PRIMARY KEY (`AgencyID`, `ID`, `Version`),
   INDEX `fk_DataStructure_Annotated1_idx` (`annotations` ASC),
   CONSTRAINT `fk_DataStructure_Name1`
@@ -142,7 +143,7 @@ DROP TABLE IF EXISTS `DataStructureReference` ;
 
 SHOW WARNINGS;
 CREATE TABLE IF NOT EXISTS `DataStructureReference` (
-  `id` BIGINT NOT NULL,
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
   `DataStructureAgencyID` VARCHAR(100) NOT NULL,
   `DataStructureID` VARCHAR(100) NOT NULL,
   `DataStructureVersion` VARCHAR(50) NOT NULL,
@@ -151,8 +152,8 @@ CREATE TABLE IF NOT EXISTS `DataStructureReference` (
   CONSTRAINT `fk_DataStructureReference_DataStructure1`
     FOREIGN KEY (`DataStructureAgencyID` , `DataStructureID` , `DataStructureVersion`)
     REFERENCES `DataStructure` (`AgencyID` , `ID` , `Version`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 SHOW WARNINGS;
@@ -167,9 +168,9 @@ CREATE TABLE IF NOT EXISTS `Dataflow` (
   `ID` VARCHAR(100) NOT NULL,
   `AgencyID` VARCHAR(100) NOT NULL,
   `Version` VARCHAR(50) NOT NULL,
-  `name` BIGINT NOT NULL,
-  `structure` BIGINT NOT NULL,
-  `annotations` BIGINT NOT NULL,
+  `name` BIGINT NULL,
+  `structure` BIGINT NULL,
+  `annotations` BIGINT NULL,
   PRIMARY KEY (`ID`, `AgencyID`, `Version`),
   INDEX `fk_Dataflow_DataStructureReference1_idx` (`structure` ASC),
   INDEX `fk_Dataflow_Annotated1_idx` (`annotations` ASC),
@@ -202,15 +203,15 @@ CREATE TABLE IF NOT EXISTS `ConceptScheme` (
   `AgencyID` VARCHAR(100) NOT NULL,
   `ID` VARCHAR(100) NOT NULL,
   `Version` VARCHAR(50) NOT NULL,
-  `name` BIGINT NOT NULL,
-  `annotations` BIGINT NOT NULL,
+  `name` BIGINT NULL,
+  `annotations` BIGINT NULL,
   PRIMARY KEY (`AgencyID`, `ID`, `Version`),
   INDEX `fk_ConceptScheme_Annotated1_idx` (`annotations` ASC),
   CONSTRAINT `fk_ConceptScheme_Name1`
     FOREIGN KEY (`name`)
     REFERENCES `Name` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_ConceptScheme_Annotated1`
     FOREIGN KEY (`annotations`)
     REFERENCES `Annotated` (`id`)
@@ -243,20 +244,20 @@ SHOW WARNINGS;
 CREATE TABLE IF NOT EXISTS `NameText` (
   `id` BIGINT NOT NULL,
   `lang` VARCHAR(10) NOT NULL,
-  `Name` VARCHAR(2000) NULL,
+  `text` TEXT NULL,
   PRIMARY KEY (`id`, `lang`),
-  INDEX `fk_Name_Names1_idx` (`id` ASC),
   INDEX `fk_Name_Languages1_idx` (`lang` ASC),
-  CONSTRAINT `fk_Name_Names1`
-    FOREIGN KEY (`id`)
-    REFERENCES `Name` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+  INDEX `fk_NameText_Name1_idx` (`id` ASC),
   CONSTRAINT `fk_Name_Languages1`
     FOREIGN KEY (`lang`)
     REFERENCES `Languages` (`lang`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_NameText_Name1`
+    FOREIGN KEY (`id`)
+    REFERENCES `Name` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 SHOW WARNINGS;
@@ -277,8 +278,8 @@ CREATE TABLE IF NOT EXISTS `CodelistReference` (
   CONSTRAINT `fk_CodelistReference_Codelist1`
     FOREIGN KEY (`CodelistAgencyID` , `CodelistID` , `CodelistVersion`)
     REFERENCES `Codelist` (`AgencyID` , `ID` , `Version`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 SHOW WARNINGS;
@@ -299,8 +300,8 @@ CREATE TABLE IF NOT EXISTS `ConceptSchemeReference` (
   CONSTRAINT `fk_ConceptReference_ConceptScheme1`
     FOREIGN KEY (`ConceptSchemeAgencyID` , `ConceptSchemeID` , `ConceptSchemeVersion`)
     REFERENCES `ConceptScheme` (`AgencyID` , `ID` , `Version`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 SHOW WARNINGS;
@@ -316,16 +317,16 @@ CREATE TABLE IF NOT EXISTS `Concept` (
   `ConceptSchemeID` VARCHAR(100) NOT NULL,
   `ConceptSchemeVersion` VARCHAR(50) NOT NULL,
   `ID` VARCHAR(100) NOT NULL,
-  `name` BIGINT NOT NULL,
-  `annotations` BIGINT NOT NULL,
+  `name` BIGINT NULL,
+  `annotations` BIGINT NULL,
   PRIMARY KEY (`ConceptSchemeAgencyID`, `ConceptSchemeID`, `ConceptSchemeVersion`, `ID`),
   INDEX `fk_Concept_Name2_idx` (`name` ASC),
   INDEX `fk_Concept_Annotated1_idx` (`annotations` ASC),
   CONSTRAINT `fk_Concept_ConceptScheme1`
     FOREIGN KEY (`ConceptSchemeAgencyID` , `ConceptSchemeID` , `ConceptSchemeVersion`)
     REFERENCES `ConceptScheme` (`AgencyID` , `ID` , `Version`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_Concept_Name2`
     FOREIGN KEY (`name`)
     REFERENCES `Name` (`id`)
@@ -347,7 +348,7 @@ DROP TABLE IF EXISTS `ConceptReference` ;
 
 SHOW WARNINGS;
 CREATE TABLE IF NOT EXISTS `ConceptReference` (
-  `id` BIGINT NOT NULL,
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
   `ConceptSchemeAgencyID` VARCHAR(100) NOT NULL,
   `ConceptSchemeID` VARCHAR(100) NOT NULL,
   `ConceptSchemeVersion` VARCHAR(50) NOT NULL,
@@ -356,8 +357,8 @@ CREATE TABLE IF NOT EXISTS `ConceptReference` (
   CONSTRAINT `fk_ConceptReference_Concept1`
     FOREIGN KEY (`ConceptSchemeAgencyID` , `ConceptSchemeID` , `ConceptSchemeVersion` , `ConceptID`)
     REFERENCES `Concept` (`ConceptSchemeAgencyID` , `ConceptSchemeID` , `ConceptSchemeVersion` , `ID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 SHOW WARNINGS;
@@ -380,24 +381,24 @@ ENGINE = InnoDB;
 SHOW WARNINGS;
 
 -- -----------------------------------------------------
--- Table `DataStructureComponents`
+-- Table `DataStructureComponent`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `DataStructureComponents` ;
+DROP TABLE IF EXISTS `DataStructureComponent` ;
 
 SHOW WARNINGS;
-CREATE TABLE IF NOT EXISTS `DataStructureComponents` (
+CREATE TABLE IF NOT EXISTS `DataStructureComponent` (
   `DataStructureAgencyID` VARCHAR(100) NOT NULL,
   `DataStructureID` VARCHAR(100) NOT NULL,
   `DataStructureVersion` VARCHAR(50) NOT NULL,
   `Position` INT NOT NULL,
   `Type` INT NULL,
-  `ConceptIdentity` BIGINT NOT NULL,
+  `ConceptIdentity` BIGINT NULL,
   `CodelistEnumeration` BIGINT NULL,
   `ConceptSchemeEnumeration` BIGINT NULL,
   `AssignmentStatus` VARCHAR(50) NULL,
-  `AttributeRelationshipType` BIGINT NOT NULL,
-  `annotations` BIGINT NOT NULL,
-  PRIMARY KEY (`DataStructureAgencyID`, `DataStructureID`, `DataStructureVersion`, `Position`, `annotations`),
+  `AttributeRelationshipType` BIGINT NULL,
+  `annotations` BIGINT NULL,
+  PRIMARY KEY (`DataStructureAgencyID`, `DataStructureID`, `DataStructureVersion`, `Position`),
   INDEX `fk_DataStructureComponents_ConceptReference1_idx` (`ConceptIdentity` ASC),
   INDEX `fk_DataStructureComponents_CodelistReference1_idx` (`CodelistEnumeration` ASC),
   INDEX `fk_DataStructureComponents_ConceptSchemeReference1_idx` (`ConceptSchemeEnumeration` ASC),
@@ -406,23 +407,23 @@ CREATE TABLE IF NOT EXISTS `DataStructureComponents` (
   CONSTRAINT `fk_DataStructureComponents_DataStructure1`
     FOREIGN KEY (`DataStructureAgencyID` , `DataStructureID` , `DataStructureVersion`)
     REFERENCES `DataStructure` (`AgencyID` , `ID` , `Version`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_DataStructureComponents_ConceptReference1`
     FOREIGN KEY (`ConceptIdentity`)
     REFERENCES `ConceptReference` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE SET NULL
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_DataStructureComponents_CodelistReference1`
     FOREIGN KEY (`CodelistEnumeration`)
     REFERENCES `CodelistReference` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE SET NULL
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_DataStructureComponents_ConceptSchemeReference1`
     FOREIGN KEY (`ConceptSchemeEnumeration`)
     REFERENCES `ConceptSchemeReference` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE SET NULL
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_DataStructureComponents_AttributeRelationshipType1`
     FOREIGN KEY (`AttributeRelationshipType`)
     REFERENCES `AttributeRelationshipType` (`id`)
@@ -444,35 +445,17 @@ DROP TABLE IF EXISTS `Annotation` ;
 
 SHOW WARNINGS;
 CREATE TABLE IF NOT EXISTS `Annotation` (
-  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `Annotated` BIGINT NOT NULL,
+  `index` BIGINT NOT NULL,
   `title` VARCHAR(200) NULL,
   `url` VARCHAR(300) NULL,
   `type` VARCHAR(200) NULL,
   `annotationId` VARCHAR(200) NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
-SHOW WARNINGS;
-
--- -----------------------------------------------------
--- Table `Annotations`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `Annotations` ;
-
-SHOW WARNINGS;
-CREATE TABLE IF NOT EXISTS `Annotations` (
-  `Annotated` BIGINT NOT NULL,
-  `Annotation` BIGINT NOT NULL,
-  PRIMARY KEY (`Annotated`, `Annotation`),
-  INDEX `fk_Annotations_Annotation1_idx` (`Annotation` ASC),
-  CONSTRAINT `fk_Annotations_Annotated1`
+  PRIMARY KEY (`Annotated`, `index`),
+  INDEX `fk_Annotation_Annotated1_idx` (`Annotated` ASC),
+  CONSTRAINT `fk_Annotation_Annotated1`
     FOREIGN KEY (`Annotated`)
     REFERENCES `Annotated` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Annotations_Annotation1`
-    FOREIGN KEY (`Annotation`)
-    REFERENCES `Annotation` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -486,13 +469,15 @@ DROP TABLE IF EXISTS `AnnotationText` ;
 
 SHOW WARNINGS;
 CREATE TABLE IF NOT EXISTS `AnnotationText` (
-  `Annotation` BIGINT NOT NULL,
+  `Annotated` BIGINT NOT NULL,
+  `index` BIGINT NOT NULL,
+  `textIndex` BIGINT NOT NULL,
   `lang` VARCHAR(10) NULL,
   `text` TEXT NULL,
-  PRIMARY KEY (`Annotation`),
+  PRIMARY KEY (`Annotated`, `index`, `textIndex`),
   CONSTRAINT `fk_AnnotationText_Annotation1`
-    FOREIGN KEY (`Annotation`)
-    REFERENCES `Annotation` (`id`)
+    FOREIGN KEY (`Annotated` , `index`)
+    REFERENCES `Annotation` (`Annotated` , `index`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -515,6 +500,20 @@ CREATE TABLE IF NOT EXISTS `AttributeRelationshipAttachGroups` (
     REFERENCES `AttributeRelationshipType` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+SHOW WARNINGS;
+
+-- -----------------------------------------------------
+-- Table `SEQUENCE`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `SEQUENCE` ;
+
+SHOW WARNINGS;
+CREATE TABLE IF NOT EXISTS `SEQUENCE` (
+  `SEQ_COUNT` BIGINT NOT NULL DEFAULT 0,
+  `SEQ_NAME` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`SEQ_NAME`))
 ENGINE = InnoDB;
 
 SHOW WARNINGS;

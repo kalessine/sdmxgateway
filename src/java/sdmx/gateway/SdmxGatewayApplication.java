@@ -13,7 +13,7 @@ import sdmx.Queryable;
 import sdmx.Registry;
 import sdmx.Repository;
 import sdmx.SdmxIO;
-import sdmx.gateway.data.DatabaseRepository;
+import sdmx.gateway.services.DatabaseRepository;
 import sdmx.gateway.services.DatabaseRegistry;
 import sdmx.net.list.DataProvider;
 import sdmx.structure.dataflow.DataflowType;

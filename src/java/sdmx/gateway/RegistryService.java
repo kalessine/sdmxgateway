@@ -45,6 +45,7 @@ import sdmx.message.ContactType;
 import sdmx.message.PartyType;
 import sdmx.message.SenderType;
 import sdmx.structure.DataStructuresType;
+import sdmx.structure.base.ItemType;
 import sdmx.structure.concept.ConceptType;
 import sdmx.structure.datastructure.AttributeType;
 import sdmx.structure.datastructure.DataStructureType;
@@ -66,7 +67,7 @@ public class RegistryService {
     public Response getCodelistXML21(@PathParam("agencyId") String agencyId, @PathParam("idtype") String id, @PathParam("version") String version, @QueryParam("detail") String detail, @QueryParam("references") String references) {
         CodelistReference ref = CodelistReference.create(new NestedNCNameID(agencyId), new IDType(id), new Version(version));
         List<CodelistType> codelists = SdmxGatewayApplication.getApplication().getRegistry().search(ref);
-        StructureType struct = new StructureType();
+        final StructureType struct = new StructureType();
 
         if ("full".equals(detail)) {
 
@@ -113,7 +114,7 @@ public class RegistryService {
             // codelists don't reference anything
 
         }
-        StructureType struct = new StructureType();
+        final StructureType struct = new StructureType();
         ConceptsType concepts2 = new ConceptsType();
         concepts2.setConceptSchemes(conceptschemes);
         StructuresType structures = new StructuresType();
@@ -137,7 +138,7 @@ public class RegistryService {
     @Path("datastructure/{agencyId}/{idtype}/{version}")
     @Produces("application/vnd.sdmx.structure+xml;version=2.1")
     public Response getDataStructre21(@PathParam("agencyId") String agencyId, @PathParam("idtype") String id, @PathParam("version") String version, @QueryParam("detail") String detail, @QueryParam("references") String references) {
-        StructureType struct = new StructureType();
+        final StructureType struct = new StructureType();
         StructuresType structures = new StructuresType();
         DataStructureReference ref = DataStructureReference.create(new NestedNCNameID(agencyId), new IDType(id), new Version(version));
 
@@ -164,7 +165,7 @@ public class RegistryService {
                     } else {
                         cscheme = SdmxGatewayApplication.getApplication().getRegistry().find(csref);
                         cs.getConceptSchemes().add(cscheme);
-                        cscheme.setItems(new ArrayList<>());
+                        cscheme.setItems(new ArrayList<ItemType>());
                         cscheme.addConcept(ct);
                     }
                     if (dim.getLocalRepresentation().getEnumeration() != null) {
@@ -184,7 +185,7 @@ public class RegistryService {
                     } else {
                         cscheme = SdmxGatewayApplication.getApplication().getRegistry().find(csref);
                         cs.getConceptSchemes().add(cscheme);
-                        cscheme.setItems(new ArrayList<>());
+                        cscheme.setItems(new ArrayList<ItemType>());
                         cscheme.addConcept(ct);
                     }
                     if (dim.getLocalRepresentation().getEnumeration() != null) {
@@ -204,7 +205,7 @@ public class RegistryService {
                     } else {
                         cscheme = SdmxGatewayApplication.getApplication().getRegistry().find(csref);
                         cs.getConceptSchemes().add(cscheme);
-                        cscheme.setItems(new ArrayList<>());
+                        cscheme.setItems(new ArrayList<ItemType>());
                         cscheme.addConcept(ct);
                     }
                     if (dim.getLocalRepresentation().getEnumeration() != null) {
@@ -225,7 +226,7 @@ public class RegistryService {
                     } else {
                         cscheme = SdmxGatewayApplication.getApplication().getRegistry().find(csref);
                         cs.getConceptSchemes().add(cscheme);
-                        cscheme.setItems(new ArrayList<>());
+                        cscheme.setItems(new ArrayList<ItemType>());
                         cscheme.addConcept(ct);
                     }
                     if (dim.getLocalRepresentation().getEnumeration() != null) {
@@ -244,7 +245,7 @@ public class RegistryService {
                 } else {
                     cscheme = SdmxGatewayApplication.getApplication().getRegistry().find(csref);
                     cs.getConceptSchemes().add(cscheme);
-                    cscheme.setItems(new ArrayList<>());
+                    cscheme.setItems(new ArrayList<ItemType>());
                     cscheme.addConcept(ct);
                 }
                 if (dim.getLocalRepresentation().getEnumeration() != null) {

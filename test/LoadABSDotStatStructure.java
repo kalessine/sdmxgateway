@@ -11,16 +11,17 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.beans.binding.Bindings;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import sdmx.Queryable;
 import sdmx.SdmxIO;
 import sdmx.exception.ParseException;
 import sdmx.gateway.services.DatabaseRegistry;
 import sdmx.message.DataMessage;
 import sdmx.message.StructureType;
 import sdmx.net.LocalRegistry;
+import sdmx.net.ServiceList;
 import sdmx.net.service.sdw.Sdmx20SOAPQueryable;
 import sdmx.structure.DataflowsType;
 import sdmx.structure.StructuresType;
@@ -45,9 +46,10 @@ public class LoadABSDotStatStructure {
         File f = new File(".\\test\\structure\\");
         if (!f.exists()) {
             f.mkdirs();
-            Sdmx20SOAPQueryable q = new Sdmx20SOAPQueryable("ABS", "http://stat.abs.gov.au/sdmxws/sdmx.asmx");
-            q.setSoapNamespace("http://stats.oecd.org/OECDStatWS/SDMX/");
-            List<DataflowType> dfs = q.listDataflows();
+            //Sdmx20SOAPQueryable q = new Sdmx20SOAPQueryable("ABS", "http://stat.abs.gov.au/sdmxws/sdmx.asmx");
+            //q.setSoapNamespace("http://stats.oecd.org/OECDStatWS/SDMX/");
+            Queryable q = ServiceList.listDataProviders().get(6).getQueryable();
+            List<DataflowType> dfs = q.getRegistry().listDataflows();
             StructureType structure = new StructureType();
             StructuresType structures = new StructuresType();
             DataflowsType dfsList = new DataflowsType();
@@ -75,8 +77,8 @@ public class LoadABSDotStatStructure {
 
             for (int i = 0; i < dfs.size(); i++) {
                 System.out.println("Loading: " + NameableType.toString(dfs.get(i)));
-                q.find(dfs.get(i).getStructure());
-                List<StructureType> cache = q.getCache();
+                q.getRegistry().find(dfs.get(i).getStructure());
+                List<StructureType> cache = q.getRegistry().getCache();
                 Iterator<StructureType> it = cache.iterator();
                 int j = 0;
                 while (it.hasNext()) {

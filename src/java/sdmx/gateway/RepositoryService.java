@@ -99,10 +99,10 @@ public class RepositoryService {
             @Context HttpServletRequest request) {
         Queryable quer = SdmxGatewayApplication.getApplication().getQueryable();
         Registry reg = quer.getRegistry();
-        Repository rep = quer.getRepository();
+        final Repository rep = quer.getRepository();
         DataflowReference ref = DataflowReference.create(new NestedNCNameID(providerRef), new IDType(flowRef), Version.ONE);
         DataflowType flow = reg.find(ref);
-        Query q = new RegistryQuery(reg.find(flow.getStructure()), reg, flowRef);
+        final Query q = new RegistryQuery(reg.find(flow.getStructure()), reg, flowRef);
         q.setProviderRef(providerRef);
         q.setFlowRef(flowRef);
         String[] dims = queryString.split(".");
@@ -126,7 +126,7 @@ public class RepositoryService {
         } catch (java.text.ParseException ex) {
             Logger.getLogger(RepositoryService.class.getName()).log(Level.SEVERE, null, ex);
         }
-        ParseParams params = new ParseParams();
+        final ParseParams params = new ParseParams();
         params.setRegistry(reg);
         params.setLocale(Locale.forLanguageTag(request.getHeader("Accept-Language")));
         StreamingOutput stream = new StreamingOutput() {
@@ -134,7 +134,7 @@ public class RepositoryService {
             public void write(OutputStream os) throws IOException,
                     WebApplicationException {
                 try {
-                    rep.query(q, SdmxIO.openForStreamWriting("application/vnd.sdmx.data+json;version=1.0.0-wd", os, params));
+                    rep.query(q, SdmxIO.openForStreamWriting("application/vnd.sdmx.data+json;version=1.0.0-wd", os,params));
                 } catch (ParseException ex) {
                     Logger.getLogger(RepositoryService.class.getName()).log(Level.SEVERE, null, ex);
                     ex.printStackTrace();
@@ -173,10 +173,10 @@ public class RepositoryService {
             @Context HttpServletRequest request) {
         Queryable quer = SdmxGatewayApplication.getApplication().getQueryable();
         Registry reg = quer.getRegistry();
-        Repository rep = quer.getRepository();
+        final Repository rep = quer.getRepository();
         DataflowReference ref = DataflowReference.create(new NestedNCNameID(providerRef), new IDType(flowRef), Version.ONE);
         DataflowType flow = reg.find(ref);
-        Query q = new RegistryQuery(reg.find(flow.getStructure()), reg, flowRef);
+        final Query q = new RegistryQuery(reg.find(flow.getStructure()), reg, flowRef);
         q.setProviderRef(providerRef);
         q.setFlowRef(flowRef);
         String[] dims = queryString.split(".");
@@ -200,7 +200,7 @@ public class RepositoryService {
         } catch (java.text.ParseException ex) {
             Logger.getLogger(RepositoryService.class.getName()).log(Level.SEVERE, null, ex);
         }
-        ParseParams params = new ParseParams();
+        final ParseParams params = new ParseParams();
         params.setRegistry(reg);
         params.setLocale(Locale.forLanguageTag(request.getHeader("Accept-Language")));
         StreamingOutput stream = new StreamingOutput() {
@@ -247,10 +247,10 @@ public class RepositoryService {
             @Context HttpServletRequest request) {
         Queryable quer = SdmxGatewayApplication.getApplication().getQueryable();
         Registry reg = quer.getRegistry();
-        Repository rep = quer.getRepository();
+        final Repository rep = quer.getRepository();
         DataflowReference ref = DataflowReference.create(new NestedNCNameID(providerRef), new IDType(flowRef), Version.ONE);
         DataflowType flow = reg.find(ref);
-        Query q = new RegistryQuery(reg.find(flow.getStructure()), reg, flowRef);
+        final Query q = new RegistryQuery(reg.find(flow.getStructure()), reg, flowRef);
         q.setProviderRef(providerRef);
         q.setFlowRef(flowRef);
         String[] dims = queryString.split(".");
@@ -274,7 +274,7 @@ public class RepositoryService {
         } catch (java.text.ParseException ex) {
             Logger.getLogger(RepositoryService.class.getName()).log(Level.SEVERE, null, ex);
         }
-        ParseParams params = new ParseParams();
+        final ParseParams params = new ParseParams();
         params.setRegistry(reg);
         params.setLocale(Locale.forLanguageTag(request.getHeader("Accept-Language")));
         StreamingOutput stream = new StreamingOutput() {
@@ -321,13 +321,13 @@ public class RepositoryService {
             @Context HttpServletRequest request) {
         Queryable quer = SdmxGatewayApplication.getApplication().getQueryable();
         Registry reg = quer.getRegistry();
-        Repository rep = quer.getRepository();
+        final Repository rep = quer.getRepository();
         DataflowReference ref = DataflowReference.create(new NestedNCNameID(providerRef), new IDType(flowRef), Version.ONE);
         DataflowType flow = reg.find(ref);
         ref.dump();
         System.out.println("Flow" + flow);
         System.out.println("Ref=" + reg);
-        Query q = new RegistryQuery(reg.find(flow.getStructure()), reg, flowRef);
+        final Query q = new RegistryQuery(reg.find(flow.getStructure()), reg, flowRef);
         q.setProviderRef(providerRef);
         q.setFlowRef(flowRef);
         String[] dims = queryString.split(".");
@@ -351,7 +351,7 @@ public class RepositoryService {
         } catch (java.text.ParseException ex) {
             Logger.getLogger(RepositoryService.class.getName()).log(Level.SEVERE, null, ex);
         }
-        ParseParams params = new ParseParams();
+        final ParseParams params = new ParseParams();
         params.setRegistry(reg);
         params.setLocale(Locale.forLanguageTag(request.getHeader("Accept-Language")));
         try {

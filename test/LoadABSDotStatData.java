@@ -24,7 +24,7 @@ import sdmx.data.DefaultParseDataCallbackHandler;
 import sdmx.data.FlatParseDataCallbackHandler;
 import sdmx.data.flat.FlatDataSet;
 import sdmx.exception.ParseException;
-import sdmx.gateway.data.DatabaseRepository;
+import sdmx.gateway.services.DatabaseRepository;
 import sdmx.message.DataMessage;
 import sdmx.message.DataQueryMessage;
 import sdmx.net.ServiceList;
@@ -37,6 +37,8 @@ import sdmx.query.data.DataQuery;
 import sdmx.query.data.TimeDimensionValueType;
 import sdmx.querykey.Query;
 import sdmx.querykey.impl.RegistryQuery;
+import sdmx.structure.base.ItemSchemeType;
+import sdmx.structure.codelist.CodelistType;
 import sdmx.structure.dataflow.DataflowType;
 import sdmx.structure.datastructure.DataStructureType;
 import sdmx.version.common.ParseParams;
@@ -65,64 +67,83 @@ public class LoadABSDotStatData {
     @Test
     public void loadALC() throws MalformedURLException {
         SdmxIO.setDumpQuery(true);
-        DataProvider dp = ServiceList.getDataProvider(0, "ABS", "http://stat.abs.gov.au/sdmxws/sdmx.asmx", "http://stats.oecd.org/OECDStatWS/SDMX/", "Based on Australian Bureau of Statistics data", "Based on Australian Bureau of Statistics data");
+        DataProvider dp = ServiceList.listDataProviders().get(6);
         Queryable queryable = dp.getQueryable();
         Registry reg = queryable.getRegistry();
         Repository rep = queryable.getRepository();
         List<DataflowType> dfs = reg.listDataflows();
         Calendar start = Calendar.getInstance();
         Calendar end = Calendar.getInstance();
-        start.set(Calendar.YEAR,2000);
-        start.set(Calendar.MONTH,1);
+        start.set(Calendar.YEAR, 1000);
+        start.set(Calendar.MONTH, 1);
         start.set(Calendar.DATE, 1);
-        end.set(Calendar.YEAR,2000);
-        end.set(Calendar.MONTH,1);
+        end.set(Calendar.YEAR, 2016);
+        end.set(Calendar.MONTH, 1);
         end.set(Calendar.DATE, 1);
         for (int i = 0; i < dfs.size(); i++) {
             try {
-                Thread.sleep(5000);
+                Thread.sleep(2000);
             } catch (InterruptedException ie) {
             }
             DataflowType flow = dfs.get(i);
             DataStructureType struct = reg.find(flow.getStructure());
-            try {
-                dd.createDataflow(struct, flow.getId().toString());
-            } catch (SQLException ex) {
-                Logger.getLogger(LoadABSDotStatData.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            Query q = new RegistryQuery(struct, reg, flow.getId().toString());
-            for(int j=0;j<q.size();j++) {
-                for(int k=0;k<q.getQueryDimension(j).getPossibleValues().size();k++){
-                    q.getQueryDimension(j).addValue(q.getQueryDimension(j).getPossibleValues().get(k).getId().toString());
-                }
-            }
-            q.setProviderRef("ABS");
-            q.getQueryTime().setStartTime(start.getTime());
-            q.getQueryTime().setEndTime(end.getTime());
-            ParseParams params = new ParseParams();
-            params.setRegistry(reg);
-            DataMessage dm = null;
-            try {
-                Thread.sleep(5000);
-            } catch (InterruptedException ie) {
-            }
-            try {
-                dm = rep.query(q);
-            } catch (ParseException ex) {
-                Logger.getLogger(Example.class.getName()).log(Level.SEVERE, null, ex);
-                ex.printStackTrace();
-            } catch (IOException ex) {
-                Logger.getLogger(Example.class.getName()).log(Level.SEVERE, null, ex);
-                ex.printStackTrace();
-            } catch (IllegalArgumentException ilae) {
-                ilae.printStackTrace();
-            }
-            if (dm != null) {
+            if (!dd.hasDataflow(flow.getId().toString())) {
                 try {
-                    dd.insertDataflow(dm.getDataSets().get(0), flow.getId().toString());
+                    System.out.println("Create Dataflow " + flow.getId().toString());
+                    dd.createDataflow(struct, flow.getId().toString());
                 } catch (SQLException ex) {
                     Logger.getLogger(LoadABSDotStatData.class.getName()).log(Level.SEVERE, null, ex);
-                    ex.printStackTrace();
+                }
+            }
+            ItemSchemeType cl = reg.find(struct.getDataStructureComponents().getDimensionList().getDimension(0).getLocalRepresentation().getEnumeration());
+            ItemSchemeType cl2 = reg.find(struct.getDataStructureComponents().getDimensionList().getDimension(1).getLocalRepresentation().getEnumeration());
+            // Split queries by first dimension code id
+            for (int cli = 0; cli < cl.size(); cli++) {
+                for (int cli2 = 0; cli2 < cl2.size(); cli2++) {
+                    Query q = new RegistryQuery(struct, reg, flow.getId().toString());
+                    for (int j = 0; j < q.size(); j++) {
+                        if (j == 0) {
+                            q.getQueryDimension(j).addValue(q.getQueryDimension(j).getPossibleValues().get(cli).getId().toString());
+                        }
+                        if (j == 1) {
+                            q.getQueryDimension(j).addValue(q.getQueryDimension(j).getPossibleValues().get(cli2).getId().toString());
+                        } else {
+                            // Everything
+                            for (int k = 0; k < q.getQueryDimension(j).getPossibleValues().size(); k++) {
+                                q.getQueryDimension(j).addValue(q.getQueryDimension(j).getPossibleValues().get(k).getId().toString());
+                            }
+                        }
+                    }
+                    q.setProviderRef(flow.getAgencyID().toString());
+                    q.getQueryTime().setStartTime(start.getTime());
+                    q.getQueryTime().setEndTime(end.getTime());
+                    ParseParams params = new ParseParams();
+                    params.setRegistry(reg);
+                    DataMessage dm = null;
+                    try {
+                        Thread.sleep(5000);
+                    } catch (InterruptedException ie) {
+                    }
+                    try {
+                        dm = rep.query(q);
+                    } catch (ParseException ex) {
+                        Logger.getLogger(Example.class.getName()).log(Level.SEVERE, null, ex);
+                        ex.printStackTrace();
+                    } catch (IOException ex) {
+                        Logger.getLogger(Example.class.getName()).log(Level.SEVERE, null, ex);
+                        ex.printStackTrace();
+                    } catch (IllegalArgumentException ilae) {
+                        ilae.printStackTrace();
+                    }
+                    if (dm != null) {
+                        try {
+                            System.out.println("Inserting " + dm.getDataSets().get(0).size() + " obs");
+                            dd.insertDataflow(dm.getDataSets().get(0), flow.getId().toString());
+                        } catch (SQLException ex) {
+                            Logger.getLogger(LoadABSDotStatData.class.getName()).log(Level.SEVERE, null, ex);
+                            ex.printStackTrace();
+                        }
+                    }
                 }
             }
         }

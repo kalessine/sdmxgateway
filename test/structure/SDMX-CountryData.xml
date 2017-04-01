@@ -1,0 +1,2163 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<mes:Structure xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common" xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/structure">
+    <mes:Header>
+        <mes:ID>UNSD</mes:ID>
+        <mes:Test>false</mes:Test>
+        <mes:Prepared>2016-09-30T02:12:26.324+08:00</mes:Prepared>
+        <mes:Sender id="UNSD">
+            <com:Name xml:lang="en">United Nations Statistics Division</com:Name>
+            <mes:Contact>
+                <com:Name xml:lang="en">UNSD</com:Name>
+                <mes:Department xml:lang="en">United Nations Statistics Division</mes:Department>
+                <mes:Role xml:lang="en">UNSD</mes:Role>
+            </mes:Contact>
+        </mes:Sender>
+        <mes:Receiver id="ZZZZ">
+            <com:Name xml:lang="en">Z</com:Name>
+            <mes:Contact>
+                <com:Name xml:lang="en">Z</com:Name>
+                <mes:Department xml:lang="en">Z</mes:Department>
+                <mes:Role xml:lang="en">Z</mes:Role>
+            </mes:Contact>
+        </mes:Receiver>
+        <com:Name xml:lang="en">UN</com:Name>
+    </mes:Header>
+    <mes:Structures>
+        <str:Codelists>
+            <str:Codelist agencyID="IAEG" isExternalReference="false" isFinal="true" version="1.0" urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=IAEG:CL_FREQ_MDG(1.0)" id="CL_FREQ_MDG">
+                <com:Name xml:lang="en">Frequency code list</com:Name>
+                <str:Code id="A" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_FREQ_MDG(1.0).A">
+                    <com:Name xml:lang="en">Annual</com:Name>
+                </str:Code>
+                <str:Code id="2A" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_FREQ_MDG(1.0).2A">
+                    <com:Name xml:lang="en">Two-year average</com:Name>
+                </str:Code>
+                <str:Code id="3A" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_FREQ_MDG(1.0).3A">
+                    <com:Name xml:lang="en">Three-year average</com:Name>
+                </str:Code>
+                <str:Code id="S" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_FREQ_MDG(1.0).S">
+                    <com:Name xml:lang="en">Half-yearly, semester</com:Name>
+                </str:Code>
+                <str:Code id="Q" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_FREQ_MDG(1.0).Q">
+                    <com:Name xml:lang="en">Quarterly</com:Name>
+                </str:Code>
+                <str:Code id="M" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_FREQ_MDG(1.0).M">
+                    <com:Name xml:lang="en">Monthly</com:Name>
+                </str:Code>
+            </str:Codelist>
+            <str:Codelist agencyID="IAEG" isExternalReference="false" isFinal="true" version="1.0" urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=IAEG:CL_LOCATION_MDG(1.0)" id="CL_LOCATION_MDG">
+                <com:Name xml:lang="en">Location code list</com:Name>
+                <str:Code id="T" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_LOCATION_MDG(1.0).T">
+                    <com:Name xml:lang="en">Total (national level)</com:Name>
+                </str:Code>
+                <str:Code id="U" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_LOCATION_MDG(1.0).U">
+                    <com:Name xml:lang="en">Urban</com:Name>
+                </str:Code>
+                <str:Code id="R" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_LOCATION_MDG(1.0).R">
+                    <com:Name xml:lang="en">Rural</com:Name>
+                </str:Code>
+            </str:Codelist>
+            <str:Codelist agencyID="IAEG" isExternalReference="false" isFinal="true" version="1.0" urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=IAEG:CL_NATURE_MDG(1.0)" id="CL_NATURE_MDG">
+                <com:Name xml:lang="en">Nature code list</com:Name>
+                <str:Code id="C" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_NATURE_MDG(1.0).C">
+                    <com:Name xml:lang="en">Country Data</com:Name>
+                </str:Code>
+                <str:Code id="CA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_NATURE_MDG(1.0).CA">
+                    <com:Name xml:lang="en">Country Adjusted</com:Name>
+                </str:Code>
+                <str:Code id="E" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_NATURE_MDG(1.0).E">
+                    <com:Name xml:lang="en">Estimated</com:Name>
+                </str:Code>
+                <str:Code id="M" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_NATURE_MDG(1.0).M">
+                    <com:Name xml:lang="en">Modeled</com:Name>
+                </str:Code>
+                <str:Code id="G" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_NATURE_MDG(1.0).G">
+                    <com:Name xml:lang="en">Global monitoring data</com:Name>
+                </str:Code>
+                <str:Code id="N" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_NATURE_MDG(1.0).N">
+                    <com:Name xml:lang="en">Non-relevant</com:Name>
+                </str:Code>
+                <str:Code id="NA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_NATURE_MDG(1.0).NA">
+                    <com:Name xml:lang="en">Not Available</com:Name>
+                </str:Code>
+            </str:Codelist>
+            <str:Codelist agencyID="IAEG" isExternalReference="false" isFinal="true" version="4.0" urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=IAEG:CL_REF_AREA_MDG(4.0)" id="CL_REF_AREA_MDG">
+                <com:Name xml:lang="en">Reference area code list</com:Name>
+                <str:Code id="CAN" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).CAN">
+                    <com:Name xml:lang="en">Canada</com:Name>
+                </str:Code>
+                <str:Code id="CPV" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).CPV">
+                    <com:Name xml:lang="en">Cape Verde</com:Name>
+                </str:Code>
+                <str:Code id="CYM" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).CYM">
+                    <com:Name xml:lang="en">Cayman Islands</com:Name>
+                </str:Code>
+                <str:Code id="CAF" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).CAF">
+                    <com:Name xml:lang="en">Central African Republic</com:Name>
+                </str:Code>
+                <str:Code id="TCD" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).TCD">
+                    <com:Name xml:lang="en">Chad</com:Name>
+                </str:Code>
+                <str:Code id="830" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).830">
+                    <com:Name xml:lang="en">Channel Islands</com:Name>
+                </str:Code>
+                <str:Code id="CHL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).CHL">
+                    <com:Name xml:lang="en">Chile</com:Name>
+                </str:Code>
+                <str:Code id="CHN" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).CHN">
+                    <com:Name xml:lang="en">China</com:Name>
+                </str:Code>
+                <str:Code id="HKG" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).HKG">
+                    <com:Name xml:lang="en">Hong Kong Special Administrative Region of China</com:Name>
+                </str:Code>
+                <str:Code id="MAC" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).MAC">
+                    <com:Name xml:lang="en">Macao Special Administrative Region of China</com:Name>
+                </str:Code>
+                <str:Code id="COL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).COL">
+                    <com:Name xml:lang="en">Colombia</com:Name>
+                </str:Code>
+                <str:Code id="COM" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).COM">
+                    <com:Name xml:lang="en">Comoros</com:Name>
+                </str:Code>
+                <str:Code id="COG" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).COG">
+                    <com:Name xml:lang="en">Congo</com:Name>
+                </str:Code>
+                <str:Code id="COK" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).COK">
+                    <com:Name xml:lang="en">Cook Islands</com:Name>
+                </str:Code>
+                <str:Code id="CRI" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).CRI">
+                    <com:Name xml:lang="en">Costa Rica</com:Name>
+                </str:Code>
+                <str:Code id="CIV" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).CIV">
+                    <com:Name xml:lang="en">Côte d'Ivoire</com:Name>
+                </str:Code>
+                <str:Code id="HRV" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).HRV">
+                    <com:Name xml:lang="en">Croatia</com:Name>
+                </str:Code>
+                <str:Code id="CUB" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).CUB">
+                    <com:Name xml:lang="en">Cuba</com:Name>
+                </str:Code>
+                <str:Code id="CYP" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).CYP">
+                    <com:Name xml:lang="en">Cyprus</com:Name>
+                </str:Code>
+                <str:Code id="CZE" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).CZE">
+                    <com:Name xml:lang="en">Czech Republic</com:Name>
+                </str:Code>
+                <str:Code id="PRK" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).PRK">
+                    <com:Name xml:lang="en">Democratic People's Republic of Korea</com:Name>
+                </str:Code>
+                <str:Code id="COD" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).COD">
+                    <com:Name xml:lang="en">Democratic Republic of the Congo</com:Name>
+                </str:Code>
+                <str:Code id="DNK" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).DNK">
+                    <com:Name xml:lang="en">Denmark</com:Name>
+                </str:Code>
+                <str:Code id="DJI" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).DJI">
+                    <com:Name xml:lang="en">Djibouti</com:Name>
+                </str:Code>
+                <str:Code id="DMA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).DMA">
+                    <com:Name xml:lang="en">Dominica</com:Name>
+                </str:Code>
+                <str:Code id="DOM" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).DOM">
+                    <com:Name xml:lang="en">Dominican Republic</com:Name>
+                </str:Code>
+                <str:Code id="ECU" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).ECU">
+                    <com:Name xml:lang="en">Ecuador</com:Name>
+                </str:Code>
+                <str:Code id="EGY" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).EGY">
+                    <com:Name xml:lang="en">Egypt</com:Name>
+                </str:Code>
+                <str:Code id="SLV" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).SLV">
+                    <com:Name xml:lang="en">El Salvador</com:Name>
+                </str:Code>
+                <str:Code id="GNQ" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).GNQ">
+                    <com:Name xml:lang="en">Equatorial Guinea</com:Name>
+                </str:Code>
+                <str:Code id="ERI" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).ERI">
+                    <com:Name xml:lang="en">Eritrea</com:Name>
+                </str:Code>
+                <str:Code id="EST" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).EST">
+                    <com:Name xml:lang="en">Estonia</com:Name>
+                </str:Code>
+                <str:Code id="ETH" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).ETH">
+                    <com:Name xml:lang="en">Ethiopia</com:Name>
+                </str:Code>
+                <str:Code id="FRO" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).FRO">
+                    <com:Name xml:lang="en">Faeroe Islands</com:Name>
+                </str:Code>
+                <str:Code id="FLK" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).FLK">
+                    <com:Name xml:lang="en">Falkland Islands (Malvinas)</com:Name>
+                </str:Code>
+                <str:Code id="FJI" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).FJI">
+                    <com:Name xml:lang="en">Fiji</com:Name>
+                </str:Code>
+                <str:Code id="FIN" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).FIN">
+                    <com:Name xml:lang="en">Finland</com:Name>
+                </str:Code>
+                <str:Code id="FRA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).FRA">
+                    <com:Name xml:lang="en">France</com:Name>
+                </str:Code>
+                <str:Code id="GUF" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).GUF">
+                    <com:Name xml:lang="en">French Guiana</com:Name>
+                </str:Code>
+                <str:Code id="PYF" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).PYF">
+                    <com:Name xml:lang="en">French Polynesia</com:Name>
+                </str:Code>
+                <str:Code id="GAB" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).GAB">
+                    <com:Name xml:lang="en">Gabon</com:Name>
+                </str:Code>
+                <str:Code id="GMB" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).GMB">
+                    <com:Name xml:lang="en">Gambia</com:Name>
+                </str:Code>
+                <str:Code id="GEO" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).GEO">
+                    <com:Name xml:lang="en">Georgia</com:Name>
+                </str:Code>
+                <str:Code id="DEU" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).DEU">
+                    <com:Name xml:lang="en">Germany</com:Name>
+                </str:Code>
+                <str:Code id="GHA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).GHA">
+                    <com:Name xml:lang="en">Ghana</com:Name>
+                </str:Code>
+                <str:Code id="GIB" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).GIB">
+                    <com:Name xml:lang="en">Gibraltar</com:Name>
+                </str:Code>
+                <str:Code id="GRC" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).GRC">
+                    <com:Name xml:lang="en">Greece</com:Name>
+                </str:Code>
+                <str:Code id="GRL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).GRL">
+                    <com:Name xml:lang="en">Greenland</com:Name>
+                </str:Code>
+                <str:Code id="GRD" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).GRD">
+                    <com:Name xml:lang="en">Grenada</com:Name>
+                </str:Code>
+                <str:Code id="GLP" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).GLP">
+                    <com:Name xml:lang="en">Guadeloupe</com:Name>
+                </str:Code>
+                <str:Code id="GUM" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).GUM">
+                    <com:Name xml:lang="en">Guam</com:Name>
+                </str:Code>
+                <str:Code id="GTM" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).GTM">
+                    <com:Name xml:lang="en">Guatemala</com:Name>
+                </str:Code>
+                <str:Code id="GGY" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).GGY">
+                    <com:Name xml:lang="en">Guernsey</com:Name>
+                </str:Code>
+                <str:Code id="GIN" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).GIN">
+                    <com:Name xml:lang="en">Guinea</com:Name>
+                </str:Code>
+                <str:Code id="GNB" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).GNB">
+                    <com:Name xml:lang="en">Guinea-Bissau</com:Name>
+                </str:Code>
+                <str:Code id="GUY" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).GUY">
+                    <com:Name xml:lang="en">Guyana</com:Name>
+                </str:Code>
+                <str:Code id="HTI" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).HTI">
+                    <com:Name xml:lang="en">Haiti</com:Name>
+                </str:Code>
+                <str:Code id="VAT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).VAT">
+                    <com:Name xml:lang="en">Holy See</com:Name>
+                </str:Code>
+                <str:Code id="HND" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).HND">
+                    <com:Name xml:lang="en">Honduras</com:Name>
+                </str:Code>
+                <str:Code id="HUN" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).HUN">
+                    <com:Name xml:lang="en">Hungary</com:Name>
+                </str:Code>
+                <str:Code id="ISL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).ISL">
+                    <com:Name xml:lang="en">Iceland</com:Name>
+                </str:Code>
+                <str:Code id="IND" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).IND">
+                    <com:Name xml:lang="en">India</com:Name>
+                </str:Code>
+                <str:Code id="IDN" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).IDN">
+                    <com:Name xml:lang="en">Indonesia</com:Name>
+                </str:Code>
+                <str:Code id="IRN" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).IRN">
+                    <com:Name xml:lang="en">Iran (Islamic Republic of)</com:Name>
+                </str:Code>
+                <str:Code id="IRQ" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).IRQ">
+                    <com:Name xml:lang="en">Iraq</com:Name>
+                </str:Code>
+                <str:Code id="IRL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).IRL">
+                    <com:Name xml:lang="en">Ireland</com:Name>
+                </str:Code>
+                <str:Code id="IMN" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).IMN">
+                    <com:Name xml:lang="en">Isle of Man</com:Name>
+                </str:Code>
+                <str:Code id="ISR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).ISR">
+                    <com:Name xml:lang="en">Israel</com:Name>
+                </str:Code>
+                <str:Code id="ITA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).ITA">
+                    <com:Name xml:lang="en">Italy</com:Name>
+                </str:Code>
+                <str:Code id="JAM" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).JAM">
+                    <com:Name xml:lang="en">Jamaica</com:Name>
+                </str:Code>
+                <str:Code id="AFG" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).AFG">
+                    <com:Name xml:lang="en">Afghanistan</com:Name>
+                </str:Code>
+                <str:Code id="ALA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).ALA">
+                    <com:Name xml:lang="en">�?land Islands</com:Name>
+                </str:Code>
+                <str:Code id="ALB" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).ALB">
+                    <com:Name xml:lang="en">Albania</com:Name>
+                </str:Code>
+                <str:Code id="DZA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).DZA">
+                    <com:Name xml:lang="en">Algeria</com:Name>
+                </str:Code>
+                <str:Code id="ASM" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).ASM">
+                    <com:Name xml:lang="en">American Samoa</com:Name>
+                </str:Code>
+                <str:Code id="AND" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).AND">
+                    <com:Name xml:lang="en">Andorra</com:Name>
+                </str:Code>
+                <str:Code id="AGO" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).AGO">
+                    <com:Name xml:lang="en">Angola</com:Name>
+                </str:Code>
+                <str:Code id="AIA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).AIA">
+                    <com:Name xml:lang="en">Anguilla</com:Name>
+                </str:Code>
+                <str:Code id="ATG" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).ATG">
+                    <com:Name xml:lang="en">Antigua and Barbuda</com:Name>
+                </str:Code>
+                <str:Code id="ARG" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).ARG">
+                    <com:Name xml:lang="en">Argentina</com:Name>
+                </str:Code>
+                <str:Code id="ARM" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).ARM">
+                    <com:Name xml:lang="en">Armenia</com:Name>
+                </str:Code>
+                <str:Code id="ABW" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).ABW">
+                    <com:Name xml:lang="en">Aruba</com:Name>
+                </str:Code>
+                <str:Code id="AUS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).AUS">
+                    <com:Name xml:lang="en">Australia</com:Name>
+                </str:Code>
+                <str:Code id="AUT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).AUT">
+                    <com:Name xml:lang="en">Austria</com:Name>
+                </str:Code>
+                <str:Code id="AZE" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).AZE">
+                    <com:Name xml:lang="en">Azerbaijan</com:Name>
+                </str:Code>
+                <str:Code id="BHS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).BHS">
+                    <com:Name xml:lang="en">Bahamas</com:Name>
+                </str:Code>
+                <str:Code id="BHR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).BHR">
+                    <com:Name xml:lang="en">Bahrain</com:Name>
+                </str:Code>
+                <str:Code id="BGD" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).BGD">
+                    <com:Name xml:lang="en">Bangladesh</com:Name>
+                </str:Code>
+                <str:Code id="BRB" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).BRB">
+                    <com:Name xml:lang="en">Barbados</com:Name>
+                </str:Code>
+                <str:Code id="BLR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).BLR">
+                    <com:Name xml:lang="en">Belarus</com:Name>
+                </str:Code>
+                <str:Code id="BEL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).BEL">
+                    <com:Name xml:lang="en">Belgium</com:Name>
+                </str:Code>
+                <str:Code id="BLZ" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).BLZ">
+                    <com:Name xml:lang="en">Belize</com:Name>
+                </str:Code>
+                <str:Code id="BEN" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).BEN">
+                    <com:Name xml:lang="en">Benin</com:Name>
+                </str:Code>
+                <str:Code id="BMU" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).BMU">
+                    <com:Name xml:lang="en">Bermuda</com:Name>
+                </str:Code>
+                <str:Code id="BTN" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).BTN">
+                    <com:Name xml:lang="en">Bhutan</com:Name>
+                </str:Code>
+                <str:Code id="BOL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).BOL">
+                    <com:Name xml:lang="en">Bolivia (Plurinational State of)</com:Name>
+                </str:Code>
+                <str:Code id="BIH" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).BIH">
+                    <com:Name xml:lang="en">Bosnia and Herzegovina</com:Name>
+                </str:Code>
+                <str:Code id="BWA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).BWA">
+                    <com:Name xml:lang="en">Botswana</com:Name>
+                </str:Code>
+                <str:Code id="BRA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).BRA">
+                    <com:Name xml:lang="en">Brazil</com:Name>
+                </str:Code>
+                <str:Code id="VGB" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).VGB">
+                    <com:Name xml:lang="en">British Virgin Islands</com:Name>
+                </str:Code>
+                <str:Code id="BRN" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).BRN">
+                    <com:Name xml:lang="en">Brunei Darussalam</com:Name>
+                </str:Code>
+                <str:Code id="BGR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).BGR">
+                    <com:Name xml:lang="en">Bulgaria</com:Name>
+                </str:Code>
+                <str:Code id="BFA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).BFA">
+                    <com:Name xml:lang="en">Burkina Faso</com:Name>
+                </str:Code>
+                <str:Code id="BDI" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).BDI">
+                    <com:Name xml:lang="en">Burundi</com:Name>
+                </str:Code>
+                <str:Code id="KHM" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).KHM">
+                    <com:Name xml:lang="en">Cambodia</com:Name>
+                </str:Code>
+                <str:Code id="CMR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).CMR">
+                    <com:Name xml:lang="en">Cameroon</com:Name>
+                </str:Code>
+                <str:Code id="JPN" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).JPN">
+                    <com:Name xml:lang="en">Japan</com:Name>
+                </str:Code>
+                <str:Code id="JEY" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).JEY">
+                    <com:Name xml:lang="en">Jersey</com:Name>
+                </str:Code>
+                <str:Code id="JOR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).JOR">
+                    <com:Name xml:lang="en">Jordan</com:Name>
+                </str:Code>
+                <str:Code id="KAZ" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).KAZ">
+                    <com:Name xml:lang="en">Kazakhstan</com:Name>
+                </str:Code>
+                <str:Code id="KEN" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).KEN">
+                    <com:Name xml:lang="en">Kenya</com:Name>
+                </str:Code>
+                <str:Code id="KIR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).KIR">
+                    <com:Name xml:lang="en">Kiribati</com:Name>
+                </str:Code>
+                <str:Code id="KWT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).KWT">
+                    <com:Name xml:lang="en">Kuwait</com:Name>
+                </str:Code>
+                <str:Code id="KGZ" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).KGZ">
+                    <com:Name xml:lang="en">Kyrgyzstan</com:Name>
+                </str:Code>
+                <str:Code id="LAO" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).LAO">
+                    <com:Name xml:lang="en">Lao People's Democratic Republic</com:Name>
+                </str:Code>
+                <str:Code id="LVA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).LVA">
+                    <com:Name xml:lang="en">Latvia</com:Name>
+                </str:Code>
+                <str:Code id="LBN" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).LBN">
+                    <com:Name xml:lang="en">Lebanon</com:Name>
+                </str:Code>
+                <str:Code id="LSO" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).LSO">
+                    <com:Name xml:lang="en">Lesotho</com:Name>
+                </str:Code>
+                <str:Code id="LBR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).LBR">
+                    <com:Name xml:lang="en">Liberia</com:Name>
+                </str:Code>
+                <str:Code id="LBY" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).LBY">
+                    <com:Name xml:lang="en">Libyan Arab Jamahiriya</com:Name>
+                </str:Code>
+                <str:Code id="LIE" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).LIE">
+                    <com:Name xml:lang="en">Liechtenstein</com:Name>
+                </str:Code>
+                <str:Code id="LTU" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).LTU">
+                    <com:Name xml:lang="en">Lithuania</com:Name>
+                </str:Code>
+                <str:Code id="LUX" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).LUX">
+                    <com:Name xml:lang="en">Luxembourg</com:Name>
+                </str:Code>
+                <str:Code id="MDG" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).MDG">
+                    <com:Name xml:lang="en">Madagascar</com:Name>
+                </str:Code>
+                <str:Code id="MWI" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).MWI">
+                    <com:Name xml:lang="en">Malawi</com:Name>
+                </str:Code>
+                <str:Code id="MYS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).MYS">
+                    <com:Name xml:lang="en">Malaysia</com:Name>
+                </str:Code>
+                <str:Code id="MDV" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).MDV">
+                    <com:Name xml:lang="en">Maldives</com:Name>
+                </str:Code>
+                <str:Code id="MLI" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).MLI">
+                    <com:Name xml:lang="en">Mali</com:Name>
+                </str:Code>
+                <str:Code id="MLT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).MLT">
+                    <com:Name xml:lang="en">Malta</com:Name>
+                </str:Code>
+                <str:Code id="MHL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).MHL">
+                    <com:Name xml:lang="en">Marshall Islands</com:Name>
+                </str:Code>
+                <str:Code id="MTQ" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).MTQ">
+                    <com:Name xml:lang="en">Martinique</com:Name>
+                </str:Code>
+                <str:Code id="MRT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).MRT">
+                    <com:Name xml:lang="en">Mauritania</com:Name>
+                </str:Code>
+                <str:Code id="MUS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).MUS">
+                    <com:Name xml:lang="en">Mauritius</com:Name>
+                </str:Code>
+                <str:Code id="MYT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).MYT">
+                    <com:Name xml:lang="en">Mayotte</com:Name>
+                </str:Code>
+                <str:Code id="MEX" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).MEX">
+                    <com:Name xml:lang="en">Mexico</com:Name>
+                </str:Code>
+                <str:Code id="FSM" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).FSM">
+                    <com:Name xml:lang="en">Micronesia (Federated States of)</com:Name>
+                </str:Code>
+                <str:Code id="MDA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).MDA">
+                    <com:Name xml:lang="en">Republic of Moldova</com:Name>
+                </str:Code>
+                <str:Code id="MCO" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).MCO">
+                    <com:Name xml:lang="en">Monaco</com:Name>
+                </str:Code>
+                <str:Code id="MNG" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).MNG">
+                    <com:Name xml:lang="en">Mongolia</com:Name>
+                </str:Code>
+                <str:Code id="MNE" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).MNE">
+                    <com:Name xml:lang="en">Montenegro</com:Name>
+                </str:Code>
+                <str:Code id="MSR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).MSR">
+                    <com:Name xml:lang="en">Montserrat</com:Name>
+                </str:Code>
+                <str:Code id="MAR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).MAR">
+                    <com:Name xml:lang="en">Morocco</com:Name>
+                </str:Code>
+                <str:Code id="MOZ" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).MOZ">
+                    <com:Name xml:lang="en">Mozambique</com:Name>
+                </str:Code>
+                <str:Code id="MMR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).MMR">
+                    <com:Name xml:lang="en">Myanmar</com:Name>
+                </str:Code>
+                <str:Code id="NAM" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).NAM">
+                    <com:Name xml:lang="en">Namibia</com:Name>
+                </str:Code>
+                <str:Code id="NRU" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).NRU">
+                    <com:Name xml:lang="en">Nauru</com:Name>
+                </str:Code>
+                <str:Code id="NPL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).NPL">
+                    <com:Name xml:lang="en">Nepal</com:Name>
+                </str:Code>
+                <str:Code id="NLD" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).NLD">
+                    <com:Name xml:lang="en">Netherlands</com:Name>
+                </str:Code>
+                <str:Code id="ANT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).ANT">
+                    <com:Name xml:lang="en">Netherlands Antilles</com:Name>
+                </str:Code>
+                <str:Code id="NCL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).NCL">
+                    <com:Name xml:lang="en">New Caledonia</com:Name>
+                </str:Code>
+                <str:Code id="NZL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).NZL">
+                    <com:Name xml:lang="en">New Zealand</com:Name>
+                </str:Code>
+                <str:Code id="NIC" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).NIC">
+                    <com:Name xml:lang="en">Nicaragua</com:Name>
+                </str:Code>
+                <str:Code id="NER" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).NER">
+                    <com:Name xml:lang="en">Niger</com:Name>
+                </str:Code>
+                <str:Code id="NGA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).NGA">
+                    <com:Name xml:lang="en">Nigeria</com:Name>
+                </str:Code>
+                <str:Code id="NIU" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).NIU">
+                    <com:Name xml:lang="en">Niue</com:Name>
+                </str:Code>
+                <str:Code id="NFK" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).NFK">
+                    <com:Name xml:lang="en">Norfolk Island</com:Name>
+                </str:Code>
+                <str:Code id="MNP" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).MNP">
+                    <com:Name xml:lang="en">Northern Mariana Islands</com:Name>
+                </str:Code>
+                <str:Code id="NOR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).NOR">
+                    <com:Name xml:lang="en">Norway</com:Name>
+                </str:Code>
+                <str:Code id="PSE" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).PSE">
+                    <com:Name xml:lang="en">State of Palestine</com:Name>
+                </str:Code>
+                <str:Code id="OMN" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).OMN">
+                    <com:Name xml:lang="en">Oman</com:Name>
+                </str:Code>
+                <str:Code id="PAK" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).PAK">
+                    <com:Name xml:lang="en">Pakistan</com:Name>
+                </str:Code>
+                <str:Code id="PLW" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).PLW">
+                    <com:Name xml:lang="en">Palau</com:Name>
+                </str:Code>
+                <str:Code id="PAN" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).PAN">
+                    <com:Name xml:lang="en">Panama</com:Name>
+                </str:Code>
+                <str:Code id="PNG" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).PNG">
+                    <com:Name xml:lang="en">Papua New Guinea</com:Name>
+                </str:Code>
+                <str:Code id="PRY" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).PRY">
+                    <com:Name xml:lang="en">Paraguay</com:Name>
+                </str:Code>
+                <str:Code id="PER" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).PER">
+                    <com:Name xml:lang="en">Peru</com:Name>
+                </str:Code>
+                <str:Code id="PHL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).PHL">
+                    <com:Name xml:lang="en">Philippines</com:Name>
+                </str:Code>
+                <str:Code id="PCN" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).PCN">
+                    <com:Name xml:lang="en">Pitcairn</com:Name>
+                </str:Code>
+                <str:Code id="POL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).POL">
+                    <com:Name xml:lang="en">Poland</com:Name>
+                </str:Code>
+                <str:Code id="PRT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).PRT">
+                    <com:Name xml:lang="en">Portugal</com:Name>
+                </str:Code>
+                <str:Code id="PRI" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).PRI">
+                    <com:Name xml:lang="en">Puerto Rico</com:Name>
+                </str:Code>
+                <str:Code id="QAT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).QAT">
+                    <com:Name xml:lang="en">Qatar</com:Name>
+                </str:Code>
+                <str:Code id="KOR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).KOR">
+                    <com:Name xml:lang="en">Republic of Korea</com:Name>
+                </str:Code>
+                <str:Code id="REU" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).REU">
+                    <com:Name xml:lang="en">Réunion</com:Name>
+                </str:Code>
+                <str:Code id="ROU" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).ROU">
+                    <com:Name xml:lang="en">Romania</com:Name>
+                </str:Code>
+                <str:Code id="RUS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).RUS">
+                    <com:Name xml:lang="en">Russian Federation</com:Name>
+                </str:Code>
+                <str:Code id="RWA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).RWA">
+                    <com:Name xml:lang="en">Rwanda</com:Name>
+                </str:Code>
+                <str:Code id="BLM" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).BLM">
+                    <com:Name xml:lang="en">Saint-Barthélemy</com:Name>
+                </str:Code>
+                <str:Code id="SHN" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).SHN">
+                    <com:Name xml:lang="en">Saint Helena</com:Name>
+                </str:Code>
+                <str:Code id="KNA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).KNA">
+                    <com:Name xml:lang="en">Saint Kitts and Nevis</com:Name>
+                </str:Code>
+                <str:Code id="LCA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).LCA">
+                    <com:Name xml:lang="en">Saint Lucia</com:Name>
+                </str:Code>
+                <str:Code id="MAF" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).MAF">
+                    <com:Name xml:lang="en">Saint-Martin (French part)</com:Name>
+                </str:Code>
+                <str:Code id="SPM" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).SPM">
+                    <com:Name xml:lang="en">Saint Pierre and Miquelon</com:Name>
+                </str:Code>
+                <str:Code id="VCT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).VCT">
+                    <com:Name xml:lang="en">Saint Vincent and the Grenadines</com:Name>
+                </str:Code>
+                <str:Code id="WSM" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).WSM">
+                    <com:Name xml:lang="en">Samoa</com:Name>
+                </str:Code>
+                <str:Code id="SMR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).SMR">
+                    <com:Name xml:lang="en">San Marino</com:Name>
+                </str:Code>
+                <str:Code id="STP" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).STP">
+                    <com:Name xml:lang="en">Sao Tome and Principe</com:Name>
+                </str:Code>
+                <str:Code id="SAU" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).SAU">
+                    <com:Name xml:lang="en">Saudi Arabia</com:Name>
+                </str:Code>
+                <str:Code id="SEN" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).SEN">
+                    <com:Name xml:lang="en">Senegal</com:Name>
+                </str:Code>
+                <str:Code id="SRB" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).SRB">
+                    <com:Name xml:lang="en">Serbia</com:Name>
+                </str:Code>
+                <str:Code id="SYC" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).SYC">
+                    <com:Name xml:lang="en">Seychelles</com:Name>
+                </str:Code>
+                <str:Code id="SLE" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).SLE">
+                    <com:Name xml:lang="en">Sierra Leone</com:Name>
+                </str:Code>
+                <str:Code id="SGP" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).SGP">
+                    <com:Name xml:lang="en">Singapore</com:Name>
+                </str:Code>
+                <str:Code id="SVK" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).SVK">
+                    <com:Name xml:lang="en">Slovakia</com:Name>
+                </str:Code>
+                <str:Code id="SVN" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).SVN">
+                    <com:Name xml:lang="en">Slovenia</com:Name>
+                </str:Code>
+                <str:Code id="SLB" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).SLB">
+                    <com:Name xml:lang="en">Solomon Islands</com:Name>
+                </str:Code>
+                <str:Code id="SOM" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).SOM">
+                    <com:Name xml:lang="en">Somalia</com:Name>
+                </str:Code>
+                <str:Code id="ZAF" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).ZAF">
+                    <com:Name xml:lang="en">South Africa</com:Name>
+                </str:Code>
+                <str:Code id="SSD" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).SSD">
+                    <com:Name xml:lang="en">South Sudan</com:Name>
+                </str:Code>
+                <str:Code id="ESP" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).ESP">
+                    <com:Name xml:lang="en">Spain</com:Name>
+                </str:Code>
+                <str:Code id="LKA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).LKA">
+                    <com:Name xml:lang="en">Sri Lanka</com:Name>
+                </str:Code>
+                <str:Code id="SDN" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).SDN">
+                    <com:Name xml:lang="en">Sudan</com:Name>
+                </str:Code>
+                <str:Code id="SUR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).SUR">
+                    <com:Name xml:lang="en">Suriname</com:Name>
+                </str:Code>
+                <str:Code id="SJM" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).SJM">
+                    <com:Name xml:lang="en">Svalbard and Jan Mayen Islands</com:Name>
+                </str:Code>
+                <str:Code id="SWZ" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).SWZ">
+                    <com:Name xml:lang="en">Swaziland</com:Name>
+                </str:Code>
+                <str:Code id="SWE" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).SWE">
+                    <com:Name xml:lang="en">Sweden</com:Name>
+                </str:Code>
+                <str:Code id="CHE" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).CHE">
+                    <com:Name xml:lang="en">Switzerland</com:Name>
+                </str:Code>
+                <str:Code id="SYR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).SYR">
+                    <com:Name xml:lang="en">Syrian Arab Republic</com:Name>
+                </str:Code>
+                <str:Code id="TJK" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).TJK">
+                    <com:Name xml:lang="en">Tajikistan</com:Name>
+                </str:Code>
+                <str:Code id="THA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).THA">
+                    <com:Name xml:lang="en">Thailand</com:Name>
+                </str:Code>
+                <str:Code id="MKD" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).MKD">
+                    <com:Name xml:lang="en">The former Yugoslav Republic of Macedonia</com:Name>
+                </str:Code>
+                <str:Code id="TLS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).TLS">
+                    <com:Name xml:lang="en">Timor-Leste</com:Name>
+                </str:Code>
+                <str:Code id="TGO" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).TGO">
+                    <com:Name xml:lang="en">Togo</com:Name>
+                </str:Code>
+                <str:Code id="TKL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).TKL">
+                    <com:Name xml:lang="en">Tokelau</com:Name>
+                </str:Code>
+                <str:Code id="TON" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).TON">
+                    <com:Name xml:lang="en">Tonga</com:Name>
+                </str:Code>
+                <str:Code id="TTO" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).TTO">
+                    <com:Name xml:lang="en">Trinidad and Tobago</com:Name>
+                </str:Code>
+                <str:Code id="TUN" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).TUN">
+                    <com:Name xml:lang="en">Tunisia</com:Name>
+                </str:Code>
+                <str:Code id="TUR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).TUR">
+                    <com:Name xml:lang="en">Turkey</com:Name>
+                </str:Code>
+                <str:Code id="TKM" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).TKM">
+                    <com:Name xml:lang="en">Turkmenistan</com:Name>
+                </str:Code>
+                <str:Code id="TCA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).TCA">
+                    <com:Name xml:lang="en">Turks and Caicos Islands</com:Name>
+                </str:Code>
+                <str:Code id="TUV" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).TUV">
+                    <com:Name xml:lang="en">Tuvalu</com:Name>
+                </str:Code>
+                <str:Code id="UGA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).UGA">
+                    <com:Name xml:lang="en">Uganda</com:Name>
+                </str:Code>
+                <str:Code id="UKR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).UKR">
+                    <com:Name xml:lang="en">Ukraine</com:Name>
+                </str:Code>
+                <str:Code id="ARE" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).ARE">
+                    <com:Name xml:lang="en">United Arab Emirates</com:Name>
+                </str:Code>
+                <str:Code id="GBR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).GBR">
+                    <com:Name xml:lang="en">United Kingdom of Great Britain and Northern Ireland</com:Name>
+                </str:Code>
+                <str:Code id="TZA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).TZA">
+                    <com:Name xml:lang="en">United Republic of Tanzania</com:Name>
+                </str:Code>
+                <str:Code id="USA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).USA">
+                    <com:Name xml:lang="en">United States of America</com:Name>
+                </str:Code>
+                <str:Code id="VIR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).VIR">
+                    <com:Name xml:lang="en">United States Virgin Islands</com:Name>
+                </str:Code>
+                <str:Code id="URY" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).URY">
+                    <com:Name xml:lang="en">Uruguay</com:Name>
+                </str:Code>
+                <str:Code id="UZB" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).UZB">
+                    <com:Name xml:lang="en">Uzbekistan</com:Name>
+                </str:Code>
+                <str:Code id="VUT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).VUT">
+                    <com:Name xml:lang="en">Vanuatu</com:Name>
+                </str:Code>
+                <str:Code id="VEN" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).VEN">
+                    <com:Name xml:lang="en">Venezuela (Bolivarian Republic of)</com:Name>
+                </str:Code>
+                <str:Code id="VNM" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).VNM">
+                    <com:Name xml:lang="en">Viet Nam</com:Name>
+                </str:Code>
+                <str:Code id="WLF" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).WLF">
+                    <com:Name xml:lang="en">Wallis and Futuna Islands</com:Name>
+                </str:Code>
+                <str:Code id="ESH" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).ESH">
+                    <com:Name xml:lang="en">Western Sahara</com:Name>
+                </str:Code>
+                <str:Code id="YEM" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).YEM">
+                    <com:Name xml:lang="en">Yemen</com:Name>
+                </str:Code>
+                <str:Code id="ZMB" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).ZMB">
+                    <com:Name xml:lang="en">Zambia</com:Name>
+                </str:Code>
+                <str:Code id="ZWE" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).ZWE">
+                    <com:Name xml:lang="en">Zimbabwe</com:Name>
+                </str:Code>
+                <str:Code id="MDG_WORLD" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).MDG_WORLD">
+                    <com:Name xml:lang="en">MDG_World</com:Name>
+                </str:Code>
+                <str:Code id="MDG_DEVELOPED_REG" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).MDG_DEVELOPED_REG">
+                    <com:Name xml:lang="en">MDG_Developed regions</com:Name>
+                </str:Code>
+                <str:Code id="MDG_DEVELOPING_REG" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).MDG_DEVELOPING_REG">
+                    <com:Name xml:lang="en">MDG_Developing regions</com:Name>
+                </str:Code>
+                <str:Code id="CAU_CEN_ASIA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).CAU_CEN_ASIA">
+                    <com:Name xml:lang="en">MDG_Caucasus and Central Asia</com:Name>
+                </str:Code>
+                <str:Code id="MDG_NAFR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).MDG_NAFR">
+                    <com:Name xml:lang="en">MDG_Northern Africa</com:Name>
+                </str:Code>
+                <str:Code id="MDG_SSA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).MDG_SSA">
+                    <com:Name xml:lang="en">MDG_Sub-Saharan Africa</com:Name>
+                </str:Code>
+                <str:Code id="MDG_LAC" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).MDG_LAC">
+                    <com:Name xml:lang="en">MDG_Latin America and the Caribbean</com:Name>
+                </str:Code>
+                <str:Code id="MDG_LAC_LA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).MDG_LAC_LA">
+                    <com:Name xml:lang="en">MDG_Latin America</com:Name>
+                </str:Code>
+                <str:Code id="MDG_LAC_CAR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).MDG_LAC_CAR">
+                    <com:Name xml:lang="en">MDG_Caribbean</com:Name>
+                </str:Code>
+                <str:Code id="MDG_EAS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).MDG_EAS">
+                    <com:Name xml:lang="en">MDG_Eastern Asia</com:Name>
+                </str:Code>
+                <str:Code id="MDG_EAS_NOCHINA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).MDG_EAS_NOCHINA">
+                    <com:Name xml:lang="en">MDG_Eastern Asia excluding China</com:Name>
+                </str:Code>
+                <str:Code id="MDG_SAS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).MDG_SAS">
+                    <com:Name xml:lang="en">MDG_Southern Asia</com:Name>
+                </str:Code>
+                <str:Code id="MDG_SAS_NOINDIA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).MDG_SAS_NOINDIA">
+                    <com:Name xml:lang="en">MDG_Southern Asia excluding India</com:Name>
+                </str:Code>
+                <str:Code id="MDG_SEAS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).MDG_SEAS">
+                    <com:Name xml:lang="en">MDG_South-eastern Asia</com:Name>
+                </str:Code>
+                <str:Code id="MDG_WEST_AS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).MDG_WEST_AS">
+                    <com:Name xml:lang="en">MDG_Western Asia</com:Name>
+                </str:Code>
+                <str:Code id="MDG_LLDC" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).MDG_LLDC">
+                    <com:Name xml:lang="en">MDG_Landlocked developing countries</com:Name>
+                </str:Code>
+                <str:Code id="MDG_OCE" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).MDG_OCE">
+                    <com:Name xml:lang="en">MDG_Oceania</com:Name>
+                </str:Code>
+                <str:Code id="MDG_SIDS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).MDG_SIDS">
+                    <com:Name xml:lang="en">MDG_Small island developing States</com:Name>
+                </str:Code>
+                <str:Code id="MDG_LDC" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).MDG_LDC">
+                    <com:Name xml:lang="en">MDG_Least developed countries</com:Name>
+                </str:Code>
+                <str:Code id="WB_WORLD" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).WB_WORLD">
+                    <com:Name xml:lang="en">WB_World</com:Name>
+                </str:Code>
+                <str:Code id="WB_EAP" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).WB_EAP">
+                    <com:Name xml:lang="en">WB_East Asia and Pacific</com:Name>
+                </str:Code>
+                <str:Code id="WB_ECA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).WB_ECA">
+                    <com:Name xml:lang="en">WB_Europe and Central Asia</com:Name>
+                </str:Code>
+                <str:Code id="WB_LAC" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).WB_LAC">
+                    <com:Name xml:lang="en">WB_Latin America and the Caribbean</com:Name>
+                </str:Code>
+                <str:Code id="WB_MNA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).WB_MNA">
+                    <com:Name xml:lang="en">WB_Middle East and North Africa</com:Name>
+                </str:Code>
+                <str:Code id="WB_SAS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).WB_SAS">
+                    <com:Name xml:lang="en">WB_South Asia</com:Name>
+                </str:Code>
+                <str:Code id="WB_SSA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).WB_SSA">
+                    <com:Name xml:lang="en">WB_Sub-Saharan Africa</com:Name>
+                </str:Code>
+                <str:Code id="WB_LIC" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).WB_LIC">
+                    <com:Name xml:lang="en">WB_Low income</com:Name>
+                </str:Code>
+                <str:Code id="WB_LMC" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).WB_LMC">
+                    <com:Name xml:lang="en">WB_Lower middle income</com:Name>
+                </str:Code>
+                <str:Code id="WB_UMC" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).WB_UMC">
+                    <com:Name xml:lang="en">WB_Upper middle income</com:Name>
+                </str:Code>
+                <str:Code id="WB_LMY" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).WB_LMY">
+                    <com:Name xml:lang="en">WB_Low and middle income economies</com:Name>
+                </str:Code>
+                <str:Code id="WB_HIC" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_REF_AREA_MDG(4.0).WB_HIC">
+                    <com:Name xml:lang="en">WB_High income</com:Name>
+                </str:Code>
+            </str:Codelist>
+            <str:Codelist agencyID="IAEG" isExternalReference="false" isFinal="true" version="2.1" urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=IAEG:CL_SEX_MDG(2.1)" id="CL_SEX_MDG">
+                <com:Name xml:lang="en">Sex code list</com:Name>
+                <str:Code id="NA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_SEX_MDG(2.1).NA">
+                    <com:Name xml:lang="en">Not applicable</com:Name>
+                </str:Code>
+                <str:Code id="F" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_SEX_MDG(2.1).F">
+                    <com:Name xml:lang="en">Female</com:Name>
+                </str:Code>
+                <str:Code id="M" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_SEX_MDG(2.1).M">
+                    <com:Name xml:lang="en">Male</com:Name>
+                </str:Code>
+                <str:Code id="T" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_SEX_MDG(2.1).T">
+                    <com:Name xml:lang="en">Both sexes</com:Name>
+                </str:Code>
+            </str:Codelist>
+            <str:Codelist agencyID="IAEG" isExternalReference="false" isFinal="true" version="2.0" urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=IAEG:CL_SOURCE_TYPE_MDG(2.0)" id="CL_SOURCE_TYPE_MDG">
+                <com:Name xml:lang="en">Source Type Code List</com:Name>
+                <str:Code id="S" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_SOURCE_TYPE_MDG(2.0).S">
+                    <com:Name xml:lang="en">Household based surveys</com:Name>
+                </str:Code>
+                <str:Code id="R" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_SOURCE_TYPE_MDG(2.0).R">
+                    <com:Name xml:lang="en">Administrative records</com:Name>
+                </str:Code>
+                <str:Code id="C" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_SOURCE_TYPE_MDG(2.0).C">
+                    <com:Name xml:lang="en">Census</com:Name>
+                </str:Code>
+                <str:Code id="O" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_SOURCE_TYPE_MDG(2.0).O">
+                    <com:Name xml:lang="en">Other</com:Name>
+                </str:Code>
+                <str:Code id="NA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_SOURCE_TYPE_MDG(2.0).NA">
+                    <com:Name xml:lang="en">Not available</com:Name>
+                </str:Code>
+            </str:Codelist>
+            <str:Codelist agencyID="IAEG" isExternalReference="false" isFinal="true" version="1.0" urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=IAEG:CL_UNIT_MULT_SDMX(1.0)" id="CL_UNIT_MULT_SDMX">
+                <com:Name xml:lang="en">Units multipliers code list</com:Name>
+                <str:Code id="0" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_UNIT_MULT_SDMX(1.0).0">
+                    <com:Name xml:lang="en">Units</com:Name>
+                </str:Code>
+                <str:Code id="1" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_UNIT_MULT_SDMX(1.0).1">
+                    <com:Name xml:lang="en">Tens</com:Name>
+                </str:Code>
+                <str:Code id="2" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_UNIT_MULT_SDMX(1.0).2">
+                    <com:Name xml:lang="en">Hundreds</com:Name>
+                </str:Code>
+                <str:Code id="3" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_UNIT_MULT_SDMX(1.0).3">
+                    <com:Name xml:lang="en">Thousands</com:Name>
+                </str:Code>
+                <str:Code id="4" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_UNIT_MULT_SDMX(1.0).4">
+                    <com:Name xml:lang="en">Tens of thousands</com:Name>
+                </str:Code>
+                <str:Code id="6" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_UNIT_MULT_SDMX(1.0).6">
+                    <com:Name xml:lang="en">Millions</com:Name>
+                </str:Code>
+                <str:Code id="9" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_UNIT_MULT_SDMX(1.0).9">
+                    <com:Name xml:lang="en">Billions</com:Name>
+                </str:Code>
+                <str:Code id="12" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IAEG:CL_UNIT_MULT_SDMX(1.0).12">
+                    <com:Name xml:lang="en">Trillions</com:Name>
+                </str:Code>
+            </str:Codelist>
+            <str:Codelist agencyID="UNSD" isExternalReference="false" isFinal="true" version="0.9" urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=UNSD:CL_AGE_GROUP_COUNTRY_DATA(0.9)" id="CL_AGE_GROUP_COUNTRY_DATA">
+                <com:Name xml:lang="en">Age group code list</com:Name>
+                <str:Code id="NA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_AGE_GROUP_COUNTRY_DATA(0.9).NA">
+                    <com:Name xml:lang="en">Not applicable</com:Name>
+                </str:Code>
+                <str:Code id="000_099_Y" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_AGE_GROUP_COUNTRY_DATA(0.9).000_099_Y">
+                    <com:Name xml:lang="en">All age ranges</com:Name>
+                </str:Code>
+                <str:Code id="000_005_Y" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_AGE_GROUP_COUNTRY_DATA(0.9).000_005_Y">
+                    <com:Name xml:lang="en">under 5 year olds</com:Name>
+                </str:Code>
+                <str:Code id="000_001_Y" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_AGE_GROUP_COUNTRY_DATA(0.9).000_001_Y">
+                    <com:Name xml:lang="en">under 1 year olds</com:Name>
+                </str:Code>
+                <str:Code id="000_018_Y" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_AGE_GROUP_COUNTRY_DATA(0.9).000_018_Y">
+                    <com:Name xml:lang="en">under 18 year olds</com:Name>
+                </str:Code>
+                <str:Code id="010_005_Y" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_AGE_GROUP_COUNTRY_DATA(0.9).010_005_Y">
+                    <com:Name xml:lang="en">10-14 year olds</com:Name>
+                </str:Code>
+                <str:Code id="015_005_Y" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_AGE_GROUP_COUNTRY_DATA(0.9).015_005_Y">
+                    <com:Name xml:lang="en">15-19 year olds</com:Name>
+                </str:Code>
+                <str:Code id="015_010_Y" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_AGE_GROUP_COUNTRY_DATA(0.9).015_010_Y">
+                    <com:Name xml:lang="en">15-24 year olds</com:Name>
+                </str:Code>
+                <str:Code id="015_035_Y" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_AGE_GROUP_COUNTRY_DATA(0.9).015_035_Y">
+                    <com:Name xml:lang="en">15-49 year olds</com:Name>
+                </str:Code>
+                <str:Code id="000_006_Y" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_AGE_GROUP_COUNTRY_DATA(0.9).000_006_Y">
+                    <com:Name xml:lang="en">under 6 year olds</com:Name>
+                </str:Code>
+                <str:Code id="006_054_M" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_AGE_GROUP_COUNTRY_DATA(0.9).006_054_M">
+                    <com:Name xml:lang="en">6-59 months old</com:Name>
+                </str:Code>
+                <str:Code id="006_009_Y" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_AGE_GROUP_COUNTRY_DATA(0.9).006_009_Y">
+                    <com:Name xml:lang="en">6-14 year olds</com:Name>
+                </str:Code>
+                <str:Code id="005_013_Y" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_AGE_GROUP_COUNTRY_DATA(0.9).005_013_Y">
+                    <com:Name xml:lang="en">5-17 year olds</com:Name>
+                </str:Code>
+                <str:Code id="000_006_M" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_AGE_GROUP_COUNTRY_DATA(0.9).000_006_M">
+                    <com:Name xml:lang="en">under 6 month olds</com:Name>
+                </str:Code>
+                <str:Code id="015_050_Y" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_AGE_GROUP_COUNTRY_DATA(0.9).015_050_Y">
+                    <com:Name xml:lang="en">15-64 year olds</com:Name>
+                </str:Code>
+            </str:Codelist>
+            <str:Codelist agencyID="UNSD" isExternalReference="false" isFinal="true" version="0.9" urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=UNSD:CL_SERIES_COUNTRY_DATA(0.9)" id="CL_SERIES_COUNTRY_DATA">
+                <com:Name xml:lang="en">Series code list</com:Name>
+                <str:Code id="SI_POV_DAY1" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SI_POV_DAY1">
+                    <com:Name xml:lang="en">Population below USD 1 (PPP) per day</com:Name>
+                </str:Code>
+                <str:Code id="SI_POV_NAHC" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SI_POV_NAHC">
+                    <com:Name xml:lang="en">Population below national poverty line</com:Name>
+                </str:Code>
+                <str:Code id="PA_NUS_PPP" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).PA_NUS_PPP">
+                    <com:Name xml:lang="en">Purchasing power parities (PPP) conversion factor</com:Name>
+                </str:Code>
+                <str:Code id="SI_POV_GAP1" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SI_POV_GAP1">
+                    <com:Name xml:lang="en">Poverty gap ratio at USD 1 a day (PPP)</com:Name>
+                </str:Code>
+                <str:Code id="SI_DST_1QNT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SI_DST_1QNT">
+                    <com:Name xml:lang="en">Poorest quintile's share in national income or consumption</com:Name>
+                </str:Code>
+                <str:Code id="SL_EMP_PCAP" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SL_EMP_PCAP">
+                    <com:Name xml:lang="en">Growth rate of GDP per person employed</com:Name>
+                </str:Code>
+                <str:Code id="SL_EMP_TOTL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SL_EMP_TOTL">
+                    <com:Name xml:lang="en">Employment-to-population ratio</com:Name>
+                </str:Code>
+                <str:Code id="SL_EMP_1DAY" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SL_EMP_1DAY">
+                    <com:Name xml:lang="en">Employed people living below USD 1 (PPP) per day</com:Name>
+                </str:Code>
+                <str:Code id="SL_EMP_OACF" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SL_EMP_OACF">
+                    <com:Name xml:lang="en">Proportion of own-account and contributing family workers in total employment</com:Name>
+                </str:Code>
+                <str:Code id="SL_UEM_1524" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SL_UEM_1524">
+                    <com:Name xml:lang="en">Youth unemployment rate</com:Name>
+                </str:Code>
+                <str:Code id="SL_UEM_YTOA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SL_UEM_YTOA">
+                    <com:Name xml:lang="en">Ratio of youth unemployment rate to adult unemployment rate</com:Name>
+                </str:Code>
+                <str:Code id="SL_UEM_YTOT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SL_UEM_YTOT">
+                    <com:Name xml:lang="en">Share of youth unemployed in total unemployed</com:Name>
+                </str:Code>
+                <str:Code id="SL_UEM_YTOY" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SL_UEM_YTOY">
+                    <com:Name xml:lang="en">Share of youth unemployed in youth population</com:Name>
+                </str:Code>
+                <str:Code id="SN_STA_MALN" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SN_STA_MALN">
+                    <com:Name xml:lang="en">Children moderately or severely underweight</com:Name>
+                </str:Code>
+                <str:Code id="SN_STA_MALS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SN_STA_MALS">
+                    <com:Name xml:lang="en">Children severely underweight</com:Name>
+                </str:Code>
+                <str:Code id="SN_ITK_DEFC" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SN_ITK_DEFC">
+                    <com:Name xml:lang="en">Population undernourished</com:Name>
+                </str:Code>
+                <str:Code id="SE_PRM_NENR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SE_PRM_NENR">
+                    <com:Name xml:lang="en">Total net enrolment ratio in primary education</com:Name>
+                </str:Code>
+                <str:Code id="SE_PRM_PRSL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SE_PRM_PRSL">
+                    <com:Name xml:lang="en">Pupils starting grade 1 who reach last grade of primary</com:Name>
+                </str:Code>
+                <str:Code id="SE_PRM_CMPL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SE_PRM_CMPL">
+                    <com:Name xml:lang="en">Primary completion rate</com:Name>
+                </str:Code>
+                <str:Code id="SE_ADT_1524" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SE_ADT_1524">
+                    <com:Name xml:lang="en">Literacy rate</com:Name>
+                </str:Code>
+                <str:Code id="SE_ADT_GPI" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SE_ADT_GPI">
+                    <com:Name xml:lang="en">Women to men parity index, as ratio of literacy rates</com:Name>
+                </str:Code>
+                <str:Code id="SE_PRM_GPI" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SE_PRM_GPI">
+                    <com:Name xml:lang="en">Gender Parity Index in primary level enrolment</com:Name>
+                </str:Code>
+                <str:Code id="SE_SEC_GPI" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SE_SEC_GPI">
+                    <com:Name xml:lang="en">Gender Parity Index in secondary level enrolment</com:Name>
+                </str:Code>
+                <str:Code id="SE_TER_GPI" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SE_TER_GPI">
+                    <com:Name xml:lang="en">Gender Parity Index in tertiary level enrolment</com:Name>
+                </str:Code>
+                <str:Code id="SL_EMP_NAGR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SL_EMP_NAGR">
+                    <com:Name xml:lang="en">Share women in wage employment in the non-agricultural sector</com:Name>
+                </str:Code>
+                <str:Code id="SG_GEN_PARL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SG_GEN_PARL">
+                    <com:Name xml:lang="en">Seats in national parliament</com:Name>
+                </str:Code>
+                <str:Code id="SH_DYN_MORT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_DYN_MORT">
+                    <com:Name xml:lang="en">Under-five mortality rate</com:Name>
+                </str:Code>
+                <str:Code id="SH_DYN_IMRT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_DYN_IMRT">
+                    <com:Name xml:lang="en">Infant mortality rate</com:Name>
+                </str:Code>
+                <str:Code id="SH_IMM_MEAS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_IMM_MEAS">
+                    <com:Name xml:lang="en">Children immunized against measles</com:Name>
+                </str:Code>
+                <str:Code id="SH_STA_MORT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_STA_MORT">
+                    <com:Name xml:lang="en">Maternal mortality ratio</com:Name>
+                </str:Code>
+                <str:Code id="SH_STA_BRTC" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_STA_BRTC">
+                    <com:Name xml:lang="en">Births attended by skilled health personnel</com:Name>
+                </str:Code>
+                <str:Code id="SP_DYN_CONU" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SP_DYN_CONU">
+                    <com:Name xml:lang="en">Contraceptive use among married women, any method</com:Name>
+                </str:Code>
+                <str:Code id="SP_DYN_CONM" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SP_DYN_CONM">
+                    <com:Name xml:lang="en">Contraceptive use among married women, modern methods</com:Name>
+                </str:Code>
+                <str:Code id="SP_DYN_CONC" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SP_DYN_CONC">
+                    <com:Name xml:lang="en">Contraceptive use among married women, condom</com:Name>
+                </str:Code>
+                <str:Code id="SP_DYN_CCON" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SP_DYN_CCON">
+                    <com:Name xml:lang="en">Condom use to overall contraceptive use among currently married women</com:Name>
+                </str:Code>
+                <str:Code id="SP_DYN_ADKL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SP_DYN_ADKL">
+                    <com:Name xml:lang="en">Adolescent birth rate</com:Name>
+                </str:Code>
+                <str:Code id="SH_STA_ANV1" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_STA_ANV1">
+                    <com:Name xml:lang="en">Antenatal care coverage, at least one visit</com:Name>
+                </str:Code>
+                <str:Code id="SH_STA_ANV4" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_STA_ANV4">
+                    <com:Name xml:lang="en">Antenatal care coverage, at least four visits</com:Name>
+                </str:Code>
+                <str:Code id="SH_FPL_UNMT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_FPL_UNMT">
+                    <com:Name xml:lang="en">Unmet need for family planning</com:Name>
+                </str:Code>
+                <str:Code id="SH_FPL_UNMS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_FPL_UNMS">
+                    <com:Name xml:lang="en">Unmet need for family planning, spacing</com:Name>
+                </str:Code>
+                <str:Code id="SH_FPL_UNML" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_FPL_UNML">
+                    <com:Name xml:lang="en">Unmet need for family planning, limiting</com:Name>
+                </str:Code>
+                <str:Code id="SH_HIV_1524" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_HIV_1524">
+                    <com:Name xml:lang="en">HIV prevalence rate (superseded by SH_HIV_TOTL)</com:Name>
+                </str:Code>
+                <str:Code id="SH_HIV_TOTL_LB" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_HIV_TOTL_LB">
+                    <com:Name xml:lang="en">People living with HIV (lower bound)</com:Name>
+                </str:Code>
+                <str:Code id="SH_HIV_TOTL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_HIV_TOTL">
+                    <com:Name xml:lang="en">People living with HIV</com:Name>
+                </str:Code>
+                <str:Code id="SH_HIV_TOTL_UB" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_HIV_TOTL_UB">
+                    <com:Name xml:lang="en">People living with HIV (upper bound)</com:Name>
+                </str:Code>
+                <str:Code id="SH_HIV_INCD_LB" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_HIV_INCD_LB">
+                    <com:Name xml:lang="en">HIV incidence rate (lower bound)</com:Name>
+                </str:Code>
+                <str:Code id="SH_HIV_INCD" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_HIV_INCD">
+                    <com:Name xml:lang="en">HIV incidence rate</com:Name>
+                </str:Code>
+                <str:Code id="SH_HIV_INCD_UB" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_HIV_INCD_UB">
+                    <com:Name xml:lang="en">HIV incidence rate (upper bound)</com:Name>
+                </str:Code>
+                <str:Code id="SH_DYN_AIDS_LB" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_DYN_AIDS_LB">
+                    <com:Name xml:lang="en">AIDS deaths (lower bound)</com:Name>
+                </str:Code>
+                <str:Code id="SH_DYN_AIDS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_DYN_AIDS">
+                    <com:Name xml:lang="en">AIDS deaths</com:Name>
+                </str:Code>
+                <str:Code id="SH_DYN_AIDS_UB" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_DYN_AIDS_UB">
+                    <com:Name xml:lang="en">AIDS deaths (upper bound)</com:Name>
+                </str:Code>
+                <str:Code id="SH_CON_HRSX" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_CON_HRSX">
+                    <com:Name xml:lang="en">Condom use at last high-risk sex</com:Name>
+                </str:Code>
+                <str:Code id="SH_HIV_KNOW" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_HIV_KNOW">
+                    <com:Name xml:lang="en">Population with comprehensive correct knowledge of HIV/AIDS</com:Name>
+                </str:Code>
+                <str:Code id="SE_ENR_ORPHR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SE_ENR_ORPHR">
+                    <com:Name xml:lang="en">Ratio of school attendance rate of orphans to school attendance rate of non-orphans</com:Name>
+                </str:Code>
+                <str:Code id="SE_ENR_ORPH" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SE_ENR_ORPH">
+                    <com:Name xml:lang="en">School attendance rate of orphans</com:Name>
+                </str:Code>
+                <str:Code id="SE_ENR_NORPH" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SE_ENR_NORPH">
+                    <com:Name xml:lang="en">School attendance rate of children both of whose parents are alive and who live with at least one parent</com:Name>
+                </str:Code>
+                <str:Code id="SH_HIV_ORPH" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_HIV_ORPH">
+                    <com:Name xml:lang="en">AIDS orphans</com:Name>
+                </str:Code>
+                <str:Code id="SH_ARV_ACCS_LB" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_ARV_ACCS_LB">
+                    <com:Name xml:lang="en">Antiretroviral therapy coverage among people with advanced HIV infection (lower bound)</com:Name>
+                </str:Code>
+                <str:Code id="SH_ARV_ACCS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_ARV_ACCS">
+                    <com:Name xml:lang="en">Antiretroviral therapy coverage among people with advanced HIV infection</com:Name>
+                </str:Code>
+                <str:Code id="SH_ARV_ACCS_UB" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_ARV_ACCS_UB">
+                    <com:Name xml:lang="en">Antiretroviral therapy coverage among people with advanced HIV infection (upper bound)</com:Name>
+                </str:Code>
+                <str:Code id="SH_ARV_MTCT_LB" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_ARV_MTCT_LB">
+                    <com:Name xml:lang="en">HIV-infected pregnant women who received antiretroviral drugs to reduce the risk for mother-to-child transmission (lower bound)</com:Name>
+                </str:Code>
+                <str:Code id="SH_ARV_MTCT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_ARV_MTCT">
+                    <com:Name xml:lang="en">HIV-infected pregnant women who received antiretroviral drugs to reduce the risk for mother-to-child transmission</com:Name>
+                </str:Code>
+                <str:Code id="SH_ARV_MTCT_UB" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_ARV_MTCT_UB">
+                    <com:Name xml:lang="en">HIV-infected pregnant women who received antiretroviral drugs to reduce the risk for mother-to-child transmission (upper bound)</com:Name>
+                </str:Code>
+                <str:Code id="SH_STA_MALR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_STA_MALR">
+                    <com:Name xml:lang="en">Notified cases of malaria</com:Name>
+                </str:Code>
+                <str:Code id="SH_MLR_MORT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_MLR_MORT">
+                    <com:Name xml:lang="en">Malaria death rate</com:Name>
+                </str:Code>
+                <str:Code id="SH_MLR_NETS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_MLR_NETS">
+                    <com:Name xml:lang="en">Children sleeping under insecticide-treated bed nets</com:Name>
+                </str:Code>
+                <str:Code id="SH_MLR_TRET" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_MLR_TRET">
+                    <com:Name xml:lang="en">Children with fever being treated with anti-malarial drugs</com:Name>
+                </str:Code>
+                <str:Code id="SH_TBS_INCD_LB" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_TBS_INCD_LB">
+                    <com:Name xml:lang="en">Tuberculosis incidence rate (lower bound)</com:Name>
+                </str:Code>
+                <str:Code id="SH_TBS_INCD" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_TBS_INCD">
+                    <com:Name xml:lang="en">Tuberculosis incidence rate</com:Name>
+                </str:Code>
+                <str:Code id="SH_TBS_INCD_UB" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_TBS_INCD_UB">
+                    <com:Name xml:lang="en">Tuberculosis incidence rate (upper bound)</com:Name>
+                </str:Code>
+                <str:Code id="SH_TBS_PREV_LB" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_TBS_PREV_LB">
+                    <com:Name xml:lang="en">Tuberculosis prevalence rate (lower bound)</com:Name>
+                </str:Code>
+                <str:Code id="SH_TBS_PREV" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_TBS_PREV">
+                    <com:Name xml:lang="en">Tuberculosis prevalence rate</com:Name>
+                </str:Code>
+                <str:Code id="SH_TBS_PREV_UB" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_TBS_PREV_UB">
+                    <com:Name xml:lang="en">Tuberculosis prevalence rate (upper bound)</com:Name>
+                </str:Code>
+                <str:Code id="SH_TBS_MORT_LB" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_TBS_MORT_LB">
+                    <com:Name xml:lang="en">Tuberculosis death rate (lower bound)</com:Name>
+                </str:Code>
+                <str:Code id="SH_TBS_MORT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_TBS_MORT">
+                    <com:Name xml:lang="en">Tuberculosis death rate</com:Name>
+                </str:Code>
+                <str:Code id="SH_TBS_MORT_UB" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_TBS_MORT_UB">
+                    <com:Name xml:lang="en">Tuberculosis death rate (upper bound)</com:Name>
+                </str:Code>
+                <str:Code id="SH_TBS_DOTS_LB" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_TBS_DOTS_LB">
+                    <com:Name xml:lang="en">Tuberculosis detection rate under DOTS (lower bound)</com:Name>
+                </str:Code>
+                <str:Code id="SH_TBS_DOTS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_TBS_DOTS">
+                    <com:Name xml:lang="en">Tuberculosis detection rate under DOTS</com:Name>
+                </str:Code>
+                <str:Code id="SH_TBS_DOTS_UB" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_TBS_DOTS_UB">
+                    <com:Name xml:lang="en">Tuberculosis detection rate under DOTS (upper bound)</com:Name>
+                </str:Code>
+                <str:Code id="SH_TBS_CURE" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_TBS_CURE">
+                    <com:Name xml:lang="en">Tuberculosis treatment success rate under DOTS</com:Name>
+                </str:Code>
+                <str:Code id="AG_LND_FRST" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).AG_LND_FRST">
+                    <com:Name xml:lang="en">Land area covered by forest</com:Name>
+                </str:Code>
+                <str:Code id="EN_ATM_CO2PC_CDIAC" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).EN_ATM_CO2PC_CDIAC">
+                    <com:Name xml:lang="en">Carbon dioxide emissions per capita (CDIAC)</com:Name>
+                </str:Code>
+                <str:Code id="EN_ATM_CO2PC" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).EN_ATM_CO2PC">
+                    <com:Name xml:lang="en">Carbon dioxide emissions per capita</com:Name>
+                </str:Code>
+                <str:Code id="EN_ATM_CO2_CDIAC" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).EN_ATM_CO2_CDIAC">
+                    <com:Name xml:lang="en">Carbon dioxide emissions (CDIAC)</com:Name>
+                </str:Code>
+                <str:Code id="EN_ATM_CO2" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).EN_ATM_CO2">
+                    <com:Name xml:lang="en">Carbon dioxide emissions</com:Name>
+                </str:Code>
+                <str:Code id="EN_ATM_CFC" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).EN_ATM_CFC">
+                    <com:Name xml:lang="en">Consumption of ozone-depleting CFCs</com:Name>
+                </str:Code>
+                <str:Code id="EN_ATM_ODS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).EN_ATM_ODS">
+                    <com:Name xml:lang="en">Consumption of all ozone-depleting substances</com:Name>
+                </str:Code>
+                <str:Code id="EG_USE_COMM" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).EG_USE_COMM">
+                    <com:Name xml:lang="en">Energy use</com:Name>
+                </str:Code>
+                <str:Code id="EG_USE_SLFL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).EG_USE_SLFL">
+                    <com:Name xml:lang="en">Population using solid fuels</com:Name>
+                </str:Code>
+                <str:Code id="ER_H2O_FWTL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).ER_H2O_FWTL">
+                    <com:Name xml:lang="en">Fish stocks within safe biological limits</com:Name>
+                </str:Code>
+                <str:Code id="NR_WTR_WITH" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).NR_WTR_WITH">
+                    <com:Name xml:lang="en">Total water resources used</com:Name>
+                </str:Code>
+                <str:Code id="ER_LND_TPA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).ER_LND_TPA">
+                    <com:Name xml:lang="en">Terrestrial areas protected</com:Name>
+                </str:Code>
+                <str:Code id="ER_MRN_MPA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).ER_MRN_MPA">
+                    <com:Name xml:lang="en">Marine areas protected</com:Name>
+                </str:Code>
+                <str:Code id="ER_LND_TMPA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).ER_LND_TMPA">
+                    <com:Name xml:lang="en">Terrestrial and marine areas protected</com:Name>
+                </str:Code>
+                <str:Code id="ER_SPC_STE" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).ER_SPC_STE">
+                    <com:Name xml:lang="en">Species threatened with extinction</com:Name>
+                </str:Code>
+                <str:Code id="SH_H2O_IMPR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_H2O_IMPR">
+                    <com:Name xml:lang="en">Population using improved drinking water sources</com:Name>
+                </str:Code>
+                <str:Code id="SH_SAN_IMPR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_SAN_IMPR">
+                    <com:Name xml:lang="en">Population using improved sanitation facilities</com:Name>
+                </str:Code>
+                <str:Code id="EN_LND_SLUM" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).EN_LND_SLUM">
+                    <com:Name xml:lang="en">Urban population living in slums</com:Name>
+                </str:Code>
+                <str:Code id="DC_ODA_TOTL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).DC_ODA_TOTL">
+                    <com:Name xml:lang="en">Net ODA</com:Name>
+                </str:Code>
+                <str:Code id="DC_ODA_TOTG" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).DC_ODA_TOTG">
+                    <com:Name xml:lang="en">Net ODA as a percentage of OECD/DAC donors' GNI</com:Name>
+                </str:Code>
+                <str:Code id="DC_ODA_LDCS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).DC_ODA_LDCS">
+                    <com:Name xml:lang="en">Net ODA to LDCs</com:Name>
+                </str:Code>
+                <str:Code id="DC_ODA_LDCG" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).DC_ODA_LDCG">
+                    <com:Name xml:lang="en">Net ODA to LDCs as a percentage of OECD/DAC donors' GNI</com:Name>
+                </str:Code>
+                <str:Code id="DC_ODA_SOCL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).DC_ODA_SOCL">
+                    <com:Name xml:lang="en">ODA to basic social services</com:Name>
+                </str:Code>
+                <str:Code id="DC_ODA_SOCP" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).DC_ODA_SOCP">
+                    <com:Name xml:lang="en">ODA to basic social services as a percentage of sector-allocable ODA</com:Name>
+                </str:Code>
+                <str:Code id="DC_ODA_UNTD" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).DC_ODA_UNTD">
+                    <com:Name xml:lang="en">ODA that is untied</com:Name>
+                </str:Code>
+                <str:Code id="DC_AID_LLDC" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).DC_AID_LLDC">
+                    <com:Name xml:lang="en">ODA received in landlocked developing countries</com:Name>
+                </str:Code>
+                <str:Code id="DC_AID_LLDCG" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).DC_AID_LLDCG">
+                    <com:Name xml:lang="en">ODA received in landlocked developing countries as a percentage of their GNI</com:Name>
+                </str:Code>
+                <str:Code id="DC_AID_SIDS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).DC_AID_SIDS">
+                    <com:Name xml:lang="en">ODA received in small island developing states</com:Name>
+                </str:Code>
+                <str:Code id="DC_AID_SIDSG" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).DC_AID_SIDSG">
+                    <com:Name xml:lang="en">ODA received in small island developing states as a percentage of their GNI</com:Name>
+                </str:Code>
+                <str:Code id="TM_VAL_DCDF" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).TM_VAL_DCDF">
+                    <com:Name xml:lang="en">Developed country imports from developing countries, admitted duty free</com:Name>
+                </str:Code>
+                <str:Code id="TM_VAL_LDDF" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).TM_VAL_LDDF">
+                    <com:Name xml:lang="en">Developed country imports from the LDCs, admitted duty free</com:Name>
+                </str:Code>
+                <str:Code id="TM_TRF_AGRI" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).TM_TRF_AGRI">
+                    <com:Name xml:lang="en">Average tariffs imposed by developed countries on agricultural products from developing countries</com:Name>
+                </str:Code>
+                <str:Code id="TM_TRF_CLOT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).TM_TRF_CLOT">
+                    <com:Name xml:lang="en">Average tariffs imposed by developed countries on clothings from developing countries</com:Name>
+                </str:Code>
+                <str:Code id="TM_TRF_TXTL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).TM_TRF_TXTL">
+                    <com:Name xml:lang="en">Average tariffs imposed by developed countries on textiles from developing countries</com:Name>
+                </str:Code>
+                <str:Code id="TT_ASE_TOTL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).TT_ASE_TOTL">
+                    <com:Name xml:lang="en">Agricultural support estimate for OECD countries</com:Name>
+                </str:Code>
+                <str:Code id="TT_ASE_TOTG" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).TT_ASE_TOTG">
+                    <com:Name xml:lang="en">Agricultural support estimate for OECD countries as a percentage of their GDP</com:Name>
+                </str:Code>
+                <str:Code id="DC_ODA_TCAP" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).DC_ODA_TCAP">
+                    <com:Name xml:lang="en">ODA provided to help build trade capacity</com:Name>
+                </str:Code>
+                <str:Code id="DC_HPC_STTS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).DC_HPC_STTS">
+                    <com:Name xml:lang="en">Countries that have reached their HIPC decision points and countries that have reached their HIPC completion points (cumulative)</com:Name>
+                </str:Code>
+                <str:Code id="DC_HPC_COMR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).DC_HPC_COMR">
+                    <com:Name xml:lang="en">Debt relief committed under HIPC Initiative, cumulative</com:Name>
+                </str:Code>
+                <str:Code id="DC_HPC_MDRI" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).DC_HPC_MDRI">
+                    <com:Name xml:lang="en">Debt relief delivered in full under MDRI initiative, cumulative</com:Name>
+                </str:Code>
+                <str:Code id="DT_TDS_DECT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).DT_TDS_DECT">
+                    <com:Name xml:lang="en">Debt service as percentage of exports of goods and services and net income</com:Name>
+                </str:Code>
+                <str:Code id="SH_ACC_DRUG" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_ACC_DRUG">
+                    <com:Name xml:lang="en">Population with access to essential drugs</com:Name>
+                </str:Code>
+                <str:Code id="IT_SUB_ii91" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).IT_SUB_ii91">
+                    <com:Name xml:lang="en">Telephone lines</com:Name>
+                </str:Code>
+                <str:Code id="IT_SUB_i911" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).IT_SUB_i911">
+                    <com:Name xml:lang="en">Mobile cellular telephone subscriptions</com:Name>
+                </str:Code>
+                <str:Code id="IT_USE_ii99" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).IT_USE_ii99">
+                    <com:Name xml:lang="en">Internet users</com:Name>
+                </str:Code>
+                <str:Code id="IT_CMP_i981" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).IT_CMP_i981">
+                    <com:Name xml:lang="en">Personal computers</com:Name>
+                </str:Code>
+                <str:Code id="AG_LND_CFICT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).AG_LND_CFICT">
+                    <com:Name xml:lang="en">Land and property conflicts</com:Name>
+                </str:Code>
+                <str:Code id="AG_LND_CMNPL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).AG_LND_CMNPL">
+                    <com:Name xml:lang="en">Land use plans, commune</com:Name>
+                </str:Code>
+                <str:Code id="AG_LND_CONSS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).AG_LND_CONSS">
+                    <com:Name xml:lang="en">Social land concessions to low income families</com:Name>
+                </str:Code>
+                <str:Code id="AG_LND_CPAD" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).AG_LND_CPAD">
+                    <com:Name xml:lang="en">Agricultural land cultivated for paddy</com:Name>
+                </str:Code>
+                <str:Code id="AG_LND_CROPS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).AG_LND_CROPS">
+                    <com:Name xml:lang="en">Agricultural land covered by all crops</com:Name>
+                </str:Code>
+                <str:Code id="AG_LND_CRUB" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).AG_LND_CRUB">
+                    <com:Name xml:lang="en">Agricultural land cultivated for rubber</com:Name>
+                </str:Code>
+                <str:Code id="AG_LND_DTRPL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).AG_LND_DTRPL">
+                    <com:Name xml:lang="en">Land use plans, district authorities</com:Name>
+                </str:Code>
+                <str:Code id="AG_LND_FRSTC" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).AG_LND_FRSTC">
+                    <com:Name xml:lang="en">Forestry communities</com:Name>
+                </str:Code>
+                <str:Code id="AG_LND_FRSTD" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).AG_LND_FRSTD">
+                    <com:Name xml:lang="en">Forest area, boundary demarcation</com:Name>
+                </str:Code>
+                <str:Code id="AG_LND_INDGT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).AG_LND_INDGT">
+                    <com:Name xml:lang="en">Land titles to indigenous communities</com:Name>
+                </str:Code>
+                <str:Code id="AG_LND_IRIG" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).AG_LND_IRIG">
+                    <com:Name xml:lang="en">Agricultural irrigated land</com:Name>
+                </str:Code>
+                <str:Code id="AG_LND_METPL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).AG_LND_METPL">
+                    <com:Name xml:lang="en">Land use plans, metropolitian areas</com:Name>
+                </str:Code>
+                <str:Code id="AG_LND_PDYD" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).AG_LND_PDYD">
+                    <com:Name xml:lang="en">Rice paddy yield</com:Name>
+                </str:Code>
+                <str:Code id="AG_LND_RESV" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).AG_LND_RESV">
+                    <com:Name xml:lang="en">Land dispute resolution (of all land disputes)</com:Name>
+                </str:Code>
+                <str:Code id="AG_LND_RFRST" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).AG_LND_RFRST">
+                    <com:Name xml:lang="en">Reforestation</com:Name>
+                </str:Code>
+                <str:Code id="AG_LND_TTLE" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).AG_LND_TTLE">
+                    <com:Name xml:lang="en">Agricultural land titled to farmers</com:Name>
+                </str:Code>
+                <str:Code id="AG_PRD_DRUB" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).AG_PRD_DRUB">
+                    <com:Name xml:lang="en">Dried rubber production</com:Name>
+                </str:Code>
+                <str:Code id="AG_PRD_FISH" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).AG_PRD_FISH">
+                    <com:Name xml:lang="en">Fish production</com:Name>
+                </str:Code>
+                <str:Code id="AG_PRD_LVSKC" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).AG_PRD_LVSKC">
+                    <com:Name xml:lang="en">Cattle production</com:Name>
+                </str:Code>
+                <str:Code id="BG_GSR_TOTG" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).BG_GSR_TOTG">
+                    <com:Name xml:lang="en">Trade in goods as a percentage of GDP</com:Name>
+                </str:Code>
+                <str:Code id="BN_CAB_XOKA_GD_ZS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).BN_CAB_XOKA_GD_ZS">
+                    <com:Name xml:lang="en">Current account balance as a percentage of GDP</com:Name>
+                </str:Code>
+                <str:Code id="BX_KLT_DINV" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).BX_KLT_DINV">
+                    <com:Name xml:lang="en">Foreign direct investment, as a percentage of GDP</com:Name>
+                </str:Code>
+                <str:Code id="DC_ODA_CSUSE" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).DC_ODA_CSUSE">
+                    <com:Name xml:lang="en">Use of country system, as a percentage of ODA</com:Name>
+                </str:Code>
+                <str:Code id="DC_ODA_PBUSE" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).DC_ODA_PBUSE">
+                    <com:Name xml:lang="en">Use of Programme-based Approach, as a percentage of ODA</com:Name>
+                </str:Code>
+                <str:Code id="EG_ELC_PROD" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).EG_ELC_PROD">
+                    <com:Name xml:lang="en">Electricity production</com:Name>
+                </str:Code>
+                <str:Code id="EG_IMP_ELC" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).EG_IMP_ELC">
+                    <com:Name xml:lang="en">Electricity imported</com:Name>
+                </str:Code>
+                <str:Code id="EG_USE_ELEC" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).EG_USE_ELEC">
+                    <com:Name xml:lang="en">Electric power consumption</com:Name>
+                </str:Code>
+                <str:Code id="EG_USE_FWOOD" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).EG_USE_FWOOD">
+                    <com:Name xml:lang="en">Fuel wood dependency ratio</com:Name>
+                </str:Code>
+                <str:Code id="ER_LND_CPA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).ER_LND_CPA">
+                    <com:Name xml:lang="en">Community protected areas</com:Name>
+                </str:Code>
+                <str:Code id="ER_LND_RSAR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).ER_LND_RSAR">
+                    <com:Name xml:lang="en">Terrestrial areas protected, ramsar sites</com:Name>
+                </str:Code>
+                <str:Code id="ER_LND_TPAM" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).ER_LND_TPAM">
+                    <com:Name xml:lang="en">Terrestrial areas protected, demarcation and mapping</com:Name>
+                </str:Code>
+                <str:Code id="ER_LND_TPAR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).ER_LND_TPAR">
+                    <com:Name xml:lang="en">Terrestrial areas protected, rangers employed</com:Name>
+                </str:Code>
+                <str:Code id="ER_LND_TPAZ" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).ER_LND_TPAZ">
+                    <com:Name xml:lang="en">Terrestrial areas protected, zones</com:Name>
+                </str:Code>
+                <str:Code id="ER_MRN_FSHC" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).ER_MRN_FSHC">
+                    <com:Name xml:lang="en">Fishery communities</com:Name>
+                </str:Code>
+                <str:Code id="ER_MRN_FSHL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).ER_MRN_FSHL">
+                    <com:Name xml:lang="en">Fishing lots to local communities</com:Name>
+                </str:Code>
+                <str:Code id="ER_PSV_SITES" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).ER_PSV_SITES">
+                    <com:Name xml:lang="en">Preservation of historical ruins and archaeological sites</com:Name>
+                </str:Code>
+                <str:Code id="FB_CBK_DPTR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).FB_CBK_DPTR">
+                    <com:Name xml:lang="en">Deposits with commercial banks</com:Name>
+                </str:Code>
+                <str:Code id="FB_CBK_SINVG" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).FB_CBK_SINVG">
+                    <com:Name xml:lang="en">Savings and investment as a percentage of GDP</com:Name>
+                </str:Code>
+                <str:Code id="FI_RES_XGLD" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).FI_RES_XGLD">
+                    <com:Name xml:lang="en">Total reserves minus gold</com:Name>
+                </str:Code>
+                <str:Code id="FP_CPI_TOTL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).FP_CPI_TOTL">
+                    <com:Name xml:lang="en">Inflation, consumer prices (annual percentage)</com:Name>
+                </str:Code>
+                <str:Code id="FS_AST_PRVT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).FS_AST_PRVT">
+                    <com:Name xml:lang="en">Domestic credit to private sector</com:Name>
+                </str:Code>
+                <str:Code id="GC_BAL_CTOTG" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).GC_BAL_CTOTG">
+                    <com:Name xml:lang="en">Current budget surplus/deficit as a percentage of GDP</com:Name>
+                </str:Code>
+                <str:Code id="GC_BAL_TOTG" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).GC_BAL_TOTG">
+                    <com:Name xml:lang="en">Total budget surplus/deficit as a percentage of GDP</com:Name>
+                </str:Code>
+                <str:Code id="GC_BEN_NSF" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).GC_BEN_NSF">
+                    <com:Name xml:lang="en">Beneficiaries of the social security fund</com:Name>
+                </str:Code>
+                <str:Code id="GC_CIV_RETIN" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).GC_CIV_RETIN">
+                    <com:Name xml:lang="en">Retirees and invalid people who are former civil servants</com:Name>
+                </str:Code>
+                <str:Code id="GC_REV_TOTG" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).GC_REV_TOTG">
+                    <com:Name xml:lang="en">Total government revenues as a percentage of GDP</com:Name>
+                </str:Code>
+                <str:Code id="GC_VET_PENS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).GC_VET_PENS">
+                    <com:Name xml:lang="en">Veterans receiving pensions</com:Name>
+                </str:Code>
+                <str:Code id="GC_XPN_TOTG" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).GC_XPN_TOTG">
+                    <com:Name xml:lang="en">Total government expenditure as a percentage of GDP</com:Name>
+                </str:Code>
+                <str:Code id="IC_BUS_NREG" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).IC_BUS_NREG">
+                    <com:Name xml:lang="en">New businesses registered, all</com:Name>
+                </str:Code>
+                <str:Code id="IC_BUS_NREGF" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).IC_BUS_NREGF">
+                    <com:Name xml:lang="en">New businesses registered, foreign subsidiary</com:Name>
+                </str:Code>
+                <str:Code id="IC_BUS_NREGP" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).IC_BUS_NREGP">
+                    <com:Name xml:lang="en">New businesses registered, sole proprietorship</com:Name>
+                </str:Code>
+                <str:Code id="IC_BUS_NREGS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).IC_BUS_NREGS">
+                    <com:Name xml:lang="en">New businesses registration, services</com:Name>
+                </str:Code>
+                <str:Code id="IS_AIR_DFLTS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).IS_AIR_DFLTS">
+                    <com:Name xml:lang="en">Air transport, domestic flights</com:Name>
+                </str:Code>
+                <str:Code id="IS_AIR_DGOOD" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).IS_AIR_DGOOD">
+                    <com:Name xml:lang="en">Air transport, domestic freight</com:Name>
+                </str:Code>
+                <str:Code id="IS_AIR_DPSGR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).IS_AIR_DPSGR">
+                    <com:Name xml:lang="en">Air transport, domestic passengers carried</com:Name>
+                </str:Code>
+                <str:Code id="IS_AIR_IFLTS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).IS_AIR_IFLTS">
+                    <com:Name xml:lang="en">Air transport, international flights</com:Name>
+                </str:Code>
+                <str:Code id="IS_AIR_IGOOD" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).IS_AIR_IGOOD">
+                    <com:Name xml:lang="en">Air transport, international freight</com:Name>
+                </str:Code>
+                <str:Code id="IS_AIR_IPSGR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).IS_AIR_IPSGR">
+                    <com:Name xml:lang="en">Air transport, international passengers carried</com:Name>
+                </str:Code>
+                <str:Code id="IS_AIR_OVER" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).IS_AIR_OVER">
+                    <com:Name xml:lang="en">Air transport, overflight receipts</com:Name>
+                </str:Code>
+                <str:Code id="IS_ROD_NRHAB" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).IS_ROD_NRHAB">
+                    <com:Name xml:lang="en">Roads, constructed and rehabilitated</com:Name>
+                </str:Code>
+                <str:Code id="IS_ROD_PAVE" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).IS_ROD_PAVE">
+                    <com:Name xml:lang="en">Roads, paved</com:Name>
+                </str:Code>
+                <str:Code id="IS_RRS_NRHAB" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).IS_RRS_NRHAB">
+                    <com:Name xml:lang="en">Rail lines, constructed and repaired</com:Name>
+                </str:Code>
+                <str:Code id="IT_CLT_TOTL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).IT_CLT_TOTL">
+                    <com:Name xml:lang="en">Fixed and Mobile telephone subscriptions</com:Name>
+                </str:Code>
+                <str:Code id="IT_PRT_ACSS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).IT_PRT_ACSS">
+                    <com:Name xml:lang="en">Access to print media</com:Name>
+                </str:Code>
+                <str:Code id="IT_TVR_ACSS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).IT_TVR_ACSS">
+                    <com:Name xml:lang="en">Access to television and radio</com:Name>
+                </str:Code>
+                <str:Code id="NE_EXP_GTOTG" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).NE_EXP_GTOTG">
+                    <com:Name xml:lang="en">Export of goods as a percentage of GDP</com:Name>
+                </str:Code>
+                <str:Code id="NE_IMP_GTOTG" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).NE_IMP_GTOTG">
+                    <com:Name xml:lang="en">Import of goods as a percentage of GDP</com:Name>
+                </str:Code>
+                <str:Code id="NE_TRD_GNFS_ZS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).NE_TRD_GNFS_ZS">
+                    <com:Name xml:lang="en">Trade as a percentage of GDP</com:Name>
+                </str:Code>
+                <str:Code id="NV_AGR_TOTL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).NV_AGR_TOTL">
+                    <com:Name xml:lang="en">Agriculture, value added (as a percentage of GDP)</com:Name>
+                </str:Code>
+                <str:Code id="NV_CST_TOTKG" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).NV_CST_TOTKG">
+                    <com:Name xml:lang="en">Construction, value added (annual percentage growth)</com:Name>
+                </str:Code>
+                <str:Code id="NV_IND_MNFKG" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).NV_IND_MNFKG">
+                    <com:Name xml:lang="en">Manufacturing, value added (annual percentage growth)</com:Name>
+                </str:Code>
+                <str:Code id="NV_IND_TOTL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).NV_IND_TOTL">
+                    <com:Name xml:lang="en">Industry, value added (as a percentage of GDP)</com:Name>
+                </str:Code>
+                <str:Code id="NV_SRV_TETC" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).NV_SRV_TETC">
+                    <com:Name xml:lang="en">Services, value added (as a percentage of GDP)</com:Name>
+                </str:Code>
+                <str:Code id="NY_GDP_MKTP_CP" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).NY_GDP_MKTP_CP">
+                    <com:Name xml:lang="en">GDP (current prices)</com:Name>
+                </str:Code>
+                <str:Code id="NY_GDP_MKTP_KD_ZG" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).NY_GDP_MKTP_KD_ZG">
+                    <com:Name xml:lang="en">GDP growth (annual percentage)</com:Name>
+                </str:Code>
+                <str:Code id="NY_GDP_MKTP_KP" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).NY_GDP_MKTP_KP">
+                    <com:Name xml:lang="en">GDP (constant prices)</com:Name>
+                </str:Code>
+                <str:Code id="NY_GDP_PCAP_CP" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).NY_GDP_PCAP_CP">
+                    <com:Name xml:lang="en">GDP per capita (current prices)</com:Name>
+                </str:Code>
+                <str:Code id="PA_NUS_FCRF" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).PA_NUS_FCRF">
+                    <com:Name xml:lang="en">Official exchange rate (LCU per US$, period average)</com:Name>
+                </str:Code>
+                <str:Code id="SE_LSC_CMPL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SE_LSC_CMPL">
+                    <com:Name xml:lang="en">Lower secondary completion rate</com:Name>
+                </str:Code>
+                <str:Code id="SE_LSC_ENRR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SE_LSC_ENRR">
+                    <com:Name xml:lang="en">Enrolment in lower secondary education</com:Name>
+                </str:Code>
+                <str:Code id="SE_LSC_GPI" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SE_LSC_GPI">
+                    <com:Name xml:lang="en">Gender Parity Index in lower secondary level enrolment</com:Name>
+                </str:Code>
+                <str:Code id="SE_LSC_PRSL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SE_LSC_PRSL">
+                    <com:Name xml:lang="en">Pupils starting grade 1 who reach last grade of lower secondary school</com:Name>
+                </str:Code>
+                <str:Code id="SE_LSC_REPT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SE_LSC_REPT">
+                    <com:Name xml:lang="en">Repeaters, lower secondary level</com:Name>
+                </str:Code>
+                <str:Code id="SE_PRM_NADMT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SE_PRM_NADMT">
+                    <com:Name xml:lang="en">Net admissions, primary level</com:Name>
+                </str:Code>
+                <str:Code id="SE_PRM_REPT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SE_PRM_REPT">
+                    <com:Name xml:lang="en">Repeaters, primary level (percentage of total enrolment)</com:Name>
+                </str:Code>
+                <str:Code id="SE_PRM_UNER" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SE_PRM_UNER">
+                    <com:Name xml:lang="en">Children out of school, primary</com:Name>
+                </str:Code>
+                <str:Code id="SE_USC_GPI" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SE_USC_GPI">
+                    <com:Name xml:lang="en">Gender Parity Index in upper secondary level enrolment</com:Name>
+                </str:Code>
+                <str:Code id="SG_GEN_CIVIL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SG_GEN_CIVIL">
+                    <com:Name xml:lang="en">Female employment in civil service</com:Name>
+                </str:Code>
+                <str:Code id="SG_GEN_CMNC" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SG_GEN_CMNC">
+                    <com:Name xml:lang="en">Seats held by women in commune councils</com:Name>
+                </str:Code>
+                <str:Code id="SG_GEN_DPRGV" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SG_GEN_DPRGV">
+                    <com:Name xml:lang="en">Female deputy provincial governors</com:Name>
+                </str:Code>
+                <str:Code id="SG_GEN_DTRBD" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SG_GEN_DTRBD">
+                    <com:Name xml:lang="en">Female members of Board of Governors of districts</com:Name>
+                </str:Code>
+                <str:Code id="SG_GEN_DTRC" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SG_GEN_DTRC">
+                    <com:Name xml:lang="en">Female members of District Councils</com:Name>
+                </str:Code>
+                <str:Code id="SG_GEN_GMAG" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SG_GEN_GMAG">
+                    <com:Name xml:lang="en">Ministries &amp; institutions with Gender Mainstreaming Action Groups</com:Name>
+                </str:Code>
+                <str:Code id="SG_GEN_GMAP" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SG_GEN_GMAP">
+                    <com:Name xml:lang="en">Ministries &amp; institutions with the Gender Mainstreaming Action Plan implemented</com:Name>
+                </str:Code>
+                <str:Code id="SG_GEN_GOVT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SG_GEN_GOVT">
+                    <com:Name xml:lang="en">Female members of the Royal Government</com:Name>
+                </str:Code>
+                <str:Code id="SG_GEN_LEGIS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SG_GEN_LEGIS">
+                    <com:Name xml:lang="en">Seats held by women in Senate</com:Name>
+                </str:Code>
+                <str:Code id="SG_GEN_METBD" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SG_GEN_METBD">
+                    <com:Name xml:lang="en">Female members of Board of Governors of provinces</com:Name>
+                </str:Code>
+                <str:Code id="SG_GEN_METC" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SG_GEN_METC">
+                    <com:Name xml:lang="en">Female members of Provincial Councils</com:Name>
+                </str:Code>
+                <str:Code id="SG_GEN_MIN" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SG_GEN_MIN">
+                    <com:Name xml:lang="en">Female ministers</com:Name>
+                </str:Code>
+                <str:Code id="SG_GEN_PRGV" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SG_GEN_PRGV">
+                    <com:Name xml:lang="en">Female provincial governors</com:Name>
+                </str:Code>
+                <str:Code id="SG_GEN_SOS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SG_GEN_SOS">
+                    <com:Name xml:lang="en">Female secretaries of state</com:Name>
+                </str:Code>
+                <str:Code id="SG_GEN_USS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SG_GEN_USS">
+                    <com:Name xml:lang="en">Female under secretaries of state</com:Name>
+                </str:Code>
+                <str:Code id="SH_AMA_PREGN" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_AMA_PREGN">
+                    <com:Name xml:lang="en">Pregnant women with iron deficiency anaemia</com:Name>
+                </str:Code>
+                <str:Code id="SH_AMA_PREV" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_AMA_PREV">
+                    <com:Name xml:lang="en">Anaemia prevalence rate</com:Name>
+                </str:Code>
+                <str:Code id="SH_CON_LCSX" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_CON_LCSX">
+                    <com:Name xml:lang="en">Condom use among commercial sex workers during last commercial sexual intercourse</com:Name>
+                </str:Code>
+                <str:Code id="SH_DGE_MORT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_DGE_MORT">
+                    <com:Name xml:lang="en">Deaths associated with dengue fever</com:Name>
+                </str:Code>
+                <str:Code id="SH_HIV_PRGAC" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_HIV_PRGAC">
+                    <com:Name xml:lang="en">HIV prevalence among pregnant women visiting antenatal care clinics</com:Name>
+                </str:Code>
+                <str:Code id="SH_IMM_IDPT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_IMM_IDPT">
+                    <com:Name xml:lang="en">Children immunized against DPT</com:Name>
+                </str:Code>
+                <str:Code id="SH_MLR_FATAL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_MLR_FATAL">
+                    <com:Name xml:lang="en">Malaria death rate amoung cases reported by public health facilities</com:Name>
+                </str:Code>
+                <str:Code id="SH_MLR_NETS_HRISK" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_MLR_NETS_HRISK">
+                    <com:Name xml:lang="en">High risk population sleeping under insecticide-treated bednets</com:Name>
+                </str:Code>
+                <str:Code id="SH_STA_ANV2" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_STA_ANV2">
+                    <com:Name xml:lang="en">Antenatal care coverage, at least two visits</com:Name>
+                </str:Code>
+                <str:Code id="SH_STA_BFED" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_STA_BFED">
+                    <com:Name xml:lang="en">Exclusive breastfeeding (percentage of children)</com:Name>
+                </str:Code>
+                <str:Code id="SH_STA_STNT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_STA_STNT">
+                    <com:Name xml:lang="en">Children moderately or severely stunted</com:Name>
+                </str:Code>
+                <str:Code id="SH_STA_WAST" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SH_STA_WAST">
+                    <com:Name xml:lang="en">Children moderately or severely wasted</com:Name>
+                </str:Code>
+                <str:Code id="SI_POV_FOOD" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SI_POV_FOOD">
+                    <com:Name xml:lang="en">Population below food poverty line</com:Name>
+                </str:Code>
+                <str:Code id="SL_EMP_ABRD" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SL_EMP_ABRD">
+                    <com:Name xml:lang="en">Workers employed abroad</com:Name>
+                </str:Code>
+                <str:Code id="SL_EMP_AGR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SL_EMP_AGR">
+                    <com:Name xml:lang="en">Share women in wage employment in agriculture sector</com:Name>
+                </str:Code>
+                <str:Code id="SL_EMP_IND" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SL_EMP_IND">
+                    <com:Name xml:lang="en">Share women in wage employment in industry sector</com:Name>
+                </str:Code>
+                <str:Code id="SL_EMP_SRV" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SL_EMP_SRV">
+                    <com:Name xml:lang="en">Share women in wage employment in service sector</com:Name>
+                </str:Code>
+                <str:Code id="SL_EMP_TOTL_AGR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SL_EMP_TOTL_AGR">
+                    <com:Name xml:lang="en">Employment rate in agriculture sector</com:Name>
+                </str:Code>
+                <str:Code id="SL_EMP_TOTL_IND" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SL_EMP_TOTL_IND">
+                    <com:Name xml:lang="en">Employment rate in industry sector</com:Name>
+                </str:Code>
+                <str:Code id="SL_EMP_TOTL_SRV" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SL_EMP_TOTL_SRV">
+                    <com:Name xml:lang="en">Employment rate in service sector</com:Name>
+                </str:Code>
+                <str:Code id="SL_TLF_0714" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SL_TLF_0714">
+                    <com:Name xml:lang="en">Economically active children, total (percentage of children)</com:Name>
+                </str:Code>
+                <str:Code id="SL_WGE_NSKIL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SL_WGE_NSKIL">
+                    <com:Name xml:lang="en">Wages of unskilled workers per day</com:Name>
+                </str:Code>
+                <str:Code id="SN_ITK_SALT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SN_ITK_SALT">
+                    <com:Name xml:lang="en">Consumption of iodized salt, as percentage of households</com:Name>
+                </str:Code>
+                <str:Code id="SN_ITK_VITA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SN_ITK_VITA">
+                    <com:Name xml:lang="en">Vitamin A supplementation coverage rate</com:Name>
+                </str:Code>
+                <str:Code id="SP_DYN_TFRT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).SP_DYN_TFRT">
+                    <com:Name xml:lang="en">Fertility rate, total</com:Name>
+                </str:Code>
+                <str:Code id="ST_INT_ACCOM" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).ST_INT_ACCOM">
+                    <com:Name xml:lang="en">Hotels and guest houses, accommodation (rooms)</com:Name>
+                </str:Code>
+                <str:Code id="ST_INT_ARVL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).ST_INT_ARVL">
+                    <com:Name xml:lang="en">International tourism, arrivals</com:Name>
+                </str:Code>
+                <str:Code id="ST_INT_EMP" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).ST_INT_EMP">
+                    <com:Name xml:lang="en">Employment in tourism sector</com:Name>
+                </str:Code>
+                <str:Code id="ST_INT_RCPT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).ST_INT_RCPT">
+                    <com:Name xml:lang="en">International tourism, receipts</com:Name>
+                </str:Code>
+                <str:Code id="VC_CRM_INCD" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).VC_CRM_INCD">
+                    <com:Name xml:lang="en">Incidence of serious crime</com:Name>
+                </str:Code>
+                <str:Code id="VC_CRM_OTHE" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).VC_CRM_OTHE">
+                    <com:Name xml:lang="en">Crime reported to an other authority to total reported crime</com:Name>
+                </str:Code>
+                <str:Code id="VC_CRM_PERT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).VC_CRM_PERT">
+                    <com:Name xml:lang="en">Perception of safety from crime and violence</com:Name>
+                </str:Code>
+                <str:Code id="VC_CRM_POLI" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).VC_CRM_POLI">
+                    <com:Name xml:lang="en">Crime reported to the police to total reported crime</com:Name>
+                </str:Code>
+                <str:Code id="VC_CRM_VILL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).VC_CRM_VILL">
+                    <com:Name xml:lang="en">Crime reported to the village leader to total reported crime</com:Name>
+                </str:Code>
+                <str:Code id="VC_DMV_AWAR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).VC_DMV_AWAR">
+                    <com:Name xml:lang="en">Awareness that violence against women is a crime</com:Name>
+                </str:Code>
+                <str:Code id="VC_DMV_CONSU" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).VC_DMV_CONSU">
+                    <com:Name xml:lang="en">Domestic violence victims who receive counseling</com:Name>
+                </str:Code>
+                <str:Code id="VC_DMV_INCD" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).VC_DMV_INCD">
+                    <com:Name xml:lang="en">Incidence of domestic violence</com:Name>
+                </str:Code>
+                <str:Code id="VC_DMV_PROT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).VC_DMV_PROT">
+                    <com:Name xml:lang="en">Protection orders issued by courts</com:Name>
+                </str:Code>
+                <str:Code id="VC_UXO_CLRD" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).VC_UXO_CLRD">
+                    <com:Name xml:lang="en">Suspected mined areas cleared</com:Name>
+                </str:Code>
+                <str:Code id="VC_UXO_CLTS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).VC_UXO_CLTS">
+                    <com:Name xml:lang="en">Civilian casualties from mines/UXO</com:Name>
+                </str:Code>
+                <str:Code id="VC_VLN_INCD" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_SERIES_COUNTRY_DATA(0.9).VC_VLN_INCD">
+                    <com:Name xml:lang="en">Incidence of violence</com:Name>
+                </str:Code>
+            </str:Codelist>
+            <str:Codelist agencyID="UNSD" isExternalReference="false" isFinal="true" version="0.9" urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=UNSD:CL_UNIT_COUNTRY_DATA(0.9)" id="CL_UNIT_COUNTRY_DATA">
+                <com:Name xml:lang="en">Units code list</com:Name>
+                <str:Code id="NA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_UNIT_COUNTRY_DATA(0.9).NA">
+                    <com:Name xml:lang="en">Not applicable</com:Name>
+                </str:Code>
+                <str:Code id="CUR_LCU" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_UNIT_COUNTRY_DATA(0.9).CUR_LCU">
+                    <com:Name xml:lang="en">Local currency</com:Name>
+                </str:Code>
+                <str:Code id="USD" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_UNIT_COUNTRY_DATA(0.9).USD">
+                    <com:Name xml:lang="en">USD</com:Name>
+                </str:Code>
+                <str:Code id="NUMBER" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_UNIT_COUNTRY_DATA(0.9).NUMBER">
+                    <com:Name xml:lang="en">Number</com:Name>
+                </str:Code>
+                <str:Code id="RATIO" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_UNIT_COUNTRY_DATA(0.9).RATIO">
+                    <com:Name xml:lang="en">Ratio</com:Name>
+                </str:Code>
+                <str:Code id="PERCENT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_UNIT_COUNTRY_DATA(0.9).PERCENT">
+                    <com:Name xml:lang="en">Percent</com:Name>
+                </str:Code>
+                <str:Code id="LCU_PPP_USD" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_UNIT_COUNTRY_DATA(0.9).LCU_PPP_USD">
+                    <com:Name xml:lang="en">Local currency per USD (PPP)</com:Name>
+                </str:Code>
+                <str:Code id="PV_USD" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_UNIT_COUNTRY_DATA(0.9).PV_USD">
+                    <com:Name xml:lang="en">USD in end-2006 net present value terms</com:Name>
+                </str:Code>
+                <str:Code id="PV_USD_2009" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_UNIT_COUNTRY_DATA(0.9).PV_USD_2009">
+                    <com:Name xml:lang="en">USD in end-2009 net present value terms</com:Name>
+                </str:Code>
+                <str:Code id="KG_CO2_PER_GDP_CON_PPP_USD" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_UNIT_COUNTRY_DATA(0.9).KG_CO2_PER_GDP_CON_PPP_USD">
+                    <com:Name xml:lang="en">kg CO2 equivalent per USD1 constant 2005 PPP GDP</com:Name>
+                </str:Code>
+                <str:Code id="KG_OE_PER_GDP_CON_PPP_USD" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_UNIT_COUNTRY_DATA(0.9).KG_OE_PER_GDP_CON_PPP_USD">
+                    <com:Name xml:lang="en">kg oil equivalent per USD1,000 constant 2005 PPP GDP</com:Name>
+                </str:Code>
+                <str:Code id="KM2" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_UNIT_COUNTRY_DATA(0.9).KM2">
+                    <com:Name xml:lang="en">Square kilometers</com:Name>
+                </str:Code>
+                <str:Code id="T" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_UNIT_COUNTRY_DATA(0.9).T">
+                    <com:Name xml:lang="en">Metric Tons</com:Name>
+                </str:Code>
+                <str:Code id="USD_GDP_PPP" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_UNIT_COUNTRY_DATA(0.9).USD_GDP_PPP">
+                    <com:Name xml:lang="en">Per 1 USD GDP (PPP)</com:Name>
+                </str:Code>
+                <str:Code id="PER_100_LIVE_BIRTHS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_UNIT_COUNTRY_DATA(0.9).PER_100_LIVE_BIRTHS">
+                    <com:Name xml:lang="en">Per 100 live births</com:Name>
+                </str:Code>
+                <str:Code id="PER_100_POP" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_UNIT_COUNTRY_DATA(0.9).PER_100_POP">
+                    <com:Name xml:lang="en">Per 100 population</com:Name>
+                </str:Code>
+                <str:Code id="PER_1000_LIVE_BIRTHS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_UNIT_COUNTRY_DATA(0.9).PER_1000_LIVE_BIRTHS">
+                    <com:Name xml:lang="en">Per 1,000 live births</com:Name>
+                </str:Code>
+                <str:Code id="PER_1000_POP" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_UNIT_COUNTRY_DATA(0.9).PER_1000_POP">
+                    <com:Name xml:lang="en">Per 1,000 population</com:Name>
+                </str:Code>
+                <str:Code id="PER_100000_LIVE_BIRTHS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_UNIT_COUNTRY_DATA(0.9).PER_100000_LIVE_BIRTHS">
+                    <com:Name xml:lang="en">Per 100,000 live births</com:Name>
+                </str:Code>
+                <str:Code id="PER_100000_POP" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_UNIT_COUNTRY_DATA(0.9).PER_100000_POP">
+                    <com:Name xml:lang="en">Per 100,000 population</com:Name>
+                </str:Code>
+                <str:Code id="POP" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_UNIT_COUNTRY_DATA(0.9).POP">
+                    <com:Name xml:lang="en">Population (deprecated)</com:Name>
+                </str:Code>
+                <str:Code id="WOMEN" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_UNIT_COUNTRY_DATA(0.9).WOMEN">
+                    <com:Name xml:lang="en">Women (deprecated)</com:Name>
+                </str:Code>
+                <str:Code id="LIVE_BIRTHS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_UNIT_COUNTRY_DATA(0.9).LIVE_BIRTHS">
+                    <com:Name xml:lang="en">Live births (deprecated)</com:Name>
+                </str:Code>
+                <str:Code id="HA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_UNIT_COUNTRY_DATA(0.9).HA">
+                    <com:Name xml:lang="en">Hectare</com:Name>
+                </str:Code>
+                <str:Code id="T_HA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_UNIT_COUNTRY_DATA(0.9).T_HA">
+                    <com:Name xml:lang="en">Metric tons per hectare</com:Name>
+                </str:Code>
+                <str:Code id="KWH" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_UNIT_COUNTRY_DATA(0.9).KWH">
+                    <com:Name xml:lang="en">Kilowatt-hour</com:Name>
+                </str:Code>
+                <str:Code id="KM" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_UNIT_COUNTRY_DATA(0.9).KM">
+                    <com:Name xml:lang="en">Kilometer</com:Name>
+                </str:Code>
+                <str:Code id="CON_LCU_2000" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=UNSD:CL_UNIT_COUNTRY_DATA(0.9).CON_LCU_2000">
+                    <com:Name xml:lang="en">Local currency, constant 2000 prices</com:Name>
+                </str:Code>
+            </str:Codelist>
+        </str:Codelists>
+        <str:Concepts>
+            <str:ConceptScheme agencyID="IAEG" isExternalReference="false" isFinal="true" version="1.0" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.ConceptScheme=IAEG:MDG_DATA_CONCEPTS(1.0)" id="MDG_DATA_CONCEPTS">
+                <com:Name xml:lang="en">Data Concepts for MDG Indicators</com:Name>
+                <str:Concept id="AGE_GROUP" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=IAEG:MDG_DATA_CONCEPTS(1.0).AGE_GROUP">
+                    <com:Name xml:lang="en">Age group</com:Name>
+                    <com:Description xml:lang="en">Age - or age range - of the individuals the observation refers to.</com:Description>
+                </str:Concept>
+                <str:Concept id="FOOTNOTES" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=IAEG:MDG_DATA_CONCEPTS(1.0).FOOTNOTES">
+                    <com:Name xml:lang="en">Footnotes</com:Name>
+                    <com:Description xml:lang="en">Additional information on specific aspects of each observation, such as how the observation was computed/estimated or details that could affect the comparability of this data point with others in a time series.</com:Description>
+                </str:Concept>
+                <str:Concept id="FREQ" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=IAEG:MDG_DATA_CONCEPTS(1.0).FREQ">
+                    <com:Name xml:lang="en">Frequency</com:Name>
+                    <com:Description xml:lang="en">Indicates rate of recurrence at which observations occur (e.g. monthly, yearly, biannually, etc.).</com:Description>
+                </str:Concept>
+                <str:Concept id="LOCATION" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=IAEG:MDG_DATA_CONCEPTS(1.0).LOCATION">
+                    <com:Name xml:lang="en">Location</com:Name>
+                    <com:Description xml:lang="en">Refers to a disaggregation within the Reference Area the data alludes; normally National (total), Urban or Rural - although additional disaggregations are possible within an area (e.g. subUrban).</com:Description>
+                </str:Concept>
+                <str:Concept id="NATURE" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=IAEG:MDG_DATA_CONCEPTS(1.0).NATURE">
+                    <com:Name xml:lang="en">Nature of data points</com:Name>
+                    <com:Description xml:lang="en">Information on the production and dissemination of the data (e.g.: if the figure has been produced and disseminated by the country, estimated by international agencies, etc.)</com:Description>
+                </str:Concept>
+                <str:Concept id="REF_AREA" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=IAEG:MDG_DATA_CONCEPTS(1.0).REF_AREA">
+                    <com:Name xml:lang="en">Reference Area</com:Name>
+                    <com:Description xml:lang="en">Reference Area: Specific areas (e.g. Country, Regional Grouping, etc)  the observed values refer to. Reference areas can be determined according to different criteria (e.g.: geographical, economic, etc.).</com:Description>
+                </str:Concept>
+                <str:Concept id="SERIES" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=IAEG:MDG_DATA_CONCEPTS(1.0).SERIES">
+                    <com:Name xml:lang="en">Series</com:Name>
+                    <com:Description xml:lang="en">The phenomenon or phenomena to be measured in the data set. The word SERIES is used for consistency with the term used in the MDG Database. SERIES are all the official MDG series and background series currently in the MDG Database.</com:Description>
+                </str:Concept>
+                <str:Concept id="SEX" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=IAEG:MDG_DATA_CONCEPTS(1.0).SEX">
+                    <com:Name xml:lang="en">Sex</com:Name>
+                    <com:Description xml:lang="en">Gender condition: male or female. This dimension applies only if data can be dissaggregated by sex.</com:Description>
+                </str:Concept>
+                <str:Concept id="SOURCE_DETAIL" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=IAEG:MDG_DATA_CONCEPTS(1.0).SOURCE_DETAIL">
+                    <com:Name xml:lang="en">Source details</com:Name>
+                    <com:Description xml:lang="en">Information on the name and specific details of each observation's data source. Both the sources for the numerator and denominator could be specified here.</com:Description>
+                </str:Concept>
+                <str:Concept id="SOURCE_TYPE" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=IAEG:MDG_DATA_CONCEPTS(1.0).SOURCE_TYPE">
+                    <com:Name xml:lang="en">Source type</com:Name>
+                    <com:Description xml:lang="en">Type of data source: survey, administrative records, census or other. Details about the source, if available, could be provided in the free-text attribute SOURCE_DETAIL.</com:Description>
+                </str:Concept>
+                <str:Concept id="TIME_DETAIL" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=IAEG:MDG_DATA_CONCEPTS(1.0).TIME_DETAIL">
+                    <com:Name xml:lang="en">Time period details</com:Name>
+                    <com:Description xml:lang="en">When TIME_PERIOD refers to a date range, this attribute is used to provide METADATA on the actual range the observation refers to (e.g. for period '2001-2003' TIME_PERIOD would be 2002 but the actual dates --2001-2003-- would be expressed here).</com:Description>
+                </str:Concept>
+                <str:Concept id="TIME_PERIOD" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=IAEG:MDG_DATA_CONCEPTS(1.0).TIME_PERIOD">
+                    <com:Name xml:lang="en">Time period</com:Name>
+                    <com:Description xml:lang="en">Reference date - or date range - the observed value refers to (usually different from the dates of data production or dissemination). For MDG data exchange it is usually expressed as a four-digit year (e.g.: 1995) so, if the observation refers to a period of time (range), details about such period should be specified in the attribute TIME_DETAIL</com:Description>
+                </str:Concept>
+                <str:Concept id="UNIT" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=IAEG:MDG_DATA_CONCEPTS(1.0).UNIT">
+                    <com:Name xml:lang="en">Units of measurement</com:Name>
+                    <com:Description xml:lang="en">Dimension by which the series are described (e.g.: percentage, USD, etc.)</com:Description>
+                </str:Concept>
+                <str:Concept id="UNIT_MULT" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=IAEG:MDG_DATA_CONCEPTS(1.0).UNIT_MULT">
+                    <com:Name xml:lang="en">Unit multiplier</com:Name>
+                    <com:Description xml:lang="en">Exponent in base 10 that multiplied by the observation numeric value gives the result expressed in the unit of measure.</com:Description>
+                </str:Concept>
+                <str:Concept id="OBS_VALUE" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=IAEG:MDG_DATA_CONCEPTS(1.0).OBS_VALUE">
+                    <com:Name xml:lang="en">Observation Value</com:Name>
+                    <com:Description xml:lang="en">Observation value</com:Description>
+                </str:Concept>
+            </str:ConceptScheme>
+        </str:Concepts>
+        <str:DataStructures>
+            <str:DataStructure agencyID="UNSD" isExternalReference="false" isFinal="true" version="1.4" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=UNSD:CountryData(1.4)" id="CountryData">
+                <com:Name xml:lang="en">SDMX-CountryData</com:Name>
+                <str:DataStructureComponents>
+                    <str:DimensionList>
+                        <str:Dimension id="FREQ">
+                            <str:ConceptIdentity>
+                                <Ref agencyID="IAEG" id="FREQ" maintainableParentID="MDG_DATA_CONCEPTS" maintainableParentVersion="1.0"/>
+                                <URN>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=IAEG:MDG_DATA_CONCEPTS(1.0).FREQ</URN>
+                            </str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>
+                                    <Ref agencyID="IAEG" id="CL_FREQ_MDG" version="1.0"/>
+                                    <URN>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=IAEG:CL_FREQ_MDG(1.0)</URN>
+                                </str:Enumeration>
+                            </str:LocalRepresentation>
+                        </str:Dimension>
+                        <str:Dimension id="SERIES">
+                            <str:ConceptIdentity>
+                                <Ref agencyID="IAEG" id="SERIES" maintainableParentID="MDG_DATA_CONCEPTS" maintainableParentVersion="1.0"/>
+                                <URN>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=IAEG:MDG_DATA_CONCEPTS(1.0).SERIES</URN>
+                            </str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>
+                                    <Ref agencyID="UNSD" id="CL_SERIES_COUNTRY_DATA" version="0.9"/>
+                                    <URN>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=UNSD:CL_SERIES_COUNTRY_DATA(0.9)</URN>
+                                </str:Enumeration>
+                            </str:LocalRepresentation>
+                        </str:Dimension>
+                        <str:Dimension id="UNIT">
+                            <str:ConceptIdentity>
+                                <Ref agencyID="IAEG" id="UNIT" maintainableParentID="MDG_DATA_CONCEPTS" maintainableParentVersion="1.0"/>
+                                <URN>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=IAEG:MDG_DATA_CONCEPTS(1.0).UNIT</URN>
+                            </str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>
+                                    <Ref agencyID="UNSD" id="CL_UNIT_COUNTRY_DATA" version="0.9"/>
+                                    <URN>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=UNSD:CL_UNIT_COUNTRY_DATA(0.9)</URN>
+                                </str:Enumeration>
+                            </str:LocalRepresentation>
+                        </str:Dimension>
+                        <str:Dimension id="LOCATION">
+                            <str:ConceptIdentity>
+                                <Ref agencyID="IAEG" id="LOCATION" maintainableParentID="MDG_DATA_CONCEPTS" maintainableParentVersion="1.0"/>
+                                <URN>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=IAEG:MDG_DATA_CONCEPTS(1.0).LOCATION</URN>
+                            </str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>
+                                    <Ref agencyID="IAEG" id="CL_LOCATION_MDG" version="1.0"/>
+                                    <URN>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=IAEG:CL_LOCATION_MDG(1.0)</URN>
+                                </str:Enumeration>
+                            </str:LocalRepresentation>
+                        </str:Dimension>
+                        <str:Dimension id="AGE_GROUP">
+                            <str:ConceptIdentity>
+                                <Ref agencyID="IAEG" id="AGE_GROUP" maintainableParentID="MDG_DATA_CONCEPTS" maintainableParentVersion="1.0"/>
+                                <URN>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=IAEG:MDG_DATA_CONCEPTS(1.0).AGE_GROUP</URN>
+                            </str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>
+                                    <Ref agencyID="UNSD" id="CL_AGE_GROUP_COUNTRY_DATA" version="0.9"/>
+                                    <URN>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=UNSD:CL_AGE_GROUP_COUNTRY_DATA(0.9)</URN>
+                                </str:Enumeration>
+                            </str:LocalRepresentation>
+                        </str:Dimension>
+                        <str:Dimension id="SEX">
+                            <str:ConceptIdentity>
+                                <Ref agencyID="IAEG" id="SEX" maintainableParentID="MDG_DATA_CONCEPTS" maintainableParentVersion="1.0"/>
+                                <URN>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=IAEG:MDG_DATA_CONCEPTS(1.0).SEX</URN>
+                            </str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>
+                                    <Ref agencyID="IAEG" id="CL_SEX_MDG" version="2.1"/>
+                                    <URN>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=IAEG:CL_SEX_MDG(2.1)</URN>
+                                </str:Enumeration>
+                            </str:LocalRepresentation>
+                        </str:Dimension>
+                        <str:Dimension id="REF_AREA">
+                            <str:ConceptIdentity>
+                                <Ref agencyID="IAEG" id="REF_AREA" maintainableParentID="MDG_DATA_CONCEPTS" maintainableParentVersion="1.0"/>
+                                <URN>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=IAEG:MDG_DATA_CONCEPTS(1.0).REF_AREA</URN>
+                            </str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>
+                                    <Ref agencyID="IAEG" id="CL_REF_AREA_MDG" version="4.0"/>
+                                    <URN>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=IAEG:CL_REF_AREA_MDG(4.0)</URN>
+                                </str:Enumeration>
+                            </str:LocalRepresentation>
+                        </str:Dimension>
+                        <str:Dimension id="SOURCE_TYPE">
+                            <str:ConceptIdentity>
+                                <Ref agencyID="IAEG" id="SOURCE_TYPE" maintainableParentID="MDG_DATA_CONCEPTS" maintainableParentVersion="1.0"/>
+                                <URN>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=IAEG:MDG_DATA_CONCEPTS(1.0).SOURCE_TYPE</URN>
+                            </str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>
+                                    <Ref agencyID="IAEG" id="CL_SOURCE_TYPE_MDG" version="2.0"/>
+                                    <URN>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=IAEG:CL_SOURCE_TYPE_MDG(2.0)</URN>
+                                </str:Enumeration>
+                            </str:LocalRepresentation>
+                        </str:Dimension>
+                        <str:TimeDimension id="TIME_PERIOD">
+                            <str:ConceptIdentity>
+                                <Ref agencyID="IAEG" id="TIME_PERIOD" maintainableParentID="MDG_DATA_CONCEPTS" maintainableParentVersion="1.0"/>
+                                <URN>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=IAEG:MDG_DATA_CONCEPTS(1.0).TIME_PERIOD</URN>
+                            </str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:TextFormat/>
+                            </str:LocalRepresentation>
+                        </str:TimeDimension>
+                    </str:DimensionList>
+                    <str:AttributeList>
+                        <str:Attribute id="UNIT_MULT" assignmentStatus="Mandatory">
+                            <str:ConceptIdentity>
+                                <Ref agencyID="IAEG" id="UNIT_MULT" maintainableParentID="MDG_DATA_CONCEPTS" maintainableParentVersion="1.0"/>
+                                <URN>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=IAEG:MDG_DATA_CONCEPTS(1.0).UNIT_MULT</URN>
+                            </str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>
+                                    <Ref agencyID="IAEG" id="CL_UNIT_MULT_SDMX" version="1.0"/>
+                                    <URN>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=IAEG:CL_UNIT_MULT_SDMX(1.0)</URN>
+                                </str:Enumeration>
+                            </str:LocalRepresentation>
+                            <str:AttributeRelationship>
+                                <str:PrimaryMeasure>
+                                    <URN>urn:sdmx:org.sdmx.infomodel.datastructure.PrimaryMeasure=.OBS_VALUE</URN>
+                                    <Ref id="OBS_VALUE"/>
+                                </str:PrimaryMeasure>
+                            </str:AttributeRelationship>
+                        </str:Attribute>
+                        <str:Attribute id="TIME_DETAIL" assignmentStatus="Conditional">
+                            <str:ConceptIdentity>
+                                <Ref agencyID="IAEG" id="TIME_DETAIL" maintainableParentID="MDG_DATA_CONCEPTS" maintainableParentVersion="1.0"/>
+                                <URN>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=IAEG:MDG_DATA_CONCEPTS(1.0).TIME_DETAIL</URN>
+                            </str:ConceptIdentity>
+                            <str:AttributeRelationship>
+                                <str:PrimaryMeasure>
+                                    <URN>urn:sdmx:org.sdmx.infomodel.datastructure.PrimaryMeasure=.OBS_VALUE</URN>
+                                    <Ref id="OBS_VALUE"/>
+                                </str:PrimaryMeasure>
+                            </str:AttributeRelationship>
+                        </str:Attribute>
+                        <str:Attribute id="NATURE" assignmentStatus="Conditional">
+                            <str:ConceptIdentity>
+                                <Ref agencyID="IAEG" id="NATURE" maintainableParentID="MDG_DATA_CONCEPTS" maintainableParentVersion="1.0"/>
+                                <URN>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=IAEG:MDG_DATA_CONCEPTS(1.0).NATURE</URN>
+                            </str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>
+                                    <Ref agencyID="IAEG" id="CL_NATURE_MDG" version="1.0"/>
+                                    <URN>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=IAEG:CL_NATURE_MDG(1.0)</URN>
+                                </str:Enumeration>
+                            </str:LocalRepresentation>
+                            <str:AttributeRelationship>
+                                <str:PrimaryMeasure>
+                                    <URN>urn:sdmx:org.sdmx.infomodel.datastructure.PrimaryMeasure=.OBS_VALUE</URN>
+                                    <Ref id="OBS_VALUE"/>
+                                </str:PrimaryMeasure>
+                            </str:AttributeRelationship>
+                        </str:Attribute>
+                        <str:Attribute id="SOURCE_DETAIL" assignmentStatus="Conditional">
+                            <str:ConceptIdentity>
+                                <Ref agencyID="IAEG" id="SOURCE_DETAIL" maintainableParentID="MDG_DATA_CONCEPTS" maintainableParentVersion="1.0"/>
+                                <URN>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=IAEG:MDG_DATA_CONCEPTS(1.0).SOURCE_DETAIL</URN>
+                            </str:ConceptIdentity>
+                            <str:AttributeRelationship>
+                                <str:PrimaryMeasure>
+                                    <URN>urn:sdmx:org.sdmx.infomodel.datastructure.PrimaryMeasure=.OBS_VALUE</URN>
+                                    <Ref id="OBS_VALUE"/>
+                                </str:PrimaryMeasure>
+                            </str:AttributeRelationship>
+                        </str:Attribute>
+                        <str:Attribute id="FOOTNOTES" assignmentStatus="Conditional">
+                            <str:ConceptIdentity>
+                                <Ref agencyID="IAEG" id="FOOTNOTES" maintainableParentID="MDG_DATA_CONCEPTS" maintainableParentVersion="1.0"/>
+                                <URN>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=IAEG:MDG_DATA_CONCEPTS(1.0).FOOTNOTES</URN>
+                            </str:ConceptIdentity>
+                            <str:AttributeRelationship>
+                                <str:PrimaryMeasure>
+                                    <URN>urn:sdmx:org.sdmx.infomodel.datastructure.PrimaryMeasure=.OBS_VALUE</URN>
+                                    <Ref id="OBS_VALUE"/>
+                                </str:PrimaryMeasure>
+                            </str:AttributeRelationship>
+                        </str:Attribute>
+                    </str:AttributeList>
+                    <str:MeasureList>
+                        <str:PrimaryMeasure id="OBS_VALUE">
+                            <str:ConceptIdentity>
+                                <Ref agencyID="IAEG" id="OBS_VALUE" maintainableParentID="MDG_DATA_CONCEPTS" maintainableParentVersion="1.0"/>
+                                <URN>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=IAEG:MDG_DATA_CONCEPTS(1.0).OBS_VALUE</URN>
+                            </str:ConceptIdentity>
+                            <str:LocalRepresentation/>
+                        </str:PrimaryMeasure>
+                    </str:MeasureList>
+                </str:DataStructureComponents>
+            </str:DataStructure>
+        </str:DataStructures>
+    </mes:Structures>
+</mes:Structure>
