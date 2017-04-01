@@ -84,6 +84,7 @@ public class SdmxDataset implements no.ssb.vtl.model.Dataset {
         this.cube = new Cube(reg.find(df.getStructure()), reg);
         RegistryQuery rq = new RegistryQuery(reg.find(df.getStructure()), reg, this.dataflow.getId().toString());
         rq.fromString(query);
+        System.out.println("RQ Query String="+rq.getQueryString());
         rq.getQueryTime().parseStartTime(startPeriod);
         rq.getQueryTime().parseEndTime(endPeriod);
         DataMessage msg = null;
@@ -187,12 +188,12 @@ public class SdmxDataset implements no.ssb.vtl.model.Dataset {
         for (; i < struct.getDataStructureComponents().getDimensionList().size(); i++) {
             DimensionType dim = struct.getDataStructureComponents().getDimensionList().getDimension(i);
             key.put(dim.getId().toString(), cube.getValues(dim.getId().toString()).get(result[i]));
-            System.out.print(dim.getId().toString()+":"+result[i]+":"+cube.getValues(dim.getId().toString()).get(result[i])+" ");
+            //System.out.print(dim.getId().toString()+":"+result[i]+":"+cube.getValues(dim.getId().toString()).get(result[i])+" ");
         }
         if (struct.getDataStructureComponents().getDimensionList().getTimeDimension() != null) {
             TimeDimensionType td = struct.getDataStructureComponents().getDimensionList().getTimeDimension();
             key.put(td.getId().toString(), cube.getValues(td.getId().toString()).get(result[i]));
-            System.out.println(td.getId().toString()+":"+result[i]+":"+cube.getValues(td.getId().toString()).get(result[i]));
+            //System.out.println(td.getId().toString()+":"+result[i]+":"+cube.getValues(td.getId().toString()).get(result[i]));
         }
         /*
         if (struct.getDataStructureComponents().getDimensionList().getMeasureDimension() != null) {

@@ -38,7 +38,7 @@ public class SDMXGatewayVTLConnector implements Connector {
         SDMXGatewayVTLConnector con = new SDMXGatewayVTLConnector();
         VTLScriptEngine engine = new VTLScriptEngine(new Connector[]{con});
         Bindings bindings = engine.getBindings(ScriptContext.ENGINE_SCOPE);
-        engine.eval("ds1 := get(\"sdmx://ABS/ABS/ABS_CENSUS2011_B01/.....?startPeriod=2000&endPeriod=2015\")");
+        engine.eval("ds1 := get(\"sdmx://ABS/ABS/ABS_CENSUS2011_B01/.5....?startPeriod=2000&endPeriod=2015\")");
         DatasetWrapper wrapper = convertToDatasetWrapper("ds1", (Dataset) bindings.get("ds1"));
         for(int i=0;i<wrapper.getData().size();i++) {
             for(int j=0;j<wrapper.getData().get(i).size();j++) {
@@ -77,14 +77,12 @@ public class SDMXGatewayVTLConnector implements Connector {
         String query = identifier.substring(("sdmx://" + agency + "/" + dfagency + "/" + dataflow).length() + 1, identifier.indexOf("?", ("sdmx://" + agency + "/" + dfagency + "/" + dataflow).length() + 1));
         String startPeriod = identifier.substring(("sdmx://" + agency + "/" + dfagency + "/" + dataflow + "/" + query + "?startPeriod").length() + 1, identifier.indexOf("&endPeriod=", ("sdmx://" + agency + "/" + dfagency + "/" + dataflow + "/" + query).length() + 1));
         String endPeriod = identifier.substring(("sdmx://" + agency + "/" + dfagency + "/" + dataflow + "/" + query + "?startPeriod=" + startPeriod + "&endPeriod").length() + 1, identifier.length());
-        /*
         System.out.println("Agency:" + agency);
         System.out.println("DFAgency:" + dfagency);
         System.out.println("Dataflow:" + dataflow);
         System.out.println("Query:" + query);
         System.out.println("SP:" + startPeriod);
         System.out.println("EP:" + endPeriod);
-        */
         Queryable q = SdmxIO.simpleConnect(agency);
         DataflowRef ref = new DataflowRef(new NestedNCNameID(dfagency), new IDType(dataflow), null);
         DataflowReference reference = new DataflowReference(ref, null);
