@@ -111,7 +111,8 @@ public class SdmxDataset implements no.ssb.vtl.model.Dataset {
             lengths[lengths.length - 1] = cube.getValues(struct.getDataStructureComponents().getDimensionList().getMeasureDimension().getId().toString()).size();
         }
         */
-        System.out.println("Cube Size:"+cube.getSize());
+        System.out.println("Cube Size="+cube.getSize());
+        System.out.println("Flat Size="+cube.getFlatSize());
     }
 
 

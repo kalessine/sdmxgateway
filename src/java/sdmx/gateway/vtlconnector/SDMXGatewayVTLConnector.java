@@ -34,21 +34,12 @@ import sdmx.commonreferences.NestedNCNameID;
  */
 public class SDMXGatewayVTLConnector implements Connector {
 
-    public static void main(String args[]) throws ScriptException {
+    public static void main(String args[]) throws ScriptException, ConnectorException {
         SDMXGatewayVTLConnector con = new SDMXGatewayVTLConnector();
-        VTLScriptEngine engine = new VTLScriptEngine(new Connector[]{con});
+        VTLScriptEngine engine = new VTLScriptEngine(new Connector[]{con, new VTLFileConnector("JamesGardner")});
         Bindings bindings = engine.getBindings(ScriptContext.ENGINE_SCOPE);
         engine.eval("ds1 := get(\"sdmx://ABS/ABS/ABS_CENSUS2011_B01/.5....?startPeriod=2000&endPeriod=2015\")");
-        DatasetWrapper wrapper = convertToDatasetWrapper("ds1", (Dataset) bindings.get("ds1"));
-        for(int i=0;i<wrapper.getData().size();i++) {
-            for(int j=0;j<wrapper.getData().get(i).size();j++) {
-                System.out.print(wrapper.getData().get(i).get(j));
-                if(j<wrapper.getData().get(i).size()){
-                    System.out.print(" ");
-                }
-            }
-            System.out.println();
-        }
+        new VTLFileConnector("JamesGardner").putDataset("B01_CENSUS",(Dataset)bindings.get("ds1"));
     }
 
     /*
@@ -92,6 +83,7 @@ public class SDMXGatewayVTLConnector implements Connector {
     public Dataset putDataset(String identifier, Dataset dataset) throws ConnectorException {
         return null;
     }
+
     public static DatasetWrapper convertToDatasetWrapper(String name, Dataset dataset) {
         DatasetWrapper wrapper = new DatasetWrapper();
         wrapper.setName(name);
@@ -110,6 +102,7 @@ public class SDMXGatewayVTLConnector implements Connector {
         wrapper.setData(data);
         return wrapper;
     }
+
     static class DatasetWrapper {
 
         private String name;
