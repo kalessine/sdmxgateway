@@ -170,7 +170,7 @@ public class VTLFileConnector implements Connector {
             if (c.getRole() == Role.ATTRIBUTE) {
                 AttributeType att = new AttributeType();
                 att.setId(new IDType(c.getName()));
-                dst.getDataStructureComponents().getAttributeList().addAttribut(att);
+                dst.getDataStructureComponents().getAttributeList().addAttribute(att);
             }
         }
         if (measures.size() > 1) {

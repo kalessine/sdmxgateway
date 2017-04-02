@@ -38,7 +38,7 @@ public class SDMXGatewayVTLConnector implements Connector {
         SDMXGatewayVTLConnector con = new SDMXGatewayVTLConnector();
         VTLScriptEngine engine = new VTLScriptEngine(new Connector[]{con, new VTLFileConnector("JamesGardner")});
         Bindings bindings = engine.getBindings(ScriptContext.ENGINE_SCOPE);
-        engine.eval("ds1 := get(\"sdmx://ABS/ABS/ABS_CENSUS2011_B01/.5....?startPeriod=2000&endPeriod=2015\")");
+        engine.eval("ds1 := get(\"sdmxNames://ABS/ABS/ABS_CENSUS2011_B01/.5....?startPeriod=2000&endPeriod=2015\")");
         new VTLFileConnector("JamesGardner").putDataset("B01_CENSUS",(Dataset)bindings.get("ds1"));
     }
 
@@ -54,20 +54,23 @@ public class SDMXGatewayVTLConnector implements Connector {
     }
 
     public boolean canHandle(String identifier) {
-        return identifier.startsWith("sdmx://");
+        if( identifier.startsWith("sdmx://"))return true;
+        if( identifier.startsWith("sdmxNames://"))return true;
+        return false;
     }
     /*
     sdmx://ABS/ABS/ALC/.....
      */
 
     public Dataset getDataset(String identifier) throws ConnectorException {
-        String agency = identifier.substring("sdmx://".length(), identifier.indexOf("/", "sdmx://".length() + 1));
-        int end = identifier.indexOf("/", ("sdmx://" + agency).length() + 1);
-        String dfagency = identifier.substring(("(sdmx://" + agency).length(), identifier.indexOf("/", ("sdmx://" + agency).length() + 1));
-        String dataflow = identifier.substring(("sdmx://" + agency + "/" + dfagency).length() + 1, identifier.indexOf("/", ("sdmx://" + agency + "/" + dfagency).length() + 1));
-        String query = identifier.substring(("sdmx://" + agency + "/" + dfagency + "/" + dataflow).length() + 1, identifier.indexOf("?", ("sdmx://" + agency + "/" + dfagency + "/" + dataflow).length() + 1));
-        String startPeriod = identifier.substring(("sdmx://" + agency + "/" + dfagency + "/" + dataflow + "/" + query + "?startPeriod").length() + 1, identifier.indexOf("&endPeriod=", ("sdmx://" + agency + "/" + dfagency + "/" + dataflow + "/" + query).length() + 1));
-        String endPeriod = identifier.substring(("sdmx://" + agency + "/" + dfagency + "/" + dataflow + "/" + query + "?startPeriod=" + startPeriod + "&endPeriod").length() + 1, identifier.length());
+        String protocol = identifier.substring(0,identifier.indexOf("://")+3);
+        String agency = identifier.substring(protocol.length(), identifier.indexOf("/", protocol.length() + 1));
+        String dfagency = identifier.substring((protocol + agency+"/").length(), identifier.indexOf("/", (protocol + agency+"/").length()));
+        String dataflow = identifier.substring((protocol + agency + "/" + dfagency).length() + 1, identifier.indexOf("/", (protocol + agency + "/" + dfagency).length() + 1));
+        String query = identifier.substring((protocol + agency + "/" + dfagency + "/" + dataflow).length() + 1, identifier.indexOf("?", (protocol + agency + "/" + dfagency + "/" + dataflow).length() + 1));
+        String startPeriod = identifier.substring((protocol + agency + "/" + dfagency + "/" + dataflow + "/" + query + "?startPeriod").length() + 1, identifier.indexOf("&endPeriod=", ("sdmx://" + agency + "/" + dfagency + "/" + dataflow + "/" + query).length() + 1));
+        String endPeriod = identifier.substring((protocol + agency + "/" + dfagency + "/" + dataflow + "/" + query + "?startPeriod=" + startPeriod + "&endPeriod").length() + 1, identifier.length());
+        System.out.println("Protocol:"+protocol);
         System.out.println("Agency:" + agency);
         System.out.println("DFAgency:" + dfagency);
         System.out.println("Dataflow:" + dataflow);
@@ -77,7 +80,8 @@ public class SDMXGatewayVTLConnector implements Connector {
         Queryable q = SdmxIO.simpleConnect(agency);
         DataflowRef ref = new DataflowRef(new NestedNCNameID(dfagency), new IDType(dataflow), null);
         DataflowReference reference = new DataflowReference(ref, null);
-        return new SdmxDataset(q, q.getRegistry().find(reference), query, startPeriod, endPeriod);
+        if( "sdmxNames://".equals(protocol))return new SdmxNameDataset(q,q.getRegistry().find(reference),query,startPeriod,endPeriod);
+        else return new SdmxDataset(q, q.getRegistry().find(reference), query, startPeriod, endPeriod);
     }
 
     public Dataset putDataset(String identifier, Dataset dataset) throws ConnectorException {
