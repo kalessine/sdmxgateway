@@ -14,80 +14,66 @@ import javax.validation.constraints.Size;
 
 /**
  *
- * @author James
+ * @author Owner
  */
 @Embeddable
 public class ConceptPK implements Serializable {
+
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 100)
-    @Column(name = "ConceptSchemeAgencyID", nullable = false, length = 100)
-    private String conceptSchemeAgencyID;
+    @Size(min = 1, max = 255)
+    @Column(name = "ConceptScheme_agencyId", nullable = false, length = 255)
+    private String conceptSchemeagencyId;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 100)
-    @Column(name = "ConceptSchemeID", nullable = false, length = 100)
-    private String conceptSchemeID;
+    @Size(min = 1, max = 255)
+    @Column(name = "ConceptScheme_Id", nullable = false, length = 255)
+    private String conceptSchemeId;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 50)
-    @Column(name = "ConceptSchemeVersion", nullable = false, length = 50)
-    private String conceptSchemeVersion;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 100)
-    @Column(name = "ID", nullable = false, length = 100)
-    private String id;
+    @Size(min = 1, max = 255)
+    @Column(name = "ConceptScheme_version", nullable = false, length = 255)
+    private String conceptSchemeversion;
 
     public ConceptPK() {
     }
 
-    public ConceptPK(String conceptSchemeAgencyID, String conceptSchemeID, String conceptSchemeVersion, String id) {
-        this.conceptSchemeAgencyID = conceptSchemeAgencyID;
-        this.conceptSchemeID = conceptSchemeID;
-        this.conceptSchemeVersion = conceptSchemeVersion;
-        this.id = id;
+    public ConceptPK(String conceptSchemeagencyId, String conceptSchemeId, String conceptSchemeversion) {
+        this.conceptSchemeagencyId = conceptSchemeagencyId;
+        this.conceptSchemeId = conceptSchemeId;
+        this.conceptSchemeversion = conceptSchemeversion;
     }
 
-    public String getConceptSchemeAgencyID() {
-        return conceptSchemeAgencyID;
+    public String getConceptSchemeagencyId() {
+        return conceptSchemeagencyId;
     }
 
-    public void setConceptSchemeAgencyID(String conceptSchemeAgencyID) {
-        this.conceptSchemeAgencyID = conceptSchemeAgencyID;
+    public void setConceptSchemeagencyId(String conceptSchemeagencyId) {
+        this.conceptSchemeagencyId = conceptSchemeagencyId;
     }
 
-    public String getConceptSchemeID() {
-        return conceptSchemeID;
+    public String getConceptSchemeId() {
+        return conceptSchemeId;
     }
 
-    public void setConceptSchemeID(String conceptSchemeID) {
-        this.conceptSchemeID = conceptSchemeID;
+    public void setConceptSchemeId(String conceptSchemeId) {
+        this.conceptSchemeId = conceptSchemeId;
     }
 
-    public String getConceptSchemeVersion() {
-        return conceptSchemeVersion;
+    public String getConceptSchemeversion() {
+        return conceptSchemeversion;
     }
 
-    public void setConceptSchemeVersion(String conceptSchemeVersion) {
-        this.conceptSchemeVersion = conceptSchemeVersion;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+    public void setConceptSchemeversion(String conceptSchemeversion) {
+        this.conceptSchemeversion = conceptSchemeversion;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (conceptSchemeAgencyID != null ? conceptSchemeAgencyID.hashCode() : 0);
-        hash += (conceptSchemeID != null ? conceptSchemeID.hashCode() : 0);
-        hash += (conceptSchemeVersion != null ? conceptSchemeVersion.hashCode() : 0);
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (conceptSchemeagencyId != null ? conceptSchemeagencyId.hashCode() : 0);
+        hash += (conceptSchemeId != null ? conceptSchemeId.hashCode() : 0);
+        hash += (conceptSchemeversion != null ? conceptSchemeversion.hashCode() : 0);
         return hash;
     }
 
@@ -98,16 +84,13 @@ public class ConceptPK implements Serializable {
             return false;
         }
         ConceptPK other = (ConceptPK) object;
-        if ((this.conceptSchemeAgencyID == null && other.conceptSchemeAgencyID != null) || (this.conceptSchemeAgencyID != null && !this.conceptSchemeAgencyID.equals(other.conceptSchemeAgencyID))) {
+        if ((this.conceptSchemeagencyId == null && other.conceptSchemeagencyId != null) || (this.conceptSchemeagencyId != null && !this.conceptSchemeagencyId.equals(other.conceptSchemeagencyId))) {
             return false;
         }
-        if ((this.conceptSchemeID == null && other.conceptSchemeID != null) || (this.conceptSchemeID != null && !this.conceptSchemeID.equals(other.conceptSchemeID))) {
+        if ((this.conceptSchemeId == null && other.conceptSchemeId != null) || (this.conceptSchemeId != null && !this.conceptSchemeId.equals(other.conceptSchemeId))) {
             return false;
         }
-        if ((this.conceptSchemeVersion == null && other.conceptSchemeVersion != null) || (this.conceptSchemeVersion != null && !this.conceptSchemeVersion.equals(other.conceptSchemeVersion))) {
-            return false;
-        }
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.conceptSchemeversion == null && other.conceptSchemeversion != null) || (this.conceptSchemeversion != null && !this.conceptSchemeversion.equals(other.conceptSchemeversion))) {
             return false;
         }
         return true;
@@ -115,7 +98,7 @@ public class ConceptPK implements Serializable {
 
     @Override
     public String toString() {
-        return "sdmx.gateway.entities.ConceptPK[ conceptSchemeAgencyID=" + conceptSchemeAgencyID + ", conceptSchemeID=" + conceptSchemeID + ", conceptSchemeVersion=" + conceptSchemeVersion + ", id=" + id + " ]";
+        return "sdmx.gateway.entities.ConceptPK[ conceptSchemeagencyId=" + conceptSchemeagencyId + ", conceptSchemeId=" + conceptSchemeId + ", conceptSchemeversion=" + conceptSchemeversion + " ]";
     }
     
 }

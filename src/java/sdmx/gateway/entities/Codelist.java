@@ -6,46 +6,46 @@
 package sdmx.gateway.entities;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author James
+ * @author Owner
  */
 @Entity
-@Table(name = "codelist", catalog = "sdmxgateway", schema = "")
+@Table(name = "Codelist", catalog = "repository", schema = "public", uniqueConstraints = {
+    @UniqueConstraint(columnNames = {"annotated"})
+    , @UniqueConstraint(columnNames = {"Name"})})
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Codelist.findAll", query = "SELECT c FROM Codelist c"),
-    @NamedQuery(name = "Codelist.findByAgencyID", query = "SELECT c FROM Codelist c WHERE c.codelistPK.agencyID = :agencyID"),
-    @NamedQuery(name = "Codelist.findById", query = "SELECT c FROM Codelist c WHERE c.codelistPK.id = :id"),
-    @NamedQuery(name = "Codelist.findByVersion", query = "SELECT c FROM Codelist c WHERE c.codelistPK.version = :version")})
+    @NamedQuery(name = "Codelist.findAll", query = "SELECT c FROM Codelist c")
+    , @NamedQuery(name = "Codelist.findByAgencyId", query = "SELECT c FROM Codelist c WHERE c.codelistPK.agencyId = :agencyId")
+    , @NamedQuery(name = "Codelist.findById", query = "SELECT c FROM Codelist c WHERE c.codelistPK.id = :id")
+    , @NamedQuery(name = "Codelist.findByVersion", query = "SELECT c FROM Codelist c WHERE c.codelistPK.version = :version")})
 public class Codelist implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected CodelistPK codelistPK;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codelist", fetch = FetchType.LAZY)
-    private List<Code> codeList;
-    @JoinColumn(name = "annotations", referencedColumnName = "id")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Annotated annotations;
-    @JoinColumn(name = "name", referencedColumnName = "id")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "annotated", referencedColumnName = "annotated")
+    @OneToOne
+    private Annotated annotated;
+    @JoinColumn(name = "Name", referencedColumnName = "name")
+    @OneToOne
     private Name name;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codelist", fetch = FetchType.LAZY)
-    private List<Codelistreference> codelistreferenceList;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "codelist")
+    private Code code;
+    @OneToOne(mappedBy = "codelist1")
+    private CodelistReference codelistReference;
 
     public Codelist() {
     }
@@ -54,8 +54,8 @@ public class Codelist implements Serializable {
         this.codelistPK = codelistPK;
     }
 
-    public Codelist(String agencyID, String id, String version) {
-        this.codelistPK = new CodelistPK(agencyID, id, version);
+    public Codelist(String agencyId, String id, String version) {
+        this.codelistPK = new CodelistPK(agencyId, id, version);
     }
 
     public CodelistPK getCodelistPK() {
@@ -66,21 +66,12 @@ public class Codelist implements Serializable {
         this.codelistPK = codelistPK;
     }
 
-    @XmlTransient
-    public List<Code> getCodeList() {
-        return codeList;
+    public Annotated getAnnotated() {
+        return annotated;
     }
 
-    public void setCodeList(List<Code> codeList) {
-        this.codeList = codeList;
-    }
-
-    public Annotated getAnnotations() {
-        return annotations;
-    }
-
-    public void setAnnotations(Annotated annotations) {
-        this.annotations = annotations;
+    public void setAnnotated(Annotated annotated) {
+        this.annotated = annotated;
     }
 
     public Name getName() {
@@ -91,13 +82,20 @@ public class Codelist implements Serializable {
         this.name = name;
     }
 
-    @XmlTransient
-    public List<Codelistreference> getCodelistreferenceList() {
-        return codelistreferenceList;
+    public Code getCode() {
+        return code;
     }
 
-    public void setCodelistreferenceList(List<Codelistreference> codelistreferenceList) {
-        this.codelistreferenceList = codelistreferenceList;
+    public void setCode(Code code) {
+        this.code = code;
+    }
+
+    public CodelistReference getCodelistReference() {
+        return codelistReference;
+    }
+
+    public void setCodelistReference(CodelistReference codelistReference) {
+        this.codelistReference = codelistReference;
     }
 
     @Override

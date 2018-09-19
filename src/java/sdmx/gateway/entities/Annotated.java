@@ -8,14 +8,13 @@ package sdmx.gateway.entities;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -23,51 +22,72 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author James
+ * @author Owner
  */
 @Entity
-@Table(name = "annotated", catalog = "sdmxgateway", schema = "")
+@Table(name = "Annotated", catalog = "repository", schema = "public")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Annotated.findAll", query = "SELECT a FROM Annotated a"),
-    @NamedQuery(name = "Annotated.findById", query = "SELECT a FROM Annotated a WHERE a.id = :id")})
+    @NamedQuery(name = "Annotated.findAll", query = "SELECT a FROM Annotated a")
+    , @NamedQuery(name = "Annotated.findByAnnotated", query = "SELECT a FROM Annotated a WHERE a.annotated = :annotated")})
 public class Annotated implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "id", nullable = false)
-    private Long id;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "annotated1", fetch = FetchType.LAZY)
+    @Column(name = "annotated", nullable = false)
+    private Long annotated;
+    @OneToOne(mappedBy = "annotated")
+    private Concept concept;
+    @OneToOne(mappedBy = "annotated")
+    private Codelist codelist;
+    @OneToOne(mappedBy = "annotated")
+    private Code code;
+    @OneToMany(mappedBy = "annotated")
     private List<Annotation> annotationList;
-    @OneToMany(mappedBy = "annotations", fetch = FetchType.LAZY)
-    private List<Code> codeList;
-    @OneToMany(mappedBy = "annotations", fetch = FetchType.LAZY)
-    private List<Codelist> codelistList;
-    @OneToMany(mappedBy = "annotations", fetch = FetchType.LAZY)
-    private List<Concept> conceptList;
-    @OneToMany(mappedBy = "annotations", fetch = FetchType.LAZY)
-    private List<Dataflow> dataflowList;
-    @OneToMany(mappedBy = "annotations", fetch = FetchType.LAZY)
-    private List<Conceptscheme> conceptschemeList;
-    @OneToMany(mappedBy = "annotations", fetch = FetchType.LAZY)
-    private List<Datastructure> datastructureList;
-    @OneToMany(mappedBy = "annotations", fetch = FetchType.LAZY)
-    private List<Datastructurecomponent> datastructurecomponentList;
+    @OneToOne(mappedBy = "annotated")
+    private DataStructureComponent dataStructureComponent;
+    @OneToOne(mappedBy = "annotated")
+    private ConceptScheme conceptScheme;
 
     public Annotated() {
     }
 
-    public Annotated(Long id) {
-        this.id = id;
+    public Annotated(Long annotated) {
+        this.annotated = annotated;
     }
 
-    public Long getId() {
-        return id;
+    public Long getAnnotated() {
+        return annotated;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setAnnotated(Long annotated) {
+        this.annotated = annotated;
+    }
+
+    public Concept getConcept() {
+        return concept;
+    }
+
+    public void setConcept(Concept concept) {
+        this.concept = concept;
+    }
+
+    public Codelist getCodelist() {
+        return codelist;
+    }
+
+    public void setCodelist(Codelist codelist) {
+        this.codelist = codelist;
+    }
+
+    public Code getCode() {
+        return code;
+    }
+
+    public void setCode(Code code) {
+        this.code = code;
     }
 
     @XmlTransient
@@ -79,73 +99,26 @@ public class Annotated implements Serializable {
         this.annotationList = annotationList;
     }
 
-    @XmlTransient
-    public List<Code> getCodeList() {
-        return codeList;
+    public DataStructureComponent getDataStructureComponent() {
+        return dataStructureComponent;
     }
 
-    public void setCodeList(List<Code> codeList) {
-        this.codeList = codeList;
+    public void setDataStructureComponent(DataStructureComponent dataStructureComponent) {
+        this.dataStructureComponent = dataStructureComponent;
     }
 
-    @XmlTransient
-    public List<Codelist> getCodelistList() {
-        return codelistList;
+    public ConceptScheme getConceptScheme() {
+        return conceptScheme;
     }
 
-    public void setCodelistList(List<Codelist> codelistList) {
-        this.codelistList = codelistList;
-    }
-
-    @XmlTransient
-    public List<Concept> getConceptList() {
-        return conceptList;
-    }
-
-    public void setConceptList(List<Concept> conceptList) {
-        this.conceptList = conceptList;
-    }
-
-    @XmlTransient
-    public List<Dataflow> getDataflowList() {
-        return dataflowList;
-    }
-
-    public void setDataflowList(List<Dataflow> dataflowList) {
-        this.dataflowList = dataflowList;
-    }
-
-    @XmlTransient
-    public List<Conceptscheme> getConceptschemeList() {
-        return conceptschemeList;
-    }
-
-    public void setConceptschemeList(List<Conceptscheme> conceptschemeList) {
-        this.conceptschemeList = conceptschemeList;
-    }
-
-    @XmlTransient
-    public List<Datastructure> getDatastructureList() {
-        return datastructureList;
-    }
-
-    public void setDatastructureList(List<Datastructure> datastructureList) {
-        this.datastructureList = datastructureList;
-    }
-
-    @XmlTransient
-    public List<Datastructurecomponent> getDatastructurecomponentList() {
-        return datastructurecomponentList;
-    }
-
-    public void setDatastructurecomponentList(List<Datastructurecomponent> datastructurecomponentList) {
-        this.datastructurecomponentList = datastructurecomponentList;
+    public void setConceptScheme(ConceptScheme conceptScheme) {
+        this.conceptScheme = conceptScheme;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (annotated != null ? annotated.hashCode() : 0);
         return hash;
     }
 
@@ -156,7 +129,7 @@ public class Annotated implements Serializable {
             return false;
         }
         Annotated other = (Annotated) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.annotated == null && other.annotated != null) || (this.annotated != null && !this.annotated.equals(other.annotated))) {
             return false;
         }
         return true;
@@ -164,7 +137,7 @@ public class Annotated implements Serializable {
 
     @Override
     public String toString() {
-        return "sdmx.gateway.entities.Annotated[ id=" + id + " ]";
+        return "sdmx.gateway.entities.Annotated[ annotated=" + annotated + " ]";
     }
     
 }

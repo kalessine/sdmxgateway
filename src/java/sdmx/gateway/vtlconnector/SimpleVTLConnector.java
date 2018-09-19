@@ -9,7 +9,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import no.ssb.vtl.connector.ConnectorException;
+import no.ssb.vtl.connectors.ConnectorException;
 import no.ssb.vtl.model.Dataset;
 import sdmx.SdmxIO;
 

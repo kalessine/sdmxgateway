@@ -14,49 +14,63 @@ import javax.validation.constraints.Size;
 
 /**
  *
- * @author James
+ * @author Owner
  */
 @Embeddable
 public class DataflowPK implements Serializable {
+
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 100)
-    @Column(name = "ID", nullable = false, length = 100)
-    private String id;
+    @Column(name = "id", nullable = false)
+    private long id;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 100)
-    @Column(name = "AgencyID", nullable = false, length = 100)
-    private String agencyID;
+    @Size(min = 1, max = 255)
+    @Column(name = "agencyId", nullable = false, length = 255)
+    private String agencyId;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 50)
-    @Column(name = "Version", nullable = false, length = 50)
+    @Size(min = 1, max = 255)
+    @Column(name = "Id", nullable = false, length = 255)
+    private String id1;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 255)
+    @Column(name = "version", nullable = false, length = 255)
     private String version;
 
     public DataflowPK() {
     }
 
-    public DataflowPK(String id, String agencyID, String version) {
+    public DataflowPK(long id, String agencyId, String id1, String version) {
         this.id = id;
-        this.agencyID = agencyID;
+        this.agencyId = agencyId;
+        this.id1 = id1;
         this.version = version;
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public String getAgencyID() {
-        return agencyID;
+    public String getAgencyId() {
+        return agencyId;
     }
 
-    public void setAgencyID(String agencyID) {
-        this.agencyID = agencyID;
+    public void setAgencyId(String agencyId) {
+        this.agencyId = agencyId;
+    }
+
+    public String getId1() {
+        return id1;
+    }
+
+    public void setId1(String id1) {
+        this.id1 = id1;
     }
 
     public String getVersion() {
@@ -70,8 +84,9 @@ public class DataflowPK implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        hash += (agencyID != null ? agencyID.hashCode() : 0);
+        hash += (int) id;
+        hash += (agencyId != null ? agencyId.hashCode() : 0);
+        hash += (id1 != null ? id1.hashCode() : 0);
         hash += (version != null ? version.hashCode() : 0);
         return hash;
     }
@@ -83,10 +98,13 @@ public class DataflowPK implements Serializable {
             return false;
         }
         DataflowPK other = (DataflowPK) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if (this.id != other.id) {
             return false;
         }
-        if ((this.agencyID == null && other.agencyID != null) || (this.agencyID != null && !this.agencyID.equals(other.agencyID))) {
+        if ((this.agencyId == null && other.agencyId != null) || (this.agencyId != null && !this.agencyId.equals(other.agencyId))) {
+            return false;
+        }
+        if ((this.id1 == null && other.id1 != null) || (this.id1 != null && !this.id1.equals(other.id1))) {
             return false;
         }
         if ((this.version == null && other.version != null) || (this.version != null && !this.version.equals(other.version))) {
@@ -97,7 +115,7 @@ public class DataflowPK implements Serializable {
 
     @Override
     public String toString() {
-        return "sdmx.gateway.entities.DataflowPK[ id=" + id + ", agencyID=" + agencyID + ", version=" + version + " ]";
+        return "sdmx.gateway.entities.DataflowPK[ id=" + id + ", agencyId=" + agencyId + ", id1=" + id1 + ", version=" + version + " ]";
     }
     
 }

@@ -17,7 +17,7 @@ import javax.validation.constraints.Size;
  * @author Owner
  */
 @Embeddable
-public class CodePK implements Serializable {
+public class ConceptSchemePK implements Serializable {
 
     @Basic(optional = false)
     @NotNull
@@ -35,10 +35,10 @@ public class CodePK implements Serializable {
     @Column(name = "version", nullable = false, length = 255)
     private String version;
 
-    public CodePK() {
+    public ConceptSchemePK() {
     }
 
-    public CodePK(String agencyId, String id, String version) {
+    public ConceptSchemePK(String agencyId, String id, String version) {
         this.agencyId = agencyId;
         this.id = id;
         this.version = version;
@@ -80,10 +80,10 @@ public class CodePK implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof CodePK)) {
+        if (!(object instanceof ConceptSchemePK)) {
             return false;
         }
-        CodePK other = (CodePK) object;
+        ConceptSchemePK other = (ConceptSchemePK) object;
         if ((this.agencyId == null && other.agencyId != null) || (this.agencyId != null && !this.agencyId.equals(other.agencyId))) {
             return false;
         }
@@ -98,7 +98,7 @@ public class CodePK implements Serializable {
 
     @Override
     public String toString() {
-        return "sdmx.gateway.entities.CodePK[ agencyId=" + agencyId + ", id=" + id + ", version=" + version + " ]";
+        return "sdmx.gateway.entities.ConceptSchemePK[ agencyId=" + agencyId + ", id=" + id + ", version=" + version + " ]";
     }
     
 }

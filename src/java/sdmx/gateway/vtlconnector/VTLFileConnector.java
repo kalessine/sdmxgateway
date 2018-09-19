@@ -19,8 +19,8 @@ import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import no.ssb.vtl.connector.Connector;
-import no.ssb.vtl.connector.ConnectorException;
+import no.ssb.vtl.connectors.Connector;
+import no.ssb.vtl.connectors.ConnectorException;
 import no.ssb.vtl.model.Component;
 import no.ssb.vtl.model.Component.Role;
 import no.ssb.vtl.model.DataPoint;
@@ -154,15 +154,15 @@ public class VTLFileConnector implements Connector {
             String s = it.next();
             Component c = ds.get(s);
             if (c.getRole() == Role.IDENTIFIER) {
-                if (c.getName().equals("TIME") || c.getName().equals("TIME_PERIOD")) {
-                    TimeDimensionType td = new TimeDimensionType();
-                    td.setId(new IDType(c.getName()));
-                    dst.getDataStructureComponents().getDimensionList().setTimeDimension(td);
-                } else {
+                //if (.equals("TIME") || c.getName().equals("TIME_PERIOD")) {
+                //    TimeDimensionType td = new TimeDimensionType();
+                //    td.setId(new IDType(c.getName()));
+                //    dst.getDataStructureComponents().getDimensionList().setTimeDimension(td);
+                //} else {
                     DimensionType dim = new DimensionType();
                     dim.setId(new IDType(c.getName()));
                     dst.getDataStructureComponents().getDimensionList().addDimension(dim);
-                }
+                //}
             }
             if (c.getRole() == Role.MEASURE) {
                 measures.add(c);

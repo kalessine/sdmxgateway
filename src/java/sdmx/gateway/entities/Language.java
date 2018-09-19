@@ -11,7 +11,6 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -24,33 +23,34 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author James
+ * @author Owner
  */
 @Entity
-@Table(name = "languages", catalog = "sdmxgateway", schema = "")
+@Table(name = "Language", catalog = "repository", schema = "public")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Languages.findAll", query = "SELECT l FROM Languages l"),
-    @NamedQuery(name = "Languages.findByLang", query = "SELECT l FROM Languages l WHERE l.lang = :lang"),
-    @NamedQuery(name = "Languages.findByName", query = "SELECT l FROM Languages l WHERE l.name = :name")})
-public class Languages implements Serializable {
+    @NamedQuery(name = "Language.findAll", query = "SELECT l FROM Language l")
+    , @NamedQuery(name = "Language.findByLang", query = "SELECT l FROM Language l WHERE l.lang = :lang")
+    , @NamedQuery(name = "Language.findByName", query = "SELECT l FROM Language l WHERE l.name = :name")})
+public class Language implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 10)
-    @Column(name = "lang", nullable = false, length = 10)
+    @Size(min = 1, max = 255)
+    @Column(name = "lang", nullable = false, length = 255)
     private String lang;
-    @Size(max = 2000)
-    @Column(name = "Name", length = 2000)
+    @Size(max = 255)
+    @Column(name = "name", length = 255)
     private String name;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "languages", fetch = FetchType.LAZY)
-    private List<Nametext> nametextList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "language")
+    private List<NameText> nameTextList;
 
-    public Languages() {
+    public Language() {
     }
 
-    public Languages(String lang) {
+    public Language(String lang) {
         this.lang = lang;
     }
 
@@ -71,12 +71,12 @@ public class Languages implements Serializable {
     }
 
     @XmlTransient
-    public List<Nametext> getNametextList() {
-        return nametextList;
+    public List<NameText> getNameTextList() {
+        return nameTextList;
     }
 
-    public void setNametextList(List<Nametext> nametextList) {
-        this.nametextList = nametextList;
+    public void setNameTextList(List<NameText> nameTextList) {
+        this.nameTextList = nameTextList;
     }
 
     @Override
@@ -89,10 +89,10 @@ public class Languages implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Languages)) {
+        if (!(object instanceof Language)) {
             return false;
         }
-        Languages other = (Languages) object;
+        Language other = (Language) object;
         if ((this.lang == null && other.lang != null) || (this.lang != null && !this.lang.equals(other.lang))) {
             return false;
         }
@@ -101,7 +101,7 @@ public class Languages implements Serializable {
 
     @Override
     public String toString() {
-        return "sdmx.gateway.entities.Languages[ lang=" + lang + " ]";
+        return "sdmx.gateway.entities.Language[ lang=" + lang + " ]";
     }
     
 }

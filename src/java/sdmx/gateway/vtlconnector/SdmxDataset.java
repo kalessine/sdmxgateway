@@ -40,7 +40,6 @@ import no.ssb.vtl.model.DataStructure;
 import no.ssb.vtl.model.DataStructure.Builder;
 import no.ssb.vtl.model.Order;
 import no.ssb.vtl.model.VTLObject;
-import org.apache.catalina.tribes.util.Arrays;
 import sdmx.Queryable;
 import sdmx.Registry;
 import sdmx.Repository;
