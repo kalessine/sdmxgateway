@@ -35,7 +35,7 @@ import sdmx.exception.ParseException;
 import sdmx.gateway.SdmxGatewayApplication;
 import sdmx.gateway.entities.Codelist;
 import sdmx.gateway.entities.Dataflow;
-import sdmx.gateway.entities.Datastructure;
+import sdmx.gateway.entities.DataStructure;
 import sdmx.gateway.util.AnnotationsUtil;
 import sdmx.gateway.util.CodeUtil;
 import sdmx.gateway.util.CodelistUtil;
@@ -181,7 +181,7 @@ public class DatabaseRegistry implements Registry {
                 clist.add((ConceptType) itm);
             }
             boolean alreadyExists = false;
-            sdmx.gateway.entities.Conceptscheme conceptscheme = ConceptSchemeUtil.findDatabaseConceptScheme(update, c.getAgencyID().toString(), c.getId().toString(), c.getVersion().toString());
+            sdmx.gateway.entities.ConceptScheme conceptscheme = ConceptSchemeUtil.findDatabaseConceptScheme(update, c.getAgencyID().toString(), c.getId().toString(), c.getVersion().toString());
             if (conceptscheme != null) {
                 alreadyExists = true;
                 System.out.println("ConceptScheme: " + c.getAgencyID().toString() + ":" + c.getId().toString() + ":" + c.getVersion().toString() + " already exists");

@@ -11,15 +11,13 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -29,50 +27,41 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author James
  */
 @Entity
-@Table(name = "name", catalog = "sdmxgateway", schema = "")
+@Table(name = "Name", catalog = "repository", schema = "public")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Name.findAll", query = "SELECT n FROM Name n"),
-    @NamedQuery(name = "Name.findById", query = "SELECT n FROM Name n WHERE n.id = :id")})
+    @NamedQuery(name = "Name.findAll", query = "SELECT n FROM Name n")
+    , @NamedQuery(name = "Name.findByEn", query = "SELECT n FROM Name n WHERE n.en = :en")
+    , @NamedQuery(name = "Name.findByName", query = "SELECT n FROM Name n WHERE n.name = :name")})
 public class Name implements Serializable {
+
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id", nullable = false)
-    private Long id;
-    @Lob
-    @Size(max = 65535)
-    @Column(name = "en", length = 65535)
+    @Size(max = 2147483647)
+    @Column(name = "en", length = 2147483647)
     private String en;
-    @OneToMany(mappedBy = "name", fetch = FetchType.LAZY)
-    private List<Code> codeList;
-    @OneToMany(mappedBy = "name", fetch = FetchType.LAZY)
-    private List<Codelist> codelistList;
-    @OneToMany(mappedBy = "name", fetch = FetchType.LAZY)
-    private List<Concept> conceptList;
-    @OneToMany(mappedBy = "name", fetch = FetchType.LAZY)
-    private List<Dataflow> dataflowList;
-    @OneToMany(mappedBy = "name", fetch = FetchType.LAZY)
-    private List<Conceptscheme> conceptschemeList;
-    @OneToMany(mappedBy = "name", fetch = FetchType.LAZY)
-    private List<Datastructure> datastructureList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "name", fetch = FetchType.LAZY)
-    private List<Nametext> nametextList;
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "name", nullable = false)
+    private Long name;
+    @OneToOne(mappedBy = "name")
+    private Concept concept;
+    @OneToOne(mappedBy = "name")
+    private Codelist codelist;
+    @OneToOne(mappedBy = "name")
+    private Code code;
+    @OneToOne(mappedBy = "name")
+    private ConceptScheme conceptScheme;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "name1")
+    private List<NameText> nameTextList;
+    @OneToOne(mappedBy = "name")
+    private Dataflow dataflow;
 
     public Name() {
     }
 
-    public Name(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public Name(Long name) {
+        this.name = name;
     }
 
     public String getEn() {
@@ -83,73 +72,67 @@ public class Name implements Serializable {
         this.en = en;
     }
 
-    @XmlTransient
-    public List<Code> getCodeList() {
-        return codeList;
+    public Long getName() {
+        return name;
     }
 
-    public void setCodeList(List<Code> codeList) {
-        this.codeList = codeList;
+    public void setName(Long name) {
+        this.name = name;
     }
 
-    @XmlTransient
-    public List<Codelist> getCodelistList() {
-        return codelistList;
+    public Concept getConcept() {
+        return concept;
     }
 
-    public void setCodelistList(List<Codelist> codelistList) {
-        this.codelistList = codelistList;
+    public void setConcept(Concept concept) {
+        this.concept = concept;
     }
 
-    @XmlTransient
-    public List<Concept> getConceptList() {
-        return conceptList;
+    public Codelist getCodelist() {
+        return codelist;
     }
 
-    public void setConceptList(List<Concept> conceptList) {
-        this.conceptList = conceptList;
+    public void setCodelist(Codelist codelist) {
+        this.codelist = codelist;
     }
 
-    @XmlTransient
-    public List<Dataflow> getDataflowList() {
-        return dataflowList;
+    public Code getCode() {
+        return code;
     }
 
-    public void setDataflowList(List<Dataflow> dataflowList) {
-        this.dataflowList = dataflowList;
+    public void setCode(Code code) {
+        this.code = code;
     }
 
-    @XmlTransient
-    public List<Conceptscheme> getConceptschemeList() {
-        return conceptschemeList;
+    public ConceptScheme getConceptScheme() {
+        return conceptScheme;
     }
 
-    public void setConceptschemeList(List<Conceptscheme> conceptschemeList) {
-        this.conceptschemeList = conceptschemeList;
+    public void setConceptScheme(ConceptScheme conceptScheme) {
+        this.conceptScheme = conceptScheme;
     }
 
     @XmlTransient
-    public List<Datastructure> getDatastructureList() {
-        return datastructureList;
+    public List<NameText> getNameTextList() {
+        return nameTextList;
     }
 
-    public void setDatastructureList(List<Datastructure> datastructureList) {
-        this.datastructureList = datastructureList;
+    public void setNameTextList(List<NameText> nameTextList) {
+        this.nameTextList = nameTextList;
     }
 
-    @XmlTransient
-    public List<Nametext> getNametextList() {
-        return nametextList;
+    public Dataflow getDataflow() {
+        return dataflow;
     }
 
-    public void setNametextList(List<Nametext> nametextList) {
-        this.nametextList = nametextList;
+    public void setDataflow(Dataflow dataflow) {
+        this.dataflow = dataflow;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (name != null ? name.hashCode() : 0);
         return hash;
     }
 
@@ -160,7 +143,7 @@ public class Name implements Serializable {
             return false;
         }
         Name other = (Name) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.name == null && other.name != null) || (this.name != null && !this.name.equals(other.name))) {
             return false;
         }
         return true;
@@ -168,7 +151,7 @@ public class Name implements Serializable {
 
     @Override
     public String toString() {
-        return "sdmx.gateway.entities.Name[ id=" + id + " ]";
+        return "sdmx.gateway.entities.Name[ name=" + name + " ]";
     }
     
 }

@@ -6,52 +6,60 @@
 package sdmx.gateway.entities;
 
 import java.io.Serializable;
-import java.util.List;
-import javax.persistence.CascadeType;
+import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author James
  */
 @Entity
-@Table(name = "concept", catalog = "sdmxgateway", schema = "")
+@Table(name = "Concept", catalog = "repository", schema = "public", uniqueConstraints = {
+    @UniqueConstraint(columnNames = {"annotated"})
+    , @UniqueConstraint(columnNames = {"name"})})
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Concept.findAll", query = "SELECT c FROM Concept c"),
-    @NamedQuery(name = "Concept.findByConceptSchemeAgencyID", query = "SELECT c FROM Concept c WHERE c.conceptPK.conceptSchemeAgencyID = :conceptSchemeAgencyID"),
-    @NamedQuery(name = "Concept.findByConceptSchemeID", query = "SELECT c FROM Concept c WHERE c.conceptPK.conceptSchemeID = :conceptSchemeID"),
-    @NamedQuery(name = "Concept.findByConceptSchemeVersion", query = "SELECT c FROM Concept c WHERE c.conceptPK.conceptSchemeVersion = :conceptSchemeVersion"),
-    @NamedQuery(name = "Concept.findById", query = "SELECT c FROM Concept c WHERE c.conceptPK.id = :id")})
+    @NamedQuery(name = "Concept.findAll", query = "SELECT c FROM Concept c")
+    , @NamedQuery(name = "Concept.findByConceptSchemeagencyId", query = "SELECT c FROM Concept c WHERE c.conceptPK.conceptSchemeagencyId = :conceptSchemeagencyId")
+    , @NamedQuery(name = "Concept.findByConceptSchemeId", query = "SELECT c FROM Concept c WHERE c.conceptPK.conceptSchemeId = :conceptSchemeId")
+    , @NamedQuery(name = "Concept.findByConceptSchemeversion", query = "SELECT c FROM Concept c WHERE c.conceptPK.conceptSchemeversion = :conceptSchemeversion")
+    , @NamedQuery(name = "Concept.findByConceptId", query = "SELECT c FROM Concept c WHERE c.conceptId = :conceptId")})
 public class Concept implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected ConceptPK conceptPK;
-    @JoinColumn(name = "annotations", referencedColumnName = "id")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Annotated annotations;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 255)
+    @Column(name = "conceptId", nullable = false, length = 255)
+    private String conceptId;
+    @JoinColumn(name = "annotated", referencedColumnName = "annotated")
+    @OneToOne
+    private Annotation annotated;
     @JoinColumns({
-        @JoinColumn(name = "ConceptSchemeAgencyID", referencedColumnName = "AgencyID", nullable = false, insertable = false, updatable = false),
-        @JoinColumn(name = "ConceptSchemeID", referencedColumnName = "ID", nullable = false, insertable = false, updatable = false),
-        @JoinColumn(name = "ConceptSchemeVersion", referencedColumnName = "Version", nullable = false, insertable = false, updatable = false)})
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Conceptscheme conceptscheme;
-    @JoinColumn(name = "name", referencedColumnName = "id")
-    @ManyToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "ConceptScheme_agencyId", referencedColumnName = "agencyId", nullable = false, insertable = false, updatable = false)
+        , @JoinColumn(name = "ConceptScheme_Id", referencedColumnName = "Id", nullable = false, insertable = false, updatable = false)
+        , @JoinColumn(name = "ConceptScheme_version", referencedColumnName = "version", nullable = false, insertable = false, updatable = false)})
+    @OneToOne(optional = false)
+    private ConceptScheme conceptScheme;
+    @JoinColumn(name = "name", referencedColumnName = "name")
+    @OneToOne
     private Name name;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "concept", fetch = FetchType.LAZY)
-    private List<Conceptreference> conceptreferenceList;
+    @OneToOne(mappedBy = "concept1")
+    private ConceptReference conceptReference;
 
     public Concept() {
     }
@@ -60,8 +68,13 @@ public class Concept implements Serializable {
         this.conceptPK = conceptPK;
     }
 
-    public Concept(String conceptSchemeAgencyID, String conceptSchemeID, String conceptSchemeVersion, String id) {
-        this.conceptPK = new ConceptPK(conceptSchemeAgencyID, conceptSchemeID, conceptSchemeVersion, id);
+    public Concept(ConceptPK conceptPK, String conceptId) {
+        this.conceptPK = conceptPK;
+        this.conceptId = conceptId;
+    }
+
+    public Concept(String conceptSchemeagencyId, String conceptSchemeId, String conceptSchemeversion) {
+        this.conceptPK = new ConceptPK(conceptSchemeagencyId, conceptSchemeId, conceptSchemeversion);
     }
 
     public ConceptPK getConceptPK() {
@@ -72,20 +85,28 @@ public class Concept implements Serializable {
         this.conceptPK = conceptPK;
     }
 
-    public Annotated getAnnotations() {
-        return annotations;
+    public String getConceptId() {
+        return conceptId;
     }
 
-    public void setAnnotations(Annotated annotations) {
-        this.annotations = annotations;
+    public void setConceptId(String conceptId) {
+        this.conceptId = conceptId;
     }
 
-    public Conceptscheme getConceptscheme() {
-        return conceptscheme;
+    public Annotation getAnnotated() {
+        return annotated;
     }
 
-    public void setConceptscheme(Conceptscheme conceptscheme) {
-        this.conceptscheme = conceptscheme;
+    public void setAnnotated(Annotation annotated) {
+        this.annotated = annotated;
+    }
+
+    public ConceptScheme getConceptScheme() {
+        return conceptScheme;
+    }
+
+    public void setConceptScheme(ConceptScheme conceptScheme) {
+        this.conceptScheme = conceptScheme;
     }
 
     public Name getName() {
@@ -96,13 +117,12 @@ public class Concept implements Serializable {
         this.name = name;
     }
 
-    @XmlTransient
-    public List<Conceptreference> getConceptreferenceList() {
-        return conceptreferenceList;
+    public ConceptReference getConceptReference() {
+        return conceptReference;
     }
 
-    public void setConceptreferenceList(List<Conceptreference> conceptreferenceList) {
-        this.conceptreferenceList = conceptreferenceList;
+    public void setConceptReference(ConceptReference conceptReference) {
+        this.conceptReference = conceptReference;
     }
 
     @Override

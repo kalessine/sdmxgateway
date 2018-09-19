@@ -1,9 +1,9 @@
 package sdmx.gateway.vtlconnector;
 
 import com.google.common.collect.Lists;
-import no.ssb.vtl.connector.Connector;
-import no.ssb.vtl.connector.ConnectorException;
-import no.ssb.vtl.connector.NotFoundException;
+import no.ssb.vtl.connectors.Connector;
+import no.ssb.vtl.connectors.ConnectorException;
+import no.ssb.vtl.connectors.NotFoundException;
 import no.ssb.vtl.model.Component;
 import no.ssb.vtl.model.DataPoint;
 import no.ssb.vtl.model.DataStructure;
@@ -19,7 +19,6 @@ import static java.util.Arrays.asList;
 import javax.script.Bindings;
 import javax.script.ScriptContext;
 import javax.script.ScriptException;
-import jersey.repackaged.com.google.common.collect.Maps;
 import no.ssb.vtl.model.VTLObject;
 import no.ssb.vtl.script.VTLScriptEngine;
 import sdmx.Queryable;

@@ -18,37 +18,38 @@ import javax.validation.constraints.Size;
  */
 @Embeddable
 public class CodelistPK implements Serializable {
+
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 100)
-    @Column(name = "AgencyID", nullable = false, length = 100)
-    private String agencyID;
+    @Size(min = 1, max = 255)
+    @Column(name = "agencyId", nullable = false, length = 255)
+    private String agencyId;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 100)
-    @Column(name = "ID", nullable = false, length = 100)
+    @Size(min = 1, max = 255)
+    @Column(name = "Id", nullable = false, length = 255)
     private String id;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 50)
-    @Column(name = "Version", nullable = false, length = 50)
+    @Size(min = 1, max = 255)
+    @Column(name = "version", nullable = false, length = 255)
     private String version;
 
     public CodelistPK() {
     }
 
-    public CodelistPK(String agencyID, String id, String version) {
-        this.agencyID = agencyID;
+    public CodelistPK(String agencyId, String id, String version) {
+        this.agencyId = agencyId;
         this.id = id;
         this.version = version;
     }
 
-    public String getAgencyID() {
-        return agencyID;
+    public String getAgencyId() {
+        return agencyId;
     }
 
-    public void setAgencyID(String agencyID) {
-        this.agencyID = agencyID;
+    public void setAgencyId(String agencyId) {
+        this.agencyId = agencyId;
     }
 
     public String getId() {
@@ -70,7 +71,7 @@ public class CodelistPK implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (agencyID != null ? agencyID.hashCode() : 0);
+        hash += (agencyId != null ? agencyId.hashCode() : 0);
         hash += (id != null ? id.hashCode() : 0);
         hash += (version != null ? version.hashCode() : 0);
         return hash;
@@ -83,7 +84,7 @@ public class CodelistPK implements Serializable {
             return false;
         }
         CodelistPK other = (CodelistPK) object;
-        if ((this.agencyID == null && other.agencyID != null) || (this.agencyID != null && !this.agencyID.equals(other.agencyID))) {
+        if ((this.agencyId == null && other.agencyId != null) || (this.agencyId != null && !this.agencyId.equals(other.agencyId))) {
             return false;
         }
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
@@ -97,7 +98,7 @@ public class CodelistPK implements Serializable {
 
     @Override
     public String toString() {
-        return "sdmx.gateway.entities.CodelistPK[ agencyID=" + agencyID + ", id=" + id + ", version=" + version + " ]";
+        return "sdmx.gateway.entities.CodelistPK[ agencyId=" + agencyId + ", id=" + id + ", version=" + version + " ]";
     }
     
 }

@@ -18,59 +18,44 @@ import javax.validation.constraints.Size;
  */
 @Embeddable
 public class CodePK implements Serializable {
+
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 100)
-    @Column(name = "AgencyID", nullable = false, length = 100)
-    private String agencyID;
+    @Size(min = 1, max = 255)
+    @Column(name = "agencyId", nullable = false, length = 255)
+    private String agencyId;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 100)
-    @Column(name = "CodelistID", nullable = false, length = 100)
-    private String codelistID;
+    @Size(min = 1, max = 255)
+    @Column(name = "Id", nullable = false, length = 255)
+    private String id;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 50)
-    @Column(name = "Version", nullable = false, length = 50)
+    @Size(min = 1, max = 255)
+    @Column(name = "version", nullable = false, length = 255)
     private String version;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 100)
-    @Column(name = "id", nullable = false, length = 100)
-    private String id;
+    @Size(min = 1, max = 255)
+    @Column(name = "codeId", nullable = false, length = 255)
+    private String codeId;
 
     public CodePK() {
     }
 
-    public CodePK(String agencyID, String codelistID, String version, String id) {
-        this.agencyID = agencyID;
-        this.codelistID = codelistID;
-        this.version = version;
+    public CodePK(String agencyId, String id, String version, String codeId) {
+        this.agencyId = agencyId;
         this.id = id;
-    }
-
-    public String getAgencyID() {
-        return agencyID;
-    }
-
-    public void setAgencyID(String agencyID) {
-        this.agencyID = agencyID;
-    }
-
-    public String getCodelistID() {
-        return codelistID;
-    }
-
-    public void setCodelistID(String codelistID) {
-        this.codelistID = codelistID;
-    }
-
-    public String getVersion() {
-        return version;
-    }
-
-    public void setVersion(String version) {
         this.version = version;
+        this.codeId = codeId;
+    }
+
+    public String getAgencyId() {
+        return agencyId;
+    }
+
+    public void setAgencyId(String agencyId) {
+        this.agencyId = agencyId;
     }
 
     public String getId() {
@@ -81,13 +66,29 @@ public class CodePK implements Serializable {
         this.id = id;
     }
 
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
+    public String getCodeId() {
+        return codeId;
+    }
+
+    public void setCodeId(String codeId) {
+        this.codeId = codeId;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (agencyID != null ? agencyID.hashCode() : 0);
-        hash += (codelistID != null ? codelistID.hashCode() : 0);
-        hash += (version != null ? version.hashCode() : 0);
+        hash += (agencyId != null ? agencyId.hashCode() : 0);
         hash += (id != null ? id.hashCode() : 0);
+        hash += (version != null ? version.hashCode() : 0);
+        hash += (codeId != null ? codeId.hashCode() : 0);
         return hash;
     }
 
@@ -98,16 +99,16 @@ public class CodePK implements Serializable {
             return false;
         }
         CodePK other = (CodePK) object;
-        if ((this.agencyID == null && other.agencyID != null) || (this.agencyID != null && !this.agencyID.equals(other.agencyID))) {
+        if ((this.agencyId == null && other.agencyId != null) || (this.agencyId != null && !this.agencyId.equals(other.agencyId))) {
             return false;
         }
-        if ((this.codelistID == null && other.codelistID != null) || (this.codelistID != null && !this.codelistID.equals(other.codelistID))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         if ((this.version == null && other.version != null) || (this.version != null && !this.version.equals(other.version))) {
             return false;
         }
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.codeId == null && other.codeId != null) || (this.codeId != null && !this.codeId.equals(other.codeId))) {
             return false;
         }
         return true;
@@ -115,7 +116,7 @@ public class CodePK implements Serializable {
 
     @Override
     public String toString() {
-        return "sdmx.gateway.entities.CodePK[ agencyID=" + agencyID + ", codelistID=" + codelistID + ", version=" + version + ", id=" + id + " ]";
+        return "sdmx.gateway.entities.CodePK[ agencyId=" + agencyId + ", id=" + id + ", version=" + version + ", codeId=" + codeId + " ]";
     }
     
 }
