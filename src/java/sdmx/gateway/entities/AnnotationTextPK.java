@@ -10,68 +10,66 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 /**
  *
  * @author James
  */
 @Embeddable
-public class NameTextPK implements Serializable {
+public class AnnotationTextPK implements Serializable {
 
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 255)
-    @Column(nullable = false, length = 255)
-    private String lang;
     @Basic(optional = false)
     @NotNull
     @Column(nullable = false)
-    private long name;
+    private long id;
+    @Basic(optional = false)
+    @NotNull
+    @Column(nullable = false)
+    private short textIndex;
 
-    public NameTextPK() {
+    public AnnotationTextPK() {
     }
 
-    public NameTextPK(String lang, long name) {
-        this.lang = lang;
-        this.name = name;
+    public AnnotationTextPK(long id, short textIndex) {
+        this.id = id;
+        this.textIndex = textIndex;
     }
 
-    public String getLang() {
-        return lang;
+    public long getId() {
+        return id;
     }
 
-    public void setLang(String lang) {
-        this.lang = lang;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public long getName() {
-        return name;
+    public short getTextIndex() {
+        return textIndex;
     }
 
-    public void setName(long name) {
-        this.name = name;
+    public void setTextIndex(short textIndex) {
+        this.textIndex = textIndex;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (lang != null ? lang.hashCode() : 0);
-        hash += (int) name;
+        hash += (int) id;
+        hash += (int) textIndex;
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof NameTextPK)) {
+        if (!(object instanceof AnnotationTextPK)) {
             return false;
         }
-        NameTextPK other = (NameTextPK) object;
-        if ((this.lang == null && other.lang != null) || (this.lang != null && !this.lang.equals(other.lang))) {
+        AnnotationTextPK other = (AnnotationTextPK) object;
+        if (this.id != other.id) {
             return false;
         }
-        if (this.name != other.name) {
+        if (this.textIndex != other.textIndex) {
             return false;
         }
         return true;
@@ -79,7 +77,7 @@ public class NameTextPK implements Serializable {
 
     @Override
     public String toString() {
-        return "sdmx.gateway.entities.NameTextPK[ lang=" + lang + ", name=" + name + " ]";
+        return "sdmx.gateway.entities.AnnotationTextPK[ id=" + id + ", textIndex=" + textIndex + " ]";
     }
     
 }

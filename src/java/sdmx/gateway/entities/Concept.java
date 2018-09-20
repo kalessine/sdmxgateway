@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author James
  */
 @Entity
-@Table(name = "Concept", catalog = "repository", schema = "public", uniqueConstraints = {
+@Table(catalog = "repository", schema = "public", uniqueConstraints = {
     @UniqueConstraint(columnNames = {"annotated"})
     , @UniqueConstraint(columnNames = {"name"})})
 @XmlRootElement
@@ -44,11 +44,11 @@ public class Concept implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
-    @Column(name = "conceptId", nullable = false, length = 255)
+    @Column(nullable = false, length = 255)
     private String conceptId;
     @JoinColumn(name = "annotated", referencedColumnName = "annotated")
     @OneToOne
-    private Annotation annotated;
+    private Annotated annotated;
     @JoinColumns({
         @JoinColumn(name = "ConceptScheme_agencyId", referencedColumnName = "agencyId", nullable = false, insertable = false, updatable = false)
         , @JoinColumn(name = "ConceptScheme_Id", referencedColumnName = "Id", nullable = false, insertable = false, updatable = false)
@@ -93,11 +93,11 @@ public class Concept implements Serializable {
         this.conceptId = conceptId;
     }
 
-    public Annotation getAnnotated() {
+    public Annotated getAnnotated() {
         return annotated;
     }
 
-    public void setAnnotated(Annotation annotated) {
+    public void setAnnotated(Annotated annotated) {
         this.annotated = annotated;
     }
 

@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author James
  */
 @Entity
-@Table(name = "Observation", catalog = "repository", schema = "public")
+@Table(catalog = "repository", schema = "public")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Observation.findAll", query = "SELECT o FROM Observation o")
@@ -41,15 +41,13 @@ import javax.xml.bind.annotation.XmlTransient;
 public class Observation implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Column(name = "id")
     private BigInteger id;
-    @Column(name = "dateUpdated")
     @Temporal(TemporalType.DATE)
     private Date dateUpdated;
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "id1", nullable = false)
+    @Column(nullable = false)
     private Long id1;
     @ManyToMany(mappedBy = "observationList")
     private List<ColumnValue> columnValueList;

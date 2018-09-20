@@ -21,12 +21,12 @@ public class DataflowPK implements Serializable {
 
     @Basic(optional = false)
     @NotNull
-    @Column(name = "id", nullable = false)
+    @Column(nullable = false)
     private long id;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
-    @Column(name = "agencyId", nullable = false, length = 255)
+    @Column(nullable = false, length = 255)
     private String agencyId;
     @Basic(optional = false)
     @NotNull
@@ -36,7 +36,7 @@ public class DataflowPK implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
-    @Column(name = "version", nullable = false, length = 255)
+    @Column(nullable = false, length = 255)
     private String version;
 
     public DataflowPK() {

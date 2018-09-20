@@ -6,26 +6,23 @@
 package sdmx.gateway.entities;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author James
  */
 @Entity
-@Table(name = "Codelist", catalog = "repository", schema = "public", uniqueConstraints = {
+@Table(catalog = "repository", schema = "public", uniqueConstraints = {
     @UniqueConstraint(columnNames = {"annotated"})
     , @UniqueConstraint(columnNames = {"Name"})})
 @XmlRootElement
@@ -41,12 +38,12 @@ public class Codelist implements Serializable {
     protected CodelistPK codelistPK;
     @JoinColumn(name = "annotated", referencedColumnName = "annotated")
     @OneToOne
-    private Annotation annotated;
+    private Annotated annotated;
     @JoinColumn(name = "Name", referencedColumnName = "name")
     @OneToOne
     private Name name;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codelist")
-    private List<Code> codeList;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "codelist")
+    private Code code;
     @OneToOne(mappedBy = "codelist1")
     private CodelistReference codelistReference;
 
@@ -69,11 +66,11 @@ public class Codelist implements Serializable {
         this.codelistPK = codelistPK;
     }
 
-    public Annotation getAnnotated() {
+    public Annotated getAnnotated() {
         return annotated;
     }
 
-    public void setAnnotated(Annotation annotated) {
+    public void setAnnotated(Annotated annotated) {
         this.annotated = annotated;
     }
 
@@ -85,13 +82,12 @@ public class Codelist implements Serializable {
         this.name = name;
     }
 
-    @XmlTransient
-    public List<Code> getCodeList() {
-        return codeList;
+    public Code getCode() {
+        return code;
     }
 
-    public void setCodeList(List<Code> codeList) {
-        this.codeList = codeList;
+    public void setCode(Code code) {
+        this.code = code;
     }
 
     public CodelistReference getCodelistReference() {

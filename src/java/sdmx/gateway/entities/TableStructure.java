@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -25,7 +26,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author James
  */
 @Entity
-@Table(name = "tableStructure", catalog = "repository", schema = "public")
+@Table(catalog = "repository", schema = "public")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "TableStructure.findAll", query = "SELECT t FROM TableStructure t")
@@ -36,10 +37,10 @@ public class TableStructure implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "tableStructure", nullable = false)
+    @Column(nullable = false)
     private Long tableStructure;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tableStructure1")
-    private List<Component> componentList;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "tableStructure1")
+    private Component component;
     @OneToMany(mappedBy = "tableStructure")
     private List<Dataflow> dataflowList;
 
@@ -58,13 +59,12 @@ public class TableStructure implements Serializable {
         this.tableStructure = tableStructure;
     }
 
-    @XmlTransient
-    public List<Component> getComponentList() {
-        return componentList;
+    public Component getComponent() {
+        return component;
     }
 
-    public void setComponentList(List<Component> componentList) {
-        this.componentList = componentList;
+    public void setComponent(Component component) {
+        this.component = component;
     }
 
     @XmlTransient

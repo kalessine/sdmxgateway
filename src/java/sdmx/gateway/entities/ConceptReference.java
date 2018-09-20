@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author James
  */
 @Entity
-@Table(name = "ConceptReference", catalog = "repository", schema = "public", uniqueConstraints = {
+@Table(catalog = "repository", schema = "public", uniqueConstraints = {
     @UniqueConstraint(columnNames = {"ConceptScheme_agencyId", "ConceptScheme_Id", "ConceptScheme_version"})})
 @XmlRootElement
 @NamedQueries({
@@ -37,7 +37,7 @@ public class ConceptReference implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "concept", nullable = false)
+    @Column(nullable = false)
     private Long concept;
     @JoinColumns({
         @JoinColumn(name = "ConceptScheme_agencyId", referencedColumnName = "ConceptScheme_agencyId")

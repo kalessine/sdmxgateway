@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author James
  */
 @Entity
-@Table(name = "DataStructureReference", catalog = "repository", schema = "public")
+@Table(catalog = "repository", schema = "public")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "DataStructureReference.findAll", query = "SELECT d FROM DataStructureReference d")
@@ -38,7 +38,7 @@ public class DataStructureReference implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "structure", nullable = false)
+    @Column(nullable = false)
     private Long structure;
     @JoinColumns({
         @JoinColumn(name = "agencyId", referencedColumnName = "agencyId")

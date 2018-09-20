@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author James
  */
 @Entity
-@Table(name = "CodelistReference", catalog = "repository", schema = "public", uniqueConstraints = {
+@Table(catalog = "repository", schema = "public", uniqueConstraints = {
     @UniqueConstraint(columnNames = {"agencyId", "Id", "version"})})
 @XmlRootElement
 @NamedQueries({
@@ -37,7 +37,7 @@ public class CodelistReference implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "codelist", nullable = false)
+    @Column(nullable = false)
     private Long codelist;
     @OneToOne(mappedBy = "codelistEnumeration")
     private DataStructureComponent dataStructureComponent;

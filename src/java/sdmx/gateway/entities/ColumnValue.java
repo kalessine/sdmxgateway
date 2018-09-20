@@ -12,12 +12,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -29,7 +28,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author James
  */
 @Entity
-@Table(name = "ColumnValue", catalog = "repository", schema = "public")
+@Table(catalog = "repository", schema = "public")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "ColumnValue.findAll", query = "SELECT c FROM ColumnValue c")
@@ -40,25 +39,23 @@ public class ColumnValue implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Size(max = 255)
-    @Column(name = "id", length = 255)
+    @Column(length = 255)
     private String id;
     @Size(max = 512)
-    @Column(name = "value", length = 512)
+    @Column(length = 512)
     private String value;
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "tableStructure", nullable = false)
+    @Column(nullable = false)
     private Long tableStructure;
     @JoinTable(name = "Value", joinColumns = {
         @JoinColumn(name = "tableStructure", referencedColumnName = "tableStructure", nullable = false)}, inverseJoinColumns = {
         @JoinColumn(name = "id1", referencedColumnName = "id1", nullable = false)})
     @ManyToMany
     private List<Observation> observationList;
-    @JoinColumns({
-        @JoinColumn(name = "tableStructure", referencedColumnName = "tableStructure", nullable = false, insertable = false, updatable = false)
-        , @JoinColumn(name = "name", referencedColumnName = "name")})
-    @ManyToOne(optional = false)
+    @JoinColumn(name = "tableStructure", referencedColumnName = "tableStructure", nullable = false, insertable = false, updatable = false)
+    @OneToOne(optional = false)
     private Component component;
 
     public ColumnValue() {

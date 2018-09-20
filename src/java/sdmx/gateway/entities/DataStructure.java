@@ -13,6 +13,7 @@ import javax.persistence.Entity;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -22,7 +23,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author James
  */
 @Entity
-@Table(name = "DataStructure", catalog = "repository", schema = "public")
+@Table(catalog = "repository", schema = "public")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "DataStructure.findAll", query = "SELECT d FROM DataStructure d")
@@ -36,8 +37,8 @@ public class DataStructure implements Serializable {
     protected DataStructurePK dataStructurePK;
     @OneToMany(mappedBy = "dataStructure")
     private List<DataStructureReference> dataStructureReferenceList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "dataStructure")
-    private List<DataStructureComponent> dataStructureComponentList;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "dataStructure")
+    private DataStructureComponent dataStructureComponent;
 
     public DataStructure() {
     }
@@ -67,13 +68,12 @@ public class DataStructure implements Serializable {
         this.dataStructureReferenceList = dataStructureReferenceList;
     }
 
-    @XmlTransient
-    public List<DataStructureComponent> getDataStructureComponentList() {
-        return dataStructureComponentList;
+    public DataStructureComponent getDataStructureComponent() {
+        return dataStructureComponent;
     }
 
-    public void setDataStructureComponentList(List<DataStructureComponent> dataStructureComponentList) {
-        this.dataStructureComponentList = dataStructureComponentList;
+    public void setDataStructureComponent(DataStructureComponent dataStructureComponent) {
+        this.dataStructureComponent = dataStructureComponent;
     }
 
     @Override

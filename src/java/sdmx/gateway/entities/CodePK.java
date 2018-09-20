@@ -22,32 +22,26 @@ public class CodePK implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
-    @Column(name = "agencyId", nullable = false, length = 255)
+    @Column(nullable = false, length = 255)
     private String agencyId;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
-    @Column(name = "Id", nullable = false, length = 255)
+    @Column(nullable = false, length = 255)
     private String id;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
-    @Column(name = "version", nullable = false, length = 255)
+    @Column(nullable = false, length = 255)
     private String version;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 255)
-    @Column(name = "codeId", nullable = false, length = 255)
-    private String codeId;
 
     public CodePK() {
     }
 
-    public CodePK(String agencyId, String id, String version, String codeId) {
+    public CodePK(String agencyId, String id, String version) {
         this.agencyId = agencyId;
         this.id = id;
         this.version = version;
-        this.codeId = codeId;
     }
 
     public String getAgencyId() {
@@ -74,21 +68,12 @@ public class CodePK implements Serializable {
         this.version = version;
     }
 
-    public String getCodeId() {
-        return codeId;
-    }
-
-    public void setCodeId(String codeId) {
-        this.codeId = codeId;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
         hash += (agencyId != null ? agencyId.hashCode() : 0);
         hash += (id != null ? id.hashCode() : 0);
         hash += (version != null ? version.hashCode() : 0);
-        hash += (codeId != null ? codeId.hashCode() : 0);
         return hash;
     }
 
@@ -108,15 +93,12 @@ public class CodePK implements Serializable {
         if ((this.version == null && other.version != null) || (this.version != null && !this.version.equals(other.version))) {
             return false;
         }
-        if ((this.codeId == null && other.codeId != null) || (this.codeId != null && !this.codeId.equals(other.codeId))) {
-            return false;
-        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "sdmx.gateway.entities.CodePK[ agencyId=" + agencyId + ", id=" + id + ", version=" + version + ", codeId=" + codeId + " ]";
+        return "sdmx.gateway.entities.CodePK[ agencyId=" + agencyId + ", id=" + id + ", version=" + version + " ]";
     }
     
 }

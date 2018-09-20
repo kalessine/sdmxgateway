@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author James
  */
 @Entity
-@Table(name = "AttributeRelationshipType", catalog = "repository", schema = "public")
+@Table(catalog = "repository", schema = "public")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "AttributeRelationshipType.findAll", query = "SELECT a FROM AttributeRelationshipType a")
@@ -38,17 +38,15 @@ public class AttributeRelationshipType implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "attributeRelationshipType", nullable = false)
+    @Column(nullable = false)
     private Long attributeRelationshipType;
-    @Column(name = "empty")
     private Short empty;
     @Size(max = 2147483647)
-    @Column(name = "attachGroup", length = 2147483647)
+    @Column(length = 2147483647)
     private String attachGroup;
-    @Column(name = "attachGroups")
     private Short attachGroups;
     @Size(max = 2147483647)
-    @Column(name = "primaryMeasureReference", length = 2147483647)
+    @Column(length = 2147483647)
     private String primaryMeasureReference;
     @OneToOne(mappedBy = "attributeRelationshipType")
     private DataStructureComponent dataStructureComponent;

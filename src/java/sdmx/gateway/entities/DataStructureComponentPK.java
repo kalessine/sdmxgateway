@@ -22,32 +22,26 @@ public class DataStructureComponentPK implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
-    @Column(name = "agencyId", nullable = false, length = 255)
+    @Column(nullable = false, length = 255)
     private String agencyId;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
-    @Column(name = "Id", nullable = false, length = 255)
+    @Column(nullable = false, length = 255)
     private String id;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
-    @Column(name = "version", nullable = false, length = 255)
+    @Column(nullable = false, length = 255)
     private String version;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 255)
-    @Column(name = "componentId", nullable = false, length = 255)
-    private String componentId;
 
     public DataStructureComponentPK() {
     }
 
-    public DataStructureComponentPK(String agencyId, String id, String version, String componentId) {
+    public DataStructureComponentPK(String agencyId, String id, String version) {
         this.agencyId = agencyId;
         this.id = id;
         this.version = version;
-        this.componentId = componentId;
     }
 
     public String getAgencyId() {
@@ -74,21 +68,12 @@ public class DataStructureComponentPK implements Serializable {
         this.version = version;
     }
 
-    public String getComponentId() {
-        return componentId;
-    }
-
-    public void setComponentId(String componentId) {
-        this.componentId = componentId;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
         hash += (agencyId != null ? agencyId.hashCode() : 0);
         hash += (id != null ? id.hashCode() : 0);
         hash += (version != null ? version.hashCode() : 0);
-        hash += (componentId != null ? componentId.hashCode() : 0);
         return hash;
     }
 
@@ -108,15 +93,12 @@ public class DataStructureComponentPK implements Serializable {
         if ((this.version == null && other.version != null) || (this.version != null && !this.version.equals(other.version))) {
             return false;
         }
-        if ((this.componentId == null && other.componentId != null) || (this.componentId != null && !this.componentId.equals(other.componentId))) {
-            return false;
-        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "sdmx.gateway.entities.DataStructureComponentPK[ agencyId=" + agencyId + ", id=" + id + ", version=" + version + ", componentId=" + componentId + " ]";
+        return "sdmx.gateway.entities.DataStructureComponentPK[ agencyId=" + agencyId + ", id=" + id + ", version=" + version + " ]";
     }
     
 }

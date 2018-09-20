@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author James
  */
 @Entity
-@Table(name = "NameText", catalog = "repository", schema = "public")
+@Table(catalog = "repository", schema = "public")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "NameText.findAll", query = "SELECT n FROM NameText n")
@@ -35,7 +35,7 @@ public class NameText implements Serializable {
     @EmbeddedId
     protected NameTextPK nameTextPK;
     @Size(max = 2147483647)
-    @Column(name = "text", length = 2147483647)
+    @Column(length = 2147483647)
     private String text;
     @JoinColumn(name = "lang", referencedColumnName = "lang", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false)
