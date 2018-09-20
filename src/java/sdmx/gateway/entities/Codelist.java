@@ -12,6 +12,10 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+<<<<<<< HEAD
+=======
+import javax.persistence.OneToMany;
+>>>>>>> origin/master
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -38,12 +42,21 @@ public class Codelist implements Serializable {
     protected CodelistPK codelistPK;
     @JoinColumn(name = "annotated", referencedColumnName = "annotated")
     @OneToOne
+<<<<<<< HEAD
     private Annotated annotated;
+=======
+    private Annotation annotated;
+>>>>>>> origin/master
     @JoinColumn(name = "Name", referencedColumnName = "name")
     @OneToOne
     private Name name;
+<<<<<<< HEAD
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "codelist")
     private Code code;
+=======
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codelist")
+    private List<Code> codeList;
+>>>>>>> origin/master
     @OneToOne(mappedBy = "codelist1")
     private CodelistReference codelistReference;
 
@@ -66,11 +79,19 @@ public class Codelist implements Serializable {
         this.codelistPK = codelistPK;
     }
 
+<<<<<<< HEAD
     public Annotated getAnnotated() {
+=======
+    public Annotation getAnnotated() {
+>>>>>>> origin/master
         return annotated;
     }
 
+<<<<<<< HEAD
     public void setAnnotated(Annotated annotated) {
+=======
+    public void setAnnotated(Annotation annotated) {
+>>>>>>> origin/master
         this.annotated = annotated;
     }
 
@@ -82,12 +103,23 @@ public class Codelist implements Serializable {
         this.name = name;
     }
 
+<<<<<<< HEAD
     public Code getCode() {
         return code;
+=======
+    @XmlTransient
+    public List<Code> getCodeList() {
+        return codeList;
+>>>>>>> origin/master
     }
 
+<<<<<<< HEAD
     public void setCode(Code code) {
         this.code = code;
+=======
+    public void setCodeList(List<Code> codeList) {
+        this.codeList = codeList;
+>>>>>>> origin/master
     }
 
     public CodelistReference getCodelistReference() {

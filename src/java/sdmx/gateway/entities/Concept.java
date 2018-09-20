@@ -48,7 +48,11 @@ public class Concept implements Serializable {
     private String conceptId;
     @JoinColumn(name = "annotated", referencedColumnName = "annotated")
     @OneToOne
+<<<<<<< HEAD
     private Annotated annotated;
+=======
+    private Annotation annotated;
+>>>>>>> origin/master
     @JoinColumns({
         @JoinColumn(name = "ConceptScheme_agencyId", referencedColumnName = "agencyId", nullable = false, insertable = false, updatable = false)
         , @JoinColumn(name = "ConceptScheme_Id", referencedColumnName = "Id", nullable = false, insertable = false, updatable = false)
@@ -93,11 +97,19 @@ public class Concept implements Serializable {
         this.conceptId = conceptId;
     }
 
+<<<<<<< HEAD
     public Annotated getAnnotated() {
+=======
+    public Annotation getAnnotated() {
+>>>>>>> origin/master
         return annotated;
     }
 
+<<<<<<< HEAD
     public void setAnnotated(Annotated annotated) {
+=======
+    public void setAnnotated(Annotation annotated) {
+>>>>>>> origin/master
         this.annotated = annotated;
     }
 

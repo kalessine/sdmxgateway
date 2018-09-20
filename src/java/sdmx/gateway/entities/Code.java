@@ -17,7 +17,10 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+<<<<<<< HEAD
 import javax.validation.constraints.NotNull;
+=======
+>>>>>>> origin/master
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -36,7 +39,11 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Code.findById", query = "SELECT c FROM Code c WHERE c.codePK.id = :id")
     , @NamedQuery(name = "Code.findByVersion", query = "SELECT c FROM Code c WHERE c.codePK.version = :version")
     , @NamedQuery(name = "Code.findByParentCode", query = "SELECT c FROM Code c WHERE c.parentCode = :parentCode")
+<<<<<<< HEAD
     , @NamedQuery(name = "Code.findByCodeId", query = "SELECT c FROM Code c WHERE c.codeId = :codeId")})
+=======
+    , @NamedQuery(name = "Code.findByCodeId", query = "SELECT c FROM Code c WHERE c.codePK.codeId = :codeId")})
+>>>>>>> origin/master
 public class Code implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -45,6 +52,7 @@ public class Code implements Serializable {
     @Size(max = 255)
     @Column(name = "parentCode", length = 255)
     private String parentCode;
+<<<<<<< HEAD
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
@@ -53,11 +61,20 @@ public class Code implements Serializable {
     @JoinColumn(name = "annotated", referencedColumnName = "annotated")
     @OneToOne
     private Annotated annotated;
+=======
+    @JoinColumn(name = "annotated", referencedColumnName = "annotated")
+    @OneToOne
+    private Annotation annotated;
+>>>>>>> origin/master
     @JoinColumns({
         @JoinColumn(name = "agencyId", referencedColumnName = "agencyId", nullable = false, insertable = false, updatable = false)
         , @JoinColumn(name = "Id", referencedColumnName = "Id", nullable = false, insertable = false, updatable = false)
         , @JoinColumn(name = "version", referencedColumnName = "version", nullable = false, insertable = false, updatable = false)})
+<<<<<<< HEAD
     @OneToOne(optional = false)
+=======
+    @ManyToOne(optional = false)
+>>>>>>> origin/master
     private Codelist codelist;
     @JoinColumn(name = "name", referencedColumnName = "name")
     @OneToOne
@@ -70,6 +87,7 @@ public class Code implements Serializable {
         this.codePK = codePK;
     }
 
+<<<<<<< HEAD
     public Code(CodePK codePK, String codeId) {
         this.codePK = codePK;
         this.codeId = codeId;
@@ -77,6 +95,10 @@ public class Code implements Serializable {
 
     public Code(String agencyId, String id, String version) {
         this.codePK = new CodePK(agencyId, id, version);
+=======
+    public Code(String agencyId, String id, String version, String codeId) {
+        this.codePK = new CodePK(agencyId, id, version, codeId);
+>>>>>>> origin/master
     }
 
     public CodePK getCodePK() {
@@ -95,10 +117,16 @@ public class Code implements Serializable {
         this.parentCode = parentCode;
     }
 
+<<<<<<< HEAD
     public String getCodeId() {
         return codeId;
+=======
+    public Annotation getAnnotated() {
+        return annotated;
+>>>>>>> origin/master
     }
 
+<<<<<<< HEAD
     public void setCodeId(String codeId) {
         this.codeId = codeId;
     }
@@ -108,6 +136,9 @@ public class Code implements Serializable {
     }
 
     public void setAnnotated(Annotated annotated) {
+=======
+    public void setAnnotated(Annotation annotated) {
+>>>>>>> origin/master
         this.annotated = annotated;
     }
 
