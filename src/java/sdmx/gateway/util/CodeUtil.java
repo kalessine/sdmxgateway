@@ -43,10 +43,10 @@ public class CodeUtil {
     public static sdmx.gateway.entities.Code createDatabaseCode(EntityManager em, sdmx.gateway.entities.Codelist cl, CodeType c) {
         sdmx.gateway.entities.Code code = new sdmx.gateway.entities.Code();
         sdmx.gateway.entities.CodePK pk = new sdmx.gateway.entities.CodePK();
-        pk.setAgencyID(cl.getCodelistPK().getAgencyID());
-        pk.setCodelistID(cl.getCodelistPK().getId());
+        pk.setAgencyId(cl.getCodelistPK().getAgencyId());
+        pk.setId(cl.getCodelistPK().getId());
         pk.setVersion(cl.getCodelistPK().getVersion());
-        pk.setId(c.getId().toString());
+        pk.setCodeId(c.getId().toString());
         NameUtil.setName(em, code, c);
         code.setCodePK(pk);
         if (c.getParent() != null) {
@@ -59,7 +59,7 @@ public class CodeUtil {
         CodeType cd = new CodeType();
         cd.setAnnotations(AnnotationsUtil.toSDMXAnnotations(c.getAnnotations()));
         cd.setNames(NameUtil.toSDMXName(c.getName()));
-        cd.setId(new IDType(c.getCodePK().getId()));
+        cd.setId(new IDType(c.getCodePK().getCodeId()));
         if (c.getParentCode() != null) {
             sdmx.commonreferences.LocalCodeRef ref = new LocalCodeRef(new IDType(c.getParentCode()), ItemTypeCodelistType.CODE, ItemSchemePackageTypeCodelistType.CODELIST);
             cd.setParent(new LocalItemReference(ref));

@@ -7,6 +7,7 @@ package sdmx.gateway.entities;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -26,9 +27,9 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author James
  */
 @Entity
-@Table(catalog = "repository", schema = "public", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"annotated"})
-    , @UniqueConstraint(columnNames = {"name"})})
+@Table(name = "Concept", catalog = "repository", schema = "public", uniqueConstraints = {
+    @UniqueConstraint(columnNames = {"Annotations"})
+    , @UniqueConstraint(columnNames = {"Name"})})
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Concept.findAll", query = "SELECT c FROM Concept c")
@@ -44,21 +45,21 @@ public class Concept implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
-    @Column(nullable = false, length = 255)
+    @Column(name = "conceptId", nullable = false, length = 255)
     private String conceptId;
-    @JoinColumn(name = "annotated", referencedColumnName = "annotated")
+    @JoinColumn(name = "Annotations", referencedColumnName = "Annotations")
     @OneToOne
-    private Annotated annotated;
+    private Annotations annotations;
     @JoinColumns({
         @JoinColumn(name = "ConceptScheme_agencyId", referencedColumnName = "agencyId", nullable = false, insertable = false, updatable = false)
         , @JoinColumn(name = "ConceptScheme_Id", referencedColumnName = "Id", nullable = false, insertable = false, updatable = false)
         , @JoinColumn(name = "ConceptScheme_version", referencedColumnName = "version", nullable = false, insertable = false, updatable = false)})
     @OneToOne(optional = false)
     private ConceptScheme conceptScheme;
-    @JoinColumn(name = "name", referencedColumnName = "name")
+    @JoinColumn(name = "Name", referencedColumnName = "Name")
     @OneToOne
     private Name name;
-    @OneToOne(mappedBy = "concept1")
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "concept1")
     private ConceptReference conceptReference;
 
     public Concept() {
@@ -93,12 +94,12 @@ public class Concept implements Serializable {
         this.conceptId = conceptId;
     }
 
-    public Annotated getAnnotated() {
-        return annotated;
+    public Annotations getAnnotations() {
+        return annotations;
     }
 
-    public void setAnnotated(Annotated annotated) {
-        this.annotated = annotated;
+    public void setAnnotations(Annotations annotations) {
+        this.annotations = annotations;
     }
 
     public ConceptScheme getConceptScheme() {

@@ -9,6 +9,6 @@ package sdmx.gateway.entities;
  *
  * @author James
  */
-public class Component {
+public class ObservationPK {
     
 }

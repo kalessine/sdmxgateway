@@ -22,17 +22,17 @@ public class CodelistPK implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
-    @Column(nullable = false, length = 255)
+    @Column(name = "agencyId", nullable = false, length = 255)
     private String agencyId;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
-    @Column(nullable = false, length = 255)
+    @Column(name = "Id", nullable = false, length = 255)
     private String id;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
-    @Column(nullable = false, length = 255)
+    @Column(name = "version", nullable = false, length = 255)
     private String version;
 
     public CodelistPK() {

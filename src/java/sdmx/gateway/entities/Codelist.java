@@ -6,24 +6,27 @@
 package sdmx.gateway.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author James
  */
 @Entity
-@Table(catalog = "repository", schema = "public", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"annotated"})
+@Table(name = "Codelist", catalog = "repository", schema = "public", uniqueConstraints = {
+    @UniqueConstraint(columnNames = {"Annotations"})
     , @UniqueConstraint(columnNames = {"Name"})})
 @XmlRootElement
 @NamedQueries({
@@ -36,14 +39,14 @@ public class Codelist implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected CodelistPK codelistPK;
-    @JoinColumn(name = "annotated", referencedColumnName = "annotated")
+    @JoinColumn(name = "Annotations", referencedColumnName = "Annotations")
     @OneToOne
-    private Annotated annotated;
-    @JoinColumn(name = "Name", referencedColumnName = "name")
+    private Annotations annotations;
+    @JoinColumn(name = "Name", referencedColumnName = "Name")
     @OneToOne
     private Name name;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "codelist")
-    private Code code;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codelist")
+    private List<Code> codeList;
     @OneToOne(mappedBy = "codelist1")
     private CodelistReference codelistReference;
 
@@ -66,12 +69,12 @@ public class Codelist implements Serializable {
         this.codelistPK = codelistPK;
     }
 
-    public Annotated getAnnotated() {
-        return annotated;
+    public Annotations getAnnotations() {
+        return annotations;
     }
 
-    public void setAnnotated(Annotated annotated) {
-        this.annotated = annotated;
+    public void setAnnotations(Annotations annotations) {
+        this.annotations = annotations;
     }
 
     public Name getName() {
@@ -82,12 +85,13 @@ public class Codelist implements Serializable {
         this.name = name;
     }
 
-    public Code getCode() {
-        return code;
+    @XmlTransient
+    public List<Code> getCodeList() {
+        return codeList;
     }
 
-    public void setCode(Code code) {
-        this.code = code;
+    public void setCodeList(List<Code> codeList) {
+        this.codeList = codeList;
     }
 
     public CodelistReference getCodelistReference() {
