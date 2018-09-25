@@ -1,0 +1,1006 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+         Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="0.9.1" last-position="0,1215" last-zoom="1"
+	 default-owner="postgres">
+<database name="repository" encoding="UTF8" lc-collate="English_Australia.1252" lc-ctype="English_Australia.1252" is-template="false" allow-conns="true">
+	<role name="postgres"/>
+	<tablespace name="pg_default"/>
+</database>
+
+<schema name="public" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<table name="Observation" hide-ext-attribs="true">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="2500" y="20"/>
+	<column name="dateUpdated">
+		<type name="date" length="0"/>
+	</column>
+
+	<customidxs object-type="column">
+		<object name="Id" index="2"/>
+		<object name="agencyID" index="1"/>
+		<object name="observation" index="4"/>
+		<object name="version" index="3"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="Dataflow_fk" index="1"/>
+		<object name="Observation_pk" index="0"/>
+	</customidxs>
+</table>
+
+<table name="Component" hide-ext-attribs="true">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="2540" y="240"/>
+
+	<customidxs object-type="column">
+		<object name="Id" index="1"/>
+		<object name="agencyID" index="0"/>
+		<object name="columnId" index="3"/>
+		<object name="position" index="4"/>
+		<object name="version" index="2"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="Component_pk" index="1"/>
+		<object name="Dataflow_fk" index="0"/>
+	</customidxs>
+</table>
+
+<table name="Identifier" hide-ext-attribs="true">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="3080" y="380"/>
+</table>
+
+<table name="Dataflow" hide-ext-attribs="true">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="2022" y="57"/>
+	<column name="agencyID" not-null="true">
+		<type name="varchar" length="255"/>
+	</column>
+	<column name="Id" not-null="true">
+		<type name="varchar" length="255"/>
+	</column>
+	<column name="version" not-null="true">
+		<type name="varchar" length="255"/>
+	</column>
+	<constraint name="datastructure_pk" type="pk-constr" table="public.&quot;Dataflow&quot;">
+		<columns names="agencyID,Id,version" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="Annotations" index="5"/>
+		<object name="Name" index="3"/>
+		<object name="structure" index="4"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="DataStructureReference_fk" index="3"/>
+		<object name="Dataflow_uq" index="2"/>
+		<object name="Name_fk" index="1"/>
+	</customidxs>
+</table>
+
+<table name="ComponentValue" hide-ext-attribs="true">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="3040" y="220"/>
+
+	<customidxs object-type="column">
+		<object name="Id" index="1"/>
+		<object name="agencyID" index="0"/>
+		<object name="value" index="3"/>
+		<object name="version" index="2"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="ComponentValue_pk" index="0"/>
+		<object name="Component_fk" index="1"/>
+	</customidxs>
+</table>
+
+<relationship name="Identifier_inherits_Component" type="relgen"
+	 pk-pattern="{dt}_pk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;Identifier&quot;"
+	 dst-table="public.&quot;Component&quot;"/>
+
+<relationship name="Dataflow_has_many_Observation" type="rel1n"
+	 src-col-pattern="{sc}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;Dataflow&quot;"
+	 dst-table="public.&quot;Observation&quot;"
+	 src-required="true" dst-required="false">
+	<column name="observation" not-null="true">
+		<type name="bigint" length="0"/>
+	</column>
+	<special-pk-cols indexes="0,1,2,"/>
+</relationship>
+
+<table name="Measure">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="3120" y="480"/>
+</table>
+
+<relationship name="Measure_inherits_Component" type="relgen"
+	 pk-pattern="{dt}_pk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;Measure&quot;"
+	 dst-table="public.&quot;Component&quot;"/>
+
+<table name="Attribute">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="3120" y="560"/>
+</table>
+
+<relationship name="Attribute_inherits_Component" type="relgen"
+	 pk-pattern="{dt}_pk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;Attribute&quot;"
+	 dst-table="public.&quot;Component&quot;"/>
+
+<table name="Name">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="2080" y="300"/>
+	<column name="en">
+		<type name="text" length="255"/>
+	</column>
+	<column name="Name" not-null="true">
+		<type name="bigint" length="0"/>
+	</column>
+	<constraint name="name_pk" type="pk-constr" table="public.&quot;Name&quot;">
+		<columns names="Name" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="Annotations">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="780" y="920"/>
+	<column name="Annotations" not-null="true">
+		<type name="bigint" length="0"/>
+	</column>
+	<constraint name="annotated_pk" type="pk-constr" table="public.&quot;Annotations&quot;">
+		<columns names="Annotations" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="Codelist">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1480" y="321"/>
+	<column name="agencyID" not-null="true">
+		<type name="varchar" length="255"/>
+	</column>
+	<column name="Id" not-null="true">
+		<type name="varchar" length="255"/>
+	</column>
+	<column name="version" not-null="true">
+		<type name="varchar" length="255"/>
+	</column>
+	<constraint name="codelist_pk" type="pk-constr" table="public.&quot;Codelist&quot;">
+		<columns names="agencyID,Id,version" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="Annotations" index="4"/>
+		<object name="Name" index="3"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="Annotations_fk" index="3"/>
+		<object name="Codelist_uq" index="1"/>
+		<object name="Codelist_uq1" index="4"/>
+		<object name="Name_fk" index="2"/>
+	</customidxs>
+</table>
+
+<relationship name="codelist_has_one_annotated" type="rel11"
+	 src-col-pattern="{sc}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;Annotations&quot;"
+	 dst-table="public.&quot;Codelist&quot;"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="codelist_has_one_name" type="rel11"
+	 src-col-pattern="{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;Name&quot;"
+	 dst-table="public.&quot;Codelist&quot;"
+	 src-required="false" dst-required="false"/>
+
+<table name="Code">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1764" y="793"/>
+	<column name="parentCode">
+		<type name="varchar" length="255"/>
+	</column>
+
+	<customidxs object-type="column">
+		<object name="Annotations" index="5"/>
+		<object name="Id" index="1"/>
+		<object name="Name" index="6"/>
+		<object name="agencyID" index="0"/>
+		<object name="codeId" index="3"/>
+		<object name="version" index="2"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="Annotations_fk" index="2"/>
+		<object name="Code_pk" index="1"/>
+		<object name="Code_uq" index="3"/>
+		<object name="Code_uq1" index="5"/>
+		<object name="Codelist_fk" index="0"/>
+		<object name="Name_fk" index="4"/>
+	</customidxs>
+</table>
+
+<relationship name="codelist_has_many_code" type="rel1n"
+	 src-col-pattern="{sc}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;Codelist&quot;"
+	 dst-table="public.&quot;Code&quot;"
+	 src-required="false" dst-required="false">
+	<column name="codeId" not-null="true">
+		<type name="varchar" length="255"/>
+	</column>
+	<special-pk-cols indexes="0,1,2,"/>
+</relationship>
+
+<relationship name="code_has_one_annotated" type="rel11"
+	 src-col-pattern="{sc}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;Annotations&quot;"
+	 dst-table="public.&quot;Code&quot;"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="code_has_one_name" type="rel11"
+	 src-col-pattern="{sc}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;Name&quot;"
+	 dst-table="public.&quot;Code&quot;"
+	 src-required="false" dst-required="false"/>
+
+<table name="DataStructure">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="782" y="27"/>
+	<column name="agencyID" not-null="true">
+		<type name="varchar" length="255"/>
+	</column>
+	<column name="Id" not-null="true">
+		<type name="varchar" length="255"/>
+	</column>
+	<column name="version" not-null="true">
+		<type name="varchar" length="255"/>
+	</column>
+	<constraint name="dataStructure_pk" type="pk-constr" table="public.&quot;DataStructure&quot;">
+		<columns names="agencyID,Id,version" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="Annotations" index="4"/>
+		<object name="Name" index="3"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="Annotations_fk" index="3"/>
+		<object name="DataStructure_uq" index="2"/>
+		<object name="DataStructure_uq1" index="4"/>
+		<object name="Name_fk" index="1"/>
+	</customidxs>
+</table>
+
+<table name="DataStructureReference">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1348" y="50"/>
+	<column name="reference" not-null="true">
+		<type name="bigint" length="0"/>
+	</column>
+	<constraint name="dataStructureReference_pk" type="pk-constr" table="public.&quot;DataStructureReference&quot;">
+		<columns names="reference" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="Id" index="2"/>
+		<object name="agencyID" index="1"/>
+		<object name="version" index="3"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="DataStructure_fk" index="1"/>
+	</customidxs>
+</table>
+
+<relationship name="dataStructure_has_many_dataStructureReference" type="rel1n"
+	 src-col-pattern="{sc}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;DataStructure&quot;"
+	 dst-table="public.&quot;DataStructureReference&quot;"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="dataflow_has_one_name" type="rel11"
+	 src-col-pattern="{sc}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;Name&quot;"
+	 dst-table="public.&quot;Dataflow&quot;"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="dataStructureReference_has_many_dataflow" type="rel1n"
+	 src-col-pattern="structure"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;DataStructureReference&quot;"
+	 dst-table="public.&quot;Dataflow&quot;"
+	 src-required="false" dst-required="false"/>
+
+<table name="ConceptScheme">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1553" y="568"/>
+	<column name="agencyID" not-null="true">
+		<type name="varchar" length="255"/>
+	</column>
+	<column name="Id" not-null="true">
+		<type name="varchar" length="255"/>
+	</column>
+	<column name="version" not-null="true">
+		<type name="varchar" length="255"/>
+	</column>
+	<constraint name="conceptScheme_pk" type="pk-constr" table="public.&quot;ConceptScheme&quot;">
+		<columns names="agencyID,Id,version" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="Annotations" index="3"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="Annotations_fk" index="1"/>
+		<object name="ConceptScheme_uq" index="2"/>
+	</customidxs>
+</table>
+
+<relationship name="conceptScheme_has_one_annotated" type="rel11"
+	 src-col-pattern="{sc}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;Annotations&quot;"
+	 dst-table="public.&quot;ConceptScheme&quot;"
+	 src-required="false" dst-required="false"/>
+
+<table name="Language">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="2778" y="797"/>
+	<column name="lang" not-null="true">
+		<type name="varchar" length="255"/>
+	</column>
+	<column name="name">
+		<type name="varchar" length="255"/>
+	</column>
+	<constraint name="language_pk" type="pk-constr" table="public.&quot;Language&quot;">
+		<columns names="lang" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="NameText">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="2680" y="460"/>
+	<column name="text">
+		<type name="text" length="0"/>
+	</column>
+
+	<customidxs object-type="column">
+		<object name="Name" index="2"/>
+		<object name="lang" index="0"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="Language_fk" index="0"/>
+		<object name="NameText_pk" index="1"/>
+		<object name="Name_fk" index="2"/>
+	</customidxs>
+</table>
+
+<relationship name="language_has_many_nameText" type="rel1n"
+	 src-col-pattern="{sc}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;Language&quot;"
+	 dst-table="public.&quot;NameText&quot;"
+	 src-required="true" dst-required="false">
+	<special-pk-cols indexes="0"/>
+</relationship>
+
+<relationship name="name_has_many_nameText" type="rel1n"
+	 src-col-pattern="{sc}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;Name&quot;"
+	 dst-table="public.&quot;NameText&quot;"
+	 src-required="true" dst-required="false">
+	<special-pk-cols indexes="0"/>
+</relationship>
+
+<table name="CodelistReference">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="930" y="319"/>
+	<column name="reference" not-null="true">
+		<type name="bigint" length="0"/>
+	</column>
+	<constraint name="codelistReference_pk" type="pk-constr" table="public.&quot;CodelistReference&quot;">
+		<columns names="reference" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="Id" index="2"/>
+		<object name="agencyID" index="1"/>
+		<object name="version" index="3"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="Codelist_fk" index="1"/>
+	</customidxs>
+</table>
+
+<table name="ConceptSchemeReference">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="990" y="476"/>
+	<column name="reference" not-null="true">
+		<type name="bigint" length="0"/>
+	</column>
+	<constraint name="conceptSchemeReference_pk" type="pk-constr" table="public.&quot;ConceptSchemeReference&quot;">
+		<columns names="reference" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="Concept">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1620" y="1120"/>
+
+	<customidxs object-type="column">
+		<object name="Annotations" index="5"/>
+		<object name="Id" index="1"/>
+		<object name="Name" index="4"/>
+		<object name="agencyID" index="0"/>
+		<object name="conceptID" index="3"/>
+		<object name="version" index="2"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="Annotations_fk" index="4"/>
+		<object name="ConceptScheme_fk" index="1"/>
+		<object name="Concept_pk" index="0"/>
+		<object name="Concept_uq" index="2"/>
+		<object name="Concept_uq1" index="5"/>
+		<object name="Name_fk" index="3"/>
+	</customidxs>
+</table>
+
+<relationship name="conceptScheme_has_many_concept" type="rel1n"
+	 src-col-pattern="{sc}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;ConceptScheme&quot;"
+	 dst-table="public.&quot;Concept&quot;"
+	 src-required="true" dst-required="false">
+	<column name="conceptID" not-null="true">
+		<type name="varchar" length="255"/>
+	</column>
+	<special-pk-cols indexes="0,1,2,"/>
+</relationship>
+
+<relationship name="concept_has_one_annotated" type="rel11"
+	 src-col-pattern="{sc}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;Annotations&quot;"
+	 dst-table="public.&quot;Concept&quot;"
+	 src-required="false" dst-required="false"/>
+
+<table name="AttributeRelationshipType">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="919" y="743"/>
+	<column name="attributeRelationshipType" not-null="true">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="empty">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="attachGroup">
+		<type name="text" length="0"/>
+	</column>
+	<column name="attachGroups">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="primaryMeasureReference">
+		<type name="text" length="0"/>
+	</column>
+	<constraint name="attributeRelationshipType_pk" type="pk-constr" table="public.&quot;AttributeRelationshipType&quot;">
+		<columns names="attributeRelationshipType" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="DataStructureComponent">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="44" y="49"/>
+	<column name="position">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="assignmentStatus">
+		<type name="text" length="0"/>
+	</column>
+
+	<customidxs object-type="column">
+		<object name="Annotations" index="6"/>
+		<object name="Id" index="1"/>
+		<object name="agencyID" index="7"/>
+		<object name="attributeRelationshipType" index="5"/>
+		<object name="componentId" index="8"/>
+		<object name="conceptIdentity" index="4"/>
+		<object name="version" index="2"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="DataStructureComponent_pk" index="1"/>
+		<object name="DataStructure_fk" index="0"/>
+	</customidxs>
+</table>
+
+<relationship name="dataStructure_has_many_dataStructureComponent" type="rel1n"
+	 src-col-pattern="{sc}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;DataStructure&quot;"
+	 dst-table="public.&quot;DataStructureComponent&quot;"
+	 src-required="true" dst-required="false">
+	<column name="componentId" not-null="true">
+		<type name="varchar" length="255"/>
+	</column>
+	<special-pk-cols indexes="0,1,2,"/>
+</relationship>
+
+<table name="ConceptReference" hide-ext-attribs="true">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1369" y="218"/>
+	<column name="reference" not-null="true" identity-type="ALWAYS">
+		<type name="bigint" length="0"/>
+	</column>
+	<constraint name="conceptReference_pk" type="pk-constr" table="public.&quot;ConceptReference&quot;">
+		<columns names="reference" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="Id" index="2"/>
+		<object name="agencyID" index="1"/>
+		<object name="conceptID" index="4"/>
+		<object name="version" index="3"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="ConceptReference_uq" index="2"/>
+		<object name="Concept_fk" index="1"/>
+	</customidxs>
+</table>
+
+<relationship name="conceptReference_has_one_concept" type="rel11"
+	 src-col-pattern="{sc}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;Concept&quot;"
+	 dst-table="public.&quot;ConceptReference&quot;"
+	 src-required="true" dst-required="false"/>
+
+<relationship name="dataStructureComponent_has_one_attributeRelationshipType" type="rel11"
+	 src-col-pattern="{sc}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;AttributeRelationshipType&quot;"
+	 dst-table="public.&quot;DataStructureComponent&quot;"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="dataStructureComponent_has_one_annotated" type="rel11"
+	 src-col-pattern="{sc}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;Annotations&quot;"
+	 dst-table="public.&quot;DataStructureComponent&quot;"
+	 src-required="false" dst-required="false"/>
+
+<table name="DimensionStructureComponent">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="53" y="1111"/>
+
+	<customidxs object-type="column">
+		<object name="enumeration" index="9"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="CodelistReference_fk" index="0"/>
+		<object name="DimensionStructureComponent_uq" index="1"/>
+	</customidxs>
+</table>
+
+<relationship name="DimensionComponent_inherits_dataStructureComponent" type="relgen"
+	 pk-pattern="{dt}_pk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;DimensionStructureComponent&quot;"
+	 dst-table="public.&quot;DataStructureComponent&quot;">
+	<special-pk-cols indexes="2,3,4,5"/>
+</relationship>
+
+<table name="MeasureStructureComponent">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="130" y="1387"/>
+
+	<customidxs object-type="column">
+		<object name="enumeration" index="9"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="ConceptSchemeReference_fk" index="0"/>
+		<object name="MeasureStructureComponent_uq" index="1"/>
+	</customidxs>
+</table>
+
+<relationship name="MeasureStructureComponent_inherits_dataStructureComponent" type="relgen"
+	 pk-pattern="{dt}_pk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;MeasureStructureComponent&quot;"
+	 dst-table="public.&quot;DataStructureComponent&quot;">
+	<special-pk-cols indexes="2,3,4,5"/>
+</relationship>
+
+<table name="AttributeStructureComponent">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="770" y="1390"/>
+
+	<customidxs object-type="column">
+		<object name="enumeration" index="9"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="AttributeStructureComponent_uq" index="1"/>
+		<object name="CodelistReference_fk" index="0"/>
+	</customidxs>
+</table>
+
+<relationship name="attributeStructureComponent_inherits_dataStructureComponent" type="relgen"
+	 pk-pattern="{dt}_pk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;AttributeStructureComponent&quot;"
+	 dst-table="public.&quot;DataStructureComponent&quot;">
+	<special-pk-cols indexes="2,3,4,5"/>
+</relationship>
+
+<table name="Annotation">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1680" y="1420"/>
+	<column name="title">
+		<type name="varchar" length="255"/>
+	</column>
+	<column name="url">
+		<type name="varchar" length="300"/>
+	</column>
+	<column name="type">
+		<type name="varchar" length="255"/>
+	</column>
+	<column name="annotationId">
+		<type name="varchar" length="255"/>
+	</column>
+
+	<customidxs object-type="column">
+		<object name="Annotations" index="0"/>
+		<object name="index" index="1"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="Annotation_pk" index="1"/>
+		<object name="Annotations_fk" index="0"/>
+	</customidxs>
+</table>
+
+<relationship name="Annotated_has_many_Annotation" type="rel1n"
+	 src-col-pattern="{sc}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;Annotations&quot;"
+	 dst-table="public.&quot;Annotation&quot;"
+	 src-required="false" dst-required="false">
+	<column name="index" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<special-pk-cols indexes="0,"/>
+</relationship>
+
+<table name="AnnotationText">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="2180" y="620"/>
+	<column name="lang">
+		<type name="varchar" length="255"/>
+	</column>
+	<column name="text">
+		<type name="text" length="0"/>
+	</column>
+
+	<customidxs object-type="column">
+		<object name="Annotations" index="3"/>
+		<object name="textIndex" index="2"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="AnnotationText_pk" index="0"/>
+		<object name="Annotation_fk" index="1"/>
+	</customidxs>
+</table>
+
+<relationship name="Annotation_has_many_AnnotationText" type="rel1n"
+	 src-col-pattern="{sc}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;Annotation&quot;"
+	 dst-table="public.&quot;AnnotationText&quot;"
+	 src-required="true" dst-required="false">
+	<column name="textIndex" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<special-pk-cols indexes="0,1,"/>
+</relationship>
+
+<relationship name="Dataflow_has_many_Component" type="rel1n"
+	 src-col-pattern="{sc}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;Dataflow&quot;"
+	 dst-table="public.&quot;Component&quot;"
+	 src-required="true" dst-required="false">
+	<column name="position" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="columnId" not-null="true">
+		<type name="varchar" length="255"/>
+	</column>
+	<special-pk-cols indexes="0,1,2,"/>
+</relationship>
+
+<table name="Value">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="3020" y="40"/>
+	<column name="value">
+		<type name="varchar" length="255"/>
+	</column>
+
+	<customidxs object-type="column">
+		<object name="Id" index="1"/>
+		<object name="agencyID" index="3"/>
+		<object name="columnId" index="4"/>
+		<object name="version" index="2"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="Observation_fk" index="1"/>
+		<object name="Value_pk" index="0"/>
+	</customidxs>
+</table>
+
+<relationship name="Observation_has_many_Value" type="rel1n"
+	 src-col-pattern="{sc}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;Observation&quot;"
+	 dst-table="public.&quot;Value&quot;"
+	 src-required="true" dst-required="false">
+	<column name="columnId" not-null="true">
+		<type name="varchar" length="255"/>
+	</column>
+	<special-pk-cols indexes="0,1,2,"/>
+</relationship>
+
+<relationship name="Component_has_many_ColumnValue" type="rel1n"
+	 src-col-pattern="{sc}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;Component&quot;"
+	 dst-table="public.&quot;ComponentValue&quot;"
+	 src-required="true" dst-required="false">
+	<column name="value" not-null="true">
+		<type name="varchar" length="255"/>
+	</column>
+	<special-pk-cols indexes="0,1,2,"/>
+</relationship>
+
+<relationship name="Concept_has_one_Name" type="rel11"
+	 src-col-pattern="{sc}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;Name&quot;"
+	 dst-table="public.&quot;Concept&quot;"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="DataStructure_has_one_Name" type="rel11"
+	 src-col-pattern="{sc}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;Name&quot;"
+	 dst-table="public.&quot;DataStructure&quot;"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="DataStructure_has_one_Annotations" type="rel11"
+	 src-col-pattern="{sc}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;Annotations&quot;"
+	 dst-table="public.&quot;DataStructure&quot;"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="Codelist_has_many_CodelistReference" type="rel1n"
+	 src-col-pattern="{sc}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;Codelist&quot;"
+	 dst-table="public.&quot;CodelistReference&quot;"
+	 src-required="true" dst-required="false"/>
+
+<relationship name="ConceptScheme_has_one_Name" type="rel11"
+	 src-col-pattern="{sc}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;Name&quot;"
+	 dst-table="public.&quot;ConceptScheme&quot;"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="ConceptScheme_has_many_ConceptSchemeReference" type="rel1n"
+	 src-col-pattern="{sc}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;ConceptScheme&quot;"
+	 dst-table="public.&quot;ConceptSchemeReference&quot;"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="Dataflow_has_one_Annotations" type="rel11"
+	 src-col-pattern="{sc}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;Annotations&quot;"
+	 dst-table="public.&quot;Dataflow&quot;"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="DataStructureComponent_has_one_ConceptReference" type="rel11"
+	 src-col-pattern="conceptIdentity"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;ConceptReference&quot;"
+	 dst-table="public.&quot;DataStructureComponent&quot;"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="DimensionStructureComponent_has_one_CodelistReference" type="rel11"
+	 src-col-pattern="enumeration"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;CodelistReference&quot;"
+	 dst-table="public.&quot;DimensionStructureComponent&quot;"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="AttributeStructureComponent_has_one_CodelistReference" type="rel11"
+	 src-col-pattern="enumeration"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;CodelistReference&quot;"
+	 dst-table="public.&quot;AttributeStructureComponent&quot;"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="MeasureStructureComponent_has_one_ConceptSchemeReference" type="rel11"
+	 src-col-pattern="enumeration"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;ConceptSchemeReference&quot;"
+	 dst-table="public.&quot;MeasureStructureComponent&quot;"
+	 src-required="false" dst-required="false"/>
+
+<table name="TimeStructureComponent">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="256" y="1688"/>
+</table>
+
+<relationship name="TimeStructureComponent_inherits_DataStructureComponent" type="relgen"
+	 pk-pattern="{dt}_pk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;TimeStructureComponent&quot;"
+	 dst-table="public.&quot;DataStructureComponent&quot;">
+	<special-pk-cols indexes="2,3,4,5"/>
+</relationship>
+
+<relationship name="TimeStructureComponent_has_one_CodelistReference" type="rel11"
+	 src-col-pattern="enumeration"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;CodelistReference&quot;"
+	 dst-table="public.&quot;TimeStructureComponent&quot;"
+	 src-required="false" dst-required="false"/>
+
+<table name="PrimaryMeasureStructureComponent">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="758" y="1716"/>
+</table>
+
+<relationship name="PrimaryMeasureStructureComponent_inherits_DataStructureComponen" type="relgen"
+	 pk-pattern="{dt}_pk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;PrimaryMeasureStructureComponent&quot;"
+	 dst-table="public.&quot;DataStructureComponent&quot;">
+	<special-pk-cols indexes="2,3,4,5"/>
+</relationship>
+
+</dbmodel>

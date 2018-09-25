@@ -17,7 +17,7 @@ import sdmx.commonreferences.types.ItemSchemePackageTypeCodelistType;
 import sdmx.commonreferences.types.ItemTypeCodelistType;
 import sdmx.gateway.entities.Code;
 import sdmx.gateway.entities.Concept;
-import sdmx.gateway.entities.Conceptscheme;
+import sdmx.gateway.entities.ConceptScheme;
 import sdmx.structure.base.ItemType;
 import sdmx.structure.codelist.CodeType;
 import sdmx.structure.concept.ConceptType;
@@ -39,13 +39,13 @@ public class ConceptUtil {
         }catch(Exception e) { 
             return null; }
     }
-    public static Concept createDatabaseConcept(EntityManager em, Conceptscheme cs, ConceptType c) {
+    public static Concept createDatabaseConcept(EntityManager em, ConceptScheme cs, ConceptType c) {
         sdmx.gateway.entities.Concept ct = new sdmx.gateway.entities.Concept();
         sdmx.gateway.entities.ConceptPK pk = new sdmx.gateway.entities.ConceptPK();
-        pk.setConceptSchemeAgencyID(cs.getConceptschemePK().getAgencyID());
-        pk.setConceptSchemeID(cs.getConceptschemePK().getId());
-        pk.setConceptSchemeVersion(cs.getConceptschemePK().getVersion());
-        pk.setId(c.getId().toString());
+        pk.setAgencyID(cs.getConceptSchemePK().getAgencyID());
+        pk.setId(cs.getConceptSchemePK().getId());
+        pk.setVersion(cs.getConceptSchemePK().getVersion());
+        pk.setConceptID(c.getId().toString());
         ct.setAnnotations(AnnotationsUtil.toDatabaseAnnotations(c.getAnnotations()));
         ct.setConceptPK(pk);
         List<sdmx.gateway.entities.Concept> concepts = new ArrayList<>();

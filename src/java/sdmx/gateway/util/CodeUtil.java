@@ -43,7 +43,7 @@ public class CodeUtil {
     public static sdmx.gateway.entities.Code createDatabaseCode(EntityManager em, sdmx.gateway.entities.Codelist cl, CodeType c) {
         sdmx.gateway.entities.Code code = new sdmx.gateway.entities.Code();
         sdmx.gateway.entities.CodePK pk = new sdmx.gateway.entities.CodePK();
-        pk.setAgencyId(cl.getCodelistPK().getAgencyId());
+        pk.setAgencyID(cl.getCodelistPK().getAgencyID());
         pk.setId(cl.getCodelistPK().getId());
         pk.setVersion(cl.getCodelistPK().getVersion());
         pk.setCodeId(c.getId().toString());

@@ -7,10 +7,9 @@ package sdmx.gateway.util;
 
 import java.util.ArrayList;
 import java.util.List;
-import sdmx.common.AnnotationType;
 import sdmx.common.Annotations;
+import sdmx.common.AnnotationType;
 import sdmx.common.TextType;
-import sdmx.gateway.entities.Annotated;
 import sdmx.gateway.entities.Annotation;
 import sdmx.gateway.entities.AnnotationText;
 
@@ -19,9 +18,9 @@ import sdmx.gateway.entities.AnnotationText;
  * @author James
  */
 public class AnnotationsUtil {
-      public static sdmx.gateway.entities.Annotated toDatabaseAnnotations(Annotations annots) {
+      public static sdmx.gateway.entities.Annotations toDatabaseAnnotations(Annotations annots) {
           if( annots==null ) return null;
-          Annotated at = new Annotated();
+          sdmx.gateway.entities.Annotations at = new sdmx.gateway.entities.Annotations();
           List<sdmx.gateway.entities.Annotation> dbAnnots = new ArrayList<sdmx.gateway.entities.Annotation>(annots.size());
           for(int i=0;i<annots.size();i++) {
               dbAnnots.add(toDatabaseAnnotation(annots.getAnnotation(i)));
@@ -50,7 +49,7 @@ public class AnnotationsUtil {
           at.setLang(tt.getLang());
           return at;
       }
-      public static Annotations toSDMXAnnotations(sdmx.gateway.entities.Annotated annot) {
+      public static Annotations toSDMXAnnotations(sdmx.gateway.entities.Annotations annot) {
           if( annot == null ) return null;
           Annotations annotations = new Annotations();
           List<sdmx.gateway.entities.Annotation> annots = annot.getAnnotationList();
