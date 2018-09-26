@@ -50,15 +50,15 @@ public class DataStructureUtil {
             comps.add(DimensionUtil.toDatabaseDimension(em, ds, ds.getDataStructureComponents().getDimensionList().getDimensions().get(i), position++));
         }
         if (ds.getDataStructureComponents().getDimensionList().getTimeDimension() != null) {
-            comps.add(DimensionUtil.toDatabaseDimension(em, ds, ds.getDataStructureComponents().getDimensionList().getTimeDimension(), position++));
+            comps.add(DimensionUtil.toDatabaseTimeDimension(em, ds, ds.getDataStructureComponents().getDimensionList().getTimeDimension(), position++));
         }
         if (ds.getDataStructureComponents().getDimensionList().getMeasureDimension() != null) {
-            comps.add(DimensionUtil.toDatabaseDimension(em, ds, ds.getDataStructureComponents().getDimensionList().getMeasureDimension(), position++));
+            comps.add(DimensionUtil.toDatabaseMeasureDimension(em, ds, ds.getDataStructureComponents().getDimensionList().getMeasureDimension(), position++));
         }
         for (int i = 0; i < ds.getDataStructureComponents().getAttributeList().size(); i++) {
-            comps.add(DimensionUtil.toDatabaseDimension(em, ds, ds.getDataStructureComponents().getAttributeList().getAttribute(i), position++));
+            comps.add(DimensionUtil.toDatabaseAttributeDimension(em, ds, ds.getDataStructureComponents().getAttributeList().getAttribute(i), position++));
         }
-        comps.add(DimensionUtil.toDatabaseDimension(em, ds, ds.getDataStructureComponents().getMeasureList().getPrimaryMeasure(), position++));
+        comps.add(DimensionUtil.toDatabasePrimaryMeasureDimension(em, ds, ds.getDataStructureComponents().getMeasureList().getPrimaryMeasure(), position++));
         ds2.setDataStructureComponentList(comps);
         ds2.setDataStructurePK(pk);
         return ds2;

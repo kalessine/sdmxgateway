@@ -8,6 +8,8 @@ package sdmx.gateway.util;
 import java.math.BigInteger;
 import javax.persistence.EntityManager;
 import sdmx.gateway.entities.MeasureStructureComponent;
+import sdmx.gateway.entities.DataStructureComponent;
+import sdmx.gateway.entities.DataStructureComponentPK;
 import sdmx.structure.base.Component;
 import sdmx.structure.base.RepresentationType;
 import sdmx.structure.datastructure.AttributeType;
@@ -30,7 +32,7 @@ public class DimensionUtil {
     public static final int TYPE_PRIMARYMEASURE = 3;
     public static final int TYPE_ATTRIBUTE = 4;
 
-    public static sdmx.gateway.entities.MeasureStructureComponent toDatabaseMeasureDimension(EntityManager em, DataStructureType struct, MeasureDimension c, int position) {
+    public static sdmx.gateway.entities.DataStructureComponent toDatabaseMeasureDimension(EntityManager em, DataStructureType struct, MeasureDimensionType c, int position) {
             MeasureDimensionType dim = (MeasureDimensionType) c;
             sdmx.gateway.entities.MeasureStructureComponent dsc = new sdmx.gateway.entities.MeasureStructureComponent();
             sdmx.gateway.entities.MeasureStructureComponentPK pk = new sdmx.gateway.entities.MeasureStructureComponentPK();
@@ -47,9 +49,15 @@ public class DimensionUtil {
             if (rep != null && rep.getEnumeration() != null) {
                 dsc.setEnumeration(ConceptSchemeReferenceUtil.toDatabaseConceptSchemeReference(em, rep.getEnumeration().asConceptSchemeReference()));
             }
-            return dsc;
+            em.persist(dsc);
+            DataStructureComponentPK pk2 = new DataStructureComponentPK();
+            pk2.setAgencyID(struct.getAgencyID().toString());
+            pk2.setId(struct.getId().toString());
+            pk2.setVersion(struct.getVersion().toString());
+            pk2.setComponentId(dim.getId().toString());
+            return (DataStructureComponent)em.find(DataStructureComponent.class, pk2);
     }
-    public static sdmx.gateway.entities.TimeStructureComponent toDatabaseMeasureDimension(EntityManager em, DataStructureType struct, TimeDimension dim, int position) {
+    public static sdmx.gateway.entities.DataStructureComponent toDatabasetTimeDimension(EntityManager em, DataStructureType struct, TimeDimensionType dim, int position) {
             sdmx.gateway.entities.TimeStructureComponent dsc = new sdmx.gateway.entities.TimeStructureComponent();
             sdmx.gateway.entities.TimeStructureComponentPK pk = new sdmx.gateway.entities.TimeStructureComponentPK();
             pk.setAgencyID(struct.getAgencyID().toString());
@@ -65,9 +73,15 @@ public class DimensionUtil {
             if (rep != null && rep.getEnumeration() != null) {
                 dsc.setEnumeration(CodelistReferenceUtil.toDatabaseCodelistReference(em, rep.getEnumeration().asCodelistReference()));
             }
-            return dsc;
+            em.persist(dsc);
+            DataStructureComponentPK pk2 = new DataStructureComponentPK();
+            pk2.setAgencyID(struct.getAgencyID().toString());
+            pk2.setId(struct.getId().toString());
+            pk2.setVersion(struct.getVersion().toString());
+            pk2.setComponentId(dim.getId().toString());
+            return (DataStructureComponent)em.find(DataStructureComponent.class, pk2);
     }
-    public static sdmx.gateway.entities.PrimaryMeasureStructureComponent toDatabaseMeasureDimension(EntityManager em, DataStructureType struct, PrimaryMeasure dim, int position) {
+    public static sdmx.gateway.entities.DataStructureComponent toDatabasePrimaryMeasure(EntityManager em, DataStructureType struct, PrimaryMeasure dim, int position) {
             sdmx.gateway.entities.PrimaryMeasureStructureComponent dsc = new sdmx.gateway.entities.PrimaryMeasureStructureComponent();
             sdmx.gateway.entities.PrimaryMeasureStructureComponentPK pk = new sdmx.gateway.entities.PrimaryMeasureStructureComponentPK();
             pk.setAgencyID(struct.getAgencyID().toString());
@@ -82,9 +96,15 @@ public class DimensionUtil {
             }
             if (rep != null && rep.getEnumeration() != null) {
             }
-            return dsc;
+            em.persist(dsc);
+            DataStructureComponentPK pk2 = new DataStructureComponentPK();
+            pk2.setAgencyID(struct.getAgencyID().toString());
+            pk2.setId(struct.getId().toString());
+            pk2.setVersion(struct.getVersion().toString());
+            pk2.setComponentId(dim.getId().toString());
+            return (DataStructureComponent)em.find(DataStructureComponent.class, pk2);
     }
-    public static sdmx.gateway.entities.DimensionStructureComponent toDatabaseDimension(EntityManager em, DataStructureType struct, DimensionType dim, int position) {
+    public static DataStructureComponent toDatabaseDimension(EntityManager em, DataStructureType struct, DimensionType dim, int position) {
             sdmx.gateway.entities.DimensionStructureComponent dsc = new sdmx.gateway.entities.DimensionStructureComponent();
             sdmx.gateway.entities.DimensionStructureComponentPK pk = new sdmx.gateway.entities.DimensionStructureComponentPK();
             pk.setAgencyID(struct.getAgencyID().toString());
@@ -99,9 +119,15 @@ public class DimensionUtil {
             }
             if (rep != null && rep.getEnumeration() != null) {
             }
-            return dsc;
+            em.persist(dsc);
+            DataStructureComponentPK pk2 = new DataStructureComponentPK();
+            pk2.setAgencyID(struct.getAgencyID().toString());
+            pk2.setId(struct.getId().toString());
+            pk2.setVersion(struct.getVersion().toString());
+            pk2.setComponentId(dim.getId().toString());
+            return (DataStructureComponent)em.find(DataStructureComponent.class, pk2);
     }
-    public static sdmx.gateway.entities.AttributeStructureComponent toDatabaseDimension(EntityManager em, DataStructureType struct, AttributeType dim, int position) {
+    public static sdmx.gateway.entities.DataStructureComponent toDatabaseAttribute(EntityManager em, DataStructureType struct, AttributeType dim, int position) {
             sdmx.gateway.entities.AttributeStructureComponent dsc = new sdmx.gateway.entities.AttributeStructureComponent();
             sdmx.gateway.entities.AttributeStructureComponentPK pk = new sdmx.gateway.entities.AttributeStructureComponentPK();
             pk.setAgencyID(struct.getAgencyID().toString());
@@ -116,7 +142,13 @@ public class DimensionUtil {
             }
             if (rep != null && rep.getEnumeration() != null) {
             }
-            return dsc;
+            em.persist(dsc);
+            DataStructureComponentPK pk2 = new DataStructureComponentPK();
+            pk2.setAgencyID(struct.getAgencyID().toString());
+            pk2.setId(struct.getId().toString());
+            pk2.setVersion(struct.getVersion().toString());
+            pk2.setComponentId(dim.getId().toString());
+            return (DataStructureComponent)em.find(DataStructureComponent.class, pk2);
     }
     
     public static Component toSDMXDimension(sdmx.gateway.entities.DataStructureComponent dc) {
