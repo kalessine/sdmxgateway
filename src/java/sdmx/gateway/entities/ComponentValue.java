@@ -6,23 +6,19 @@
 package sdmx.gateway.entities;
 
 import java.io.Serializable;
-import javax.persistence.Basic;
-import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Owner
+ * @author James
  */
 @Entity
 @Table(name = "ComponentValue", catalog = "repository", schema = "public")
@@ -32,22 +28,19 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "ComponentValue.findByAgencyID", query = "SELECT c FROM ComponentValue c WHERE c.componentValuePK.agencyID = :agencyID")
     , @NamedQuery(name = "ComponentValue.findById", query = "SELECT c FROM ComponentValue c WHERE c.componentValuePK.id = :id")
     , @NamedQuery(name = "ComponentValue.findByVersion", query = "SELECT c FROM ComponentValue c WHERE c.componentValuePK.version = :version")
-    , @NamedQuery(name = "ComponentValue.findByValue", query = "SELECT c FROM ComponentValue c WHERE c.value = :value")})
+    , @NamedQuery(name = "ComponentValue.findByValue", query = "SELECT c FROM ComponentValue c WHERE c.componentValuePK.value = :value")
+    , @NamedQuery(name = "ComponentValue.findByColumnId", query = "SELECT c FROM ComponentValue c WHERE c.componentValuePK.columnId = :columnId")})
 public class ComponentValue implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected ComponentValuePK componentValuePK;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 255)
-    @Column(name = "value", nullable = false, length = 255)
-    private String value;
     @JoinColumns({
         @JoinColumn(name = "agencyID", referencedColumnName = "agencyID", nullable = false, insertable = false, updatable = false)
         , @JoinColumn(name = "Id", referencedColumnName = "Id", nullable = false, insertable = false, updatable = false)
-        , @JoinColumn(name = "version", referencedColumnName = "version", nullable = false, insertable = false, updatable = false)})
-    @OneToOne(optional = false)
+        , @JoinColumn(name = "version", referencedColumnName = "version", nullable = false, insertable = false, updatable = false)
+        , @JoinColumn(name = "columnId", referencedColumnName = "columnId", nullable = false, insertable = false, updatable = false)})
+    @ManyToOne(optional = false)
     private Component component;
 
     public ComponentValue() {
@@ -57,13 +50,8 @@ public class ComponentValue implements Serializable {
         this.componentValuePK = componentValuePK;
     }
 
-    public ComponentValue(ComponentValuePK componentValuePK, String value) {
-        this.componentValuePK = componentValuePK;
-        this.value = value;
-    }
-
-    public ComponentValue(String agencyID, String id, String version) {
-        this.componentValuePK = new ComponentValuePK(agencyID, id, version);
+    public ComponentValue(String agencyID, String id, String version, String value, String columnId) {
+        this.componentValuePK = new ComponentValuePK(agencyID, id, version, value, columnId);
     }
 
     public ComponentValuePK getComponentValuePK() {
@@ -72,14 +60,6 @@ public class ComponentValue implements Serializable {
 
     public void setComponentValuePK(ComponentValuePK componentValuePK) {
         this.componentValuePK = componentValuePK;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
     }
 
     public Component getComponent() {

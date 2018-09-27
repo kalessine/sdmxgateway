@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Owner
+ * @author James
  */
 @Entity
 @Table(name = "Codelist", catalog = "repository", schema = "public", uniqueConstraints = {
@@ -45,8 +45,8 @@ public class Codelist implements Serializable {
     @JoinColumn(name = "Name", referencedColumnName = "Name")
     @OneToOne
     private Name name;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codelist")
-    private List<Code> codeList;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "codelist")
+    private Code code;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "codelist")
     private List<CodelistReference> codelistReferenceList;
 
@@ -85,13 +85,12 @@ public class Codelist implements Serializable {
         this.name = name;
     }
 
-    @XmlTransient
-    public List<Code> getCodeList() {
-        return codeList;
+    public Code getCode() {
+        return code;
     }
 
-    public void setCodeList(List<Code> codeList) {
-        this.codeList = codeList;
+    public void setCode(Code code) {
+        this.code = code;
     }
 
     @XmlTransient

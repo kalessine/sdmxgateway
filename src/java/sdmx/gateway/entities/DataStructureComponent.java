@@ -6,23 +6,24 @@
 package sdmx.gateway.entities;
 
 import java.io.Serializable;
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Owner
+ * @author James
  */
 @Entity
 @Table(name = "DataStructureComponent", catalog = "repository", schema = "public", uniqueConstraints = {
@@ -37,7 +38,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "DataStructureComponent.findByAgencyID", query = "SELECT d FROM DataStructureComponent d WHERE d.dataStructureComponentPK.agencyID = :agencyID")
     , @NamedQuery(name = "DataStructureComponent.findById", query = "SELECT d FROM DataStructureComponent d WHERE d.dataStructureComponentPK.id = :id")
     , @NamedQuery(name = "DataStructureComponent.findByVersion", query = "SELECT d FROM DataStructureComponent d WHERE d.dataStructureComponentPK.version = :version")
-    , @NamedQuery(name = "DataStructureComponent.findByComponentId", query = "SELECT d FROM DataStructureComponent d WHERE d.dataStructureComponentPK.componentId = :componentId")
+    , @NamedQuery(name = "DataStructureComponent.findByComponentId", query = "SELECT d FROM DataStructureComponent d WHERE d.componentId = :componentId")
     , @NamedQuery(name = "DataStructureComponent.findByPosition", query = "SELECT d FROM DataStructureComponent d WHERE d.position = :position")
     , @NamedQuery(name = "DataStructureComponent.findByAssignmentStatus", query = "SELECT d FROM DataStructureComponent d WHERE d.assignmentStatus = :assignmentStatus")
     , @NamedQuery(name = "DataStructureComponent.findByType", query = "SELECT d FROM DataStructureComponent d WHERE d.type = :type")})
@@ -46,6 +47,11 @@ public class DataStructureComponent implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected DataStructureComponentPK dataStructureComponentPK;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 255)
+    @Column(name = "componentId", nullable = false, length = 255)
+    private String componentId;
     @Column(name = "position")
     private Short position;
     @Size(max = 2147483647)
@@ -72,7 +78,7 @@ public class DataStructureComponent implements Serializable {
         @JoinColumn(name = "agencyID", referencedColumnName = "agencyID", nullable = false, insertable = false, updatable = false)
         , @JoinColumn(name = "Id", referencedColumnName = "Id", nullable = false, insertable = false, updatable = false)
         , @JoinColumn(name = "version", referencedColumnName = "version", nullable = false, insertable = false, updatable = false)})
-    @ManyToOne(optional = false)
+    @OneToOne(optional = false)
     private DataStructure dataStructure;
 
     public DataStructureComponent() {
@@ -82,8 +88,13 @@ public class DataStructureComponent implements Serializable {
         this.dataStructureComponentPK = dataStructureComponentPK;
     }
 
-    public DataStructureComponent(String agencyID, String id, String version, String componentId) {
-        this.dataStructureComponentPK = new DataStructureComponentPK(agencyID, id, version, componentId);
+    public DataStructureComponent(DataStructureComponentPK dataStructureComponentPK, String componentId) {
+        this.dataStructureComponentPK = dataStructureComponentPK;
+        this.componentId = componentId;
+    }
+
+    public DataStructureComponent(String agencyID, String id, String version) {
+        this.dataStructureComponentPK = new DataStructureComponentPK(agencyID, id, version);
     }
 
     public DataStructureComponentPK getDataStructureComponentPK() {
@@ -92,6 +103,14 @@ public class DataStructureComponent implements Serializable {
 
     public void setDataStructureComponentPK(DataStructureComponentPK dataStructureComponentPK) {
         this.dataStructureComponentPK = dataStructureComponentPK;
+    }
+
+    public String getComponentId() {
+        return componentId;
+    }
+
+    public void setComponentId(String componentId) {
+        this.componentId = componentId;
     }
 
     public Short getPosition() {

@@ -14,7 +14,7 @@ import javax.validation.constraints.Size;
 
 /**
  *
- * @author Owner
+ * @author James
  */
 @Embeddable
 public class ComponentValuePK implements Serializable {
@@ -34,14 +34,26 @@ public class ComponentValuePK implements Serializable {
     @Size(min = 1, max = 255)
     @Column(name = "version", nullable = false, length = 255)
     private String version;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 255)
+    @Column(name = "value", nullable = false, length = 255)
+    private String value;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 255)
+    @Column(name = "columnId", nullable = false, length = 255)
+    private String columnId;
 
     public ComponentValuePK() {
     }
 
-    public ComponentValuePK(String agencyID, String id, String version) {
+    public ComponentValuePK(String agencyID, String id, String version, String value, String columnId) {
         this.agencyID = agencyID;
         this.id = id;
         this.version = version;
+        this.value = value;
+        this.columnId = columnId;
     }
 
     public String getAgencyID() {
@@ -68,12 +80,30 @@ public class ComponentValuePK implements Serializable {
         this.version = version;
     }
 
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    public String getColumnId() {
+        return columnId;
+    }
+
+    public void setColumnId(String columnId) {
+        this.columnId = columnId;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
         hash += (agencyID != null ? agencyID.hashCode() : 0);
         hash += (id != null ? id.hashCode() : 0);
         hash += (version != null ? version.hashCode() : 0);
+        hash += (value != null ? value.hashCode() : 0);
+        hash += (columnId != null ? columnId.hashCode() : 0);
         return hash;
     }
 
@@ -93,12 +123,18 @@ public class ComponentValuePK implements Serializable {
         if ((this.version == null && other.version != null) || (this.version != null && !this.version.equals(other.version))) {
             return false;
         }
+        if ((this.value == null && other.value != null) || (this.value != null && !this.value.equals(other.value))) {
+            return false;
+        }
+        if ((this.columnId == null && other.columnId != null) || (this.columnId != null && !this.columnId.equals(other.columnId))) {
+            return false;
+        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "sdmx.gateway.entities.ComponentValuePK[ agencyID=" + agencyID + ", id=" + id + ", version=" + version + " ]";
+        return "sdmx.gateway.entities.ComponentValuePK[ agencyID=" + agencyID + ", id=" + id + ", version=" + version + ", value=" + value + ", columnId=" + columnId + " ]";
     }
     
 }

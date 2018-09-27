@@ -13,7 +13,7 @@ import javax.validation.constraints.NotNull;
 
 /**
  *
- * @author Owner
+ * @author James
  */
 @Embeddable
 public class AnnotationTextPK implements Serializable {

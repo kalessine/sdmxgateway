@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Owner
+ * @author James
  */
 @Entity
 @Table(name = "AttributeRelationshipType", catalog = "repository", schema = "public")

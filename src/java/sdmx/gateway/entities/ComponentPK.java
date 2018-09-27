@@ -14,7 +14,7 @@ import javax.validation.constraints.Size;
 
 /**
  *
- * @author Owner
+ * @author James
  */
 @Embeddable
 public class ComponentPK implements Serializable {
@@ -34,14 +34,20 @@ public class ComponentPK implements Serializable {
     @Size(min = 1, max = 255)
     @Column(name = "version", nullable = false, length = 255)
     private String version;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 255)
+    @Column(name = "columnId", nullable = false, length = 255)
+    private String columnId;
 
     public ComponentPK() {
     }
 
-    public ComponentPK(String agencyID, String id, String version) {
+    public ComponentPK(String agencyID, String id, String version, String columnId) {
         this.agencyID = agencyID;
         this.id = id;
         this.version = version;
+        this.columnId = columnId;
     }
 
     public String getAgencyID() {
@@ -68,12 +74,21 @@ public class ComponentPK implements Serializable {
         this.version = version;
     }
 
+    public String getColumnId() {
+        return columnId;
+    }
+
+    public void setColumnId(String columnId) {
+        this.columnId = columnId;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
         hash += (agencyID != null ? agencyID.hashCode() : 0);
         hash += (id != null ? id.hashCode() : 0);
         hash += (version != null ? version.hashCode() : 0);
+        hash += (columnId != null ? columnId.hashCode() : 0);
         return hash;
     }
 
@@ -93,12 +108,15 @@ public class ComponentPK implements Serializable {
         if ((this.version == null && other.version != null) || (this.version != null && !this.version.equals(other.version))) {
             return false;
         }
+        if ((this.columnId == null && other.columnId != null) || (this.columnId != null && !this.columnId.equals(other.columnId))) {
+            return false;
+        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "sdmx.gateway.entities.ComponentPK[ agencyID=" + agencyID + ", id=" + id + ", version=" + version + " ]";
+        return "sdmx.gateway.entities.ComponentPK[ agencyID=" + agencyID + ", id=" + id + ", version=" + version + ", columnId=" + columnId + " ]";
     }
     
 }

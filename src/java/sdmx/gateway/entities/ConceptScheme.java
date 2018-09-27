@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Owner
+ * @author James
  */
 @Entity
 @Table(name = "ConceptScheme", catalog = "repository", schema = "public", uniqueConstraints = {
@@ -39,16 +39,16 @@ public class ConceptScheme implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected ConceptSchemePK conceptSchemePK;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "conceptScheme")
+    private List<Concept> conceptList;
+    @OneToMany(mappedBy = "conceptScheme")
+    private List<ConceptSchemeReference> conceptSchemeReferenceList;
     @JoinColumn(name = "Annotations", referencedColumnName = "Annotations")
     @OneToOne
     private Annotations annotations;
     @JoinColumn(name = "Name", referencedColumnName = "Name")
     @OneToOne
     private Name name;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "conceptScheme")
-    private List<Concept> conceptList;
-    @OneToMany(mappedBy = "conceptScheme")
-    private List<ConceptSchemeReference> conceptSchemeReferenceList;
 
     public ConceptScheme() {
     }
@@ -69,22 +69,6 @@ public class ConceptScheme implements Serializable {
         this.conceptSchemePK = conceptSchemePK;
     }
 
-    public Annotations getAnnotations() {
-        return annotations;
-    }
-
-    public void setAnnotations(Annotations annotations) {
-        this.annotations = annotations;
-    }
-
-    public Name getName() {
-        return name;
-    }
-
-    public void setName(Name name) {
-        this.name = name;
-    }
-
     @XmlTransient
     public List<Concept> getConceptList() {
         return conceptList;
@@ -101,6 +85,22 @@ public class ConceptScheme implements Serializable {
 
     public void setConceptSchemeReferenceList(List<ConceptSchemeReference> conceptSchemeReferenceList) {
         this.conceptSchemeReferenceList = conceptSchemeReferenceList;
+    }
+
+    public Annotations getAnnotations() {
+        return annotations;
+    }
+
+    public void setAnnotations(Annotations annotations) {
+        this.annotations = annotations;
+    }
+
+    public Name getName() {
+        return name;
+    }
+
+    public void setName(Name name) {
+        this.name = name;
     }
 
     @Override

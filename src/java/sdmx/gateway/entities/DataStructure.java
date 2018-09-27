@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Owner
+ * @author James
  */
 @Entity
 @Table(name = "DataStructure", catalog = "repository", schema = "public", uniqueConstraints = {
@@ -39,16 +39,16 @@ public class DataStructure implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected DataStructurePK dataStructurePK;
-    @OneToMany(mappedBy = "dataStructure")
-    private List<DataStructureReference> dataStructureReferenceList;
     @JoinColumn(name = "Annotations", referencedColumnName = "Annotations")
     @OneToOne
     private Annotations annotations;
     @JoinColumn(name = "Name", referencedColumnName = "Name")
     @OneToOne
     private Name name;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "dataStructure")
-    private List<DataStructureComponent> dataStructureComponentList;
+    @OneToMany(mappedBy = "dataStructure")
+    private List<DataStructureReference> dataStructureReferenceList;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "dataStructure")
+    private DataStructureComponent dataStructureComponent;
 
     public DataStructure() {
     }
@@ -69,15 +69,6 @@ public class DataStructure implements Serializable {
         this.dataStructurePK = dataStructurePK;
     }
 
-    @XmlTransient
-    public List<DataStructureReference> getDataStructureReferenceList() {
-        return dataStructureReferenceList;
-    }
-
-    public void setDataStructureReferenceList(List<DataStructureReference> dataStructureReferenceList) {
-        this.dataStructureReferenceList = dataStructureReferenceList;
-    }
-
     public Annotations getAnnotations() {
         return annotations;
     }
@@ -95,12 +86,20 @@ public class DataStructure implements Serializable {
     }
 
     @XmlTransient
-    public List<DataStructureComponent> getDataStructureComponentList() {
-        return dataStructureComponentList;
+    public List<DataStructureReference> getDataStructureReferenceList() {
+        return dataStructureReferenceList;
     }
 
-    public void setDataStructureComponentList(List<DataStructureComponent> dataStructureComponentList) {
-        this.dataStructureComponentList = dataStructureComponentList;
+    public void setDataStructureReferenceList(List<DataStructureReference> dataStructureReferenceList) {
+        this.dataStructureReferenceList = dataStructureReferenceList;
+    }
+
+    public DataStructureComponent getDataStructureComponent() {
+        return dataStructureComponent;
+    }
+
+    public void setDataStructureComponent(DataStructureComponent dataStructureComponent) {
+        this.dataStructureComponent = dataStructureComponent;
     }
 
     @Override

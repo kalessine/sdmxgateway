@@ -11,8 +11,6 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -25,7 +23,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Owner
+ * @author James
  */
 @Entity
 @Table(name = "Annotations", catalog = "repository", schema = "public")
@@ -40,14 +38,11 @@ public class Annotations implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "Annotations", nullable = false)
-    @GeneratedValue(strategy=GenerationType.TABLE)
     private Long annotations;
     @OneToOne(mappedBy = "annotations")
-    private Codelist codelist;
-    @OneToOne(mappedBy = "annotations")
-    private ConceptScheme conceptScheme;
-    @OneToOne(mappedBy = "annotations")
     private Concept concept;
+    @OneToOne(mappedBy = "annotations")
+    private Codelist codelist;
     @OneToOne(mappedBy = "annotations")
     private DataStructure dataStructure;
     @OneToOne(mappedBy = "annotations")
@@ -56,6 +51,8 @@ public class Annotations implements Serializable {
     private List<Annotation> annotationList;
     @OneToOne(mappedBy = "annotations")
     private DataStructureComponent dataStructureComponent;
+    @OneToOne(mappedBy = "annotations")
+    private ConceptScheme conceptScheme;
     @OneToOne(mappedBy = "annotations")
     private Dataflow dataflow;
 
@@ -74,28 +71,20 @@ public class Annotations implements Serializable {
         this.annotations = annotations;
     }
 
-    public Codelist getCodelist() {
-        return codelist;
-    }
-
-    public void setCodelist(Codelist codelist) {
-        this.codelist = codelist;
-    }
-
-    public ConceptScheme getConceptScheme() {
-        return conceptScheme;
-    }
-
-    public void setConceptScheme(ConceptScheme conceptScheme) {
-        this.conceptScheme = conceptScheme;
-    }
-
     public Concept getConcept() {
         return concept;
     }
 
     public void setConcept(Concept concept) {
         this.concept = concept;
+    }
+
+    public Codelist getCodelist() {
+        return codelist;
+    }
+
+    public void setCodelist(Codelist codelist) {
+        this.codelist = codelist;
     }
 
     public DataStructure getDataStructure() {
@@ -129,6 +118,14 @@ public class Annotations implements Serializable {
 
     public void setDataStructureComponent(DataStructureComponent dataStructureComponent) {
         this.dataStructureComponent = dataStructureComponent;
+    }
+
+    public ConceptScheme getConceptScheme() {
+        return conceptScheme;
+    }
+
+    public void setConceptScheme(ConceptScheme conceptScheme) {
+        this.conceptScheme = conceptScheme;
     }
 
     public Dataflow getDataflow() {

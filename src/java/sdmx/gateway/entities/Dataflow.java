@@ -6,6 +6,7 @@
 package sdmx.gateway.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -13,14 +14,16 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Owner
+ * @author James
  */
 @Entity
 @Table(name = "Dataflow", catalog = "repository", schema = "public", uniqueConstraints = {
@@ -38,9 +41,9 @@ public class Dataflow implements Serializable {
     @EmbeddedId
     protected DataflowPK dataflowPK;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "dataflow")
-    private Component component;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "dataflow")
     private Observation observation;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "dataflow")
+    private List<Component> componentList;
     @JoinColumn(name = "Annotations", referencedColumnName = "Annotations")
     @OneToOne
     private Annotations annotations;
@@ -70,20 +73,21 @@ public class Dataflow implements Serializable {
         this.dataflowPK = dataflowPK;
     }
 
-    public Component getComponent() {
-        return component;
-    }
-
-    public void setComponent(Component component) {
-        this.component = component;
-    }
-
     public Observation getObservation() {
         return observation;
     }
 
     public void setObservation(Observation observation) {
         this.observation = observation;
+    }
+
+    @XmlTransient
+    public List<Component> getComponentList() {
+        return componentList;
+    }
+
+    public void setComponentList(List<Component> componentList) {
+        this.componentList = componentList;
     }
 
     public Annotations getAnnotations() {

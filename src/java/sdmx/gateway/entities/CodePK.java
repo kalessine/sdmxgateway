@@ -14,7 +14,7 @@ import javax.validation.constraints.Size;
 
 /**
  *
- * @author Owner
+ * @author James
  */
 @Embeddable
 public class CodePK implements Serializable {
@@ -34,20 +34,14 @@ public class CodePK implements Serializable {
     @Size(min = 1, max = 255)
     @Column(name = "version", nullable = false, length = 255)
     private String version;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 255)
-    @Column(name = "codeId", nullable = false, length = 255)
-    private String codeId;
 
     public CodePK() {
     }
 
-    public CodePK(String agencyID, String id, String version, String codeId) {
+    public CodePK(String agencyID, String id, String version) {
         this.agencyID = agencyID;
         this.id = id;
         this.version = version;
-        this.codeId = codeId;
     }
 
     public String getAgencyID() {
@@ -74,21 +68,12 @@ public class CodePK implements Serializable {
         this.version = version;
     }
 
-    public String getCodeId() {
-        return codeId;
-    }
-
-    public void setCodeId(String codeId) {
-        this.codeId = codeId;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
         hash += (agencyID != null ? agencyID.hashCode() : 0);
         hash += (id != null ? id.hashCode() : 0);
         hash += (version != null ? version.hashCode() : 0);
-        hash += (codeId != null ? codeId.hashCode() : 0);
         return hash;
     }
 
@@ -108,15 +93,12 @@ public class CodePK implements Serializable {
         if ((this.version == null && other.version != null) || (this.version != null && !this.version.equals(other.version))) {
             return false;
         }
-        if ((this.codeId == null && other.codeId != null) || (this.codeId != null && !this.codeId.equals(other.codeId))) {
-            return false;
-        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "sdmx.gateway.entities.CodePK[ agencyID=" + agencyID + ", id=" + id + ", version=" + version + ", codeId=" + codeId + " ]";
+        return "sdmx.gateway.entities.CodePK[ agencyID=" + agencyID + ", id=" + id + ", version=" + version + " ]";
     }
     
 }

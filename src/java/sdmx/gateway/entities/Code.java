@@ -6,23 +6,24 @@
 package sdmx.gateway.entities;
 
 import java.io.Serializable;
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Owner
+ * @author James
  */
 @Entity
 @Table(name = "Code", catalog = "repository", schema = "public", uniqueConstraints = {
@@ -34,13 +35,18 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Code.findByAgencyID", query = "SELECT c FROM Code c WHERE c.codePK.agencyID = :agencyID")
     , @NamedQuery(name = "Code.findById", query = "SELECT c FROM Code c WHERE c.codePK.id = :id")
     , @NamedQuery(name = "Code.findByVersion", query = "SELECT c FROM Code c WHERE c.codePK.version = :version")
-    , @NamedQuery(name = "Code.findByCodeId", query = "SELECT c FROM Code c WHERE c.codePK.codeId = :codeId")
+    , @NamedQuery(name = "Code.findByCodeId", query = "SELECT c FROM Code c WHERE c.codeId = :codeId")
     , @NamedQuery(name = "Code.findByParentCode", query = "SELECT c FROM Code c WHERE c.parentCode = :parentCode")})
 public class Code implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected CodePK codePK;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 255)
+    @Column(name = "codeId", nullable = false, length = 255)
+    private String codeId;
     @Size(max = 255)
     @Column(name = "parentCode", length = 255)
     private String parentCode;
@@ -51,7 +57,7 @@ public class Code implements Serializable {
         @JoinColumn(name = "agencyID", referencedColumnName = "agencyID", nullable = false, insertable = false, updatable = false)
         , @JoinColumn(name = "Id", referencedColumnName = "Id", nullable = false, insertable = false, updatable = false)
         , @JoinColumn(name = "version", referencedColumnName = "version", nullable = false, insertable = false, updatable = false)})
-    @ManyToOne(optional = false)
+    @OneToOne(optional = false)
     private Codelist codelist;
     @JoinColumn(name = "Name", referencedColumnName = "Name")
     @OneToOne
@@ -64,8 +70,13 @@ public class Code implements Serializable {
         this.codePK = codePK;
     }
 
-    public Code(String agencyID, String id, String version, String codeId) {
-        this.codePK = new CodePK(agencyID, id, version, codeId);
+    public Code(CodePK codePK, String codeId) {
+        this.codePK = codePK;
+        this.codeId = codeId;
+    }
+
+    public Code(String agencyID, String id, String version) {
+        this.codePK = new CodePK(agencyID, id, version);
     }
 
     public CodePK getCodePK() {
@@ -74,6 +85,14 @@ public class Code implements Serializable {
 
     public void setCodePK(CodePK codePK) {
         this.codePK = codePK;
+    }
+
+    public String getCodeId() {
+        return codeId;
+    }
+
+    public void setCodeId(String codeId) {
+        this.codeId = codeId;
     }
 
     public String getParentCode() {
