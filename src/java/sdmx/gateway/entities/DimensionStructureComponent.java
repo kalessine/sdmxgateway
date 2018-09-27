@@ -10,12 +10,9 @@ import java.math.BigInteger;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -24,20 +21,22 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Owner
  */
 @Entity
-@Table(name = "DimensionStructureComponent", catalog = "repository", schema = "public", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"enumeration"})})
+@Table(name = "DimensionStructureComponent", catalog = "repository", schema = "public")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "DimensionStructureComponent.findAll", query = "SELECT d FROM DimensionStructureComponent d")
-    , @NamedQuery(name = "DimensionStructureComponent.findByPosition", query = "SELECT d FROM DimensionStructureComponent d WHERE d.position = :position")
+    , @NamedQuery(name = "DimensionStructureComponent.findByAgencyID", query = "SELECT d FROM DimensionStructureComponent d WHERE d.dimensionStructureComponentPK.agencyID = :agencyID")
     , @NamedQuery(name = "DimensionStructureComponent.findById", query = "SELECT d FROM DimensionStructureComponent d WHERE d.dimensionStructureComponentPK.id = :id")
     , @NamedQuery(name = "DimensionStructureComponent.findByVersion", query = "SELECT d FROM DimensionStructureComponent d WHERE d.dimensionStructureComponentPK.version = :version")
+    , @NamedQuery(name = "DimensionStructureComponent.findByComponentId", query = "SELECT d FROM DimensionStructureComponent d WHERE d.dimensionStructureComponentPK.componentId = :componentId")
+    , @NamedQuery(name = "DimensionStructureComponent.findByPosition", query = "SELECT d FROM DimensionStructureComponent d WHERE d.position = :position")
     , @NamedQuery(name = "DimensionStructureComponent.findByAssignmentStatus", query = "SELECT d FROM DimensionStructureComponent d WHERE d.assignmentStatus = :assignmentStatus")
     , @NamedQuery(name = "DimensionStructureComponent.findByConceptIdentity", query = "SELECT d FROM DimensionStructureComponent d WHERE d.conceptIdentity = :conceptIdentity")
     , @NamedQuery(name = "DimensionStructureComponent.findByAttributeRelationshipType", query = "SELECT d FROM DimensionStructureComponent d WHERE d.attributeRelationshipType = :attributeRelationshipType")
     , @NamedQuery(name = "DimensionStructureComponent.findByAnnotations", query = "SELECT d FROM DimensionStructureComponent d WHERE d.annotations = :annotations")
-    , @NamedQuery(name = "DimensionStructureComponent.findByAgencyID", query = "SELECT d FROM DimensionStructureComponent d WHERE d.dimensionStructureComponentPK.agencyID = :agencyID")
-    , @NamedQuery(name = "DimensionStructureComponent.findByComponentId", query = "SELECT d FROM DimensionStructureComponent d WHERE d.dimensionStructureComponentPK.componentId = :componentId")})
+    , @NamedQuery(name = "DimensionStructureComponent.findByType", query = "SELECT d FROM DimensionStructureComponent d WHERE d.type = :type")
+    , @NamedQuery(name = "DimensionStructureComponent.findByCodelistEnumeration", query = "SELECT d FROM DimensionStructureComponent d WHERE d.codelistEnumeration = :codelistEnumeration")
+    , @NamedQuery(name = "DimensionStructureComponent.findByConceptSchemeEnumeration", query = "SELECT d FROM DimensionStructureComponent d WHERE d.conceptSchemeEnumeration = :conceptSchemeEnumeration")})
 public class DimensionStructureComponent implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -54,9 +53,12 @@ public class DimensionStructureComponent implements Serializable {
     private BigInteger attributeRelationshipType;
     @Column(name = "Annotations")
     private BigInteger annotations;
-    @JoinColumn(name = "enumeration", referencedColumnName = "reference")
-    @OneToOne
-    private CodelistReference enumeration;
+    @Column(name = "type")
+    private Integer type;
+    @Column(name = "codelistEnumeration")
+    private BigInteger codelistEnumeration;
+    @Column(name = "conceptSchemeEnumeration")
+    private BigInteger conceptSchemeEnumeration;
 
     public DimensionStructureComponent() {
     }
@@ -65,8 +67,8 @@ public class DimensionStructureComponent implements Serializable {
         this.dimensionStructureComponentPK = dimensionStructureComponentPK;
     }
 
-    public DimensionStructureComponent(String id, String version, String agencyID, String componentId) {
-        this.dimensionStructureComponentPK = new DimensionStructureComponentPK(id, version, agencyID, componentId);
+    public DimensionStructureComponent(String agencyID, String id, String version, String componentId) {
+        this.dimensionStructureComponentPK = new DimensionStructureComponentPK(agencyID, id, version, componentId);
     }
 
     public DimensionStructureComponentPK getDimensionStructureComponentPK() {
@@ -117,12 +119,28 @@ public class DimensionStructureComponent implements Serializable {
         this.annotations = annotations;
     }
 
-    public CodelistReference getEnumeration() {
-        return enumeration;
+    public Integer getType() {
+        return type;
     }
 
-    public void setEnumeration(CodelistReference enumeration) {
-        this.enumeration = enumeration;
+    public void setType(Integer type) {
+        this.type = type;
+    }
+
+    public BigInteger getCodelistEnumeration() {
+        return codelistEnumeration;
+    }
+
+    public void setCodelistEnumeration(BigInteger codelistEnumeration) {
+        this.codelistEnumeration = codelistEnumeration;
+    }
+
+    public BigInteger getConceptSchemeEnumeration() {
+        return conceptSchemeEnumeration;
+    }
+
+    public void setConceptSchemeEnumeration(BigInteger conceptSchemeEnumeration) {
+        this.conceptSchemeEnumeration = conceptSchemeEnumeration;
     }
 
     @Override

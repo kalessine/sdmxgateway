@@ -27,17 +27,20 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "DataStructureComponent", catalog = "repository", schema = "public", uniqueConstraints = {
     @UniqueConstraint(columnNames = {"conceptIdentity"})
+    , @UniqueConstraint(columnNames = {"conceptSchemeEnumeration"})
     , @UniqueConstraint(columnNames = {"Annotations"})
-    , @UniqueConstraint(columnNames = {"attributeRelationshipType"})})
+    , @UniqueConstraint(columnNames = {"attributeRelationshipType"})
+    , @UniqueConstraint(columnNames = {"codelistEnumeration"})})
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "DataStructureComponent.findAll", query = "SELECT d FROM DataStructureComponent d")
-    , @NamedQuery(name = "DataStructureComponent.findByPosition", query = "SELECT d FROM DataStructureComponent d WHERE d.position = :position")
+    , @NamedQuery(name = "DataStructureComponent.findByAgencyID", query = "SELECT d FROM DataStructureComponent d WHERE d.dataStructureComponentPK.agencyID = :agencyID")
     , @NamedQuery(name = "DataStructureComponent.findById", query = "SELECT d FROM DataStructureComponent d WHERE d.dataStructureComponentPK.id = :id")
     , @NamedQuery(name = "DataStructureComponent.findByVersion", query = "SELECT d FROM DataStructureComponent d WHERE d.dataStructureComponentPK.version = :version")
+    , @NamedQuery(name = "DataStructureComponent.findByComponentId", query = "SELECT d FROM DataStructureComponent d WHERE d.dataStructureComponentPK.componentId = :componentId")
+    , @NamedQuery(name = "DataStructureComponent.findByPosition", query = "SELECT d FROM DataStructureComponent d WHERE d.position = :position")
     , @NamedQuery(name = "DataStructureComponent.findByAssignmentStatus", query = "SELECT d FROM DataStructureComponent d WHERE d.assignmentStatus = :assignmentStatus")
-    , @NamedQuery(name = "DataStructureComponent.findByAgencyID", query = "SELECT d FROM DataStructureComponent d WHERE d.dataStructureComponentPK.agencyID = :agencyID")
-    , @NamedQuery(name = "DataStructureComponent.findByComponentId", query = "SELECT d FROM DataStructureComponent d WHERE d.dataStructureComponentPK.componentId = :componentId")})
+    , @NamedQuery(name = "DataStructureComponent.findByType", query = "SELECT d FROM DataStructureComponent d WHERE d.type = :type")})
 public class DataStructureComponent implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -48,15 +51,23 @@ public class DataStructureComponent implements Serializable {
     @Size(max = 2147483647)
     @Column(name = "assignmentStatus", length = 2147483647)
     private String assignmentStatus;
+    @Column(name = "type")
+    private Integer type;
     @JoinColumn(name = "Annotations", referencedColumnName = "Annotations")
     @OneToOne
     private Annotations annotations;
     @JoinColumn(name = "attributeRelationshipType", referencedColumnName = "attributeRelationshipType")
     @OneToOne
     private AttributeRelationshipType attributeRelationshipType;
+    @JoinColumn(name = "codelistEnumeration", referencedColumnName = "reference")
+    @OneToOne
+    private CodelistReference codelistEnumeration;
     @JoinColumn(name = "conceptIdentity", referencedColumnName = "reference")
     @OneToOne
     private ConceptReference conceptIdentity;
+    @JoinColumn(name = "conceptSchemeEnumeration", referencedColumnName = "reference")
+    @OneToOne
+    private ConceptSchemeReference conceptSchemeEnumeration;
     @JoinColumns({
         @JoinColumn(name = "agencyID", referencedColumnName = "agencyID", nullable = false, insertable = false, updatable = false)
         , @JoinColumn(name = "Id", referencedColumnName = "Id", nullable = false, insertable = false, updatable = false)
@@ -71,8 +82,8 @@ public class DataStructureComponent implements Serializable {
         this.dataStructureComponentPK = dataStructureComponentPK;
     }
 
-    public DataStructureComponent(String id, String version, String agencyID, String componentId) {
-        this.dataStructureComponentPK = new DataStructureComponentPK(id, version, agencyID, componentId);
+    public DataStructureComponent(String agencyID, String id, String version, String componentId) {
+        this.dataStructureComponentPK = new DataStructureComponentPK(agencyID, id, version, componentId);
     }
 
     public DataStructureComponentPK getDataStructureComponentPK() {
@@ -99,6 +110,14 @@ public class DataStructureComponent implements Serializable {
         this.assignmentStatus = assignmentStatus;
     }
 
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
+    }
+
     public Annotations getAnnotations() {
         return annotations;
     }
@@ -115,12 +134,28 @@ public class DataStructureComponent implements Serializable {
         this.attributeRelationshipType = attributeRelationshipType;
     }
 
+    public CodelistReference getCodelistEnumeration() {
+        return codelistEnumeration;
+    }
+
+    public void setCodelistEnumeration(CodelistReference codelistEnumeration) {
+        this.codelistEnumeration = codelistEnumeration;
+    }
+
     public ConceptReference getConceptIdentity() {
         return conceptIdentity;
     }
 
     public void setConceptIdentity(ConceptReference conceptIdentity) {
         this.conceptIdentity = conceptIdentity;
+    }
+
+    public ConceptSchemeReference getConceptSchemeEnumeration() {
+        return conceptSchemeEnumeration;
+    }
+
+    public void setConceptSchemeEnumeration(ConceptSchemeReference conceptSchemeEnumeration) {
+        this.conceptSchemeEnumeration = conceptSchemeEnumeration;
     }
 
     public DataStructure getDataStructure() {

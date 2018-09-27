@@ -10,12 +10,9 @@ import java.math.BigInteger;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -24,20 +21,22 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Owner
  */
 @Entity
-@Table(name = "AttributeStructureComponent", catalog = "repository", schema = "public", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"enumeration"})})
+@Table(name = "AttributeStructureComponent", catalog = "repository", schema = "public")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "AttributeStructureComponent.findAll", query = "SELECT a FROM AttributeStructureComponent a")
-    , @NamedQuery(name = "AttributeStructureComponent.findByPosition", query = "SELECT a FROM AttributeStructureComponent a WHERE a.position = :position")
+    , @NamedQuery(name = "AttributeStructureComponent.findByAgencyID", query = "SELECT a FROM AttributeStructureComponent a WHERE a.attributeStructureComponentPK.agencyID = :agencyID")
     , @NamedQuery(name = "AttributeStructureComponent.findById", query = "SELECT a FROM AttributeStructureComponent a WHERE a.attributeStructureComponentPK.id = :id")
     , @NamedQuery(name = "AttributeStructureComponent.findByVersion", query = "SELECT a FROM AttributeStructureComponent a WHERE a.attributeStructureComponentPK.version = :version")
+    , @NamedQuery(name = "AttributeStructureComponent.findByComponentId", query = "SELECT a FROM AttributeStructureComponent a WHERE a.attributeStructureComponentPK.componentId = :componentId")
+    , @NamedQuery(name = "AttributeStructureComponent.findByPosition", query = "SELECT a FROM AttributeStructureComponent a WHERE a.position = :position")
     , @NamedQuery(name = "AttributeStructureComponent.findByAssignmentStatus", query = "SELECT a FROM AttributeStructureComponent a WHERE a.assignmentStatus = :assignmentStatus")
     , @NamedQuery(name = "AttributeStructureComponent.findByConceptIdentity", query = "SELECT a FROM AttributeStructureComponent a WHERE a.conceptIdentity = :conceptIdentity")
     , @NamedQuery(name = "AttributeStructureComponent.findByAttributeRelationshipType", query = "SELECT a FROM AttributeStructureComponent a WHERE a.attributeRelationshipType = :attributeRelationshipType")
     , @NamedQuery(name = "AttributeStructureComponent.findByAnnotations", query = "SELECT a FROM AttributeStructureComponent a WHERE a.annotations = :annotations")
-    , @NamedQuery(name = "AttributeStructureComponent.findByAgencyID", query = "SELECT a FROM AttributeStructureComponent a WHERE a.attributeStructureComponentPK.agencyID = :agencyID")
-    , @NamedQuery(name = "AttributeStructureComponent.findByComponentId", query = "SELECT a FROM AttributeStructureComponent a WHERE a.attributeStructureComponentPK.componentId = :componentId")})
+    , @NamedQuery(name = "AttributeStructureComponent.findByType", query = "SELECT a FROM AttributeStructureComponent a WHERE a.type = :type")
+    , @NamedQuery(name = "AttributeStructureComponent.findByCodelistEnumeration", query = "SELECT a FROM AttributeStructureComponent a WHERE a.codelistEnumeration = :codelistEnumeration")
+    , @NamedQuery(name = "AttributeStructureComponent.findByConceptSchemeEnumeration", query = "SELECT a FROM AttributeStructureComponent a WHERE a.conceptSchemeEnumeration = :conceptSchemeEnumeration")})
 public class AttributeStructureComponent implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -54,9 +53,12 @@ public class AttributeStructureComponent implements Serializable {
     private BigInteger attributeRelationshipType;
     @Column(name = "Annotations")
     private BigInteger annotations;
-    @JoinColumn(name = "enumeration", referencedColumnName = "reference")
-    @OneToOne
-    private CodelistReference enumeration;
+    @Column(name = "type")
+    private Integer type;
+    @Column(name = "codelistEnumeration")
+    private BigInteger codelistEnumeration;
+    @Column(name = "conceptSchemeEnumeration")
+    private BigInteger conceptSchemeEnumeration;
 
     public AttributeStructureComponent() {
     }
@@ -65,8 +67,8 @@ public class AttributeStructureComponent implements Serializable {
         this.attributeStructureComponentPK = attributeStructureComponentPK;
     }
 
-    public AttributeStructureComponent(String id, String version, String agencyID, String componentId) {
-        this.attributeStructureComponentPK = new AttributeStructureComponentPK(id, version, agencyID, componentId);
+    public AttributeStructureComponent(String agencyID, String id, String version, String componentId) {
+        this.attributeStructureComponentPK = new AttributeStructureComponentPK(agencyID, id, version, componentId);
     }
 
     public AttributeStructureComponentPK getAttributeStructureComponentPK() {
@@ -117,12 +119,28 @@ public class AttributeStructureComponent implements Serializable {
         this.annotations = annotations;
     }
 
-    public CodelistReference getEnumeration() {
-        return enumeration;
+    public Integer getType() {
+        return type;
     }
 
-    public void setEnumeration(CodelistReference enumeration) {
-        this.enumeration = enumeration;
+    public void setType(Integer type) {
+        this.type = type;
+    }
+
+    public BigInteger getCodelistEnumeration() {
+        return codelistEnumeration;
+    }
+
+    public void setCodelistEnumeration(BigInteger codelistEnumeration) {
+        this.codelistEnumeration = codelistEnumeration;
+    }
+
+    public BigInteger getConceptSchemeEnumeration() {
+        return conceptSchemeEnumeration;
+    }
+
+    public void setConceptSchemeEnumeration(BigInteger conceptSchemeEnumeration) {
+        this.conceptSchemeEnumeration = conceptSchemeEnumeration;
     }
 
     @Override

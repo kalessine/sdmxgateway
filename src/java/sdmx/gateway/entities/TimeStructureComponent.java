@@ -10,12 +10,9 @@ import java.math.BigInteger;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -24,20 +21,22 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Owner
  */
 @Entity
-@Table(name = "TimeStructureComponent", catalog = "repository", schema = "public", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"enumeration"})})
+@Table(name = "TimeStructureComponent", catalog = "repository", schema = "public")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "TimeStructureComponent.findAll", query = "SELECT t FROM TimeStructureComponent t")
-    , @NamedQuery(name = "TimeStructureComponent.findByPosition", query = "SELECT t FROM TimeStructureComponent t WHERE t.position = :position")
+    , @NamedQuery(name = "TimeStructureComponent.findByAgencyID", query = "SELECT t FROM TimeStructureComponent t WHERE t.timeStructureComponentPK.agencyID = :agencyID")
     , @NamedQuery(name = "TimeStructureComponent.findById", query = "SELECT t FROM TimeStructureComponent t WHERE t.timeStructureComponentPK.id = :id")
     , @NamedQuery(name = "TimeStructureComponent.findByVersion", query = "SELECT t FROM TimeStructureComponent t WHERE t.timeStructureComponentPK.version = :version")
+    , @NamedQuery(name = "TimeStructureComponent.findByComponentId", query = "SELECT t FROM TimeStructureComponent t WHERE t.timeStructureComponentPK.componentId = :componentId")
+    , @NamedQuery(name = "TimeStructureComponent.findByPosition", query = "SELECT t FROM TimeStructureComponent t WHERE t.position = :position")
     , @NamedQuery(name = "TimeStructureComponent.findByAssignmentStatus", query = "SELECT t FROM TimeStructureComponent t WHERE t.assignmentStatus = :assignmentStatus")
     , @NamedQuery(name = "TimeStructureComponent.findByConceptIdentity", query = "SELECT t FROM TimeStructureComponent t WHERE t.conceptIdentity = :conceptIdentity")
     , @NamedQuery(name = "TimeStructureComponent.findByAttributeRelationshipType", query = "SELECT t FROM TimeStructureComponent t WHERE t.attributeRelationshipType = :attributeRelationshipType")
     , @NamedQuery(name = "TimeStructureComponent.findByAnnotations", query = "SELECT t FROM TimeStructureComponent t WHERE t.annotations = :annotations")
-    , @NamedQuery(name = "TimeStructureComponent.findByAgencyID", query = "SELECT t FROM TimeStructureComponent t WHERE t.timeStructureComponentPK.agencyID = :agencyID")
-    , @NamedQuery(name = "TimeStructureComponent.findByComponentId", query = "SELECT t FROM TimeStructureComponent t WHERE t.timeStructureComponentPK.componentId = :componentId")})
+    , @NamedQuery(name = "TimeStructureComponent.findByType", query = "SELECT t FROM TimeStructureComponent t WHERE t.type = :type")
+    , @NamedQuery(name = "TimeStructureComponent.findByCodelistEnumeration", query = "SELECT t FROM TimeStructureComponent t WHERE t.codelistEnumeration = :codelistEnumeration")
+    , @NamedQuery(name = "TimeStructureComponent.findByConceptSchemeEnumeration", query = "SELECT t FROM TimeStructureComponent t WHERE t.conceptSchemeEnumeration = :conceptSchemeEnumeration")})
 public class TimeStructureComponent implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -54,9 +53,12 @@ public class TimeStructureComponent implements Serializable {
     private BigInteger attributeRelationshipType;
     @Column(name = "Annotations")
     private BigInteger annotations;
-    @JoinColumn(name = "enumeration", referencedColumnName = "reference")
-    @OneToOne
-    private CodelistReference enumeration;
+    @Column(name = "type")
+    private Integer type;
+    @Column(name = "codelistEnumeration")
+    private BigInteger codelistEnumeration;
+    @Column(name = "conceptSchemeEnumeration")
+    private BigInteger conceptSchemeEnumeration;
 
     public TimeStructureComponent() {
     }
@@ -65,8 +67,8 @@ public class TimeStructureComponent implements Serializable {
         this.timeStructureComponentPK = timeStructureComponentPK;
     }
 
-    public TimeStructureComponent(String id, String version, String agencyID, String componentId) {
-        this.timeStructureComponentPK = new TimeStructureComponentPK(id, version, agencyID, componentId);
+    public TimeStructureComponent(String agencyID, String id, String version, String componentId) {
+        this.timeStructureComponentPK = new TimeStructureComponentPK(agencyID, id, version, componentId);
     }
 
     public TimeStructureComponentPK getTimeStructureComponentPK() {
@@ -117,12 +119,28 @@ public class TimeStructureComponent implements Serializable {
         this.annotations = annotations;
     }
 
-    public CodelistReference getEnumeration() {
-        return enumeration;
+    public Integer getType() {
+        return type;
     }
 
-    public void setEnumeration(CodelistReference enumeration) {
-        this.enumeration = enumeration;
+    public void setType(Integer type) {
+        this.type = type;
+    }
+
+    public BigInteger getCodelistEnumeration() {
+        return codelistEnumeration;
+    }
+
+    public void setCodelistEnumeration(BigInteger codelistEnumeration) {
+        this.codelistEnumeration = codelistEnumeration;
+    }
+
+    public BigInteger getConceptSchemeEnumeration() {
+        return conceptSchemeEnumeration;
+    }
+
+    public void setConceptSchemeEnumeration(BigInteger conceptSchemeEnumeration) {
+        this.conceptSchemeEnumeration = conceptSchemeEnumeration;
     }
 
     @Override

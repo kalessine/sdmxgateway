@@ -10,12 +10,9 @@ import java.math.BigInteger;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -24,20 +21,22 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Owner
  */
 @Entity
-@Table(name = "MeasureStructureComponent", catalog = "repository", schema = "public", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"enumeration"})})
+@Table(name = "MeasureStructureComponent", catalog = "repository", schema = "public")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "MeasureStructureComponent.findAll", query = "SELECT m FROM MeasureStructureComponent m")
-    , @NamedQuery(name = "MeasureStructureComponent.findByPosition", query = "SELECT m FROM MeasureStructureComponent m WHERE m.position = :position")
+    , @NamedQuery(name = "MeasureStructureComponent.findByAgencyID", query = "SELECT m FROM MeasureStructureComponent m WHERE m.measureStructureComponentPK.agencyID = :agencyID")
     , @NamedQuery(name = "MeasureStructureComponent.findById", query = "SELECT m FROM MeasureStructureComponent m WHERE m.measureStructureComponentPK.id = :id")
     , @NamedQuery(name = "MeasureStructureComponent.findByVersion", query = "SELECT m FROM MeasureStructureComponent m WHERE m.measureStructureComponentPK.version = :version")
+    , @NamedQuery(name = "MeasureStructureComponent.findByComponentId", query = "SELECT m FROM MeasureStructureComponent m WHERE m.measureStructureComponentPK.componentId = :componentId")
+    , @NamedQuery(name = "MeasureStructureComponent.findByPosition", query = "SELECT m FROM MeasureStructureComponent m WHERE m.position = :position")
     , @NamedQuery(name = "MeasureStructureComponent.findByAssignmentStatus", query = "SELECT m FROM MeasureStructureComponent m WHERE m.assignmentStatus = :assignmentStatus")
     , @NamedQuery(name = "MeasureStructureComponent.findByConceptIdentity", query = "SELECT m FROM MeasureStructureComponent m WHERE m.conceptIdentity = :conceptIdentity")
     , @NamedQuery(name = "MeasureStructureComponent.findByAttributeRelationshipType", query = "SELECT m FROM MeasureStructureComponent m WHERE m.attributeRelationshipType = :attributeRelationshipType")
     , @NamedQuery(name = "MeasureStructureComponent.findByAnnotations", query = "SELECT m FROM MeasureStructureComponent m WHERE m.annotations = :annotations")
-    , @NamedQuery(name = "MeasureStructureComponent.findByAgencyID", query = "SELECT m FROM MeasureStructureComponent m WHERE m.measureStructureComponentPK.agencyID = :agencyID")
-    , @NamedQuery(name = "MeasureStructureComponent.findByComponentId", query = "SELECT m FROM MeasureStructureComponent m WHERE m.measureStructureComponentPK.componentId = :componentId")})
+    , @NamedQuery(name = "MeasureStructureComponent.findByType", query = "SELECT m FROM MeasureStructureComponent m WHERE m.type = :type")
+    , @NamedQuery(name = "MeasureStructureComponent.findByCodelistEnumeration", query = "SELECT m FROM MeasureStructureComponent m WHERE m.codelistEnumeration = :codelistEnumeration")
+    , @NamedQuery(name = "MeasureStructureComponent.findByConceptSchemeEnumeration", query = "SELECT m FROM MeasureStructureComponent m WHERE m.conceptSchemeEnumeration = :conceptSchemeEnumeration")})
 public class MeasureStructureComponent implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -54,9 +53,12 @@ public class MeasureStructureComponent implements Serializable {
     private BigInteger attributeRelationshipType;
     @Column(name = "Annotations")
     private BigInteger annotations;
-    @JoinColumn(name = "enumeration", referencedColumnName = "reference")
-    @OneToOne
-    private ConceptSchemeReference enumeration;
+    @Column(name = "type")
+    private Integer type;
+    @Column(name = "codelistEnumeration")
+    private BigInteger codelistEnumeration;
+    @Column(name = "conceptSchemeEnumeration")
+    private BigInteger conceptSchemeEnumeration;
 
     public MeasureStructureComponent() {
     }
@@ -65,8 +67,8 @@ public class MeasureStructureComponent implements Serializable {
         this.measureStructureComponentPK = measureStructureComponentPK;
     }
 
-    public MeasureStructureComponent(String id, String version, String agencyID, String componentId) {
-        this.measureStructureComponentPK = new MeasureStructureComponentPK(id, version, agencyID, componentId);
+    public MeasureStructureComponent(String agencyID, String id, String version, String componentId) {
+        this.measureStructureComponentPK = new MeasureStructureComponentPK(agencyID, id, version, componentId);
     }
 
     public MeasureStructureComponentPK getMeasureStructureComponentPK() {
@@ -117,12 +119,28 @@ public class MeasureStructureComponent implements Serializable {
         this.annotations = annotations;
     }
 
-    public ConceptSchemeReference getEnumeration() {
-        return enumeration;
+    public Integer getType() {
+        return type;
     }
 
-    public void setEnumeration(ConceptSchemeReference enumeration) {
-        this.enumeration = enumeration;
+    public void setType(Integer type) {
+        this.type = type;
+    }
+
+    public BigInteger getCodelistEnumeration() {
+        return codelistEnumeration;
+    }
+
+    public void setCodelistEnumeration(BigInteger codelistEnumeration) {
+        this.codelistEnumeration = codelistEnumeration;
+    }
+
+    public BigInteger getConceptSchemeEnumeration() {
+        return conceptSchemeEnumeration;
+    }
+
+    public void setConceptSchemeEnumeration(BigInteger conceptSchemeEnumeration) {
+        this.conceptSchemeEnumeration = conceptSchemeEnumeration;
     }
 
     @Override

@@ -22,6 +22,11 @@ public class AttributeStructureComponentPK implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
+    @Column(name = "agencyID", nullable = false, length = 255)
+    private String agencyID;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 255)
     @Column(name = "Id", nullable = false, length = 255)
     private String id;
     @Basic(optional = false)
@@ -32,22 +37,25 @@ public class AttributeStructureComponentPK implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
-    @Column(name = "agencyID", nullable = false, length = 255)
-    private String agencyID;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 255)
     @Column(name = "componentId", nullable = false, length = 255)
     private String componentId;
 
     public AttributeStructureComponentPK() {
     }
 
-    public AttributeStructureComponentPK(String id, String version, String agencyID, String componentId) {
+    public AttributeStructureComponentPK(String agencyID, String id, String version, String componentId) {
+        this.agencyID = agencyID;
         this.id = id;
         this.version = version;
-        this.agencyID = agencyID;
         this.componentId = componentId;
+    }
+
+    public String getAgencyID() {
+        return agencyID;
+    }
+
+    public void setAgencyID(String agencyID) {
+        this.agencyID = agencyID;
     }
 
     public String getId() {
@@ -66,14 +74,6 @@ public class AttributeStructureComponentPK implements Serializable {
         this.version = version;
     }
 
-    public String getAgencyID() {
-        return agencyID;
-    }
-
-    public void setAgencyID(String agencyID) {
-        this.agencyID = agencyID;
-    }
-
     public String getComponentId() {
         return componentId;
     }
@@ -85,9 +85,9 @@ public class AttributeStructureComponentPK implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
+        hash += (agencyID != null ? agencyID.hashCode() : 0);
         hash += (id != null ? id.hashCode() : 0);
         hash += (version != null ? version.hashCode() : 0);
-        hash += (agencyID != null ? agencyID.hashCode() : 0);
         hash += (componentId != null ? componentId.hashCode() : 0);
         return hash;
     }
@@ -99,13 +99,13 @@ public class AttributeStructureComponentPK implements Serializable {
             return false;
         }
         AttributeStructureComponentPK other = (AttributeStructureComponentPK) object;
+        if ((this.agencyID == null && other.agencyID != null) || (this.agencyID != null && !this.agencyID.equals(other.agencyID))) {
+            return false;
+        }
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         if ((this.version == null && other.version != null) || (this.version != null && !this.version.equals(other.version))) {
-            return false;
-        }
-        if ((this.agencyID == null && other.agencyID != null) || (this.agencyID != null && !this.agencyID.equals(other.agencyID))) {
             return false;
         }
         if ((this.componentId == null && other.componentId != null) || (this.componentId != null && !this.componentId.equals(other.componentId))) {
@@ -116,7 +116,7 @@ public class AttributeStructureComponentPK implements Serializable {
 
     @Override
     public String toString() {
-        return "sdmx.gateway.entities.AttributeStructureComponentPK[ id=" + id + ", version=" + version + ", agencyID=" + agencyID + ", componentId=" + componentId + " ]";
+        return "sdmx.gateway.entities.AttributeStructureComponentPK[ agencyID=" + agencyID + ", id=" + id + ", version=" + version + ", componentId=" + componentId + " ]";
     }
     
 }

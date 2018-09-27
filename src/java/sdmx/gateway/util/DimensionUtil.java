@@ -42,12 +42,13 @@ public class DimensionUtil {
             pk.setComponentId(c.getId().toString());
             dsc.setMeasureStructureComponentPK(pk);
             dsc.setConceptIdentity(BigInteger.valueOf(ConceptReferenceUtil.toDatabaseConceptReference(em, c.getConceptIdentity()).getReference()));
+            dsc.setType(TYPE_MEASURE);
             RepresentationType rep = dim.getLocalRepresentation();
             if (rep == null) {
                 // Get Concept Representation
             }
             if (rep != null && rep.getEnumeration() != null) {
-                dsc.setEnumeration(ConceptSchemeReferenceUtil.toDatabaseConceptSchemeReference(em, rep.getEnumeration().asConceptSchemeReference()));
+                dsc.setConceptSchemeEnumeration(BigInteger.valueOf(ConceptSchemeReferenceUtil.toDatabaseConceptSchemeReference(em, rep.getEnumeration().asConceptSchemeReference()).getReference()));
             }
             em.persist(dsc);
             DataStructureComponentPK pk2 = new DataStructureComponentPK();
@@ -66,12 +67,13 @@ public class DimensionUtil {
             pk.setComponentId(dim.getId().toString());
             dsc.setTimeStructureComponentPK(pk);
             dsc.setConceptIdentity(BigInteger.valueOf(ConceptReferenceUtil.toDatabaseConceptReference(em, dim.getConceptIdentity()).getReference()));
+            dsc.setType(TYPE_TIMEDIMENSION);
             RepresentationType rep = dim.getLocalRepresentation();
             if (rep == null) {
                 // Get Concept Representation
             }
             if (rep != null && rep.getEnumeration() != null) {
-                dsc.setEnumeration(CodelistReferenceUtil.toDatabaseCodelistReference(em, rep.getEnumeration().asCodelistReference()));
+                dsc.setCodelistEnumeration(BigInteger.valueOf(CodelistReferenceUtil.toDatabaseCodelistReference(em, rep.getEnumeration().asCodelistReference()).getReference()));
             }
             em.persist(dsc);
             DataStructureComponentPK pk2 = new DataStructureComponentPK();
@@ -90,6 +92,7 @@ public class DimensionUtil {
             pk.setComponentId(dim.getId().toString());
             dsc.setPrimaryMeasureStructureComponentPK(pk);
             dsc.setConceptIdentity(BigInteger.valueOf(ConceptReferenceUtil.toDatabaseConceptReference(em, dim.getConceptIdentity()).getReference()));
+            dsc.setType(TYPE_PRIMARYMEASURE);
             RepresentationType rep = dim.getLocalRepresentation();
             if (rep == null) {
                 // Get Concept Representation
@@ -113,6 +116,7 @@ public class DimensionUtil {
             pk.setComponentId(dim.getId().toString());
             dsc.setDimensionStructureComponentPK(pk);
             dsc.setConceptIdentity(BigInteger.valueOf(ConceptReferenceUtil.toDatabaseConceptReference(em, dim.getConceptIdentity()).getReference()));
+            dsc.setType(TYPE_DIMENSION);
             RepresentationType rep = dim.getLocalRepresentation();
             if (rep == null) {
                 // Get Concept Representation
@@ -136,6 +140,7 @@ public class DimensionUtil {
             pk.setComponentId(dim.getId().toString());
             dsc.setAttributeStructureComponentPK(pk);
             dsc.setConceptIdentity(BigInteger.valueOf(ConceptReferenceUtil.toDatabaseConceptReference(em, dim.getConceptIdentity()).getReference()));
+            dsc.setType(TYPE_ATTRIBUTE);
             RepresentationType rep = dim.getLocalRepresentation();
             if (rep == null) {
                 // Get Concept Representation
@@ -165,6 +170,7 @@ public class DimensionUtil {
                 break;
             case DimensionUtil.TYPE_MEASURE:
                 comp = new MeasureDimensionType();
+                
                 break;
             case DimensionUtil.TYPE_PRIMARYMEASURE:
                 comp = new PrimaryMeasure();

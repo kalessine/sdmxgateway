@@ -10,6 +10,8 @@ import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
@@ -39,6 +41,7 @@ public class DataStructureReference implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "reference", nullable = false)
+    @GeneratedValue(strategy=GenerationType.TABLE)
     private Long reference;
     @JoinColumns({
         @JoinColumn(name = "agencyID", referencedColumnName = "agencyID")

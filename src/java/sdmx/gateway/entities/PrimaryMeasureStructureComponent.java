@@ -25,15 +25,18 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "PrimaryMeasureStructureComponent.findAll", query = "SELECT p FROM PrimaryMeasureStructureComponent p")
-    , @NamedQuery(name = "PrimaryMeasureStructureComponent.findByPosition", query = "SELECT p FROM PrimaryMeasureStructureComponent p WHERE p.position = :position")
+    , @NamedQuery(name = "PrimaryMeasureStructureComponent.findByAgencyID", query = "SELECT p FROM PrimaryMeasureStructureComponent p WHERE p.primaryMeasureStructureComponentPK.agencyID = :agencyID")
     , @NamedQuery(name = "PrimaryMeasureStructureComponent.findById", query = "SELECT p FROM PrimaryMeasureStructureComponent p WHERE p.primaryMeasureStructureComponentPK.id = :id")
     , @NamedQuery(name = "PrimaryMeasureStructureComponent.findByVersion", query = "SELECT p FROM PrimaryMeasureStructureComponent p WHERE p.primaryMeasureStructureComponentPK.version = :version")
+    , @NamedQuery(name = "PrimaryMeasureStructureComponent.findByComponentId", query = "SELECT p FROM PrimaryMeasureStructureComponent p WHERE p.primaryMeasureStructureComponentPK.componentId = :componentId")
+    , @NamedQuery(name = "PrimaryMeasureStructureComponent.findByPosition", query = "SELECT p FROM PrimaryMeasureStructureComponent p WHERE p.position = :position")
     , @NamedQuery(name = "PrimaryMeasureStructureComponent.findByAssignmentStatus", query = "SELECT p FROM PrimaryMeasureStructureComponent p WHERE p.assignmentStatus = :assignmentStatus")
     , @NamedQuery(name = "PrimaryMeasureStructureComponent.findByConceptIdentity", query = "SELECT p FROM PrimaryMeasureStructureComponent p WHERE p.conceptIdentity = :conceptIdentity")
     , @NamedQuery(name = "PrimaryMeasureStructureComponent.findByAttributeRelationshipType", query = "SELECT p FROM PrimaryMeasureStructureComponent p WHERE p.attributeRelationshipType = :attributeRelationshipType")
     , @NamedQuery(name = "PrimaryMeasureStructureComponent.findByAnnotations", query = "SELECT p FROM PrimaryMeasureStructureComponent p WHERE p.annotations = :annotations")
-    , @NamedQuery(name = "PrimaryMeasureStructureComponent.findByAgencyID", query = "SELECT p FROM PrimaryMeasureStructureComponent p WHERE p.primaryMeasureStructureComponentPK.agencyID = :agencyID")
-    , @NamedQuery(name = "PrimaryMeasureStructureComponent.findByComponentId", query = "SELECT p FROM PrimaryMeasureStructureComponent p WHERE p.primaryMeasureStructureComponentPK.componentId = :componentId")})
+    , @NamedQuery(name = "PrimaryMeasureStructureComponent.findByType", query = "SELECT p FROM PrimaryMeasureStructureComponent p WHERE p.type = :type")
+    , @NamedQuery(name = "PrimaryMeasureStructureComponent.findByCodelistEnumeration", query = "SELECT p FROM PrimaryMeasureStructureComponent p WHERE p.codelistEnumeration = :codelistEnumeration")
+    , @NamedQuery(name = "PrimaryMeasureStructureComponent.findByConceptSchemeEnumeration", query = "SELECT p FROM PrimaryMeasureStructureComponent p WHERE p.conceptSchemeEnumeration = :conceptSchemeEnumeration")})
 public class PrimaryMeasureStructureComponent implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -50,6 +53,12 @@ public class PrimaryMeasureStructureComponent implements Serializable {
     private BigInteger attributeRelationshipType;
     @Column(name = "Annotations")
     private BigInteger annotations;
+    @Column(name = "type")
+    private Integer type;
+    @Column(name = "codelistEnumeration")
+    private BigInteger codelistEnumeration;
+    @Column(name = "conceptSchemeEnumeration")
+    private BigInteger conceptSchemeEnumeration;
 
     public PrimaryMeasureStructureComponent() {
     }
@@ -58,8 +67,8 @@ public class PrimaryMeasureStructureComponent implements Serializable {
         this.primaryMeasureStructureComponentPK = primaryMeasureStructureComponentPK;
     }
 
-    public PrimaryMeasureStructureComponent(String id, String version, String agencyID, String componentId) {
-        this.primaryMeasureStructureComponentPK = new PrimaryMeasureStructureComponentPK(id, version, agencyID, componentId);
+    public PrimaryMeasureStructureComponent(String agencyID, String id, String version, String componentId) {
+        this.primaryMeasureStructureComponentPK = new PrimaryMeasureStructureComponentPK(agencyID, id, version, componentId);
     }
 
     public PrimaryMeasureStructureComponentPK getPrimaryMeasureStructureComponentPK() {
@@ -108,6 +117,30 @@ public class PrimaryMeasureStructureComponent implements Serializable {
 
     public void setAnnotations(BigInteger annotations) {
         this.annotations = annotations;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
+    }
+
+    public BigInteger getCodelistEnumeration() {
+        return codelistEnumeration;
+    }
+
+    public void setCodelistEnumeration(BigInteger codelistEnumeration) {
+        this.codelistEnumeration = codelistEnumeration;
+    }
+
+    public BigInteger getConceptSchemeEnumeration() {
+        return conceptSchemeEnumeration;
+    }
+
+    public void setConceptSchemeEnumeration(BigInteger conceptSchemeEnumeration) {
+        this.conceptSchemeEnumeration = conceptSchemeEnumeration;
     }
 
     @Override

@@ -3,7 +3,7 @@
 CAUTION: Do not modify this file unless you know what you are doing.
          Unexpected results may occur if the code is changed deliberately.
 -->
-<dbmodel pgmodeler-ver="0.9.1" last-position="0,1215" last-zoom="1"
+<dbmodel pgmodeler-ver="0.9.1" last-position="832,0" last-zoom="1"
 	 default-owner="postgres">
 <database name="repository" encoding="UTF8" lc-collate="English_Australia.1252" lc-ctype="English_Australia.1252" is-template="false" allow-conns="true">
 	<role name="postgres"/>
@@ -154,11 +154,11 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="Name">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="2080" y="300"/>
+	<position x="2080" y="299"/>
 	<column name="en">
 		<type name="text" length="255"/>
 	</column>
-	<column name="Name" not-null="true">
+	<column name="Name" not-null="true" identity-type="ALWAYS">
 		<type name="bigint" length="0"/>
 	</column>
 	<constraint name="name_pk" type="pk-constr" table="public.&quot;Name&quot;">
@@ -170,7 +170,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<schema name="public"/>
 	<role name="postgres"/>
 	<position x="780" y="920"/>
-	<column name="Annotations" not-null="true">
+	<column name="Annotations" not-null="true" identity-type="ALWAYS">
 		<type name="bigint" length="0"/>
 	</column>
 	<constraint name="annotated_pk" type="pk-constr" table="public.&quot;Annotations&quot;">
@@ -319,7 +319,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<schema name="public"/>
 	<role name="postgres"/>
 	<position x="1348" y="50"/>
-	<column name="reference" not-null="true">
+	<column name="reference" not-null="true" identity-type="ALWAYS">
 		<type name="bigint" length="0"/>
 	</column>
 	<constraint name="dataStructureReference_pk" type="pk-constr" table="public.&quot;DataStructureReference&quot;">
@@ -367,7 +367,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="ConceptScheme">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="1553" y="568"/>
+	<position x="1372" y="655"/>
 	<column name="agencyID" not-null="true">
 		<type name="varchar" length="255"/>
 	</column>
@@ -461,7 +461,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<schema name="public"/>
 	<role name="postgres"/>
 	<position x="930" y="319"/>
-	<column name="reference" not-null="true">
+	<column name="reference" not-null="true" identity-type="ALWAYS">
 		<type name="bigint" length="0"/>
 	</column>
 	<constraint name="codelistReference_pk" type="pk-constr" table="public.&quot;CodelistReference&quot;">
@@ -483,12 +483,22 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<schema name="public"/>
 	<role name="postgres"/>
 	<position x="990" y="476"/>
-	<column name="reference" not-null="true">
+	<column name="reference" not-null="true" identity-type="ALWAYS">
 		<type name="bigint" length="0"/>
 	</column>
 	<constraint name="conceptSchemeReference_pk" type="pk-constr" table="public.&quot;ConceptSchemeReference&quot;">
 		<columns names="reference" ref-type="src-columns"/>
 	</constraint>
+
+	<customidxs object-type="column">
+		<object name="Id" index="2"/>
+		<object name="agencyID" index="1"/>
+		<object name="version" index="3"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="ConceptScheme_fk" index="1"/>
+	</customidxs>
 </table>
 
 <table name="Concept">
@@ -565,26 +575,41 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="DataStructureComponent">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="44" y="49"/>
+	<position x="44" y="52"/>
 	<column name="position">
 		<type name="smallint" length="0"/>
 	</column>
 	<column name="assignmentStatus">
 		<type name="text" length="0"/>
 	</column>
+	<column name="type">
+		<type name="integer" length="0"/>
+	</column>
 
 	<customidxs object-type="column">
-		<object name="Annotations" index="6"/>
+		<object name="Annotations" index="8"/>
 		<object name="Id" index="1"/>
-		<object name="agencyID" index="7"/>
-		<object name="attributeRelationshipType" index="5"/>
-		<object name="componentId" index="8"/>
-		<object name="conceptIdentity" index="4"/>
+		<object name="agencyID" index="0"/>
+		<object name="attributeRelationshipType" index="7"/>
+		<object name="codelistEnumeration" index="10"/>
+		<object name="componentId" index="3"/>
+		<object name="conceptIdentity" index="6"/>
+		<object name="conceptSchemeEnumeration" index="11"/>
 		<object name="version" index="2"/>
 	</customidxs>
 
 	<customidxs object-type="constraint">
+		<object name="Annotations_fk" index="4"/>
+		<object name="AttributeRelationshipType_fk" index="2"/>
+		<object name="CodelistReference_fk" index="8"/>
+		<object name="ConceptReference_fk" index="6"/>
+		<object name="ConceptSchemeReference_fk" index="10"/>
 		<object name="DataStructureComponent_pk" index="1"/>
+		<object name="DataStructureComponent_uq" index="3"/>
+		<object name="DataStructureComponent_uq1" index="5"/>
+		<object name="DataStructureComponent_uq2" index="7"/>
+		<object name="DataStructureComponent_uq3" index="9"/>
+		<object name="DataStructureComponent_uq4" index="11"/>
 		<object name="DataStructure_fk" index="0"/>
 	</customidxs>
 </table>
@@ -617,7 +642,6 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<customidxs object-type="column">
 		<object name="Id" index="2"/>
 		<object name="agencyID" index="1"/>
-		<object name="conceptID" index="4"/>
 		<object name="version" index="3"/>
 	</customidxs>
 
@@ -659,13 +683,8 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<role name="postgres"/>
 	<position x="53" y="1111"/>
 
-	<customidxs object-type="column">
-		<object name="enumeration" index="9"/>
-	</customidxs>
-
 	<customidxs object-type="constraint">
-		<object name="CodelistReference_fk" index="0"/>
-		<object name="DimensionStructureComponent_uq" index="1"/>
+		<object name="DimensionStructureComponent_pk" index="0"/>
 	</customidxs>
 </table>
 
@@ -674,7 +693,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 custom-color="#83af1f"
 	 src-table="public.&quot;DimensionStructureComponent&quot;"
 	 dst-table="public.&quot;DataStructureComponent&quot;">
-	<special-pk-cols indexes="2,3,4,5"/>
+	<special-pk-cols indexes="3,4,5,6"/>
 </relationship>
 
 <table name="MeasureStructureComponent">
@@ -682,13 +701,8 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<role name="postgres"/>
 	<position x="130" y="1387"/>
 
-	<customidxs object-type="column">
-		<object name="enumeration" index="9"/>
-	</customidxs>
-
 	<customidxs object-type="constraint">
-		<object name="ConceptSchemeReference_fk" index="0"/>
-		<object name="MeasureStructureComponent_uq" index="1"/>
+		<object name="MeasureStructureComponent_pk" index="0"/>
 	</customidxs>
 </table>
 
@@ -697,7 +711,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 custom-color="#83af1f"
 	 src-table="public.&quot;MeasureStructureComponent&quot;"
 	 dst-table="public.&quot;DataStructureComponent&quot;">
-	<special-pk-cols indexes="2,3,4,5"/>
+	<special-pk-cols indexes="3,4,5,6"/>
 </relationship>
 
 <table name="AttributeStructureComponent">
@@ -705,13 +719,8 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<role name="postgres"/>
 	<position x="770" y="1390"/>
 
-	<customidxs object-type="column">
-		<object name="enumeration" index="9"/>
-	</customidxs>
-
 	<customidxs object-type="constraint">
-		<object name="AttributeStructureComponent_uq" index="1"/>
-		<object name="CodelistReference_fk" index="0"/>
+		<object name="AttributeStructureComponent_pk" index="0"/>
 	</customidxs>
 </table>
 
@@ -720,7 +729,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 custom-color="#83af1f"
 	 src-table="public.&quot;AttributeStructureComponent&quot;"
 	 dst-table="public.&quot;DataStructureComponent&quot;">
-	<special-pk-cols indexes="2,3,4,5"/>
+	<special-pk-cols indexes="3,4,5,6"/>
 </relationship>
 
 <table name="Annotation">
@@ -939,33 +948,6 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 dst-table="public.&quot;DataStructureComponent&quot;"
 	 src-required="false" dst-required="false"/>
 
-<relationship name="DimensionStructureComponent_has_one_CodelistReference" type="rel11"
-	 src-col-pattern="enumeration"
-	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
-	 src-fk-pattern="{st}_fk"
-	 custom-color="#83af1f"
-	 src-table="public.&quot;CodelistReference&quot;"
-	 dst-table="public.&quot;DimensionStructureComponent&quot;"
-	 src-required="false" dst-required="false"/>
-
-<relationship name="AttributeStructureComponent_has_one_CodelistReference" type="rel11"
-	 src-col-pattern="enumeration"
-	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
-	 src-fk-pattern="{st}_fk"
-	 custom-color="#83af1f"
-	 src-table="public.&quot;CodelistReference&quot;"
-	 dst-table="public.&quot;AttributeStructureComponent&quot;"
-	 src-required="false" dst-required="false"/>
-
-<relationship name="MeasureStructureComponent_has_one_ConceptSchemeReference" type="rel11"
-	 src-col-pattern="enumeration"
-	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
-	 src-fk-pattern="{st}_fk"
-	 custom-color="#83af1f"
-	 src-table="public.&quot;ConceptSchemeReference&quot;"
-	 dst-table="public.&quot;MeasureStructureComponent&quot;"
-	 src-required="false" dst-required="false"/>
-
 <table name="TimeStructureComponent">
 	<schema name="public"/>
 	<role name="postgres"/>
@@ -977,17 +959,8 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 custom-color="#83af1f"
 	 src-table="public.&quot;TimeStructureComponent&quot;"
 	 dst-table="public.&quot;DataStructureComponent&quot;">
-	<special-pk-cols indexes="2,3,4,5"/>
+	<special-pk-cols indexes="3,4,5,6"/>
 </relationship>
-
-<relationship name="TimeStructureComponent_has_one_CodelistReference" type="rel11"
-	 src-col-pattern="enumeration"
-	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
-	 src-fk-pattern="{st}_fk"
-	 custom-color="#83af1f"
-	 src-table="public.&quot;CodelistReference&quot;"
-	 dst-table="public.&quot;TimeStructureComponent&quot;"
-	 src-required="false" dst-required="false"/>
 
 <table name="PrimaryMeasureStructureComponent">
 	<schema name="public"/>
@@ -1000,7 +973,25 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 custom-color="#83af1f"
 	 src-table="public.&quot;PrimaryMeasureStructureComponent&quot;"
 	 dst-table="public.&quot;DataStructureComponent&quot;">
-	<special-pk-cols indexes="2,3,4,5"/>
+	<special-pk-cols indexes="3,4,5,6"/>
 </relationship>
+
+<relationship name="DataStructureComponent_has_one_CodelistReference" type="rel11"
+	 src-col-pattern="codelistEnumeration"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;CodelistReference&quot;"
+	 dst-table="public.&quot;DataStructureComponent&quot;"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="DataStructureComponent_has_one_ConceptSchemeReference" type="rel11"
+	 src-col-pattern="conceptSchemeEnumeration"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;ConceptSchemeReference&quot;"
+	 dst-table="public.&quot;DataStructureComponent&quot;"
+	 src-required="false" dst-required="false"/>
 
 </dbmodel>

@@ -9,6 +9,8 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
@@ -37,13 +39,10 @@ public class CodelistReference implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "reference", nullable = false)
+    @GeneratedValue(strategy=GenerationType.TABLE)
     private Long reference;
-    @OneToOne(mappedBy = "enumeration")
-    private AttributeStructureComponent attributeStructureComponent;
-    @OneToOne(mappedBy = "enumeration")
-    private TimeStructureComponent timeStructureComponent;
-    @OneToOne(mappedBy = "enumeration")
-    private DimensionStructureComponent dimensionStructureComponent;
+    @OneToOne(mappedBy = "codelistEnumeration")
+    private DataStructureComponent dataStructureComponent;
     @JoinColumns({
         @JoinColumn(name = "agencyID", referencedColumnName = "agencyID", nullable = false)
         , @JoinColumn(name = "Id", referencedColumnName = "Id", nullable = false)
@@ -66,28 +65,12 @@ public class CodelistReference implements Serializable {
         this.reference = reference;
     }
 
-    public AttributeStructureComponent getAttributeStructureComponent() {
-        return attributeStructureComponent;
+    public DataStructureComponent getDataStructureComponent() {
+        return dataStructureComponent;
     }
 
-    public void setAttributeStructureComponent(AttributeStructureComponent attributeStructureComponent) {
-        this.attributeStructureComponent = attributeStructureComponent;
-    }
-
-    public TimeStructureComponent getTimeStructureComponent() {
-        return timeStructureComponent;
-    }
-
-    public void setTimeStructureComponent(TimeStructureComponent timeStructureComponent) {
-        this.timeStructureComponent = timeStructureComponent;
-    }
-
-    public DimensionStructureComponent getDimensionStructureComponent() {
-        return dimensionStructureComponent;
-    }
-
-    public void setDimensionStructureComponent(DimensionStructureComponent dimensionStructureComponent) {
-        this.dimensionStructureComponent = dimensionStructureComponent;
+    public void setDataStructureComponent(DataStructureComponent dataStructureComponent) {
+        this.dataStructureComponent = dataStructureComponent;
     }
 
     public Codelist getCodelist() {
