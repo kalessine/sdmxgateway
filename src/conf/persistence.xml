@@ -35,6 +35,9 @@
       <property name="javax.persistence.jdbc.user" value="postgres"/>
       <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
       <property name="javax.persistence.jdbc.password" value="pooky213"/>
+      <property name="eclipselink.target-database" value="PostgreSQL"/>
+      <property name="eclipselink.jpa.uppercase-column-names" value="false"/>
+      <property name="eclipselink.jdbc.native-sql" value="true"/>
     </properties>
   </persistence-unit>
 </persistence>

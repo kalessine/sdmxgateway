@@ -3,7 +3,7 @@
 CAUTION: Do not modify this file unless you know what you are doing.
          Unexpected results may occur if the code is changed deliberately.
 -->
-<dbmodel pgmodeler-ver="0.9.1" last-position="1103,1026" last-zoom="1"
+<dbmodel pgmodeler-ver="0.9.1" last-position="424,0" last-zoom="1"
 	 default-owner="postgres">
 <database name="repository" encoding="UTF8" lc-collate="English_Australia.1252" lc-ctype="English_Australia.1252" is-template="false" allow-conns="true">
 	<role name="postgres"/>
@@ -148,7 +148,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="Codelist">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="1480" y="320"/>
+	<position x="1469" y="371"/>
 	<column name="agencyID" not-null="true">
 		<type name="varchar" length="255"/>
 	</column>
@@ -427,7 +427,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="CodelistReference">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="940" y="320"/>
+	<position x="940" y="319"/>
 	<column name="reference" not-null="true" identity-type="ALWAYS">
 		<type name="bigint" length="0"/>
 	</column>
@@ -609,6 +609,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<customidxs object-type="column">
 		<object name="Id" index="2"/>
 		<object name="agencyID" index="1"/>
+		<object name="conceptID" index="4"/>
 		<object name="version" index="3"/>
 	</customidxs>
 
@@ -786,7 +787,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="value" not-null="true">
 		<type name="varchar" length="255"/>
 	</column>
-	<special-pk-cols indexes="0,1,2,3,"/>
+	<special-pk-cols indexes="0,1,2,"/>
 </relationship>
 
 <relationship name="Concept_has_one_Name" type="rel11"

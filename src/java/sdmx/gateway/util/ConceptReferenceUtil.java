@@ -10,6 +10,7 @@ import sdmx.commonreferences.ConceptReference;
 import sdmx.commonreferences.IDType;
 import sdmx.commonreferences.NestedNCNameID;
 import sdmx.commonreferences.Version;
+import sdmx.gateway.entities.Conceptreference;
 
 /**
  *
@@ -17,8 +18,8 @@ import sdmx.commonreferences.Version;
  */
 public class ConceptReferenceUtil {
 
-    public static sdmx.gateway.entities.ConceptReference toDatabaseConceptReference(EntityManager em, ConceptReference conceptIdentity) {
-        sdmx.gateway.entities.ConceptReference ref = new sdmx.gateway.entities.ConceptReference();
+    public static Conceptreference toDatabaseConceptreference(EntityManager em, ConceptReference conceptIdentity) {
+        sdmx.gateway.entities.Conceptreference ref = new sdmx.gateway.entities.Conceptreference();
         sdmx.gateway.entities.Concept c = ConceptUtil.findDatabaseConcept(em, conceptIdentity.getAgencyId().toString(), conceptIdentity.getMaintainableParentId().toString(), conceptIdentity.getVersion().toString(), conceptIdentity.getId().toString());
         if (c != null) {
             ref.setConcept(c);
@@ -33,8 +34,8 @@ public class ConceptReferenceUtil {
         }
 
     }
-    public static ConceptReference toSDMXReference(sdmx.gateway.entities.ConceptReference con) {
-        return ConceptReference.create(new NestedNCNameID(con.getConcept().getConceptPK().getAgencyID()), new IDType(con.getConcept().getConceptPK().getId()), new Version(con.getConcept().getConceptPK().getVersion()), new IDType(con.getConcept().getConceptPK().getConceptID()));
+    public static ConceptReference toSDMXReference(sdmx.gateway.entities.Conceptreference con) {
+        return ConceptReference.create(new NestedNCNameID(con.getConcept().getConceptPK().getConceptSchemeAgencyID()), new IDType(con.getConcept().getConceptPK().getConceptSchemeID()), new Version(con.getConcept().getConceptPK().getConceptSchemeVersion()), new IDType(con.getConcept().getConceptPK().getId()));
     }
 
 }

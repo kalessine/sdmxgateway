@@ -5,8 +5,7 @@
  */
 package sdmx.gateway.util;
 
-import sdmx.gateway.entities.Language;
-
+import sdmx.gateway.entities.Languages;
 
 /**
  *
@@ -14,9 +13,9 @@ import sdmx.gateway.entities.Language;
  */
 public class LanguageUtil {
 
-    public static sdmx.gateway.entities.Language EN = new sdmx.gateway.entities.Language();
+    public static sdmx.gateway.entities.Languages EN = new sdmx.gateway.entities.Languages();
 
-    public static sdmx.gateway.entities.Language FR = new sdmx.gateway.entities.Language();
+    public static sdmx.gateway.entities.Languages FR = new sdmx.gateway.entities.Languages();
 
     static {
         EN.setLang("en");
@@ -24,8 +23,8 @@ public class LanguageUtil {
         FR.setLang("fr");
         FR.setName("French");
     }
-    public static final Language[] LANGS = new Language[]{EN,FR};
-   public static Language lookup(String s) {
+    public static final Languages[] LANGS = new Languages[]{EN,FR};
+   public static Languages lookup(String s) {
         for (int i = 0; i < LANGS.length; i++) {
             if (LANGS[i].getLang().equals(s)) {
                 return LANGS[i];

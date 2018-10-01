@@ -1,26 +1,11 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<mes:Structure xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common" xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/structure">
+<mes:Structure xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message" xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/structure" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common">
     <mes:Header>
-        <mes:ID>UNSD</mes:ID>
+        <mes:ID>IDREF14</mes:ID>
         <mes:Test>false</mes:Test>
-        <mes:Prepared>2016-09-30T02:12:26.324+08:00</mes:Prepared>
-        <mes:Sender id="UNSD">
-            <com:Name xml:lang="en">United Nations Statistics Division</com:Name>
-            <mes:Contact>
-                <com:Name xml:lang="en">UNSD</com:Name>
-                <mes:Department xml:lang="en">United Nations Statistics Division</mes:Department>
-                <mes:Role xml:lang="en">UNSD</mes:Role>
-            </mes:Contact>
-        </mes:Sender>
-        <mes:Receiver id="ZZZZ">
-            <com:Name xml:lang="en">Z</com:Name>
-            <mes:Contact>
-                <com:Name xml:lang="en">Z</com:Name>
-                <mes:Department xml:lang="en">Z</mes:Department>
-                <mes:Role xml:lang="en">Z</mes:Role>
-            </mes:Contact>
-        </mes:Receiver>
-        <com:Name xml:lang="en">UN</com:Name>
+        <mes:Prepared>2018-09-27T22:27:59.461+08:00</mes:Prepared>
+        <mes:Sender id="Unknown"/>
+        <mes:Receiver id="Unknown"/>
     </mes:Header>
     <mes:Structures>
         <str:Codelists>
