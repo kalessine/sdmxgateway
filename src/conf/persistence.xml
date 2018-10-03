@@ -2,42 +2,26 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="sdmxgatewayPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>sdmx.gateway.entities.MeasureStructureComponent</class>
-    <class>sdmx.gateway.entities.Name</class>
-    <class>sdmx.gateway.entities.Language</class>
-    <class>sdmx.gateway.entities.Code</class>
-    <class>sdmx.gateway.entities.TimeStructureComponent</class>
-    <class>sdmx.gateway.entities.Component</class>
-    <class>sdmx.gateway.entities.CodelistReference</class>
-    <class>sdmx.gateway.entities.ConceptSchemeReference</class>
-    <class>sdmx.gateway.entities.DataStructureReference</class>
-    <class>sdmx.gateway.entities.DataStructure</class>
-    <class>sdmx.gateway.entities.ComponentValue</class>
-    <class>sdmx.gateway.entities.DataStructureComponent</class>
-    <class>sdmx.gateway.entities.Annotation</class>
-    <class>sdmx.gateway.entities.PrimaryMeasureStructureComponent</class>
-    <class>sdmx.gateway.entities.Codelist</class>
-    <class>sdmx.gateway.entities.Annotations</class>
-    <class>sdmx.gateway.entities.ConceptReference</class>
+    <class>sdmx.gateway.entities.Attributerelationshiptype</class>
+    <class>sdmx.gateway.entities.Attributerelationshipattachgroups</class>
     <class>sdmx.gateway.entities.Dataflow</class>
-    <class>sdmx.gateway.entities.Value</class>
-    <class>sdmx.gateway.entities.Concept</class>
-    <class>sdmx.gateway.entities.ConceptScheme</class>
-    <class>sdmx.gateway.entities.NameText</class>
-    <class>sdmx.gateway.entities.AnnotationText</class>
-    <class>sdmx.gateway.entities.AttributeRelationshipType</class>
-    <class>sdmx.gateway.entities.AttributeStructureComponent</class>
-    <class>sdmx.gateway.entities.DimensionStructureComponent</class>
+    <class>sdmx.gateway.entities.Languages</class>
+    <class>sdmx.gateway.entities.Codelist</class>
+    <class>sdmx.gateway.entities.Name</class>
+    <class>sdmx.gateway.entities.Datastructure</class>
+    <class>sdmx.gateway.entities.Annotation</class>
+    <class>sdmx.gateway.entities.Nametext</class>
+    <class>sdmx.gateway.entities.Annotated</class>
+    <class>sdmx.gateway.entities.Conceptscheme</class>
+    <class>sdmx.gateway.entities.Sequence</class>
     <class>sdmx.gateway.entities.Observation</class>
+    <class>sdmx.gateway.entities.Dataflowcomponent</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/repository"/>
-      <property name="javax.persistence.jdbc.user" value="postgres"/>
-      <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/registry"/>
+      <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.password" value="pooky213"/>
-      <property name="eclipselink.target-database" value="PostgreSQL"/>
-      <property name="eclipselink.jpa.uppercase-column-names" value="false"/>
-      <property name="eclipselink.jdbc.native-sql" value="true"/>
     </properties>
   </persistence-unit>
 </persistence>
