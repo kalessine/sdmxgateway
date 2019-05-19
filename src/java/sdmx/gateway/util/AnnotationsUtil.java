@@ -10,22 +10,21 @@ import java.util.List;
 import sdmx.common.AnnotationType;
 import sdmx.common.Annotations;
 import sdmx.common.TextType;
-import sdmx.gateway.entities.Annotated;
 import sdmx.gateway.entities.Annotation;
-import sdmx.gateway.entities.Annotationtext;
+import sdmx.gateway.entities.AnnotationText;
 
 /**
  *
  * @author James
  */
 public class AnnotationsUtil {
-      public static sdmx.gateway.entities.Annotated toDatabaseAnnotations(Annotations annots) {
+      public static sdmx.gateway.entities.Annotations toDatabaseAnnotations(Annotations annots) {
           if( annots==null ) return null;
-          Annotated at = new Annotated();
+          sdmx.gateway.entities.Annotations at = new sdmx.gateway.entities.Annotations();
           List<sdmx.gateway.entities.Annotation> dbAnnots = new ArrayList<>(annots.size());
           for(int i=0;i<annots.size();i++) {
               dbAnnots.add(toDatabaseAnnotation(annots.getAnnotation(i)));
-              dbAnnots.get(dbAnnots.size()-1).getAnnotationPK().setIndex(dbAnnots.size()-1);
+              dbAnnots.get(dbAnnots.size()-1).getAnnotationPK().setIndex((short) (dbAnnots.size()-1));
           }
           at.setAnnotationList(dbAnnots);
           return at;
@@ -37,20 +36,20 @@ public class AnnotationsUtil {
           dbAnnot.setAnnotationId(annot.getId());
           dbAnnot.setType(annot.getAnnotationType());
           dbAnnot.setUrl(annot.getAnnotationUrl());
-          List<sdmx.gateway.entities.Annotationtext> texts = new ArrayList<>();
+          List<sdmx.gateway.entities.AnnotationText> texts = new ArrayList<>();
           for(int i=0;i<annot.getAnnotationText().size();i++) {
               texts.add(toDatabaseAnnotationText(annot.getAnnotationText().get(i)));
-              texts.get(texts.size()-1).getAnnotationtextPK().setTextIndex(texts.size()-1);
+              texts.get(texts.size()-1).getAnnotationTextPK().setTextIndex((short) (texts.size()-1));
           }
           return dbAnnot;
       }
-      public static sdmx.gateway.entities.Annotationtext toDatabaseAnnotationText(TextType tt) {
-          sdmx.gateway.entities.Annotationtext at = new sdmx.gateway.entities.Annotationtext();
+      public static sdmx.gateway.entities.AnnotationText toDatabaseAnnotationText(TextType tt) {
+          sdmx.gateway.entities.AnnotationText at = new sdmx.gateway.entities.AnnotationText();
           at.setText(tt.getText());
           at.setLang(tt.getLang());
           return at;
       }
-      public static Annotations toSDMXAnnotations(sdmx.gateway.entities.Annotated annot) {
+      public static Annotations toSDMXAnnotations(sdmx.gateway.entities.Annotations annot) {
           if( annot == null ) return null;
           Annotations annotations = new Annotations();
           List<sdmx.gateway.entities.Annotation> annots = annot.getAnnotationList();
@@ -65,7 +64,7 @@ public class AnnotationsUtil {
         annot.setAnnotationTitle(an.getTitle());
         annot.setAnnotationType(an.getType());
         annot.setAnnotationUrl(an.getUrl());
-        for(Annotationtext text:an.getAnnotationtextList()){
+        for(AnnotationText text:an.getAnnotationTextList()){
             annot.addAnnotationText(new TextType(text.getLang(),text.getText()));
         }
         return annot;

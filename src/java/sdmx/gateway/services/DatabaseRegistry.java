@@ -18,6 +18,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.transaction.RollbackException;
+import javax.validation.ConstraintViolationException;
 import sdmx.Registry;
 import sdmx.SdmxIO;
 import sdmx.commonreferences.CodeReference;
@@ -35,7 +37,7 @@ import sdmx.exception.ParseException;
 import sdmx.gateway.SdmxGatewayApplication;
 import sdmx.gateway.entities.Codelist;
 import sdmx.gateway.entities.Dataflow;
-import sdmx.gateway.entities.Datastructure;
+import sdmx.gateway.entities.DataStructure;
 import sdmx.gateway.util.AnnotationsUtil;
 import sdmx.gateway.util.CodeUtil;
 import sdmx.gateway.util.CodelistUtil;
@@ -43,6 +45,7 @@ import sdmx.gateway.util.ConceptSchemeUtil;
 import sdmx.gateway.util.ConceptUtil;
 import sdmx.gateway.util.DataStructureUtil;
 import sdmx.gateway.util.DataflowUtil;
+import sdmx.gateway.util.LanguageUtil;
 import sdmx.message.StructureType;
 import sdmx.structure.base.ItemSchemeType;
 import sdmx.structure.base.ItemType;
@@ -62,32 +65,38 @@ public class DatabaseRegistry implements Registry {
     public static final EntityManagerFactory EMF = Persistence.createEntityManagerFactory("sdmxgatewayPU");
     EntityManager query = EMF.createEntityManager();
     EntityManager update = EMF.createEntityManager();
-
+    
     public static void main(String args[]) throws IOException, ParseException {
 
     }
 
     public DatabaseRegistry() {
+        LanguageUtil.init(update);
     }
 
     @Override
     public void load(StructureType struct) {
+        /*
         try {
+            System.out.println("Loading Codelists");
             loadCodelists(struct);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
         try {
+            System.out.println("Loading Concepts");
             loadConcepts(struct);
         } catch (Exception ex) {
             ex.printStackTrace();
-        }
+        }*/
         try {
+            System.out.println("Loading DataStructures");
             loadDataStructures(struct);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
         try {
+            System.out.println("Loading Dataflows");
             loadDataflows(struct);
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -136,6 +145,7 @@ public class DatabaseRegistry implements Registry {
             }
 
             if (alreadyExists) {
+
                 try {
                     update.getTransaction().begin();
                     sdmx.gateway.entities.Codelist cs = CodelistUtil.findDatabaseCodelist(update, c.getAgencyID().toString(), c.getId().toString(), c.getVersion().toString());
@@ -147,10 +157,10 @@ public class DatabaseRegistry implements Registry {
                     update.merge(cs);
                     update.getTransaction().commit();
                 } catch (Exception ex) {
+                    update.getTransaction().rollback();
                     ex.printStackTrace();
                 } finally {
                     update.clear();
-
                 }
             } else {
                 try {
@@ -160,6 +170,7 @@ public class DatabaseRegistry implements Registry {
                     update.getTransaction().commit();
                 } catch (Exception ex) {
                     ex.printStackTrace();
+                    update.getTransaction().rollback();
                 } finally {
                     update.clear();
 
@@ -181,7 +192,7 @@ public class DatabaseRegistry implements Registry {
                 clist.add((ConceptType) itm);
             }
             boolean alreadyExists = false;
-            sdmx.gateway.entities.Conceptscheme conceptscheme = ConceptSchemeUtil.findDatabaseConceptScheme(update, c.getAgencyID().toString(), c.getId().toString(), c.getVersion().toString());
+            sdmx.gateway.entities.ConceptScheme conceptscheme = ConceptSchemeUtil.findDatabaseConceptScheme(update, c.getAgencyID().toString(), c.getId().toString(), c.getVersion().toString());
             if (conceptscheme != null) {
                 alreadyExists = true;
                 System.out.println("ConceptScheme: " + c.getAgencyID().toString() + ":" + c.getId().toString() + ":" + c.getVersion().toString() + " already exists");
@@ -204,7 +215,7 @@ public class DatabaseRegistry implements Registry {
             if (alreadyExists) {
                 try {
                     update.getTransaction().begin();
-                    sdmx.gateway.entities.Conceptscheme cs = ConceptSchemeUtil.findDatabaseConceptScheme(update, c.getAgencyID().toString(), c.getId().toString(), c.getVersion().toString());
+                    sdmx.gateway.entities.ConceptScheme cs = ConceptSchemeUtil.findDatabaseConceptScheme(update, c.getAgencyID().toString(), c.getId().toString(), c.getVersion().toString());
                     // What isn't already in the database
                     for (ConceptType ct : clist) {
                         sdmx.gateway.entities.Concept con = ConceptUtil.createDatabaseConcept(update, cs, ct);
@@ -221,7 +232,7 @@ public class DatabaseRegistry implements Registry {
             } else {
                 try {
                     update.getTransaction().begin();
-                    sdmx.gateway.entities.Conceptscheme cs = ConceptSchemeUtil.createDatabaseConceptScheme(update, c);
+                    sdmx.gateway.entities.ConceptScheme cs = ConceptSchemeUtil.createDatabaseConceptScheme(update, c);
                     update.persist(cs);
                     update.getTransaction().commit();
                 } catch (Exception ex) {
@@ -245,13 +256,25 @@ public class DatabaseRegistry implements Registry {
                 update.getTransaction().begin();
                 DataStructureType ds = struct.getStructures().getDataStructures().getDataStructures().get(i);
                 System.out.println("DS " + ds.getAgencyID().toString() + ":" + ds.getId().toString() + ":" + ds.getVersion().toString());
-                sdmx.gateway.entities.Datastructure ds2;
+                sdmx.gateway.entities.DataStructure ds2;
                 ds2 = DataStructureUtil.createDatabaseDataStructure(update, ds);
                 update.persist(ds2);
+                update.flush();
                 update.getTransaction().commit();
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            } finally {
+        } catch (ConstraintViolationException e) {
+            e.getConstraintViolations().forEach(err -> System.out.println(err.toString()));
+        } catch(javax.persistence.RollbackException re) {
+            for(int j=0;j<re.getSuppressed().length;j++){
+              re.getSuppressed()[j].printStackTrace();
+            }
+            re.printStackTrace();
+        } catch(Exception ex){
+            ex.printStackTrace();
+            if(update.getTransaction().isActive()){
+               update.getTransaction().rollback();
+               }
+        }
+        finally {
                 update.clear();
             }
         }
@@ -325,9 +348,9 @@ public class DatabaseRegistry implements Registry {
     @Override
     public List<DataStructureType> search(DataStructureReference ref) {
         //ref.dump();
-        List<Datastructure> list = DataStructureUtil.searchDataStructure(query, ref.getAgencyId().toString(),ref.getMaintainableParentId().toString(),ref.getVersion().toString());
+        List<DataStructure> list = DataStructureUtil.searchDataStructure(query, ref.getAgencyId().toString(),ref.getMaintainableParentId().toString(),ref.getVersion().toString());
         List<DataStructureType> result = new ArrayList<DataStructureType>();
-        for(Datastructure ds:list) {
+        for(DataStructure ds:list) {
             result.add(DataStructureUtil.toSDMXDataStructure(ds));
         }
         return result;

@@ -1,26 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="sdmxgatewayPU" transaction-type="RESOURCE_LOCAL">
-    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>sdmx.gateway.entities.Attributerelationshiptype</class>
-    <class>sdmx.gateway.entities.Attributerelationshipattachgroups</class>
-    <class>sdmx.gateway.entities.Dataflow</class>
-    <class>sdmx.gateway.entities.Languages</class>
-    <class>sdmx.gateway.entities.Codelist</class>
-    <class>sdmx.gateway.entities.Name</class>
-    <class>sdmx.gateway.entities.Datastructure</class>
-    <class>sdmx.gateway.entities.Annotation</class>
-    <class>sdmx.gateway.entities.Nametext</class>
-    <class>sdmx.gateway.entities.Annotated</class>
-    <class>sdmx.gateway.entities.Conceptscheme</class>
-    <class>sdmx.gateway.entities.Sequence</class>
-    <class>sdmx.gateway.entities.Observation</class>
-    <class>sdmx.gateway.entities.Dataflowcomponent</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <delimited-identifiers/>
+    <shared-cache-mode>ALL</shared-cache-mode>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/registry"/>
-      <property name="javax.persistence.jdbc.user" value="root"/>
-      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5433/repository"/>
+      <property name="javax.persistence.jdbc.user" value="postgres"/>
+      <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
       <property name="javax.persistence.jdbc.password" value="pooky213"/>
     </properties>
   </persistence-unit>

@@ -27,7 +27,7 @@ public class CodelistUtil {
     public static sdmx.gateway.entities.Codelist createDatabaseCodelist(EntityManager em, CodelistType c) {
         sdmx.gateway.entities.Codelist cl = new sdmx.gateway.entities.Codelist();
         sdmx.gateway.entities.CodelistPK pk = new sdmx.gateway.entities.CodelistPK();
-        pk.setAgencyID(c.getAgencyID().toString());
+        pk.setAgencyId(c.getAgencyID().toString());
         pk.setId(c.getId().toString());
         pk.setVersion(c.getVersion().toString());
         cl.setAnnotations(AnnotationsUtil.toDatabaseAnnotations(c.getAnnotations()));
@@ -96,7 +96,7 @@ public class CodelistUtil {
     public static CodelistType toSDMXCodelist(sdmx.gateway.entities.Codelist c) {
         CodelistType cl = new CodelistType();
         cl.setNames(NameUtil.toSDMXName(c.getName()));
-        cl.setAgencyID(new NestedNCNameID(c.getCodelistPK().getAgencyID()));
+        cl.setAgencyID(new NestedNCNameID(c.getCodelistPK().getAgencyId()));
         cl.setId(new NCNameID(c.getCodelistPK().getId()));
         cl.setVersion(new Version(c.getCodelistPK().getVersion()));
         List<sdmx.gateway.entities.Code> codes = c.getCodeList();

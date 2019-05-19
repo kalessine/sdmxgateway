@@ -28,15 +28,16 @@ public class DimensionUtil {
     public static final int TYPE_PRIMARYMEASURE = 3;
     public static final int TYPE_ATTRIBUTE = 4;
 
-    public static sdmx.gateway.entities.Datastructurecomponent toDatabaseDimension(EntityManager em, DataStructureType struct, Component c, int position) {
-        sdmx.gateway.entities.Datastructurecomponent dsc = new sdmx.gateway.entities.Datastructurecomponent();
-        sdmx.gateway.entities.DatastructurecomponentPK pk = new sdmx.gateway.entities.DatastructurecomponentPK();
-        pk.setDataStructureAgencyID(struct.getAgencyID().toString());
-        pk.setDataStructureID(struct.getId().toString());
-        pk.setDataStructureVersion(struct.getVersion().toString());
-        pk.setPosition(position);
-        dsc.setDatastructurecomponentPK(pk);
+    public static sdmx.gateway.entities.DataStructureComponent toDatabaseDimension(EntityManager em, DataStructureType struct, Component c, int position) {
+        sdmx.gateway.entities.DataStructureComponent dsc = new sdmx.gateway.entities.DataStructureComponent();
+        sdmx.gateway.entities.DataStructureComponentPK pk = new sdmx.gateway.entities.DataStructureComponentPK();
+        pk.setAgencyId(struct.getAgencyID().toString());
+        pk.setId(struct.getId().toString());
+        pk.setVersion(struct.getVersion().toString());
+        pk.setPosition((short)position);
+        dsc.setDataStructureComponentPK(pk);
         dsc.setConceptIdentity(ConceptReferenceUtil.toDatabaseConceptreference(em, c.getConceptIdentity()));
+        //dsc.setConceptReference(ConceptReferenceUtil.toDatabaseConceptreference(em, c.getConceptIdentity()));
         if (c instanceof MeasureDimensionType) {
             MeasureDimensionType dim = (MeasureDimensionType) c;
             dsc.setType(TYPE_MEASURE);
@@ -45,6 +46,7 @@ public class DimensionUtil {
                 // Get Concept Representation
             }
             if (rep != null && rep.getEnumeration() != null) {
+                //dsc.setConceptSchemeReference(ConceptSchemeReferenceUtil.toDatabaseConceptschemereference(em, rep.getEnumeration().asConceptSchemeReference()));
                 dsc.setConceptSchemeEnumeration(ConceptSchemeReferenceUtil.toDatabaseConceptschemereference(em, rep.getEnumeration().asConceptSchemeReference()));
             }
         } else if (c instanceof DimensionType) {
@@ -56,6 +58,7 @@ public class DimensionUtil {
             }
             if (rep != null && rep.getEnumeration() != null) {
                 dsc.setCodelistEnumeration(CodelistReferenceUtil.toDatabaseCodelistReference(em, rep.getEnumeration().asCodelistReference()));
+                //dsc.setCodelistReference(CodelistReferenceUtil.toDatabaseCodelistReference(em, rep.getEnumeration().asCodelistReference()));
             }
         } else if (c instanceof TimeDimensionType) {
             dsc.setType(TYPE_TIMEDIMENSION);
@@ -66,6 +69,7 @@ public class DimensionUtil {
             }
             if (rep != null && rep.getEnumeration() != null) {
                 dsc.setCodelistEnumeration(CodelistReferenceUtil.toDatabaseCodelistReference(em, rep.getEnumeration().asCodelistReference()));
+                //dsc.setCodelistReference(CodelistReferenceUtil.toDatabaseCodelistReference(em, rep.getEnumeration().asCodelistReference()));
             }
         } else if (c instanceof AttributeType) {
             dsc.setType(TYPE_ATTRIBUTE);
@@ -75,6 +79,7 @@ public class DimensionUtil {
                 // Get Concept Representation
             }
             if (rep != null && rep.getEnumeration() != null) {
+                //dsc.setCodelistReference(CodelistReferenceUtil.toDatabaseCodelistReference(em, rep.getEnumeration().asCodelistReference()));
                 dsc.setCodelistEnumeration(CodelistReferenceUtil.toDatabaseCodelistReference(em, rep.getEnumeration().asCodelistReference()));
             }
         } else if (c instanceof PrimaryMeasure) {
@@ -86,13 +91,14 @@ public class DimensionUtil {
             }
             if (rep != null && rep.getEnumeration() != null) {
                 dsc.setCodelistEnumeration(CodelistReferenceUtil.toDatabaseCodelistReference(em, rep.getEnumeration().asCodelistReference()));
+                //dsc.setCodelistReference(CodelistReferenceUtil.toDatabaseCodelistReference(em, rep.getEnumeration().asCodelistReference()));
             }
         }
         return dsc;
 
     }
 
-    public static Component toSDMXDimension(sdmx.gateway.entities.Datastructurecomponent dc) {
+    public static Component toSDMXDimension(sdmx.gateway.entities.DataStructureComponent dc) {
         Component comp = null;
         switch (dc.getType()) {
             case DimensionUtil.TYPE_DIMENSION:
@@ -112,13 +118,22 @@ public class DimensionUtil {
                 break;
         }
         comp.setConceptIdentity(ConceptReferenceUtil.toSDMXReference(dc.getConceptIdentity()));
+        //comp.setConceptIdentity(ConceptReferenceUtil.toSDMXReference(dc.getConceptReference()));
         RepresentationType lr = new SimpleDataStructureRepresentationType();
-        if (dc.getCodelistEnumeration() != null) {
+         if (dc.getCodelistEnumeration() != null) {
             lr.setEnumeration(CodelistReferenceUtil.toSDMXCodelistReference(dc.getCodelistEnumeration()));
         }
         if (dc.getConceptSchemeEnumeration() != null) {
             lr.setEnumeration(ConceptSchemeReferenceUtil.toSDMXConceptSchemeReference(dc.getConceptSchemeEnumeration()));
         }
+        /*
+       
+        if (dc.getCodelistReference() != null) {
+            lr.setEnumeration(CodelistReferenceUtil.toSDMXCodelistReference(dc.getCodelistReference()));
+        }
+        if (dc.getConceptSchemeReference()!= null) {
+            lr.setEnumeration(ConceptSchemeReferenceUtil.toSDMXConceptSchemeReference(dc.getConceptSchemeReference()));
+        }*/
         comp.setLocalRepresentation(lr);
         return comp;
     }

@@ -5,7 +5,11 @@
  */
 package sdmx.gateway.util;
 
-import sdmx.gateway.entities.Languages;
+import java.util.Arrays;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+import sdmx.gateway.entities.Language;
 
 /**
  *
@@ -13,9 +17,9 @@ import sdmx.gateway.entities.Languages;
  */
 public class LanguageUtil {
 
-    public static sdmx.gateway.entities.Languages EN = new sdmx.gateway.entities.Languages();
+    public static sdmx.gateway.entities.Language EN = new sdmx.gateway.entities.Language();
 
-    public static sdmx.gateway.entities.Languages FR = new sdmx.gateway.entities.Languages();
+    public static sdmx.gateway.entities.Language FR = new sdmx.gateway.entities.Language();
 
     static {
         EN.setLang("en");
@@ -23,13 +27,43 @@ public class LanguageUtil {
         FR.setLang("fr");
         FR.setName("French");
     }
-    public static final Languages[] LANGS = new Languages[]{EN,FR};
-   public static Languages lookup(String s) {
+    public static Language[] LANGS = new Language[]{EN, FR};
+
+    public static Language lookup(String s) {
         for (int i = 0; i < LANGS.length; i++) {
             if (LANGS[i].getLang().equals(s)) {
                 return LANGS[i];
             }
         }
         return null;
+    }
+
+    public static void init(EntityManager em) {
+        try {
+            Query query = em.createNamedQuery("Language.findAll");
+            LANGS = ((List<Language>) query.getResultList()).toArray(new Language[]{});
+            System.out.println(Arrays.toString(LANGS));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        if(LANGS.length==0){
+             init2(em);
+        }
+    }
+    public static void init2(EntityManager em) {
+        try{
+            em.getTransaction().begin();
+            em.persist(EN);
+            em.persist(FR);
+        }catch(Exception ex) {}
+        finally{
+            em.getTransaction().commit();
+        }
+        try {
+            Query query = em.createNamedQuery("Language.findAll");
+            LANGS = ((List<Language>) query.getResultList()).toArray(LANGS);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 }

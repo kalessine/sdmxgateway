@@ -13,9 +13,6 @@ import sdmx.commonreferences.IDType;
 import sdmx.commonreferences.ItemSchemeReferenceBase;
 import sdmx.commonreferences.NestedNCNameID;
 import sdmx.commonreferences.Version;
-import sdmx.gateway.entities.Conceptreference;
-import sdmx.gateway.entities.Conceptschemereference;
-import sdmx.gateway.entities.Datastructurereference;
 
 /**
  *
@@ -23,12 +20,12 @@ import sdmx.gateway.entities.Datastructurereference;
  */
 public class DataStructureReferenceUtil {
 
-    public static Datastructurereference toDatabaseDataStructureReference(EntityManager em, DataStructureReference reference) {
-        sdmx.gateway.entities.Datastructurereference ref = new sdmx.gateway.entities.Datastructurereference();
-        sdmx.gateway.entities.Datastructure ds = DataStructureUtil.findDataStructure(em, reference.getAgencyId().toString(),reference.getMaintainableParentId().toString(),reference.getVersion().toString());
+    public static sdmx.gateway.entities.DataStructureReference toDatabaseDataStructureReference(EntityManager em, DataStructureReference reference) {
+        sdmx.gateway.entities.DataStructureReference ref = new sdmx.gateway.entities.DataStructureReference();
+        sdmx.gateway.entities.DataStructure ds = DataStructureUtil.findDataStructure(em, reference.getAgencyId().toString(),reference.getMaintainableParentId().toString(),reference.getVersion().toString());
         if (ds != null) {
-            ref.setDatastructure(ds);
-            ds.getDatastructurereferenceList().add(ref);
+            ref.setDataStructure(ds);
+            ds.getDataStructureReferenceList().add(ref);
             em.persist(ref);
             em.merge(ds);
             em.flush();
@@ -42,7 +39,7 @@ public class DataStructureReferenceUtil {
 
     }
 
-    public static DataStructureReference toSDMXDataStructureReference(Datastructurereference ref) {
-        return DataStructureReference.create(new NestedNCNameID(ref.getDatastructure().getDatastructurePK().getAgencyID()),new IDType(ref.getDatastructure().getDatastructurePK().getId()), new Version(ref.getDatastructure().getDatastructurePK().getVersion()));
+    public static DataStructureReference toSDMXDataStructureReference(sdmx.gateway.entities.DataStructureReference ref) {
+        return DataStructureReference.create(new NestedNCNameID(ref.getDataStructure().getDataStructurePK().getAgencyId()),new IDType(ref.getDataStructure().getDataStructurePK().getId()), new Version(ref.getDataStructure().getDataStructurePK().getVersion()));
     }
 }

@@ -13,7 +13,7 @@ import sdmx.Queryable;
 import sdmx.Registry;
 import sdmx.Repository;
 import sdmx.SdmxIO;
-import sdmx.gateway.services.DatabaseRepository;
+//import sdmx.gateway.services.DatabaseRepository;
 import sdmx.gateway.services.DatabaseRegistry;
 import sdmx.net.list.DataProvider;
 import sdmx.structure.dataflow.DataflowType;
@@ -33,11 +33,12 @@ public class SdmxGatewayApplication {
 
         @Override
         public Repository getRepository() {
-            return rep;
+            //return rep;
+            return null;
         }
     };
     private Registry registry = new DatabaseRegistry();
-    private Repository rep = (Repository) new DatabaseRepository();
+    //private Repository rep = (Repository) new DatabaseRepository();
 
     public SdmxGatewayApplication() {
     }

@@ -12,7 +12,7 @@ import javax.persistence.Query;
 import sdmx.commonreferences.IDType;
 import sdmx.commonreferences.NestedNCNameID;
 import sdmx.commonreferences.Version;
-import sdmx.gateway.entities.Datastructurecomponent;
+import sdmx.gateway.entities.DataStructureComponent;
 import sdmx.structure.base.Component;
 import sdmx.structure.datastructure.AttributeListType;
 import sdmx.structure.datastructure.AttributeType;
@@ -31,20 +31,20 @@ import sdmx.structure.datastructure.TimeDimensionType;
  */
 public class DataStructureUtil {
 
-    public static sdmx.gateway.entities.Datastructure createDatabaseDataStructure(EntityManager em, DataStructureType ds) {
-        sdmx.gateway.entities.Datastructure ds2 = new sdmx.gateway.entities.Datastructure();
-        sdmx.gateway.entities.DatastructurePK pk = new sdmx.gateway.entities.DatastructurePK();
-        pk.setAgencyID(ds.getAgencyID().toString());
+    public static sdmx.gateway.entities.DataStructure createDatabaseDataStructure(EntityManager em, DataStructureType ds) {
+        sdmx.gateway.entities.DataStructure ds2 = new sdmx.gateway.entities.DataStructure();
+        sdmx.gateway.entities.DataStructurePK pk = new sdmx.gateway.entities.DataStructurePK();
+        pk.setAgencyId(ds.getAgencyID().toString());
         pk.setId(ds.getId().toString());
         if ("".equals(ds.getVersion().toString())) {
             pk.setVersion("1.0");
         } else {
             pk.setVersion(ds.getVersion().toString());
         }
-        ds2.setDatastructurePK(pk);
+        ds2.setDataStructurePK(pk);
         ds2.setAnnotations(AnnotationsUtil.toDatabaseAnnotations(ds.getAnnotations()));
         NameUtil.setName(em, ds2, ds);
-        List<sdmx.gateway.entities.Datastructurecomponent> comps = new ArrayList<>();
+        List<sdmx.gateway.entities.DataStructureComponent> comps = new ArrayList<>();
         int position = 0;
         for (int i = 0; i < ds.getDataStructureComponents().getDimensionList().getDimensions().size(); i++) {
             comps.add(DimensionUtil.toDatabaseDimension(em, ds, ds.getDataStructureComponents().getDimensionList().getDimensions().get(i), position++));
@@ -59,75 +59,78 @@ public class DataStructureUtil {
             comps.add(DimensionUtil.toDatabaseDimension(em, ds, ds.getDataStructureComponents().getAttributeList().getAttribute(i), position++));
         }
         comps.add(DimensionUtil.toDatabaseDimension(em, ds, ds.getDataStructureComponents().getMeasureList().getPrimaryMeasure(), position++));
-        ds2.setDatastructurecomponentList(comps);
-        ds2.setDatastructurePK(pk);
+        ds2.setDataStructureComponentList(comps);
+        ds2.setDataStructurePK(pk);
         return ds2;
     }
 
-    public static sdmx.gateway.entities.Datastructure findDataStructure(EntityManager em, String agency, String id, String version) {
+    public static sdmx.gateway.entities.DataStructure findDataStructure(EntityManager em, String agency, String id, String version) {
         try {
-            Query q = em.createQuery("select d from Datastructure d where d.datastructurePK.agencyID=:agency and d.datastructurePK.id=:id and d.datastructurePK.version=:version");
+            Query q = em.createQuery("select d from DataStructure d where d.dataStructurePK.agencyId=:agency and d.dataStructurePK.id=:id and d.dataStructurePK.version=:version");
             q.setParameter("agency", agency);
             q.setParameter("id", id);
             q.setParameter("version", version);
-            return (sdmx.gateway.entities.Datastructure) q.getSingleResult();
+            sdmx.gateway.entities.DataStructure d=null;
+            List<sdmx.gateway.entities.DataStructure> list = q.getResultList();
+            if(list.size()==0)return null;
+            return list.get(0);
         } catch (Exception ex) {
             ex.printStackTrace();
             return null;
         }
     }
 
-    public static List<sdmx.gateway.entities.Datastructure> searchDataStructure(EntityManager em, String agency, String id, String version) {
+    public static List<sdmx.gateway.entities.DataStructure> searchDataStructure(EntityManager em, String agency, String id, String version) {
         if ("*".equals(version) && "all".equals(id) && "all".equals(agency)) {
-            Query q = em.createQuery("select d from Datastructure d");
-            return (List<sdmx.gateway.entities.Datastructure>) q.getResultList();
+            Query q = em.createQuery("select d from DataStructure d");
+            return (List<sdmx.gateway.entities.DataStructure>) q.getResultList();
         } else if ("all".equals(id) && "all".equals(agency)) {
-            Query q = em.createQuery("select d from Datastructure d where d.datastructurePK.version=:version");
+            Query q = em.createQuery("select d from DataStructure d where d.dataStructurePK.version=:version");
             q.setParameter("version", version);
-            return (List<sdmx.gateway.entities.Datastructure>) q.getResultList();
+            return (List<sdmx.gateway.entities.DataStructure>) q.getResultList();
         } else if ("*".equals(version) && "all".equals(id)) {
-            Query q = em.createQuery("select d from Datastructure d where d.datastructurePK.agencyID=:agency");
+            Query q = em.createQuery("select d from DataStructure d where d.dataStructurePK.agencyId=:agency");
             q.setParameter("agency", agency);
-            return (List<sdmx.gateway.entities.Datastructure>) q.getResultList();
+            return (List<sdmx.gateway.entities.DataStructure>) q.getResultList();
         } else if ("*".equals(version) && "all".equals(agency)) {
-            Query q = em.createQuery("select d from Datastructure d where d.datastructurePK.id=:id");
+            Query q = em.createQuery("select d from DataStructure d where d.dataStructurePK.id=:id");
             q.setParameter("id", id);
-            return (List<sdmx.gateway.entities.Datastructure>) q.getResultList();
+            return (List<sdmx.gateway.entities.DataStructure>) q.getResultList();
         } else if ("*".equals(version)) {
-            Query q = em.createQuery("select d from Datastructure d where d.datastructurePK.id=:id and d.datastructurePK.agencyID=:agency");
+            Query q = em.createQuery("select d from DataStructure d where d.dataStructurePK.id=:id and d.dataStructurePK.agencyId=:agency");
             q.setParameter("agency", agency);
             q.setParameter("id", id);
-            return (List<sdmx.gateway.entities.Datastructure>) q.getResultList();
+            return (List<sdmx.gateway.entities.DataStructure>) q.getResultList();
         } else if ("all".equals(id)) {
-            Query q = em.createQuery("select d from Datastructure d where d.datastructurePK.version=:version and d.datastructurePK.agencyID=:agency");
+            Query q = em.createQuery("select d from DataStructure d where d.dataStructurePK.version=:version and d.dataStructurePK.agencyId=:agency");
             q.setParameter("agency", agency);
             q.setParameter("version", version);
-            return (List<sdmx.gateway.entities.Datastructure>) q.getResultList();
+            return (List<sdmx.gateway.entities.DataStructure>) q.getResultList();
         } else if ("all".equals(agency)) {
-            Query q = em.createQuery("select d from Datastructure d where d.datastructurePK.id=:id and d.datastructurePK.version=:version");
+            Query q = em.createQuery("select d from DataStructure d where d.dataStructurePK.id=:id and d.dataStructurePK.version=:version");
             q.setParameter("id", id);
             q.setParameter("version", version);
-            return (List<sdmx.gateway.entities.Datastructure>) q.getResultList();
+            return (List<sdmx.gateway.entities.DataStructure>) q.getResultList();
         } else {
-            Query q = em.createQuery("select d from Datastructure d where d.datastructurePK.agencyID=:agency and d.datastructurePK.id=:id and d.datastructurePK.version=:version");
+            Query q = em.createQuery("select d from DataStructure d where d.dataStructurePK.agencyId=:agency and d.dataStructurePK.id=:id and d.dataStructurePK.version=:version");
             q.setParameter("agency", agency);
             q.setParameter("id", id);
             q.setParameter("version", version);
-            return (List<sdmx.gateway.entities.Datastructure>) q.getResultList();
+            return (List<sdmx.gateway.entities.DataStructure>) q.getResultList();
         }
     }
-    public static DataStructureType toSDMXDataStructure(sdmx.gateway.entities.Datastructure d) {
+    public static DataStructureType toSDMXDataStructure(sdmx.gateway.entities.DataStructure d) {
         DataStructureType struct = new DataStructureType();
-        struct.setAgencyID(new NestedNCNameID(d.getDatastructurePK().getAgencyID()));
-        struct.setId(new IDType(d.getDatastructurePK().getId()));
-        struct.setVersion(new Version(d.getDatastructurePK().getVersion()));
+        struct.setAgencyID(new NestedNCNameID(d.getDataStructurePK().getAgencyId()));
+        struct.setId(new IDType(d.getDataStructurePK().getId()));
+        struct.setVersion(new Version(d.getDataStructurePK().getVersion()));
         struct.setNames(NameUtil.toSDMXName(d.getName()));
         struct.setAnnotations(AnnotationsUtil.toSDMXAnnotations(d.getAnnotations()));
-        List<Datastructurecomponent> dcl=d.getDatastructurecomponentList();
+        List<DataStructureComponent> dcl=d.getDataStructureComponentList();
         if( struct.getDataStructureComponents()==null ) {
             struct.setDataStructureComponents(new DataStructureComponents());
         }
-        for(Datastructurecomponent dc:dcl){
+        for(DataStructureComponent dc:dcl){
             Component comp = DimensionUtil.toSDMXDimension(dc);
             if( comp instanceof DimensionType ) {
                 if( struct.getDataStructureComponents().getDimensionList()==null ) {

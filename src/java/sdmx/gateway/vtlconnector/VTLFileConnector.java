@@ -160,7 +160,7 @@ public class VTLFileConnector implements Connector {
                 //    dst.getDataStructureComponents().getDimensionList().setTimeDimension(td);
                 //} else {
                     DimensionType dim = new DimensionType();
-                    dim.setId(new IDType(c.getName()));
+                    dim.setId(new IDType(c.toString()));
                     dst.getDataStructureComponents().getDimensionList().addDimension(dim);
                 //}
             }
@@ -169,7 +169,7 @@ public class VTLFileConnector implements Connector {
             }
             if (c.getRole() == Role.ATTRIBUTE) {
                 AttributeType att = new AttributeType();
-                att.setId(new IDType(c.getName()));
+                att.setId(new IDType(c.toString()));
                 dst.getDataStructureComponents().getAttributeList().addAttribute(att);
             }
         }
@@ -182,7 +182,7 @@ public class VTLFileConnector implements Connector {
             cs.setId(new NCNameID(name + "_MEASURES"));
             for (int j = 0; j < measures.size(); j++) {
                 ConceptType concept = new ConceptType();
-                concept.setId(new NCNameID(measures.get(j).getName()));
+                concept.setId(new NCNameID(measures.get(j).toString()));
                 cs.addConcept(concept);
             }
             RepresentationType rep = new RepresentationType();
