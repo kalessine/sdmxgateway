@@ -6,65 +6,88 @@
 package sdmx.gateway.entities;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author James
  */
 @Entity
-@Table(name = "Component")
+@Table(name = "Component", uniqueConstraints = {
+    @UniqueConstraint(columnNames = {"dataflow", "columnId"})
+    , @UniqueConstraint(columnNames = {"dataflow", "position"})})
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Component.findAll", query = "SELECT c FROM Component c")
-    , @NamedQuery(name = "Component.findByDataflow", query = "SELECT c FROM Component c WHERE c.componentPK.dataflow = :dataflow")
-    , @NamedQuery(name = "Component.findByPosition", query = "SELECT c FROM Component c WHERE c.componentPK.position = :position")
+    , @NamedQuery(name = "Component.findByDataflow", query = "SELECT c FROM Component c WHERE c.dataflow = :dataflow")
+    , @NamedQuery(name = "Component.findByPosition", query = "SELECT c FROM Component c WHERE c.position = :position")
     , @NamedQuery(name = "Component.findByColumnId", query = "SELECT c FROM Component c WHERE c.columnId = :columnId")
     , @NamedQuery(name = "Component.findByType", query = "SELECT c FROM Component c WHERE c.type = :type")})
 public class Component implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected ComponentPK componentPK;
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "dataflow", nullable = false)
+    private Long dataflow;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "position", nullable = false)
+    private short position;
     @Size(max = 255)
-    @Column(name = "columnId")
+    @Column(name = "columnId", length = 255)
     private String columnId;
     @Column(name = "type")
     private Integer type;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "component")
-    private ComponentValue componentValue;
-    @JoinColumn(name = "dataflow", referencedColumnName = "dataflow", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "component")
+    private List<ComponentValue> componentValueList;
+    @JoinColumn(name = "dataflow", referencedColumnName = "dataflow", nullable = false, insertable = false, updatable = false)
+    @OneToOne(optional = false)
     private Dataflow dataflow1;
 
     public Component() {
     }
 
-    public Component(ComponentPK componentPK) {
-        this.componentPK = componentPK;
+    public Component(Long dataflow) {
+        this.dataflow = dataflow;
     }
 
-    public Component(long dataflow, short position) {
-        this.componentPK = new ComponentPK(dataflow, position);
+    public Component(Long dataflow, short position) {
+        this.dataflow = dataflow;
+        this.position = position;
     }
 
-    public ComponentPK getComponentPK() {
-        return componentPK;
+    public Long getDataflow() {
+        return dataflow;
     }
 
-    public void setComponentPK(ComponentPK componentPK) {
-        this.componentPK = componentPK;
+    public void setDataflow(Long dataflow) {
+        this.dataflow = dataflow;
+    }
+
+    public short getPosition() {
+        return position;
+    }
+
+    public void setPosition(short position) {
+        this.position = position;
     }
 
     public String getColumnId() {
@@ -83,12 +106,13 @@ public class Component implements Serializable {
         this.type = type;
     }
 
-    public ComponentValue getComponentValue() {
-        return componentValue;
+    @XmlTransient
+    public List<ComponentValue> getComponentValueList() {
+        return componentValueList;
     }
 
-    public void setComponentValue(ComponentValue componentValue) {
-        this.componentValue = componentValue;
+    public void setComponentValueList(List<ComponentValue> componentValueList) {
+        this.componentValueList = componentValueList;
     }
 
     public Dataflow getDataflow1() {
@@ -102,7 +126,7 @@ public class Component implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (componentPK != null ? componentPK.hashCode() : 0);
+        hash += (dataflow != null ? dataflow.hashCode() : 0);
         return hash;
     }
 
@@ -113,7 +137,7 @@ public class Component implements Serializable {
             return false;
         }
         Component other = (Component) object;
-        if ((this.componentPK == null && other.componentPK != null) || (this.componentPK != null && !this.componentPK.equals(other.componentPK))) {
+        if ((this.dataflow == null && other.dataflow != null) || (this.dataflow != null && !this.dataflow.equals(other.dataflow))) {
             return false;
         }
         return true;
@@ -121,7 +145,7 @@ public class Component implements Serializable {
 
     @Override
     public String toString() {
-        return "sdmx.gateway.entities.Component[ componentPK=" + componentPK + " ]";
+        return "sdmx.gateway.entities.Component[ dataflow=" + dataflow + " ]";
     }
     
 }

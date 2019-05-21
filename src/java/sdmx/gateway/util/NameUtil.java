@@ -61,14 +61,23 @@ public class NameUtil {
     public static sdmx.gateway.entities.Name toDatabaseName(EntityManager em, List<sdmx.common.Name> names) {
         sdmx.gateway.entities.Name nm = new sdmx.gateway.entities.Name();
         List<sdmx.gateway.entities.NameText> result = new ArrayList<>();
+        boolean begin = false;
+        if(!em.getTransaction().isActive()){
+            begin=true;
+            //em.getTransaction().begin();
+        }
         em.persist(nm);
         em.flush();
         em.refresh(nm);
+        System.out.println("Name="+nm.getName());
+        if(em.getTransaction().isActive()){}//em.getTransaction().commit();}
+        //if(begin){em.getTransaction().begin();}
         for (int i = 0; i < names.size(); i++) {
-            result.add(toDatabaseNameText(nm, names.get(i)));
+            sdmx.gateway.entities.NameText nt = toDatabaseNameText(nm, names.get(i));
+            em.persist(nt);
+            result.add(nt);
         }
         nm.setNameTextList(result);
-        em.merge(nm);
         return nm;
     }
 
@@ -76,10 +85,10 @@ public class NameUtil {
         sdmx.gateway.entities.NameText nm = new sdmx.gateway.entities.NameText();
         sdmx.gateway.entities.NameTextPK pk = new sdmx.gateway.entities.NameTextPK();
         nm.setText(name.getText());
-        pk.setName(nam.getName());
         if ("en".equals(name.getLang())) {
             nam.setEn(name.getText());
         }
+        pk.setName(nam.getName());
         pk.setLang(name.getLang());
         nm.setNameTextPK(pk);
         return nm;

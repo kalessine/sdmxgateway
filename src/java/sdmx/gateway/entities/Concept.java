@@ -16,6 +16,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -23,7 +24,9 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author James
  */
 @Entity
-@Table(name = "Concept")
+@Table(name = "Concept", uniqueConstraints = {
+    @UniqueConstraint(columnNames = {"name"})
+    , @UniqueConstraint(columnNames = {"annotations"})})
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Concept.findAll", query = "SELECT c FROM Concept c")
@@ -40,9 +43,9 @@ public class Concept implements Serializable {
     @OneToOne
     private Annotations annotations;
     @JoinColumns({
-        @JoinColumn(name = "agencyId", referencedColumnName = "agencyId", insertable = false, updatable = false)
-        , @JoinColumn(name = "id", referencedColumnName = "id", insertable = false, updatable = false)
-        , @JoinColumn(name = "version", referencedColumnName = "version", insertable = false, updatable = false)})
+        @JoinColumn(name = "agencyId", referencedColumnName = "agencyId", nullable = false, insertable = false, updatable = false)
+        , @JoinColumn(name = "id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
+        , @JoinColumn(name = "version", referencedColumnName = "version", nullable = false, insertable = false, updatable = false)})
     @ManyToOne(optional = false)
     private ConceptScheme conceptScheme;
     @JoinColumn(name = "name", referencedColumnName = "name")

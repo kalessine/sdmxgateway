@@ -97,7 +97,7 @@ public class DatabaseRegistry implements Registry {
         }
         try {
             System.out.println("Loading Dataflows");
-            loadDataflows(struct);
+            //loadDataflows(struct);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -107,10 +107,10 @@ public class DatabaseRegistry implements Registry {
         if( struct.getStructures().getDataflows()==null ) {return; }
         for(int i=0;i<struct.getStructures().getDataflows().size();i++) {
             DataflowType df = struct.getStructures().getDataflows().getDataflow(i);
-            update.getTransaction().begin();
+            if(!update.getTransaction().isActive()){update.getTransaction().begin();}
             Dataflow dbdf = DataflowUtil.createDatabaseDataflow(update, df);
-            update.merge(dbdf);
-            update.getTransaction().commit();
+            update.persist(dbdf);
+            if(update.getTransaction().isActive()){update.getTransaction().commit();}
         }
     }    
     public void loadCodelists(StructureType struct) {
@@ -159,6 +159,7 @@ public class DatabaseRegistry implements Registry {
                 } catch (Exception ex) {
                     update.getTransaction().rollback();
                     ex.printStackTrace();
+                    update=EMF.createEntityManager();
                 } finally {
                     update.clear();
                 }
@@ -171,6 +172,7 @@ public class DatabaseRegistry implements Registry {
                 } catch (Exception ex) {
                     ex.printStackTrace();
                     update.getTransaction().rollback();
+                    update=EMF.createEntityManager();
                 } finally {
                     update.clear();
 
@@ -253,14 +255,15 @@ public class DatabaseRegistry implements Registry {
         }
         for (int i = 0; i < struct.getStructures().getDataStructures().getDataStructures().size(); i++) {
             try {
-                update.getTransaction().begin();
                 DataStructureType ds = struct.getStructures().getDataStructures().getDataStructures().get(i);
-                System.out.println("DS " + ds.getAgencyID().toString() + ":" + ds.getId().toString() + ":" + ds.getVersion().toString());
+                if(!update.getTransaction().isActive()){update.getTransaction().begin();}
                 sdmx.gateway.entities.DataStructure ds2;
                 ds2 = DataStructureUtil.createDatabaseDataStructure(update, ds);
                 update.persist(ds2);
-                update.flush();
-                update.getTransaction().commit();
+                if(update.getTransaction().isActive()){
+                    System.out.println("commit");
+                    update.getTransaction().commit();
+                }
         } catch (ConstraintViolationException e) {
             e.getConstraintViolations().forEach(err -> System.out.println(err.toString()));
         } catch(javax.persistence.RollbackException re) {
@@ -271,7 +274,8 @@ public class DatabaseRegistry implements Registry {
         } catch(Exception ex){
             ex.printStackTrace();
             if(update.getTransaction().isActive()){
-               update.getTransaction().rollback();
+               //update.getTransaction().rollback();
+               update=EMF.createEntityManager();
                }
         }
         finally {

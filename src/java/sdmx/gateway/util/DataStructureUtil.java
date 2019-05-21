@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import javax.transaction.Transactional;
 import sdmx.commonreferences.IDType;
 import sdmx.commonreferences.NestedNCNameID;
 import sdmx.commonreferences.Version;
@@ -30,7 +31,6 @@ import sdmx.structure.datastructure.TimeDimensionType;
  * @author James
  */
 public class DataStructureUtil {
-
     public static sdmx.gateway.entities.DataStructure createDatabaseDataStructure(EntityManager em, DataStructureType ds) {
         sdmx.gateway.entities.DataStructure ds2 = new sdmx.gateway.entities.DataStructure();
         sdmx.gateway.entities.DataStructurePK pk = new sdmx.gateway.entities.DataStructurePK();
@@ -41,30 +41,53 @@ public class DataStructureUtil {
         } else {
             pk.setVersion(ds.getVersion().toString());
         }
+        
         ds2.setDataStructurePK(pk);
         ds2.setAnnotations(AnnotationsUtil.toDatabaseAnnotations(ds.getAnnotations()));
         NameUtil.setName(em, ds2, ds);
         List<sdmx.gateway.entities.DataStructureComponent> comps = new ArrayList<>();
         int position = 0;
         for (int i = 0; i < ds.getDataStructureComponents().getDimensionList().getDimensions().size(); i++) {
+            //if(!em.getTransaction().isActive()){em.getTransaction().begin();}
             comps.add(DimensionUtil.toDatabaseDimension(em, ds, ds.getDataStructureComponents().getDimensionList().getDimensions().get(i), position++));
+            ds2.setDataStructureComponentList(comps);
+            //em.merge(ds2);
+            //if(em.getTransaction().isActive()){em.getTransaction().commit();}
         }
         if (ds.getDataStructureComponents().getDimensionList().getTimeDimension() != null) {
+            //if(!em.getTransaction().isActive()){em.getTransaction().begin();}
             comps.add(DimensionUtil.toDatabaseDimension(em, ds, ds.getDataStructureComponents().getDimensionList().getTimeDimension(), position++));
+            ds2.setDataStructureComponentList(comps);
+            //em.merge(ds2);
+            //if(em.getTransaction().isActive()){em.getTransaction().commit();}
         }
         if (ds.getDataStructureComponents().getDimensionList().getMeasureDimension() != null) {
+            //if(!em.getTransaction().isActive()){em.getTransaction().begin();}
             comps.add(DimensionUtil.toDatabaseDimension(em, ds, ds.getDataStructureComponents().getDimensionList().getMeasureDimension(), position++));
+            ds2.setDataStructureComponentList(comps);
+            //em.merge(ds2);
+            //if(em.getTransaction().isActive()){em.getTransaction().commit();}
         }
         for (int i = 0; i < ds.getDataStructureComponents().getAttributeList().size(); i++) {
+            //if(!em.getTransaction().isActive()){em.getTransaction().begin();}
             comps.add(DimensionUtil.toDatabaseDimension(em, ds, ds.getDataStructureComponents().getAttributeList().getAttribute(i), position++));
+            ds2.setDataStructureComponentList(comps);
+            //em.merge(ds2);
+            //if(em.getTransaction().isActive()){em.getTransaction().commit();}
         }
         comps.add(DimensionUtil.toDatabaseDimension(em, ds, ds.getDataStructureComponents().getMeasureList().getPrimaryMeasure(), position++));
+            //if(!em.getTransaction().isActive()){em.getTransaction().begin();}
+            ds2.setDataStructureComponentList(comps);
+            em.merge(ds2);
+            //if(em.getTransaction().isActive()){em.getTransaction().commit();}
         ds2.setDataStructureComponentList(comps);
         ds2.setDataStructurePK(pk);
         return ds2;
     }
 
     public static sdmx.gateway.entities.DataStructure findDataStructure(EntityManager em, String agency, String id, String version) {
+        return null;
+        /*
         try {
             Query q = em.createQuery("select d from DataStructure d where d.dataStructurePK.agencyId=:agency and d.dataStructurePK.id=:id and d.dataStructurePK.version=:version");
             q.setParameter("agency", agency);
@@ -77,7 +100,7 @@ public class DataStructureUtil {
         } catch (Exception ex) {
             ex.printStackTrace();
             return null;
-        }
+        }*/
     }
 
     public static List<sdmx.gateway.entities.DataStructure> searchDataStructure(EntityManager em, String agency, String id, String version) {

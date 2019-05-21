@@ -42,18 +42,18 @@ public class Annotation implements Serializable {
     @EmbeddedId
     protected AnnotationPK annotationPK;
     @Size(max = 255)
-    @Column(name = "title")
+    @Column(name = "title", length = 255)
     private String title;
     @Size(max = 600)
-    @Column(name = "url")
+    @Column(name = "url", length = 600)
     private String url;
     @Size(max = 255)
-    @Column(name = "type")
+    @Column(name = "type", length = 255)
     private String type;
     @Size(max = 255)
-    @Column(name = "annotationId")
+    @Column(name = "annotationId", length = 255)
     private String annotationId;
-    @JoinColumn(name = "annotations", referencedColumnName = "annotations", insertable = false, updatable = false)
+    @JoinColumn(name = "annotations", referencedColumnName = "annotations", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Annotations annotations1;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "annotation")

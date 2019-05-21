@@ -11,12 +11,11 @@ import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -32,29 +31,24 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "ComponentValue.findAll", query = "SELECT c FROM ComponentValue c")
     , @NamedQuery(name = "ComponentValue.findByDataflow", query = "SELECT c FROM ComponentValue c WHERE c.componentValuePK.dataflow = :dataflow")
-    , @NamedQuery(name = "ComponentValue.findByPosition", query = "SELECT c FROM ComponentValue c WHERE c.componentValuePK.position = :position")
-    , @NamedQuery(name = "ComponentValue.findByIndex", query = "SELECT c FROM ComponentValue c WHERE c.index = :index")
-    , @NamedQuery(name = "ComponentValue.findByValue", query = "SELECT c FROM ComponentValue c WHERE c.value = :value")})
+    , @NamedQuery(name = "ComponentValue.findByValue", query = "SELECT c FROM ComponentValue c WHERE c.value = :value")
+    , @NamedQuery(name = "ComponentValue.findByIndex", query = "SELECT c FROM ComponentValue c WHERE c.componentValuePK.index = :index")})
 public class ComponentValue implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected ComponentValuePK componentValuePK;
-    @Column(name = "index")
-    private Short index;
     @Size(max = 255)
-    @Column(name = "value")
+    @Column(name = "value", length = 255)
     private String value;
     @JoinTable(name = "Value", joinColumns = {
         @JoinColumn(name = "dataflow", referencedColumnName = "dataflow")
-        , @JoinColumn(name = "position", referencedColumnName = "position")}, inverseJoinColumns = {
+        , @JoinColumn(name = "index", referencedColumnName = "index")}, inverseJoinColumns = {
         @JoinColumn(name = "observation", referencedColumnName = "observation")})
     @ManyToMany
     private List<Observation> observationList;
-    @JoinColumns({
-        @JoinColumn(name = "dataflow", referencedColumnName = "dataflow", insertable = false, updatable = false)
-        , @JoinColumn(name = "position", referencedColumnName = "position", insertable = false, updatable = false)})
-    @OneToOne(optional = false)
+    @JoinColumn(name = "dataflow", referencedColumnName = "dataflow", nullable = false, insertable = false, updatable = false)
+    @ManyToOne(optional = false)
     private Component component;
 
     public ComponentValue() {
@@ -64,8 +58,8 @@ public class ComponentValue implements Serializable {
         this.componentValuePK = componentValuePK;
     }
 
-    public ComponentValue(long dataflow, short position) {
-        this.componentValuePK = new ComponentValuePK(dataflow, position);
+    public ComponentValue(long dataflow, short index) {
+        this.componentValuePK = new ComponentValuePK(dataflow, index);
     }
 
     public ComponentValuePK getComponentValuePK() {
@@ -74,14 +68,6 @@ public class ComponentValue implements Serializable {
 
     public void setComponentValuePK(ComponentValuePK componentValuePK) {
         this.componentValuePK = componentValuePK;
-    }
-
-    public Short getIndex() {
-        return index;
-    }
-
-    public void setIndex(Short index) {
-        this.index = index;
     }
 
     public String getValue() {

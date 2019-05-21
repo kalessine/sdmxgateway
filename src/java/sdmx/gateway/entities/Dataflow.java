@@ -21,6 +21,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -30,7 +31,9 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author James
  */
 @Entity
-@Table(name = "Dataflow")
+@Table(name = "Dataflow", uniqueConstraints = {
+    @UniqueConstraint(columnNames = {"name"})
+    , @UniqueConstraint(columnNames = {"annotations"})})
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Dataflow.findAll", query = "SELECT d FROM Dataflow d")
@@ -44,21 +47,21 @@ public class Dataflow implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "dataflow")
+    @Column(name = "dataflow", nullable = false)
     private Long dataflow;
     @Size(max = 255)
-    @Column(name = "agencyId")
+    @Column(name = "agencyId", length = 255)
     private String agencyId;
     @Size(max = 255)
-    @Column(name = "id")
+    @Column(name = "id", length = 255)
     private String id;
     @Size(max = 255)
-    @Column(name = "version")
+    @Column(name = "version", length = 255)
     private String version;
     @OneToMany(mappedBy = "dataflow")
     private List<Observation> observationList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "dataflow1")
-    private List<Component> componentList;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "dataflow1")
+    private Component component;
     @JoinColumn(name = "annotations", referencedColumnName = "annotations")
     @OneToOne
     private Annotations annotations;
@@ -117,13 +120,12 @@ public class Dataflow implements Serializable {
         this.observationList = observationList;
     }
 
-    @XmlTransient
-    public List<Component> getComponentList() {
-        return componentList;
+    public Component getComponent() {
+        return component;
     }
 
-    public void setComponentList(List<Component> componentList) {
-        this.componentList = componentList;
+    public void setComponent(Component component) {
+        this.component = component;
     }
 
     public Annotations getAnnotations() {

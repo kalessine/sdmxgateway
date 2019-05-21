@@ -22,22 +22,22 @@ public class ConceptPK implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
-    @Column(name = "id")
+    @Column(name = "id", nullable = false, length = 255)
     private String id;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
-    @Column(name = "version")
+    @Column(name = "version", nullable = false, length = 255)
     private String version;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
-    @Column(name = "conceptId")
+    @Column(name = "conceptId", nullable = false, length = 255)
     private String conceptId;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
-    @Column(name = "agencyId")
+    @Column(name = "agencyId", nullable = false, length = 255)
     private String agencyId;
 
     public ConceptPK() {

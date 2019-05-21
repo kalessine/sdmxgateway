@@ -38,14 +38,14 @@ public class AnnotationText implements Serializable {
     @EmbeddedId
     protected AnnotationTextPK annotationTextPK;
     @Size(max = 255)
-    @Column(name = "lang")
+    @Column(name = "lang", length = 255)
     private String lang;
     @Size(max = 3000)
-    @Column(name = "text")
+    @Column(name = "text", length = 3000)
     private String text;
     @JoinColumns({
-        @JoinColumn(name = "annotations", referencedColumnName = "annotations", insertable = false, updatable = false)
-        , @JoinColumn(name = "index", referencedColumnName = "index", insertable = false, updatable = false)})
+        @JoinColumn(name = "annotations", referencedColumnName = "annotations", nullable = false, insertable = false, updatable = false)
+        , @JoinColumn(name = "index", referencedColumnName = "index", nullable = false, insertable = false, updatable = false)})
     @ManyToOne(optional = false)
     private Annotation annotation;
 

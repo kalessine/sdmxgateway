@@ -16,6 +16,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -24,7 +25,9 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author James
  */
 @Entity
-@Table(name = "DataStructure")
+@Table(name = "DataStructure", uniqueConstraints = {
+    @UniqueConstraint(columnNames = {"name"})
+    , @UniqueConstraint(columnNames = {"annotations"})})
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "DataStructure.findAll", query = "SELECT d FROM DataStructure d")

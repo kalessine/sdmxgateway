@@ -16,6 +16,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -24,7 +25,12 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author James
  */
 @Entity
-@Table(name = "DataStructureComponent")
+@Table(name = "DataStructureComponent", uniqueConstraints = {
+    @UniqueConstraint(columnNames = {"conceptIdentity"})
+    , @UniqueConstraint(columnNames = {"conceptSchemeEnumeration"})
+    , @UniqueConstraint(columnNames = {"attributeRelationshipType"})
+    , @UniqueConstraint(columnNames = {"annotations"})
+    , @UniqueConstraint(columnNames = {"codelistEnumeration"})})
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "DataStructureComponent.findAll", query = "SELECT d FROM DataStructureComponent d")
@@ -41,12 +47,12 @@ public class DataStructureComponent implements Serializable {
     @EmbeddedId
     protected DataStructureComponentPK dataStructureComponentPK;
     @Size(max = 255)
-    @Column(name = "assignmentStatus")
+    @Column(name = "assignmentStatus", length = 255)
     private String assignmentStatus;
     @Column(name = "type")
     private Integer type;
     @Size(max = 255)
-    @Column(name = "componentId")
+    @Column(name = "componentId", length = 255)
     private String componentId;
     @JoinColumn(name = "annotations", referencedColumnName = "annotations")
     @OneToOne
@@ -64,9 +70,9 @@ public class DataStructureComponent implements Serializable {
     @OneToOne
     private ConceptSchemeReference conceptSchemeEnumeration;
     @JoinColumns({
-        @JoinColumn(name = "agencyId", referencedColumnName = "agencyId", insertable = false, updatable = false)
-        , @JoinColumn(name = "id", referencedColumnName = "id", insertable = false, updatable = false)
-        , @JoinColumn(name = "version", referencedColumnName = "version", insertable = false, updatable = false)})
+        @JoinColumn(name = "agencyId", referencedColumnName = "agencyId", nullable = false, insertable = false, updatable = false)
+        , @JoinColumn(name = "id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
+        , @JoinColumn(name = "version", referencedColumnName = "version", nullable = false, insertable = false, updatable = false)})
     @ManyToOne(optional = false)
     private DataStructure dataStructure;
 

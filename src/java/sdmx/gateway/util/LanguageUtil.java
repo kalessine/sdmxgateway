@@ -55,9 +55,13 @@ public class LanguageUtil {
             em.getTransaction().begin();
             em.persist(EN);
             em.persist(FR);
-        }catch(Exception ex) {}
-        finally{
             em.getTransaction().commit();
+        }catch(Exception ex) {
+            System.out.println("rollback");
+           em.getTransaction().rollback();
+        }
+        finally{
+            
         }
         try {
             Query query = em.createNamedQuery("Language.findAll");

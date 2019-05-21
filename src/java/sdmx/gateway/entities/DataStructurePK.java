@@ -22,17 +22,17 @@ public class DataStructurePK implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
-    @Column(name = "agencyId")
+    @Column(name = "agencyId", nullable = false, length = 255)
     private String agencyId;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
-    @Column(name = "id")
+    @Column(name = "id", nullable = false, length = 255)
     private String id;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
-    @Column(name = "version")
+    @Column(name = "version", nullable = false, length = 255)
     private String version;
 
     public DataStructurePK() {

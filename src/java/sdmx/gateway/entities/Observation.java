@@ -41,7 +41,7 @@ public class Observation implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "observation")
+    @Column(name = "observation", nullable = false)
     private Long observation;
     @Column(name = "dateUpdated")
     @Temporal(TemporalType.DATE)

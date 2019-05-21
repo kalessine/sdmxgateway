@@ -40,10 +40,10 @@ public class Name implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private Long name;
     @Size(max = 255)
-    @Column(name = "en")
+    @Column(name = "en", length = 255)
     private String en;
     @OneToOne(mappedBy = "name")
     private Concept concept;

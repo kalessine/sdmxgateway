@@ -21,12 +21,12 @@ public class NameTextPK implements Serializable {
 
     @Basic(optional = false)
     @NotNull
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private long name;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
-    @Column(name = "lang")
+    @Column(name = "lang", nullable = false, length = 255)
     private String lang;
 
     public NameTextPK() {

@@ -37,14 +37,14 @@ public class CodelistReference implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "reference")
+    @Column(name = "reference", nullable = false)
     private Long reference;
     @OneToOne(mappedBy = "codelistEnumeration")
     private DataStructureComponent dataStructureComponent;
     @JoinColumns({
-        @JoinColumn(name = "agencyId", referencedColumnName = "agencyId")
-        , @JoinColumn(name = "id", referencedColumnName = "id")
-        , @JoinColumn(name = "version", referencedColumnName = "version")})
+        @JoinColumn(name = "agencyId", referencedColumnName = "agencyId", nullable = false)
+        , @JoinColumn(name = "id", referencedColumnName = "id", nullable = false)
+        , @JoinColumn(name = "version", referencedColumnName = "version", nullable = false)})
     @ManyToOne(optional = false)
     private Codelist codelist;
 

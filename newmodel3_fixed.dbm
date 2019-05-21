@@ -3,7 +3,7 @@
 CAUTION: Do not modify this file unless you know what you are doing.
          Unexpected results may occur if the code is changed deliberately.
 -->
-<dbmodel pgmodeler-ver="0.9.2-alpha1" last-position="0,1308" last-zoom="1" max-obj-count="40"
+<dbmodel pgmodeler-ver="0.9.2-alpha1" last-position="79,0" last-zoom="1" max-obj-count="40"
 	 default-owner="postgres">
 <database name="repository" encoding="UTF8" lc-collate="English_Australia.1252" lc-ctype="English_Australia.1252" is-template="false" allow-conns="true">
 	<role name="postgres"/>
@@ -61,7 +61,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<role name="postgres"/>
 </sequence>
 
-<table name="ComponentValue" layer="0" collapse-mode="2" max-obj-count="4">
+<table name="ComponentValue" layer="0" collapse-mode="2" max-obj-count="3">
 	<schema name="public"/>
 	<role name="postgres"/>
 	<position x="1868.88" y="583.3"/>
@@ -72,7 +72,6 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<customidxs object-type="column">
 		<object name="dataflow" index="0"/>
 		<object name="index" index="2"/>
-		<object name="position" index="1"/>
 	</customidxs>
 
 	<customidxs object-type="constraint">
@@ -582,7 +581,6 @@ CAUTION: Do not modify this file unless you know what you are doing.
 
 	<customidxs object-type="column">
 		<object name="agencyId" index="1"/>
-		<object name="conceptId" index="4"/>
 		<object name="id" index="2"/>
 		<object name="version" index="3"/>
 	</customidxs>
@@ -716,8 +714,8 @@ CAUTION: Do not modify this file unless you know what you are doing.
 
 	<customidxs object-type="column">
 		<object name="dataflow" index="1"/>
+		<object name="index" index="2"/>
 		<object name="observation" index="0"/>
-		<object name="position" index="2"/>
 	</customidxs>
 
 	<customidxs object-type="constraint">
@@ -937,10 +935,10 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<label ref-type="dst-label">
 		<position x="4.1875" y="10.825"/>
 	</label>
-	<column name="index">
+	<column name="index" not-null="true">
 		<type name="smallint" length="255"/>
 	</column>
-	<special-pk-cols indexes="0,1,"/>
+	<special-pk-cols indexes="0,"/>
 </relationship>
 
 <relationship name="Dataflow_has_many_Observation" type="rel1n" layer="0"
@@ -983,7 +981,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 dst-table="public.&quot;Annotation&quot;"
 	 src-required="true" dst-required="false">
 	<label ref-type="dst-label">
-		<position x="0" y="0"/>
+		<position x="12.9405" y="7.275"/>
 	</label>
 	<column name="index" not-null="true">
 		<type name="smallint" length="0"/>

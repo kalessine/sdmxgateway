@@ -3,8 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/James/Dropbox/sdmxgateway/test/LoadABSDotStatStructure.java</file>
-            <file>file:/C:/Users/James/Dropbox/sdmxgateway/src/java/sdmx/gateway/util/NameUtil.java</file>
+            <file>file:/C:/Users/James/Dropbox/sdmxgateway/src/java/sdmx/gateway/util/CodeUtil.java</file>
+            <file>file:/C:/Users/James/Dropbox/sdmxgateway/src/java/sdmx/gateway/util/DataStructureUtil.java</file>
+            <file>file:/C:/Users/James/Dropbox/sdmxgateway/src/java/sdmx/gateway/services/DatabaseRegistry.java</file>
         </group>
     </open-files>
 </project-private>

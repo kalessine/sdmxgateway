@@ -38,7 +38,7 @@ public class DataStructureReference implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "reference")
+    @Column(name = "reference", nullable = false)
     private Long reference;
     @JoinColumns({
         @JoinColumn(name = "agencyId", referencedColumnName = "agencyId")

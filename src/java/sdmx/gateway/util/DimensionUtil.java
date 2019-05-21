@@ -29,6 +29,7 @@ public class DimensionUtil {
     public static final int TYPE_ATTRIBUTE = 4;
 
     public static sdmx.gateway.entities.DataStructureComponent toDatabaseDimension(EntityManager em, DataStructureType struct, Component c, int position) {
+        System.out.println(c.getId());
         sdmx.gateway.entities.DataStructureComponent dsc = new sdmx.gateway.entities.DataStructureComponent();
         sdmx.gateway.entities.DataStructureComponentPK pk = new sdmx.gateway.entities.DataStructureComponentPK();
         pk.setAgencyId(struct.getAgencyID().toString());
@@ -36,7 +37,15 @@ public class DimensionUtil {
         pk.setVersion(struct.getVersion().toString());
         pk.setPosition((short)position);
         dsc.setDataStructureComponentPK(pk);
+        dsc.setComponentId(c.getId().toString());
+        /*if(!em.getTransaction().isActive()){em.getTransaction().begin();}
+        em.persist(dsc);
+        if(em.getTransaction().isActive()){em.getTransaction().commit();}*/
         dsc.setConceptIdentity(ConceptReferenceUtil.toDatabaseConceptreference(em, c.getConceptIdentity()));
+        /*
+        if(!em.getTransaction().isActive()){em.getTransaction().begin();}
+        em.persist(dsc);
+        if(em.getTransaction().isActive()){em.getTransaction().commit();}*/
         //dsc.setConceptReference(ConceptReferenceUtil.toDatabaseConceptreference(em, c.getConceptIdentity()));
         if (c instanceof MeasureDimensionType) {
             MeasureDimensionType dim = (MeasureDimensionType) c;

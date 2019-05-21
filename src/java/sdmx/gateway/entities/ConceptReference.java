@@ -16,6 +16,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -24,7 +25,8 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author James
  */
 @Entity
-@Table(name = "ConceptReference")
+@Table(name = "ConceptReference", uniqueConstraints = {
+    @UniqueConstraint(columnNames = {"agencyId", "id", "version", "conceptId"})})
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "ConceptReference.findAll", query = "SELECT c FROM ConceptReference c")
@@ -35,13 +37,13 @@ public class ConceptReference implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "reference")
+    @Column(name = "reference", nullable = false)
     private Long reference;
     @JoinColumns({
-        @JoinColumn(name = "agencyId", referencedColumnName = "agencyId")
-        , @JoinColumn(name = "id", referencedColumnName = "id")
-        , @JoinColumn(name = "version", referencedColumnName = "version")
-        , @JoinColumn(name = "conceptId", referencedColumnName = "conceptId")})
+        @JoinColumn(name = "agencyId", referencedColumnName = "agencyId", nullable = false)
+        , @JoinColumn(name = "id", referencedColumnName = "id", nullable = false)
+        , @JoinColumn(name = "version", referencedColumnName = "version", nullable = false)
+        , @JoinColumn(name = "conceptId", referencedColumnName = "conceptId", nullable = false)})
     @OneToOne(optional = false)
     private Concept concept;
     @OneToOne(mappedBy = "conceptIdentity")

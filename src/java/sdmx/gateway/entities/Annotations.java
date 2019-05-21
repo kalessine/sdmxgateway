@@ -38,7 +38,7 @@ public class Annotations implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "annotations")
+    @Column(name = "annotations", nullable = false)
     private Long annotations;
     @OneToOne(mappedBy = "annotations")
     private Concept concept;

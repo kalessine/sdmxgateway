@@ -20,11 +20,11 @@ public class AnnotationPK implements Serializable {
 
     @Basic(optional = false)
     @NotNull
-    @Column(name = "annotations")
+    @Column(name = "annotations", nullable = false)
     private long annotations;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "index")
+    @Column(name = "index", nullable = false)
     private short index;
 
     public AnnotationPK() {

@@ -16,6 +16,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -24,7 +25,9 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author James
  */
 @Entity
-@Table(name = "Code")
+@Table(name = "Code", uniqueConstraints = {
+    @UniqueConstraint(columnNames = {"name"})
+    , @UniqueConstraint(columnNames = {"annotations"})})
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Code.findAll", query = "SELECT c FROM Code c")
@@ -39,15 +42,15 @@ public class Code implements Serializable {
     @EmbeddedId
     protected CodePK codePK;
     @Size(max = 255)
-    @Column(name = "parentCode")
+    @Column(name = "parentCode", length = 255)
     private String parentCode;
     @JoinColumn(name = "annotations", referencedColumnName = "annotations")
     @OneToOne
     private Annotations annotations;
     @JoinColumns({
-        @JoinColumn(name = "agencyId", referencedColumnName = "agencyId", insertable = false, updatable = false)
-        , @JoinColumn(name = "id", referencedColumnName = "id", insertable = false, updatable = false)
-        , @JoinColumn(name = "version", referencedColumnName = "version", insertable = false, updatable = false)})
+        @JoinColumn(name = "agencyId", referencedColumnName = "agencyId", nullable = false, insertable = false, updatable = false)
+        , @JoinColumn(name = "id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
+        , @JoinColumn(name = "version", referencedColumnName = "version", nullable = false, insertable = false, updatable = false)})
     @ManyToOne(optional = false)
     private Codelist codelist;
     @JoinColumn(name = "name", referencedColumnName = "name")

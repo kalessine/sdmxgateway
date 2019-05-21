@@ -20,19 +20,19 @@ public class ComponentValuePK implements Serializable {
 
     @Basic(optional = false)
     @NotNull
-    @Column(name = "dataflow")
+    @Column(name = "dataflow", nullable = false)
     private long dataflow;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "position")
-    private short position;
+    @Column(name = "index", nullable = false)
+    private short index;
 
     public ComponentValuePK() {
     }
 
-    public ComponentValuePK(long dataflow, short position) {
+    public ComponentValuePK(long dataflow, short index) {
         this.dataflow = dataflow;
-        this.position = position;
+        this.index = index;
     }
 
     public long getDataflow() {
@@ -43,19 +43,19 @@ public class ComponentValuePK implements Serializable {
         this.dataflow = dataflow;
     }
 
-    public short getPosition() {
-        return position;
+    public short getIndex() {
+        return index;
     }
 
-    public void setPosition(short position) {
-        this.position = position;
+    public void setIndex(short index) {
+        this.index = index;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
         hash += (int) dataflow;
-        hash += (int) position;
+        hash += (int) index;
         return hash;
     }
 
@@ -69,7 +69,7 @@ public class ComponentValuePK implements Serializable {
         if (this.dataflow != other.dataflow) {
             return false;
         }
-        if (this.position != other.position) {
+        if (this.index != other.index) {
             return false;
         }
         return true;
@@ -77,7 +77,7 @@ public class ComponentValuePK implements Serializable {
 
     @Override
     public String toString() {
-        return "sdmx.gateway.entities.ComponentValuePK[ dataflow=" + dataflow + ", position=" + position + " ]";
+        return "sdmx.gateway.entities.ComponentValuePK[ dataflow=" + dataflow + ", index=" + index + " ]";
     }
     
 }

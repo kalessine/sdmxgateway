@@ -35,12 +35,12 @@ public class NameText implements Serializable {
     @EmbeddedId
     protected NameTextPK nameTextPK;
     @Size(max = 255)
-    @Column(name = "text")
+    @Column(name = "text", length = 255)
     private String text;
-    @JoinColumn(name = "lang", referencedColumnName = "lang", insertable = false, updatable = false)
+    @JoinColumn(name = "lang", referencedColumnName = "lang", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Language language;
-    @JoinColumn(name = "name", referencedColumnName = "name", insertable = false, updatable = false)
+    @JoinColumn(name = "name", referencedColumnName = "name", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Name name1;
 

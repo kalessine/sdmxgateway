@@ -39,17 +39,17 @@ public class AttributeRelationshipType implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "attributeRelationshipType")
+    @Column(name = "attributeRelationshipType", nullable = false)
     private Long attributeRelationshipType;
     @Column(name = "empty")
     private Short empty;
     @Size(max = 255)
-    @Column(name = "attachGroup")
+    @Column(name = "attachGroup", length = 255)
     private String attachGroup;
     @Column(name = "attachGroups")
     private Short attachGroups;
     @Size(max = 2147483647)
-    @Column(name = "primaryMeasureReference")
+    @Column(name = "primaryMeasureReference", length = 2147483647)
     private String primaryMeasureReference;
     @OneToOne(mappedBy = "attributeRelationshipType")
     private DataStructureComponent dataStructureComponent;
